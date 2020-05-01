@@ -33,6 +33,7 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner">
 					<div class="item active">
+
 						<img src="${pageContext.request.contextPath}/resources/images/foot1.png" alt="Los Angeles" style="width: 100%;"height="50px">
 					</div>
 
@@ -42,6 +43,17 @@
 
 					<div class="item">
 						<img src="${pageContext.request.contextPath}/resources/images/foot3.png" alt="New york" style="width: 100%;"height="50px">
+
+						<a href="#"><img src="la.jpg" alt="Los Angeles" style="width: 100%; height: 50px;"></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="chicago.jpg" alt="Chicago" style="width: 100%; height: 50px;"></a>
+					</div>
+
+					<div class="item">
+						<a href="#"><img src="ny.jpg" alt="New york" style="width: 100%; height: 50px;"></a>
+
 					</div>
 				</div>
 
