@@ -6,7 +6,7 @@
 <mapper namespace="com.k2js.p1.notice.NoticeDAO">
 
 <select id="boardList" parameterType="Pager" resultType="NoticeVO">
-		select * from notice
+		select * from notice order by num desc
 			<!-- (select N.*, rownum R from
 				(select * from notice where 
 				<choose>
