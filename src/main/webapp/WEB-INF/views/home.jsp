@@ -1,73 +1,77 @@
-<%@ page session="false" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page session="false"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <html>
 <head>
-	<title>Home</title>
-	<c:import url="./template/boot.jsp"> </c:import>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+	font-family: "Lato", sans-serif;
+}
 
-<style type="text/css">
-	.slide_img{
-		width : 70%;
-		height: 100px;
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.6s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: gray;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
 	}
-	.slide_edge{
-		border-radius: 50px;
+	.sidenav a {
+		font-size: 18px;
 	}
-	
-	#myCarousel >a {
-	border-radius : 50px;
-	z-index: 0;
-	background-image : none;
-	}
-</style>	
+}
+</style>
+
+<title>Home</title>
+<c:import url="./template/boot.jsp"></c:import>
 </head>
-
 
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
+	<c:import url="./template/carousel.jsp"></c:import>
 
-	<div>
-		<div class="container  slide_img ">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" >
-				<!-- Indicators -->
-				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
-					<li data-target="#myCarousel" data-slide-to="2"></li>
-				</ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner slide_edge">
-					<div class="item active">
+	<script>
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		}
 
-						<img src="${pageContext.request.contextPath}/resources/images/foot1.png" alt="Los Angeles" style="width: 100%;"height="50px">
-					</div>
-
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/images/foot2.png" alt="Chicago" style="width: 100%;" height="50px">
-					</div>
-
-					<div class="item">
-						<img src="${pageContext.request.contextPath}/resources/images/foot3.png" alt="New york" style="width: 100%;"height="50px">
-					</div>
-				</div>
-
-				<!-- Left and right controls -->
-				<a class="left carousel-control" href="#myCarousel"
-					data-slide="prev"> <span
-					class="glyphicon glyphicon-chevron-left"></span> <span
-					class="sr-only">Previous</span>
-				</a> <a class="right carousel-control" href="#myCarousel"
-					data-slide="next"> <span
-					class="glyphicon glyphicon-chevron-right"></span> <span
-					class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-		<div class="container"></div>
-	</div>
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
 </body>
 </html>
