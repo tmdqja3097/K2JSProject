@@ -6,13 +6,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MemberVO {
-
+	
+	private String userId;
 	private String userName;
 	private String userPassword;
 	private String userEmail;
 	private int gender;
 	private String userPhone;
 	private Date userBirth;
+	
+	
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getUserName() {
 		return userName;
 	}
