@@ -18,39 +18,40 @@ public class NoticeDAO implements BoardDAO{
 	
 	private final String NAMESPACE="com.k2js.p1.notice.NoticeDAO.";
 	
-	@Override
-	public long boardCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<BoardVO> boardList(Pager pager) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"boardList", pager);
 	}
 
+	public long boardNum() throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"boardNum");
+	}
+	
+	@Override
+	public long boardCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"boardCount", pager);
+	}
+
 	@Override
 	public BoardVO boardSelect(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"boardSelect", num);
 	}
 
 	@Override
 	public int boardWrite(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(NAMESPACE+"boardWrite", boardVO);
+		
 	}
-
+	
 	@Override
 	public int boardDelete(long num) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE+"boardDelete", num);
 	}
-
+	
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(NAMESPACE+"boardUpdate", boardVO);
 	}
 	
 }

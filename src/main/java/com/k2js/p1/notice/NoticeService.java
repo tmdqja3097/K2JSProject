@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.k2js.p1.board.file.BoardFileDAO;
+import com.k2js.p1.board.file.BoardFileVO;
+import com.k2js.p1.util.FileSaver;
 import com.k2js.p1.board.BoardService;
 import com.k2js.p1.board.BoardVO;
 import com.k2js.p1.notice.NoticeDAO;
@@ -17,10 +20,13 @@ import com.k2js.p1.util.Pager;
 public class NoticeService implements BoardService{
 
 	@Autowired
-	private NoticeDAO noticeDAO;
-	
+	private NoticeDAO noticeDAO;	
 	@Autowired
 	private ServletContext servletContext;
+	@Autowired
+	private FileSaver fileSaver;
+	@Autowired
+	private BoardFileDAO boardFileDAO;
 	
 
 	@Override
@@ -37,27 +43,48 @@ public class NoticeService implements BoardService{
 	@Override
 	public BoardVO boardSelect(long num) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDAO.boardSelect(num);
 	}
-
 
 	@Override
-	public int boardWrite(BoardVO boardVO, MultipartFile[] files) throws Exception {
+	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		
+		String path = servletContext.getRealPath("/resources/uploadnotice");
+		System.out.println(path);
+		System.out.println(boardVO.getTitle());
+		System.out.println(boardVO.getContents());
+		System.out.println(boardVO.getNum());
+		System.out.println(boardVO.getRegDate());
+		
+		//sequence 번호 받기
+		boardVO.setNum(noticeDAO.boardNum());
+		//notice table insert
+		int result = noticeDAO.boardWrite(boardVO);
+		
+		for(MultipartFile file : files) {
+			if(file.getSize()>0) {
+				BoardFileVO boardFileVO = new BoardFileVO();
+				String fileName = fileSaver.saveByTransfer(file, path);
+				boardFileVO.setNum(boardVO.getNum());
+				boardFileVO.setFileName(fileName);
+				boardFileVO.setOriName(file.getOriginalFilename());
+				boardFileVO.setBoard(1);
+				boardFileDAO.fileInsert(boardFileVO);
+			}
+		}
+		return result;
 	}
-
 
 	@Override
 	public int boardUpdate(BoardVO boardVO) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.boardUpdate(boardVO);
 	}
-
 
 	@Override
 	public int boardDelete(long num) throws Exception {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.boardDelete(num);
 	}
 }
