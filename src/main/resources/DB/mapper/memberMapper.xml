@@ -4,8 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.k2js.p1.member.MemberDAO">
+
 	<select id="memberLogin" parameterType="memberVO"
 		resultType="memberVO">
-		SELECT * FROM MEMBER WHERE ID = #{userId} AND PW = #{userPassword}
+		SELECT * FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
 	</select>
+	<insert id="memberNew" parameterType="memberVO">
+		INSERT INTO MEMBER VALUES (#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0)
+	</insert>
 </mapper>

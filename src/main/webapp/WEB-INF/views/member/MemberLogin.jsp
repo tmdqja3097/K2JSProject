@@ -15,14 +15,14 @@
 			<form method="post" action="./MemberLogin">
 				<div>
 					<label>아이디 또는 이메일</label> <br> <input type="text"
-						name="userId" autofocus maxlength="30" required id="id_userId">
+						name="id" autofocus maxlength="30" required id="id_userId">
 				</div>
 				<div>
 					<label>비밀번호</label> <br>
-					<input type="password" name="userPassword"
+					<input type="password" name="pw"
 						autocomplete="current-password" required id="id_userPassword">
 				</div>
-				<input type="submit" class="" value="로그인">
+				<input type="submit" value="로그인">
 			</form>
 
 			<span><a href="">비밀번호가 생각나지 않나요?</a></span> <br> <span><a

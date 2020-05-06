@@ -12,7 +12,8 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
-		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
+		memberVO = sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
+		return memberVO;
 	}
 	public int memberNew(MemberVO memberVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberNew", memberVO);
