@@ -9,8 +9,9 @@
 		id="dataSource">
 		<property name="username" value="user01"></property>
 		<property name="password" value="user01"></property>
+		<property name="username" value="user03"></property>
+		<property name="password" value="user03"></property>
 		<property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:xe"></property>
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver"></property>
 	</bean>
