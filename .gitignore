@@ -134,3 +134,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
