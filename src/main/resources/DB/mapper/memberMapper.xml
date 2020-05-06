@@ -6,6 +6,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.k2js.p1.member.MemberDAO">
 	<select id="memberLogin" parameterType="memberVO"
 		resultType="memberVO">
-		SELECT * FROM MEMBER WHERE ID = ${userId} AND PW = ${userPassword}
+		SELECT * FROM MEMBER WHERE ID = #{userId} AND PW = #{userPassword}
 	</select>
 </mapper>
