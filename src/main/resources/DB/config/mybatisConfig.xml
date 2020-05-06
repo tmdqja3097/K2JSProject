@@ -5,16 +5,15 @@
 
 <configuration>
 
-	<settings>
+	<!-- <settings>
 		<setting name="jdbcTypeForNull" value="VARCHAR" />
-	</settings>
+	</settings> -->
 	<typeAliases>
 		<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="java.lang.String" alias="String" />
 		<typeAlias type="java.util.List" alias="List" />
 
-		<typeAlias type="com.k2js.p1.notice.NoticeVO"
-			alias="NoticeVO" />
+		<typeAlias type="com.k2js.p1.notice.NoticeVO" alias="NoticeVO" />
 		<!-- <typeAlias type="com.k2js.p1.qna.QnaVO" alias="QnaVO"/> <typeAlias 
 			type="com.k2js.p1.member.MemberVO" alias="MemberVO"/> -->
 		<typeAlias type="com.k2js.p1.board.file.BoardFileVO"

@@ -69,7 +69,7 @@
 	
 	
 	<insert id="boardWrite" parameterType="NoticeVO">
-		insert into notice values(BOARD_NUM.nextval,#{title},#{contents},#{writer},sysdate)
+		insert into notice values(#{num},#{title},#{contents},#{writer},sysdate)
 		<!-- insert into notice values(1,'good','gg','sonn',sysdate) -->
 	</insert>
 	

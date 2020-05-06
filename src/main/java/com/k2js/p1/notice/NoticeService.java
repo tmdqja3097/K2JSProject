@@ -49,13 +49,8 @@ public class NoticeService implements BoardService{
 	@Override
 	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
-		
 		String path = servletContext.getRealPath("/resources/uploadnotice");
 		System.out.println(path);
-		System.out.println(boardVO.getTitle());
-		System.out.println(boardVO.getContents());
-		System.out.println(boardVO.getNum());
-		System.out.println(boardVO.getRegDate());
 		
 		//sequence 번호 받기
 		boardVO.setNum(noticeDAO.boardNum());
@@ -77,9 +72,23 @@ public class NoticeService implements BoardService{
 	}
 
 	@Override
-	public int boardUpdate(BoardVO boardVO) throws Exception {
-		// TODO Auto-generated method stub
-		return noticeDAO.boardUpdate(boardVO);
+	public int boardUpdate(BoardVO boardVO, MultipartFile[] files) throws Exception {
+		String path = servletContext.getRealPath("/resources/uploadnotice");
+		
+		for(MultipartFile file : files) {
+			if(file.getSize()>0) {
+				BoardFileVO boardFileVO = new BoardFileVO();
+				String fileName = fileSaver.saveByTransfer(file, path);
+				boardFileVO.setNum(boardVO.getNum());
+				boardFileVO.setFileName(fileName);
+				boardFileVO.setOriName(file.getOriginalFilename());
+				boardFileVO.setBoard(1);
+				int result = boardFileDAO.fileInsert(boardFileVO);
+				System.out.println(result);
+			}
+		}
+	
+		 return noticeDAO.boardUpdate(boardVO); 
 	}
 
 	@Override

@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.k2js.p1.notice.NoticeService;
-import com.k2js.p1.notice.NoticeVO;
 import com.k2js.p1.board.BoardVO;
 import com.k2js.p1.util.Pager;
 
@@ -64,9 +62,10 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeUpdate", method = RequestMethod.POST)
-	public String boardUpdate(NoticeVO noticeVO)throws Exception{
+	public String boardUpdate(NoticeVO noticeVO, MultipartFile[] files)throws Exception{
 		 
-		int result = noticeService.boardUpdate(noticeVO);
+		int result = noticeService.boardUpdate(noticeVO, files);
+		
 		String path="";
 		
 		if(result>0) {
@@ -85,17 +84,18 @@ public class NoticeController {
 	}
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
-	public ModelAndView boardWrite(BoardVO bVO,MultipartFile [] files, ModelAndView mv)throws Exception{
-		System.out.println(bVO.getTitle());
-		int result = noticeService.boardWrite(bVO, files);
+	public ModelAndView boardWrite(NoticeVO notiveVO,MultipartFile [] files, ModelAndView mv)throws Exception{
+		System.out.println(notiveVO.getTitle());
+		System.out.println(notiveVO.getContents());
+		int result = noticeService.boardWrite(notiveVO, files);
+		
 		if(result>0) {
 			mv.setViewName("redirect:./noticeList");
 		}else {
 			mv.addObject("result", "Write Fail");
 			mv.addObject("path", "./noticeList");
 			mv.setViewName("common/result");
-		}
-		
+		}	
 		return mv;
 	}
 	
