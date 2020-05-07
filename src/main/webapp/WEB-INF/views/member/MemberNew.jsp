@@ -29,7 +29,7 @@
 				<div class="alert alert-success row" id="success">비밀번호가 일치합니다</div>
 				<div class="alert alert-danger row" id="fail">비밀번호가 일치하지 않습니다</div>
 				<div class="row">
-					<label>이메일</label><br> <input type="text" name="email"
+					<label>이메일</label><br> <input type="email" name="email"
 						maxlength="150" autofocus required id="eamil" autofocus>
 				</div>
 				<div class="row">

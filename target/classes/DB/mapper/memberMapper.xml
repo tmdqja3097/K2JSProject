@@ -12,4 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberNew" parameterType="memberVO">
 		INSERT INTO MEMBER VALUES (#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0)
 	</insert>
+	<update id="memberUpdate" parameterType="memberVO">
+		UPDATE MEMBER SET PW=#{pw}, NAME=#{name}, PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
+	</update>
 </mapper>

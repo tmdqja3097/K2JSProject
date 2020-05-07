@@ -64,5 +64,21 @@ public class MemberController {
 	public String memberPage()throws Exception{
 		return "member/MemberPage";
 	}
+	
+	@GetMapping("MemberUpdate")
+	public String memberUpdate() throws Exception {
+		return "member/MemberUpdate";
+	}
+	@PostMapping("MemberUpdate")
+	public String memberUpdate(MemberVO memberVO, HttpSession session) throws Exception {
+		memberVO.setId(((MemberVO)session.getAttribute("member")).getId());
+		System.out.println(memberVO.getId());
+		int result = memberService.memberUpdate(memberVO);
+		if(result >0) {
+			session.setAttribute("member", memberVO);
+			return "member/MemberPage";
+		}
+		return "redirect:./";
+	}
 
 }

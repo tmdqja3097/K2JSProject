@@ -15,4 +15,7 @@ public class MemberService {
 	public int memberNew(MemberVO memberVO) throws Exception {
 		return memberDAO.memberNew(memberVO);
 	}
+	public int memberUpdate(MemberVO memberVO) throws Exception{
+		return memberDAO.memberUpdate(memberVO);
+	}
 }

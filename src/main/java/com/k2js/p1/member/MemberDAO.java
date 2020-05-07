@@ -18,4 +18,8 @@ public class MemberDAO {
 	public int memberNew(MemberVO memberVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberNew", memberVO);
 	}
+	
+	public int memberUpdate(MemberVO memberVO) throws Exception {
+		return sqlSession.update(NAMESPACE+"memberUpdate", memberVO);
+	}
 }
