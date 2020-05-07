@@ -108,6 +108,11 @@ button.switch-month:hover {
 	
 /* calendar2 */
 
+#date{
+	display: inline-block;
+}
+	
+
  .b{color:blue;
 	display: inline-block;
 }
@@ -116,7 +121,9 @@ button.switch-month:hover {
  }
  .g{color:gray;
  	display: inline-block;
- }
+ }	
+	
+	
 	
 	
 	
@@ -182,21 +189,39 @@ button.switch-month:hover {
 				</div> -->
 
 
-			<form name=frm>
-			 <input type=text name=yy size=4 value=2020>
-			 <input type=text name=mm size=2 value=5>
-			 <input type=button onclick=chCal() value=' 달 력 '>
-			 <input type=text name=st size=2 value=1>에서
-			 <input type=text name=ed size=2 value=7>까지
-			</form>
-			<div id=d></div>
-
-
+			<div class="cal_top">
+			        <a href="#" id="movePrevMonth"><span id="prevMonth" class="cal_tit">&lt;</span></a>
+			        <span id="cal_top_year"></span>
+			        <span id="cal_top_month"></span>
+			        <a href="#" id="moveNextMonth"><span id="nextMonth" class="cal_tit">&gt;</span></a>
+			</div>
+			<div id="cal_tab" class="cal">
+			
 			</div>
 			
 			
 			
+			<p id="calandar"></p>
+		<input type="button" value="<" onclick="week_calandar(-1)" />
+		<input type="button" value="today" onclick="set_day()" />
+		<input type="button" value=">" onclick="week_calandar(1)" />
 			
+			
+		<form name=frm>
+			 <input type=text name=yy size=4 value=2020>
+			 <input type=text name=mm size=2 value=5> 
+			 <input type=button onclick=chCal() value=' 달 력 '>
+			 <input type=text name=st size=2 value=1>에서
+			 <input type=text name=ed size=2 value=7>까지
+			</form>
+			<div id=d></div>	
+			
+			
+			
+
+
+			</div>
+		
 		</div>
 		
 	</div>
@@ -204,480 +229,136 @@ button.switch-month:hover {
 	
 	
 	
-	<script type="text/javascript">
+
+<script type="text/javascript">
 		
-	 function chCal(){
-  var f=document.frm; //폼객체
-  var y=Number(f.yy.value); //년도
-  var m=Number(f.mm.value); //월
-  var str=''; //출력할 스트링
+		
+function chCal(){
+	  var f=document.frm; //폼객체
+	  var y=Number(f.yy.value); //년도
+	  var m=Number(f.mm.value); //월
+	  var str=''; //출력할 스트링
 
-  var d=new Date(y,m,0); //의뢰한 년월의 마지막날의 데이트객체를 구한다
-  var d0=new Date(y,m-1,1); //의뢰한 년월의 첫날의 데이트객체
+	  
+	  var d=new Date(y,m,0); //의뢰한 년월의 마지막날의 데이트객체를 구한다
+	  var d0=new Date(y,m-1,1); //의뢰한 년월의 첫날의 데이트객체
 
-  var ds=d.getDate(); //마지막일자
+	  var ds=d.getDate(); //마지막일자
+		
+	  var e=d0.getDay(); //첫날의 요일
+
+	  var s0=Number(f.st.value); //출력 시작일
+	  var s1=Number(f.ed.value); //출력 마감일
+
+	  var yoil = [];
+	  var week = new Array('일', '월', '화', '수', '목', '금', '토');
+	  var today = new Date().getDay();
+	  //var todayLabel = week[today];
+	  
+	  if(e==1){
+		yoil[0] = "월";
+	  }else if(e==2){
+		yoil[1] = "화";
+	  }else if(e==3){
+		yoil[2] = "수";
+	  }else if(e==4){
+		yoil[3] = "목";
+	  }else if(e==5){	
+		yoil[4] = "금";
+	  }
+	  
+	  for(var j=0; j<7; j++){
+ 		 var yoilDay = week[today]
+ 	 }       
+	 console.log(yoilDay);
+	  
+	  (e<6)?sat=7-e:null; //토요일이 몇번째인지 구한다 
+	  
+	  for(var i=1;i<=ds;i++){ //날짜수만큼 루프를 돈다
+	   if(i>=s0 && i<=s1){
+	    switch(i%7){ //요일에 따라 스트링의 색을 달리하여 출력
+	     case sat:
+	      str+="<a href='#'><li class=b><p>"+i+"</p><span class=b>토</span></li></a>"; //토요일은 파랑
+	      break;
+	     case sat+1: 
+	      str+="<li class=r><p>"+i+"</p><span class=r>일</span></li>"; //일요일은 빨강
+	      break;
+	     default: 
+	      str+="<li class=g><p>"+i+"</p><span class=g>"+week[today]+"</span></li> "; //평일은 회색
+	      break;
+	    }
+	   }
+	  }
+	  
+	  
+	  document.getElementById('d').innerHTML=str; //스트링을 레이어에 출력
+	 }
+	 window.onload=function(){ //페이지가 로딩되면
+	  var f=document.frm; //폼객체
+	  var qr=window.location.search; //쿼리
+
+	  if(qr){ //주소창에 쿼리가 있으면
+	   qr=qr.substr(1,qr.length).split("&"); //쿼리스트링의 첫 ? 는 자르고, &를 구분자로 나누어 배열로 저장
+	   for(var i in qr){ //배열의 개수만큼 루프를 돈다(파라메터의 개수만큼)
+	    var tmp=qr[i].split("="); //키와 값을 분리
+	    f.elements[tmp[0]].value=tmp[1]; //폼의 네임과 값을 지정
+	   }
+	   chCal(); //달력출력
+	  }
+	 }	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	/* var day = new Date();
+	day.setDate(day.getDate()-day.getDay());
+
+	function week_calandar(week) {
+	day.setDate(day.getDate()+week*7);
+	var title = day.getFullYear() + "/" + (day.getMonth()+1);
+	var data = ""
 	
-  var e=d0.getDay(); //첫날의 요일
+	var week = new Array('일', '월', '화', '수', '목', '금', '토');
+	var today = new Date().getDay();
+	var todayLabel = week[today];
+	
+	for(var i=0; i<7; i++){
+		
+	}
+	
+	for(var i=0 ; i<7 ; i++) {              
+	data += day.getDate() + "|"+"<p id=date>"+todayLabel+"</p>";
+	
+	if(day.getDate() == 1)
+	title += " ~ " + day.getFullYear() + "/" + (day.getMonth()+1);
+	day.setDate(day.getDate()+1);
+	}
+	
+	day.setDate(day.getDate()-7);
+	document.getElementById("calandar").innerHTML = title + "<br />" + data;
+	}
 
-  var s0=Number(f.st.value); //출력 시작일
-  var s1=Number(f.ed.value); //출력 마감일
+	function set_day() {
+	day = new Date();
+	day.setDate(day.getDate()-day.getDay());
 
-  var yoil = ["월","화","수","목","금"];
-  var yoilStr = '';
+	week_calandar(0);
+	} */
+	
+</script>
+	
+	 	
+	
+	
+
   
-  if(e==1){
-	yoilStr = "월";
-  }else if(e==2){
-	yoilStr = "화";
-  }else if(e==3){
-	yoilStr = "수";
-  }else if(e==4){
-	yoilStr = "목";
-  }else if(e==5){
-	yoilStr = "금";
-  }
-  
-  (e<6)?sat=7-e:null; //토요일이 몇번째인지 구한다
-
-  for(var i=1;i<=ds;i++){ //날짜수만큼 루프를 돈다
-   if(i>=s0 && i<=s1){
-    switch(i%7){ //요일에 따라 스트링의 색을 달리하여 출력
-     case sat:
-      str+="<a href='#'><li class=b><p>"+i+"</p><span class=b>토</span></li></a>"; //토요일은 파랑
-      break;
-     case sat+1: 
-      str+="<li class=r><p>"+i+"</p><span class=r>일</span></li>"; //일요일은 빨강
-      break;
-     default: 
-      str+="<li class=g><p>"+i+"</p><span class=g>"+yoilStr+"</span></li> "; //평일은 회색
-      break;
-    }
-   }
-  }
-  console.log(d);
-  console.log(d0);
-  console.log(ds);
-  console.log(e);
-  console.log(s0);
-  console.log(s1);
-  document.getElementById('d').innerHTML=str; //스트링을 레이어에 출력
- }
- window.onload=function(){ //페이지가 로딩되면
-  var f=document.frm; //폼객체
-  var qr=window.location.search; //쿼리
-
-  if(qr){ //주소창에 쿼리가 있으면
-   qr=qr.substr(1,qr.length).split("&"); //쿼리스트링의 첫 ? 는 자르고, &를 구분자로 나누어 배열로 저장
-   for(var i in qr){ //배열의 개수만큼 루프를 돈다(파라메터의 개수만큼)
-    var tmp=qr[i].split("="); //키와 값을 분리
-    f.elements[tmp[0]].value=tmp[1]; //폼의 네임과 값을 지정
-   }
-   chCal(); //달력출력
-  }
- }
-	
-	
-	
-	
-	
-	
-	/* $(document).ready(function () {
-	    function c(passed_month, passed_year, calNum) {
-	        var calendar = calNum == 0 ? calendars.cal1 : calendars.cal2;
-	        makeWeek(calendar.weekline);
-	        calendar.datesBody.empty();
-	        var calMonthArray = makeMonthArray(passed_month, passed_year);
-	        var r = 0;
-	        var u = false;
-	        while (!u) {
-	            if (daysArray[r] == calMonthArray[0].weekday) {
-	                u = true
-	            } else {
-	                calendar.datesBody.append('<div class="blank"></div>');
-	                r++;
-	            }
-	        }
-	        for (var cell = 0; cell < 42 - r; cell++) { // 42 date-cells in calendar
-	            if (cell >= calMonthArray.length) {
-	                calendar.datesBody.append('<div class="blank"></div>');
-	            } else {
-	                var shownDate = calMonthArray[cell].day;
-	                var iter_date = new Date(passed_year, passed_month, shownDate);
-	                if (
-	                (
-	                (shownDate != today.getDate() && passed_month == today.getMonth()) || passed_month != today.getMonth()) && iter_date < today) {
-	                    var m = '<div class="past-date">';
-	                } else {
-	                    var m = checkToday(iter_date) ? '<div class="today">' : "<div>";
-	                }
-	                calendar.datesBody.append(m + shownDate + "</div>");
-	            }
-	        }
-
-	        var color = "#444444";
-	        calendar.calHeader.find("h2").text(i[passed_month] + " " + passed_year);
-	        calendar.weekline.find("div").css("color", color);
-	        calendar.datesBody.find(".today").css("color", "#87b633");
-
-	        // find elements (dates) to be clicked on each time
-	        // the calendar is generated
-	        var clicked = false;
-	        selectDates(selected);
-
-	        clickedElement = calendar.datesBody.find('div');
-	        clickedElement.on("click", function () {
-	            clicked = $(this);
-	            var whichCalendar = calendar.name;
-
-	            if (firstClick && secondClick) {
-	                thirdClicked = getClickedInfo(clicked, calendar);
-	                var firstClickDateObj = new Date(firstClicked.year,
-	                firstClicked.month,
-	                firstClicked.date);
-	                var secondClickDateObj = new Date(secondClicked.year,
-	                secondClicked.month,
-	                secondClicked.date);
-	                var thirdClickDateObj = new Date(thirdClicked.year,
-	                thirdClicked.month,
-	                thirdClicked.date);
-	                if (secondClickDateObj > thirdClickDateObj && thirdClickDateObj > firstClickDateObj) {
-	                    secondClicked = thirdClicked;
-	                    // then choose dates again from the start :)
-	                    bothCals.find(".calendar_content").find("div").each(function () {
-	                        $(this).removeClass("selected");
-	                    });
-	                    selected = {};
-	                    selected[firstClicked.year] = {};
-	                    selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-	                    selected = addChosenDates(firstClicked, secondClicked, selected);
-	                } else { // reset clicks
-	                    selected = {};
-	                    firstClicked = [];
-	                    secondClicked = [];
-	                    firstClick = false;
-	                    secondClick = false;
-	                    bothCals.find(".calendar_content").find("div").each(function () {
-	                        $(this).removeClass("selected");
-	                    });
-	                }
-	            }
-	            if (!firstClick) {
-	                firstClick = true;
-	                firstClicked = getClickedInfo(clicked, calendar);
-	                selected[firstClicked.year] = {};
-	                selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-	            } else {
-	                secondClick = true;
-	                secondClicked = getClickedInfo(clicked, calendar);
-
-	                // what if second clicked date is before the first clicked?
-	                var firstClickDateObj = new Date(firstClicked.year,
-	                firstClicked.month,
-	                firstClicked.date);
-	                var secondClickDateObj = new Date(secondClicked.year,
-	                secondClicked.month,
-	                secondClicked.date);
-
-	                if (firstClickDateObj > secondClickDateObj) {
-
-	                    var cachedClickedInfo = secondClicked;
-	                    secondClicked = firstClicked;
-	                    firstClicked = cachedClickedInfo;
-	                    selected = {};
-	                    selected[firstClicked.year] = {};
-	                    selected[firstClicked.year][firstClicked.month] = [firstClicked.date];
-
-	                } else if (firstClickDateObj.getTime() == secondClickDateObj.getTime()) {
-	                    selected = {};
-	                    firstClicked = [];
-	                    secondClicked = [];
-	                    firstClick = false;
-	                    secondClick = false;
-	                    $(this).removeClass("selected");
-	                }
-
-
-	                // add between dates to [selected]
-	                selected = addChosenDates(firstClicked, secondClicked, selected);
-	            }
-	            selectDates(selected);
-	        });
-
-	    }
-
-	    function selectDates(selected) {
-	        if (!$.isEmptyObject(selected)) {
-	            var dateElements1 = datesBody1.find('div');
-	            var dateElements2 = datesBody2.find('div');
-
-	            function highlightDates(passed_year, passed_month, dateElements) {
-	                if (passed_year in selected && passed_month in selected[passed_year]) {
-	                    var daysToCompare = selected[passed_year][passed_month];
-	                    for (var d in daysToCompare) {
-	                        dateElements.each(function (index) {
-	                            if (parseInt($(this).text()) == daysToCompare[d]) {
-	                                $(this).addClass('selected');
-	                            }
-	                        });
-	                    }
-
-	                }
-	            }
-
-	            highlightDates(year, month, dateElements1);
-	            highlightDates(nextYear, nextMonth, dateElements2);
-	        }
-	    }
-
-	    function makeMonthArray(passed_month, passed_year) { // creates Array specifying dates and weekdays
-	        var e = [];
-	        for (var r = 1; r < getDaysInMonth(passed_year, passed_month) + 1; r++) {
-	            e.push({
-	                day: r,
-	                // Later refactor -- weekday needed only for first week
-	                weekday: daysArray[getWeekdayNum(passed_year, passed_month, r)]
-	            });
-	        }
-	        return e;
-	    }
-
-	    function makeWeek(week) {
-	        week.empty();
-	        for (var e = 0; e < 7; e++) {
-	            week.append("<div>" + daysArray[e].substring(0, 3) + "</div>")
-	        }
-	    }
-
-	    function getDaysInMonth(currentYear, currentMon) {
-	        return (new Date(currentYear, currentMon + 1, 0)).getDate();
-	    }
-
-	    function getWeekdayNum(e, t, n) {
-	        return (new Date(e, t, n)).getDay();
-	    }
-
-	    function checkToday(e) {
-	        var todayDate = today.getFullYear() + '/' + (today.getMonth() + 1) + '/' + today.getDate();
-	        var checkingDate = e.getFullYear() + '/' + (e.getMonth() + 1) + '/' + e.getDate();
-	        return todayDate == checkingDate;
-
-	    }
-
-	    function getAdjacentMonth(curr_month, curr_year, direction) {
-	        var theNextMonth;
-	        var theNextYear;
-	        if (direction == "next") {
-	            theNextMonth = (curr_month + 1) % 12;
-	            theNextYear = (curr_month == 11) ? curr_year + 1 : curr_year;
-	        } else {
-	            theNextMonth = (curr_month == 0) ? 11 : curr_month - 1;
-	            theNextYear = (curr_month == 0) ? curr_year - 1 : curr_year;
-	        }
-	        return [theNextMonth, theNextYear];
-	    }
-
-	    function b() {
-	        today = new Date;
-	        year = today.getFullYear();
-	        month = today.getMonth();
-	        var nextDates = getAdjacentMonth(month, year, "next");
-	        nextMonth = nextDates[0];
-	        nextYear = nextDates[1];
-	    }
-
-	    var e = 480;
-
-	    var today;
-	    var year,
-	    month,
-	    nextMonth,
-	    nextYear;
-
-	    var r = [];
-	    var i = [
-	        "JANUARY",
-	        "FEBRUARY",
-	        "MARCH",
-	        "APRIL",
-	        "MAY",
-	        "JUNE",
-	        "JULY",
-	        "AUGUST",
-	        "SEPTEMBER",
-	        "OCTOBER",
-	        "NOVEMBER",
-	        "DECEMBER"];
-	    var daysArray = [
-	        "Sunday",
-	        "Monday",
-	        "Tuesday",
-	        "Wednesday",
-	        "Thursday",
-	        "Friday",
-	        "Saturday"];
-
-	    var cal1 = $("#calendar_first");
-	    var calHeader1 = cal1.find(".calendar_header");
-	    var weekline1 = cal1.find(".calendar_weekdays");
-	    var datesBody1 = cal1.find(".calendar_content");
-
-	    var cal2 = $("#calendar_second");
-	    var calHeader2 = cal2.find(".calendar_header");
-	    var weekline2 = cal2.find(".calendar_weekdays");
-	    var datesBody2 = cal2.find(".calendar_content");
-
-	    var bothCals = $(".calendar");
-
-	    var switchButton = bothCals.find(".calendar_header").find('.switch-month');
-
-	    var calendars = {
-	        "cal1": {
-	            "name": "first",
-	                "calHeader": calHeader1,
-	                "weekline": weekline1,
-	                "datesBody": datesBody1
-	        },
-	            "cal2": {
-	            "name": "second",
-	                "calHeader": calHeader2,
-	                "weekline": weekline2,
-	                "datesBody": datesBody2
-	        }
-	    }
-
-
-	    var clickedElement;
-	    var firstClicked,
-	    secondClicked,
-	    thirdClicked;
-	    var firstClick = false;
-	    var secondClick = false;
-	    var selected = {};
-
-	    b();
-	    c(month, year, 0);
-	    c(nextMonth, nextYear, 1);
-	    switchButton.on("click", function () {
-	        var clicked = $(this);
-	        var generateCalendars = function (e) {
-	            var nextDatesFirst = getAdjacentMonth(month, year, e);
-	            var nextDatesSecond = getAdjacentMonth(nextMonth, nextYear, e);
-	            month = nextDatesFirst[0];
-	            year = nextDatesFirst[1];
-	            nextMonth = nextDatesSecond[0];
-	            nextYear = nextDatesSecond[1];
-
-	            c(month, year, 0);
-	            c(nextMonth, nextYear, 1);
-	        };
-	        if (clicked.attr("class").indexOf("left") != -1) {
-	            generateCalendars("previous");
-	        } else {
-	            generateCalendars("next");
-	        }
-	        clickedElement = bothCals.find(".calendar_content").find("div");
-	    });
-
-
-	    //  Click picking stuff
-	    function getClickedInfo(element, calendar) {
-	        var clickedInfo = {};
-	        var clickedCalendar,
-	        clickedMonth,
-	        clickedYear;
-	        clickedCalendar = calendar.name;
-	        clickedMonth = clickedCalendar == "first" ? month : nextMonth;
-	        clickedYear = clickedCalendar == "first" ? year : nextYear;
-	        clickedInfo = {
-	            "calNum": clickedCalendar,
-	                "date": parseInt(element.text()),
-	                "month": clickedMonth,
-	                "year": clickedYear
-	        }
-	        return clickedInfo;
-	    }
-
-
-	    // Finding between dates MADNESS. Needs refactoring and smartening up :)
-	    function addChosenDates(firstClicked, secondClicked, selected) {
-	        if (secondClicked.date > firstClicked.date || secondClicked.month > firstClicked.month || secondClicked.year > firstClicked.year) {
-
-	            var added_year = secondClicked.year;
-	            var added_month = secondClicked.month;
-	            var added_date = secondClicked.date;
-
-	            if (added_year > firstClicked.year) {
-	                // first add all dates from all months of Second-Clicked-Year
-	                selected[added_year] = {};
-	                selected[added_year][added_month] = [];
-	                for (var i = 1;
-	                i <= secondClicked.date;
-	                i++) {
-	                    selected[added_year][added_month].push(i);
-	                }
-
-	                added_month = added_month - 1;
-	                while (added_month >= 0) {
-	                    selected[added_year][added_month] = [];
-	                    for (var i = 1;
-	                    i <= getDaysInMonth(added_year, added_month);
-	                    i++) {
-	                        selected[added_year][added_month].push(i);
-	                    }
-	                    added_month = added_month - 1;
-	                }
-
-	                added_year = added_year - 1;
-	                added_month = 11; // reset month to Dec because we decreased year
-	                added_date = getDaysInMonth(added_year, added_month); // reset date as well
-
-	                // Now add all dates from all months of inbetween years
-	                while (added_year > firstClicked.year) {
-	                    selected[added_year] = {};
-	                    for (var i = 0; i < 12; i++) {
-	                        selected[added_year][i] = [];
-	                        for (var d = 1; d <= getDaysInMonth(added_year, i); d++) {
-	                            selected[added_year][i].push(d);
-	                        }
-	                    }
-	                    added_year = added_year - 1;
-	                }
-	            }
-
-	            if (added_month > firstClicked.month) {
-	                if (firstClicked.year == secondClicked.year) {
-	                    selected[added_year][added_month] = [];
-	                    for (var i = 1;
-	                    i <= secondClicked.date;
-	                    i++) {
-	                        selected[added_year][added_month].push(i);
-	                    }
-	                    added_month = added_month - 1;
-	                }
-	                while (added_month > firstClicked.month) {
-	                    selected[added_year][added_month] = [];
-	                    for (var i = 1;
-	                    i <= getDaysInMonth(added_year, added_month);
-	                    i++) {
-	                        selected[added_year][added_month].push(i);
-	                    }
-	                    added_month = added_month - 1;
-	                }
-	                added_date = getDaysInMonth(added_year, added_month);
-	            }
-
-	            for (var i = firstClicked.date + 1;
-	            i <= added_date;
-	            i++) {
-	                selected[added_year][added_month].push(i);
-	            }
-	        }
-	        return selected;
-	    }
-	}); */
-
-    
-	</script>
 	
 	
 </body>
