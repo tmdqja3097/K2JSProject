@@ -234,6 +234,7 @@
 	
 	$(".checkLabel").click(function() {
 		if($(".filterCheck")){
+			$(".chec")
 			$(".checkLabel").css("background","gray");
 		}
 		

@@ -107,6 +107,7 @@ public class MatchController {
 		
 		
 		mv.addObject("list", ar);
+		mv.addObject("date", date);
 		mv.setViewName("./home");
 		
 		return mv;
