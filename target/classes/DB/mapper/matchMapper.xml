@@ -5,9 +5,13 @@
 
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
-<select id="matchList" parameterType="java.lang.Long" resultType="com.k2js.p1.match.MatchVO">
-	select * from match where num=#{num}
+<select id="matchList" parameterType="java.util.Date" resultType="MatchVO">
+	select * from match where MATCHTIME=#{date}
 </select>
+
+<!-- <select id="matchDate" parameterType="int []" resultType="MatchVO">
+	select matchTime from match 
+</select> -->
 
 
 

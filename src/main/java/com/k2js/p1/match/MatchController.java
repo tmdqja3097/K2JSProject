@@ -3,19 +3,26 @@ package com.k2js.p1.match;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/match/**")
+@RequestMapping("/")
 public class MatchController {
 
 	@Autowired
 	private MatchService matchService;
 	
-	public void match() {
+	
+	@GetMapping("matchDate")
+	public ModelAndView matchDate(MatchVO matchVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
 		
 		Calendar cal = Calendar.getInstance();
 
@@ -68,7 +75,6 @@ public class MatchController {
 					
 				}
 				
-				
 			}
 			//System.out.println();
 			System.out.print(week2[i]+" ");
@@ -81,6 +87,29 @@ public class MatchController {
 //		for(int i=0; i<14; i++) {
 //			System.out.print(dat[i]+" ");
 //		}
+		
+		
+		
+		Date matchDate = matchService.matchDate(matchVO);
+		
+		
+		
+		return mv;
+	}
+	 
+	
+	@GetMapping("matchList")
+	public ModelAndView matchList(Date date) throws Exception {
+		
+		List<MatchVO> ar = matchService.matchList(date);
+		ModelAndView mv = new ModelAndView();
+		
+		
+		
+		mv.addObject("list", ar);
+		mv.setViewName("./home");
+		
+		return mv;
 		
 	}//end match method
 	

@@ -22,6 +22,42 @@
 	background-image : none;
 	}
 	
+	/* match-filter */
+	.match-result{
+		width: 10%; 
+		height: 30px;
+		float: left; 
+		text-align: center;
+	}
+	
+	.match-wrapper{
+		width: 20%;
+		height: 30px;
+		margin-left: 80%; 
+		text-align: center;
+	}
+	
+	/* match-filter */
+	
+	/* modal */
+	.filterCheck{
+		float: left;
+		opacity: 0;
+		width: 5px;
+		height: 5px;
+	}
+	
+	.checkLabel{
+		background-color: #ffc645;
+		width: 50px;
+		height: 30px;
+		text-align: center;
+		border-radius:30px;
+		padding-top: 5px;  
+		float: left;
+		cursor: pointer;
+	}
+	
 	/* calendar */
 
 	
@@ -72,10 +108,114 @@
 				</a>
 			</div>
 			
+			<div>
+			<hr> 
+			</div>
+			
+			
+			
+			<div class="match-filter" style="border: black solid 1px;"> 
+				<div class="match-result" style="border: red solid 1px; padding-top: 3px;">
+					<p>?개의 매치</p>				
+				</div>
+				  
+				<div class="match-wrapper" style="border: blue solid 1px">  
+					<button class="btn-all-area" data-target="#layerpop" data-toggle="modal" style="border: hidden; background-color: white; padding-top: 3px;" >모든지역</button>
+
+					<!-- <span id="all-area" data-target="#layerpop" data-toggle="modal" style="cursor: pointer; padding-right: 5px;">모든 지역</span> -->
+					<span id="all-match" style="cursor: pointer; padding-left: 5px;">모든 매치</span>
+				</div>	
+				
+			</div>
+			
+
+			<div class="modal fade" id="layerpop">
+			  <div class="modal-dialog"> 
+			    <div class="modal-content" style="border-radius: 30px;">
+			      
+			      <!-- header -->
+			      <div class="modal-header" style="margin-top: 10px;">
+			        <!-- 닫기(x) 버튼 -->
+			        <button type="button" class="close" data-dismiss="modal">취소</button>
+			        <!-- header title -->
+			        <h4 class="modal-title">경기장 또는 지역</h4>
+			      </div>
+			      <!-- body -->
+			      <div class="modal-body" style="height: 150px;">
+			      	<div class="modal-body-filter">
+					    <h4>지역을 선택하세요</h4>  
+			            <ul class="modal-list" style="list-style: none;">
+			            	<li>
+			            		<input type="checkbox" id="1" class="filterCheck grey" value="1">
+			            		<label for="1" class="checkLabel">서울</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="2" class="filterCheck grey" value="2" >
+			            		<label for="2" class="checkLabel">대구</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="3" class="filterCheck" value="3" >
+			            		<label for="3" class="checkLabel">경기</label>
+			            	</li>
+			            	<li>	
+			            		<input type="checkbox" id="4" class="filterCheck" value="4" >
+			            		<label for="4" class="checkLabel">광주</label>
+			            	</li>	
+			            	<li>
+			            		<input type="checkbox" id="5" class="filterCheck" value="5" >
+			            		<label for="5" class="checkLabel">대전</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="6" class="filterCheck" value="6" >
+			            		<label for="6" class="checkLabel">인천</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="7" class="filterCheck" value="7" >
+			            		<label for="7" class="checkLabel">부산</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="8" class="filterCheck" value="8" >
+			            		<label for="8" class="checkLabel">울산</label>
+			            	</li>
+			            	<li>
+			            		<input type="checkbox" id="9" class="filterCheck" value="9" >
+			            		<label for="9" class="checkLabel">충북</label>
+			            	</li>
+			            </ul>
+			      	</div>
+			      	
+			      </div>  
+			      <!-- Footer -->
+			      <div class="modal-footer" style="background-color: #ffc645; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; text-align: center; cursor: pointer;">
+			        	<h5>적용하기</h5>
+			 
+			      </div>
+			      
+			    </div>
+			  </div>
+			</div>
+
+
+
+			
 			
 			<div class="container">
 			
+			
+			
+			
+			<button id="btn-prev">prev</button>
+			<button id="btn-next">next</button>
+			<table>
+				<c:forEach items="${week}">
+				<tr>
+					<td>${week[0]}</td>
+				</tr>
+				
+				</c:forEach>
+				
 		
+			</table>
 
 			</div>
 		
@@ -83,12 +223,25 @@
 		
 	</div>
 	
-	
-	
-	
-
 <script type="text/javascript">
+	$(function() {
+		$("#all-area").click(function() {
+			$('div.modal').modal({
+				remote : 'layer.html'
+			});
+		});
+	});
+	
+	$(".checkLabel").click(function() {
+		if($(".filterCheck")){
+			$(".checkLabel").css("background","gray");
+		}
 		
+		if($(".filterCheck")==false){
+			$(".checkLabel").css("background","#ffc645");
+		}
+	});
+	
 		
 </script>
 	
