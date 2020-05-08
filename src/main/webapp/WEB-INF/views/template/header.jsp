@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <nav class="navbar navbar-inverse back">
-  <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand"  href="${pageContext.request.contextPath}"><img id="logo" alt="logo" src="${pageContext.request.contextPath}/resources/images/k2.jpg" ></a>
     </div>
@@ -19,5 +18,4 @@
       <li><a href="${pageContext.request.contextPath}/member/MemberLogout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
     </ul>
     </c:if>
-  </div>
 </nav>

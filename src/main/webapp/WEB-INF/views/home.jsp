@@ -14,10 +14,6 @@
 </c:import>
 
 <style type="text/css">
-.slide_img {
-	width: 70%;
-}
-
 .slide_edge {
 	border-radius: 50px;
 }
@@ -29,14 +25,10 @@
 }
 </style>
 </head>
-
-
 <body>
-
-	<c:import url="./template/header.jsp"></c:import>
-
-	<div>
-		<div class="container  slide_img ">
+	<div class="All">
+		<c:import url="./template/header.jsp"></c:import>
+		<div class="slide_img ">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
@@ -79,34 +71,37 @@
 				</a>
 			</div>
 		</div>
-	</div>
-	<%
-		List<String> dat = new ArrayList<String>();
-
-	Date date = new Date();
-	Calendar cal = Calendar.getInstance();
-
-	SimpleDateFormat yearSdf = new SimpleDateFormat("yyyy"); //현재 년도 리턴
-	int year = Integer.parseInt(yearSdf.format(date));
-	SimpleDateFormat monthSdf = new SimpleDateFormat("MM"); //현재 월 리턴
-	int month = Integer.parseInt(monthSdf.format(date));
-	SimpleDateFormat daySdf = new SimpleDateFormat("dd"); //현재 일자 리턴
-	int day = Integer.parseInt(daySdf.format(date));
-
-	cal.set(year, month - 1, day);//month는 0 부터 시작하니 -1을 해줘야 1일때 1월이 나옴
-	for (int i = 0; i + day <= cal.getActualMaximum(cal.DATE); i++) {
-		if (i < 14) { //	배열의 크기만큼 데이터를 저장
-			dat.add(year + "/" + month + "/" + (i + day));
-		}
-	}
-	request.setAttribute("day", dat);
-	%>
-	<div class="container">
-		<div class="row">
-			<c:forEach items="${day}" var="date" step="1">
-				<a href="#">${date}</a>
-			</c:forEach>
+		<div id="match-box" style="width: 100%; height: 100px;">
+			<div style="width: 5%; height: 100px; float: left;">
+				<button id="pre">←</button>
+			</div>
+			<div id="list"
+				style="width: 90%; height: 100px; float: left; overflow: hidden;">
+				<ul class="nav nav-tabs" id="day-list">
+				</ul>
+			</div>
+			<div style="width: 5%; height: 100px; float: left;">
+				<button id="next">→</button>
+			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var sysdate = new Date();
+		var startDay = parseInt((sysdate.getDate()+100+"").substr(1,3));
+		$("#next").click(function() {
+			$("#day-list").empty();
+			startDay = startDay+1;
+			getList(startDay);
+		})
+		getList(startDay);
+		
+		function getList(startDay) {
+			$.get("getList?startDay="+startDay, function(result) {
+				console.log(result);
+				$("#day-list").append(result);
+			})
+		}
+		
+	</script>
 </body>
 </html>
