@@ -154,7 +154,7 @@ background-color
 		</form>
 
 	</div>
-
+	<footer></footer>
 
 	<script type="text/javascript" src="../resources/js/boardForm.js"></script>
 	<script type="text/javascript">

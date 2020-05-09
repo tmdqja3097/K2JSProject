@@ -19,24 +19,22 @@ public class Pager {
 	public void makeRow() {
 
 		// curPage로 DB에 일정한 수 조회
-		System.out.println("curPage : " + this.getCurPage());
 		this.startRow = (this.getCurPage() - 1) * this.getPerPage() + 1;
-
 		this.lastRow = this.getCurPage() * this.getPerPage();
 	}
 
 	public void makePage(long totalCount) {
 		// 1. totalCount : 전체 글의 갯수
-
 		// 2. totalCount로 totalPage 계산
 		this.totalPage = totalCount / this.getPerPage();
+		
 		if (totalCount % this.getPerPage() != 0) {
 			this.totalPage++;
 		}
 		// 3. totalPage로 totalBlock 계산
 		// totalBlock 다음 출력의 여부, curBlock이 마지막 Block 여부
 		long perBlock = 5L; // block Page 수
-		this.totalBlock = totalPage / perBlock;
+		this.totalBlock = totalPage / perBlock ;
 		if (totalPage % perBlock != 0) {
 			this.totalBlock++;
 		}
@@ -50,9 +48,16 @@ public class Pager {
 		// 5. curBlock으로 startNum, lastNum 계산
 		this.startNum = (this.curBlock - 1) * perBlock + 1;
 		this.lastNum = this.curBlock * perBlock;
-
+		
+		
+		
 		if (this.curBlock == this.totalBlock) {
 			this.lastNum = this.totalPage;
+		}
+		
+		if(totalCount==0) {
+			this.startNum=1;
+			this.lastNum=0;
 		}
 
 	}

@@ -86,7 +86,7 @@
 		</ul>
 	</div>
 	<div style="height: 130px"></div>
-	<c:import url="../template/footer.jsp"></c:import>
+	<footer></footer>
 
 	<script>
 		function press(f) {

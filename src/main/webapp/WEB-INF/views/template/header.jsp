@@ -17,6 +17,10 @@
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
+      background-color:white;
+
+      border-color: white;
+   
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
@@ -66,9 +70,11 @@
       
     /* Set black background color, white text and some padding */
     footer {
-      background-color: #555;
+      background-color: #333333;
       color: white;
       padding: 15px;
+      height: 300px;
+
     }
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -87,12 +93,12 @@
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath}">Logo</a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="${pageContext.request.contextPath}">Logo</a>
     </div>
     
     <div>
@@ -105,7 +111,7 @@
     
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-      	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      	<li><a href="#" style><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
@@ -118,6 +124,7 @@
 			<a href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a>
 			<a href="${pageContext.request.contextPath}/qna/qnaList">자주 묻는 질문</a>
 	</div>
+	
 		
 </nav>
   

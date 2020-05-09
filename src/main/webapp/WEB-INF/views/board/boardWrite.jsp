@@ -177,6 +177,6 @@ background-color
 		}
 	</script>
 	
-	<c:import url="../template/footer.jsp"></c:import>
+	<footer></footer>
 </body>
 </html>
