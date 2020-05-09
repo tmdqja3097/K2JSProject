@@ -110,6 +110,8 @@ background-color
 #date {
 	font-size: x-small;
 }
+
+
 </style>
 <c:import url="../template/boot.jsp"></c:import>
 <c:import url="../template/summer.jsp"></c:import>
@@ -138,14 +140,16 @@ background-color
 			</div>
 			
 			<c:catch>
-			<input type="button" id="add" class="btn btn-info" value="AddFile">
+			<input type="button" id="add" class="btn btn-default" value="AddFile">
 			<div id="file"></div> 
 			</c:catch>
-
+			<br>
 			<input type="button" id="btn" class="btn btn-default" value="Write">
+			<br><br>
 		</form>
-
+	
 	</div>
+	
 	<script type="text/javascript" src="../resources/js/boardForm.js">
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";
@@ -172,5 +176,7 @@ background-color
 			}
 		}
 	</script>
+	
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

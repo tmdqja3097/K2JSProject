@@ -1,86 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"
-	charset="UTF-8">
-<style>
-body {
-	font-family: "Lato", sans-serif;
-}
-
-.sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	right: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	transition: 0.6s;
-	padding-top: 60px;
-}
-
-.sidenav a {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: gray;
-	display: block;
-	transition: 0.3s;
-}
-
-.sidenav a:hover {
-	color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}
-
-* {
-	box-sizing: border-box;
-}
-
-#myInput {
-	background-image: url("");
-	background-position: 10px 12px;
-	background-repeat: no-repeat;
-	width: 100%;
-	font-size: 16px;
-	padding: 12px 20px 12px 40px;
-	border: 1px solid #ddd;
-	margin-bottom: 12px;
-}
-
+<c:import url="../template/boot.jsp"></c:import>
+<style type="text/css">
 #myUL {
 	list-style-type: none;
 	padding: 0;
-	margin: 0;
+	margin: 30px 50px;
 }
 
-#myUL li a {
-	border: 1px solid #ddd;
-	margin-top: -1px; /* Prevent double borders */
-	background-color: #f6f6f6;
+#myUL li {
+	border-bottom: 2px solid #ddd;
+	border-collapse margin-top: -1px; /* Prevent double borders */
+	background-color: white;
 	padding: 12px;
 	text-decoration: none;
 	font-size: 18px;
@@ -88,97 +26,74 @@ body {
 	display: block
 }
 
-#myUL
- 
-li
- 
-a
-:hover
-:not
- 
-(
-.header
- 
-)
-{
-background-color
-:
- 
-#eee
-;
-
-
+#myUL li a h3 {
+	color: #3534AB;
 }
+
 #date {
-	font-size: x-small;
+	font-size: small;
+	margin-bottom: 5px;
+	margin-left: 85%;
+	font-weight: bold;
+}
+
+#myInput {
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	width: 30%;
+	font-size: 16px;
+	padding: 12px 20px 12px 40px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+}
+
+.b1 {
+	margin-left: 85%;
 }
 </style>
-
-<c:import url="../template/boot.jsp"></c:import>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
+
 	<div class="container">
-		<div class="panel panel-info">
-			<div class="panel-heading">TITLE</div>
-			<div class="panel-body">${vo.title}</div>
-			<div class="panel-heading">Writer</div>
-			<div class="panel-body">${vo.writer}</div>
-			<div class="panel-heading">Contents</div>
-			<div class="panel-body">${vo.contents}</div>
-		</div>
-		<div class="panel panel-warning">
-			<div class="panel-heading">${vo.regDate}</div>
-		</div>
+		<ul id="myUL">
+			<li><a href="./${board}List" style="text-decoration: none;"><h3>공지사항</h3></a></li>
+			<li>${vo.title}<br> <br>${vo.contents}<br>
+				<p id="date">등록일 : ${vo.regDate}</p></li>
+			<br>
+			<div>
+				<c:forEach items="${vo.boardFileVOs}" var="file">
+					<div>
+						<a
+							href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">&nbsp;&nbsp;${file.oriName}</a>
+					</div>
+				</c:forEach>
+			</div>
+			<div>
+				<a href="./${board}Update?num=${vo.num}" class="btn btn-default b1">Update</a>
+				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default">Delete</a>
+				<c:if test="${board ne 'notice'}">
+					<a href="./${board}Reply?num=${vo.num}" class="btn btn-info">Reply</a>
+				</c:if>
+			</div>
 
-		<div>
-			<c:forEach items="${vo.boardFileVOs}" var="file">
-				<div>
-					<a
-						href="../boardFile/fileDown?fileNum=${file.fileNum}&board=${file.board}">${file.oriName}</a>
-				</div>
-
-			</c:forEach>
-
-
-		</div>
-
-		<div>
-			<a href="./${board}Update?num=${vo.num}" class="btn btn-primary">Update</a>
-			<a href="./${board}Delete?num=${vo.num}" class="btn btn-danger">Delete</a>
-			<c:if test="${board ne 'notice'}">
-				<a href="./${board}Reply?num=${vo.num}" class="btn btn-info">Reply</a>
-			</c:if>
-		</div>
-
+			<h4>다른 키워드로 찾아보세요</h4>
+			<form action="./noticeList">
+				<input type="text" id="myInput"
+					onkeypress="JavaScript:press(this.form)" placeholder="키워드로 질문하기"
+					title="Type in a name" name="search">
+			</form>
+		</ul>
 	</div>
+	<div style="height: 130px"></div>
+	<c:import url="../template/footer.jsp"></c:import>
 
 	<script>
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "250px";
-		}
-
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-
-		function myFunction() {
-			var input, filter, ul, li, a, i, txtValue;
-			input = document.getElementById("myInput");
-			filter = input.value.toUpperCase();
-			ul = document.getElementById("myUL");
-			li = ul.getElementsByTagName("li");
-			for (i = 0; i < li.length; i++) {
-				a = li[i].getElementsByTagName("a")[0];
-				txtValue = a.textContent || a.innerText;
-				if (txtValue.toUpperCase().indexOf(filter) > -1) {
-					li[i].style.display = "";
-				} else {
-					li[i].style.display = "none";
-				}
+		function press(f) {
+			if (f.keyCode == 13) {
+				formname.submit();
 			}
 		}
 	</script>
-
 </body>
 </html>
