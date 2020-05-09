@@ -142,7 +142,7 @@ background-color
 			<div id="file"></div> 
 			</c:catch>
 
-			<input type="submit" id="btn" class="btn btn-default" value="Write">
+			<input type="button" id="btn" class="btn btn-default" value="Write">
 		</form>
 
 	</div>
