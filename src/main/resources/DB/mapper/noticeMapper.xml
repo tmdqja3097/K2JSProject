@@ -25,33 +25,17 @@
 	</resultMap>
 
 	<select id="boardList" parameterType="Pager" resultType="NoticeVO">
-		select * from <!-- notice order by num desc -->
+  		select * from
 			(select N.*, rownum R from
 				(select * from notice where 
-				<choose>
-					<when test="kind == 'bc'">
-						contents
-					</when>				
-					<otherwise>
-						title
-					</otherwise>			
-				</choose>
-			 <include refid="search"></include> and num>=1 order by num desc) N)
-		 where R between #{startRow} and #{lastRow}  
-	</select>
+				title <include refid="search"></include> or contents<include refid="search"></include> and num>=1 order by num desc) N)
+		where R between #{startRow} and #{lastRow}
+  	</select>
 	
 	
 	<select id="boardCount" parameterType="Pager" resultType="Long">
-		select count(num) from notice 
-		<where>
-			<if test="kind == 'bt'">
-				title <include refid="search"></include>
-			</if>
-			
-			<if test="kind == 'bw'">
-				writer <include refid="search"></include>
-			</if>
-		</where>		
+		select count(num) from notice where
+		title  <include refid="search"></include> or contents <include refid="search"></include>		
 	</select>
 
 

@@ -44,6 +44,7 @@
   </style>
 </head>
 <body>
+<c:if test="${board eq 'notice' }">
 <c:import url="../template/header.jsp"></c:import>
 <c:import url="../template/search.jsp"></c:import>
 	<div class="notice_head"><a href="./${board}List" style="text-decoration: none;">공지사항</a></div>
@@ -70,7 +71,35 @@
 		</ul>
 	</div> 
 		
+</c:if>
+
+<c:if test="${board eq 'qna' }">
+<c:import url="../template/header.jsp"></c:import>
+<c:import url="../template/search.jsp"></c:import>
+	<div class="notice_head"><a href="./${board}List" style="text-decoration: none;">공지사항</a></div>
 	
+	<ul id="myUL">
+		<c:forEach items="${list}" var="vo">
+			<li><a href="./${board}Select?num=${vo.num}"><p id="date">${vo.regDate}</p>${vo.title}</a></li>
+		</c:forEach>
+	</ul>
+	
+	<a href="./${board}Write" class="btn btn-default" style="margin-left: 85%">글쓰기</a>
+	
+	 <div id="page_num" style="margin-left:45%">
+		<ul class="pagination">
+		<c:if test="${pager.curBlock gt 1}">
+			<li><a href="./${board}List?curPage=${pager.startNum-1}&search=${pager.search}">이전</a></li>
+		</c:if>
+		<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
+			<li><a href="./${board}List?curPage=${i}&search=${pager.search}">${i}</a></li>
+		</c:forEach>
+		<c:if test="${pager.curBlock lt pager.totalBlock}">
+			<li><a href="./${board}List?curPage=${pager.lastNum+1}&search=${pager.search}">다음</a></li>
+		</c:if>
+		</ul>
+	</div> 
+</c:if>
 <c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

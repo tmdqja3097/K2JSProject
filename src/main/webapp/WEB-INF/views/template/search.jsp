@@ -19,7 +19,7 @@
 		
 	}
 </style>
-	<form action="./noticeList">
+	<form action="./${board}List">
 	<div class="w3-border-bottom"><h4>자주 묻는 질문 &nbsp;&nbsp;
 	<input type="text" id="myInput" onkeypress="JavaScript:press(this.form)" placeholder="키워드로 질문하기" title="Type in a name" name="search"></h4></div>
 	</form>

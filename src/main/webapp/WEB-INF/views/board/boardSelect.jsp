@@ -73,12 +73,12 @@
 				<a href="./${board}Update?num=${vo.num}" class="btn btn-default b1">Update</a>
 				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default">Delete</a>
 				<c:if test="${board ne 'notice'}">
-					<a href="./${board}Reply?num=${vo.num}" class="btn btn-info">Reply</a>
+					<a href="./${board}Reply?num=${vo.num}" class="btn btn-default" style="margin-left: 92.5%">Reply</a>
 				</c:if>
 			</div>
 
 			<h4>다른 키워드로 찾아보세요</h4>
-			<form action="./noticeList">
+			<form action="./${board}List">
 				<input type="text" id="myInput"
 					onkeypress="JavaScript:press(this.form)" placeholder="키워드로 질문하기"
 					title="Type in a name" name="search">
