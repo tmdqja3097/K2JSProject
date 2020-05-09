@@ -118,7 +118,7 @@ background-color
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h1>${fn:toUpperCase(board)}Update Form</h1>
+		<h3>${fn:toUpperCase(board)} Update</h3>
 
 
 		<form action="./${board}Update" id="frm" method="post" enctype="multipart/form-data">
