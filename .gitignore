@@ -135,3 +135,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+src/main/resources/DB/config/db.properties
+target/classes/DB/config/db.properties
