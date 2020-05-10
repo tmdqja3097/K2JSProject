@@ -48,7 +48,7 @@ border : none;}
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
-	width: 137px;
+	width: 8.55%;
 	float : left;
 }
 

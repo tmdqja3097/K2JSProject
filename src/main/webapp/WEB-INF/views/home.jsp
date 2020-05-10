@@ -87,21 +87,42 @@
 	</div>
 	<script type="text/javascript">
 		var sysdate = new Date();
-		var startDay = parseInt((sysdate.getDate()+100+"").substr(1,3));
+		var count = 0;
+		var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));
+
 		$("#next").click(function() {
 			$("#day-list").empty();
-			startDay = startDay+1;
+			startDay = startDay + 1;
+			count++;
 			getList(startDay);
 		})
+
+		$("#pre").click(function() {
+			$("#day-list").empty();
+			startDay = startDay - 1;
+			count--;
+			getList(startDay);
+		})
+
 		getList(startDay);
-		
+
 		function getList(startDay) {
-			$.get("getList?startDay="+startDay, function(result) {
+			$.get("getList?startDay=" + startDay, function(result) {
 				console.log(result);
 				$("#day-list").append(result);
-			})
+			});
+			console.log(count);
+			if (count == 0) {
+				$("#pre").prop("disabled", "disabled");
+				$("#next").removeAttr("disabled");
+			} else if (count > 0 && count < 7) {
+				$("#pre").removeAttr("disabled");
+				$("#next").removeAttr("disabled");
+			} else if (count == 7) {
+				$("#pre").removeAttr("disabled");
+				$("#next").prop("disabled", "disabled");
+			}
 		}
-		
 	</script>
 </body>
 </html>

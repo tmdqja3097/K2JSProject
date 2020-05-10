@@ -20,5 +20,6 @@ public class ScheduleManagerController {
 		model.addAttribute("day",ar);
 	}
 	
+		
 
 }
