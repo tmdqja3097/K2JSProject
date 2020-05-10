@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,7 +120,7 @@ background-color
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h1>${board}Write Form</h1>
+		<h3>${fn:toUpperCase(board)} Write </h3>
 
 
 		<form action="./${board}Write" id="frm" method="post"
