@@ -34,8 +34,8 @@ public class MatchVO {
 	public Date getMatchTime() {
 		return matchTime;
 	}
-	public void setMatchTime(Date matchTime) {
-		this.matchTime = matchTime;
+	public Date setMatchTime(Date matchTime) {
+		return this.matchTime = matchTime;
 	}
 	public String getFileImage() {
 		return fileImage;

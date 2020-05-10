@@ -23,4 +23,8 @@ public class MatchDAO {
 		return session.selectList(NAMESPACE+"matchList", date);
 	}
 	
+	public MatchVO matchSelect(long num) throws Exception{
+		return session.selectOne(NAMESPACE+"matchSelect", num);
+	}
+	
 }

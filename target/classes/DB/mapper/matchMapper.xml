@@ -6,12 +6,14 @@
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
 <select id="matchList" parameterType="Date" resultType="MatchVO">
-	select * from match where MATCHTIME=#{date}
+	select * from match where matchTime=#{matchTime}
 </select>
 
-<!-- <select id="matchDate" parameterType="int []" resultType="MatchVO">
-	select matchTime from match 
-</select> -->
+<select id="matchSelect" parameterType="Long" resultType="MatchVO">
+	select * from match where num=#{num}
+</select>
+
+
 
 
 

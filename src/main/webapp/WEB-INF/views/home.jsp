@@ -1,3 +1,8 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -113,10 +118,28 @@
 			</div>
 			
 			
+			<div id="match-box" style="width: 100%; height: 100px;">
+				<div style="width: 5%; height: 100px; float: left;">
+					<button id="pre">←</button>
+				</div>
+				<div id="list"
+					style="width: 90%; height: 100px; float: left; overflow: hidden;">
+					<ul class="nav nav-tabs" id="day-list">
+					</ul>
+				</div>
+				<div style="width: 5%; height: 100px; float: left;">
+					<button id="next">→</button>
+				</div>
+			</div>
+			
+			
+			
+			
 			
 			<div class="match-filter" style="border: black solid 1px;"> 
 				<div class="match-result" style="border: red solid 1px; padding-top: 3px;">
-					<p>?개의 매치</p>				
+					<p>?개의 매치</p>
+					<a href="${pageContext.request.contextPath}/matchList">list</a>				
 				</div>
 				  
 				<div class="match-wrapper" style="border: blue solid 1px">  
@@ -200,30 +223,64 @@
 			
 			
 			<div class="container">
-			
-			
-			
-			
-			<button id="btn-prev">prev</button>
-			<button id="btn-next">next</button>
-			<table>
-				<c:forEach items="${week}">
-				<tr>
-					<td>${week[0]}</td>
-				</tr>
-				
-				</c:forEach>
-				
-		
-			</table>
-
+				<div class="row">
+					<table class="table table-condensed">
+						<tr>
+							<td>Num</td>
+							<td>Title</td>
+							<td>Contents</td>
+							<td>MatchTime</td>
+							<td>FileImage</td>
+							<td>Count</td>
+							<td>Gender</td>
+							<td>Capacity</td>
+						</tr>
+						<c:catch>
+						<c:forEach items="${list}" var="vo">
+							<tr>
+								<td>${vo.num}</td>
+								<td>${vo.title}</td>
+								<td>${vo.contents}</td>
+								<td>${vo.matchTime}</td>
+								<td>${vo.fileImage}</td>
+								<td>${vo.count}</td>
+								<td>${vo.gender}</td>
+								<td>${vo.capacity}</td>
+							</tr>
+						</c:forEach>
+						</c:catch>
+						
+					</table>
+				</div>
 			</div>
+			
+			
+			
+			
 		
 		</div>
 		
 	</div>
 	
 <script type="text/javascript">
+
+	var sysdate = new Date();
+	var startDay = parseInt((sysdate.getDate()+100+"").substr(1,3));
+	$("#next").click(function() {
+		$("#day-list").empty();
+		startDay = startDay+1;
+		getList(startDay);
+	})
+	getList(startDay);
+	
+	function getList(startDay) {
+		$.get("getList?startDay="+startDay, function(result) {
+			console.log(result);
+			$("#day-list").append(result);
+		})
+	}
+
+
 	$(function() {
 		$("#all-area").click(function() {
 			$('div.modal').modal({

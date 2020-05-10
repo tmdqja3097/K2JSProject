@@ -19,4 +19,8 @@ public class MatchService {
 	public List<MatchVO> matchList(Date date) throws Exception{
 		return matchDAO.matchList(date);
 	}
+	
+	public MatchVO matchSelect(long num) throws Exception{
+		return matchDAO.matchSelect(num);
+	}
 }
