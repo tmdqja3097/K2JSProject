@@ -22,12 +22,13 @@ public class MatchController {
 	
 	@GetMapping("matchList")
 	public ModelAndView matchList(Date date, MatchVO matchVO) throws Exception {
-		date = matchVO.setMatchTime(date);
+		
 		List<MatchVO> ar = matchService.matchList(date);
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println(ar);
 		System.out.println(date);
+		//System.out.println(matchVO.getMatchTime());
 		
 		mv.addObject("list", ar);
 		mv.addObject("date", date);
