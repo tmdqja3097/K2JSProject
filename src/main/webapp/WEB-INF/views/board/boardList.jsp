@@ -115,7 +115,7 @@
   	
   </style>
 </head>
-<body style="height: 400px">
+<body>
 <c:if test="${board eq 'notice' }">
 <c:import url="../template/header.jsp"></c:import>
 	<form action="./${board}List">
@@ -183,7 +183,7 @@
 	
 <h4 class="h4">질문 카테고리<br><br></h4>
 	<form>
-	<ul style="margin-left: 15%">	
+	<ul style="text-align: center">	
 		<li class="category"><a href="./qnaList?search=매치취소"><img alt="cancle" src="../resources/images/cancle.PNG"></a></li>
 		<li class="category"><a href="./qnaList?search=서비스"><img alt="service" src="../resources/images/service.PNG"></a></li>
 		<li class="category"><a href="./qnaList?search=매치진행"><img alt="match" src="../resources/images/match.PNG"></a></li>

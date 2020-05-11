@@ -14,12 +14,10 @@
 </head>
 
 <body>
-	<c:import url="./template/header.jsp"></c:import>
+<c:import url="./template/header.jsp"></c:import>
 <c:import url="./template/body.jsp"></c:import>
 
-<footer>
-footer
-</footer>
+<footer></footer>
 
 </body>
 </html>

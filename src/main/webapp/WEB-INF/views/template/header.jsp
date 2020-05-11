@@ -18,10 +18,13 @@
       margin-bottom: 0;
       border-radius: 0;
       background-color:white;
-
       border-color: white;
-   
     }
+    
+    .navbar-inverse .navbar-toggle {
+    border-color: #333;
+    background-color: #333;
+}
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 500px;}
@@ -66,6 +69,16 @@
 		font-size: 36px;
 		margin-left: 50px;
 	}
+	
+ 	.navbar-inverse .navbar-nav>li>a:hover {
+    color: #333;
+    background-color: transparent;
+	}
+	
+	.navbar-inverse .navbar-brand:hover {
+    color: #333;
+    /* background-color: transparent; */
+} 
 
       
     /* Set black background color, white text and some padding */
@@ -87,6 +100,7 @@
     }
 
 }
+	
   </style>
   
   
@@ -95,9 +109,9 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="${pageContext.request.contextPath}">Logo</a>
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <a class= "navbar-brand" href="#"><span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span></a>                        
       </button>
     </div>
     
@@ -110,7 +124,7 @@
     </div>
     
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="color:black">
       	<li><a href="#" style><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>

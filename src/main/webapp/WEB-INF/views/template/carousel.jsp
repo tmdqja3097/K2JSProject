@@ -7,7 +7,7 @@
  .slide_img {
 	margin-top : 20px;
 	width: 100%;
-	height: 100px;
+	height: 600px;
 } 
 
 .slide_edge {
