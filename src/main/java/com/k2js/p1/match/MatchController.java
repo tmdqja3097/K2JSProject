@@ -21,21 +21,28 @@ public class MatchController {
 	
 	
 	@GetMapping("matchList")
-	public ModelAndView matchList(Date date, MatchVO matchVO) throws Exception {
-		
-		List<MatchVO> ar = matchService.matchList(date);
+	public ModelAndView matchList(String matchTime) throws Exception {		
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(ar);
-		System.out.println(date);
-		//System.out.println(matchVO.getMatchTime());
+		String [] matchDays = matchTime.split("/");
+		String day = matchDays[0];
+		
+		List<MatchVO> ar = matchService.matchList(day);
+		
+		int matchView = ar.size();
+		
+		int s = 0;
+		if(matchView==0) { 
+			s = 1;
+		}
+		System.out.println(matchView);
+		 mv.addObject("no",s);
 		
 		mv.addObject("list", ar);
-		mv.addObject("date", date);
+		mv.addObject("matchView", matchView);
 		mv.setViewName("./home");
 		
-		return mv;
-		
+		return mv;	
 	}//end matchList
 	
 	

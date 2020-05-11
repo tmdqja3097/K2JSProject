@@ -117,29 +117,31 @@
 			<hr> 
 			</div>
 			
-			
+			<!-- calendar -->
 			<div id="match-box" style="width: 100%; height: 100px;">
 				<div style="width: 5%; height: 100px; float: left;">
 					<button id="pre">←</button>
 				</div>
 				<div id="list"
 					style="width: 90%; height: 100px; float: left; overflow: hidden;">
+					
 					<ul class="nav nav-tabs" id="day-list">
 					</ul>
+					
 				</div>
 				<div style="width: 5%; height: 100px; float: left;">
 					<button id="next">→</button>
 				</div>
 			</div>
-			
+			<!-- calendar -->
 			
 			
 			
 			
 			<div class="match-filter" style="border: black solid 1px;"> 
 				<div class="match-result" style="border: red solid 1px; padding-top: 3px;">
-					<p>?개의 매치</p>
-					<a href="${pageContext.request.contextPath}/matchList">list</a>				
+					<p>${matchView}개의 매치</p>
+					<a href="${pageContext.request.contextPath}/matchLList?matchTime=${vo.matchTime}">list</a>				
 				</div>
 				  
 				<div class="match-wrapper" style="border: blue solid 1px">  
@@ -220,11 +222,10 @@
 
 
 
-			
-			
+
 			<div class="container">
 				<div class="row">
-					<table class="table table-condensed">
+					<table class="table table-condensed" id="get-day-list">
 						<tr>
 							<td>Num</td>
 							<td>Title</td>
@@ -235,7 +236,12 @@
 							<td>Gender</td>
 							<td>Capacity</td>
 						</tr>
-						<c:catch>
+						  
+						  
+							<c:if test="${no eq 1}">
+								<h1>경기가 없어요</h1>
+							</c:if>
+							<c:if test="${no ne 1}">
 						<c:forEach items="${list}" var="vo">
 							<tr>
 								<td>${vo.num}</td>
@@ -248,7 +254,8 @@
 								<td>${vo.capacity}</td>
 							</tr>
 						</c:forEach>
-						</c:catch>
+							</c:if>
+						
 						
 					</table>
 				</div>
@@ -268,6 +275,7 @@
 
 	var sysdate = new Date();
 	var startDay = parseInt((sysdate.getDate()+100+"").substr(1,3));
+	
 	$("#next").click(function() {
 		$("#day-list").empty();
 		startDay = startDay+1;
@@ -277,11 +285,14 @@
 	
 	function getList(startDay) {
 		$.get("getList?startDay="+startDay, function(result) {
-			console.log(result);
+			//console.log(result);
 			$("#day-list").append(result);
 		})
 	}
-
+	
+	
+	
+	
 
 	$(function() {
 		$("#all-area").click(function() {
@@ -290,6 +301,7 @@
 			});
 		});
 	});
+	
 	
 	$(".checkLabel").click(function() {
 		if($(".filterCheck")){
