@@ -16,7 +16,9 @@ public class MatchService {
 		return matchDAO.matchDate(matchVO);
 	}
 	
+
 	public List<MatchVO> matchList(int day) throws Exception{
+
 		return matchDAO.matchList(day);
 	}
 	

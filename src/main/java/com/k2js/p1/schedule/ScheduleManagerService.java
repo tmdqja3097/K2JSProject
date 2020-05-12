@@ -5,6 +5,8 @@ import java.util.*;
 
 import org.springframework.stereotype.Service;
 
+import com.k2js.p1.match.MatchVO;
+
 @Service
 public class ScheduleManagerService {
 
@@ -46,5 +48,6 @@ public class ScheduleManagerService {
 		return dat;
 
 	}
+	
 
 }

@@ -5,6 +5,7 @@
 
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
+
 <select id="matchList" parameterType="java.lang.Integer" resultType="MatchVO">
 	select * from match where to_char(matchTime,'dd') = #{day}
 </select>
@@ -12,8 +13,6 @@
 <select id="matchSelect" parameterType="Long" resultType="MatchVO">
 	select * from match where num=#{num}
 </select>
-
-
 
 
 
