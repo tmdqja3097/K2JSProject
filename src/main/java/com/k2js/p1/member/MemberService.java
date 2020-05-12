@@ -18,4 +18,16 @@ public class MemberService {
 	public int memberUpdate(MemberVO memberVO) throws Exception{
 		return memberDAO.memberUpdate(memberVO);
 	}
+	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {
+		memberVO = memberDAO.memberKakaoLogin(memberVO);
+		if (memberVO == null) {
+			int result = memberDAO.memberKakaoNew(memberVO);
+			System.out.println(result);
+			if(result >0 ) {
+				memberVO = memberDAO.memberKakaoLogin(memberVO);
+				System.out.println(memberVO);
+			}
+		} 
+		return memberVO;
+	}
 }

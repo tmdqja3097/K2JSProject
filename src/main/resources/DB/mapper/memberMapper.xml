@@ -15,4 +15,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="memberUpdate" parameterType="memberVO">
 		UPDATE MEMBER SET PW=#{pw}, NAME=#{name}, PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
 	</update>
+	<insert id="memberKakaoNew" parameterType="memberVO">
+		INSERT INTO KAKAOMEMBER VALUE (#{id}, #{name}, #{phone}, #{gender}, #{age}, 0)
+	</insert>
+	
+	<select id="memberKakaoJoin" parameterType="memberVO" resultType="memberVO">
+		SELECT * FROM KAKAOMEMBER WHERE ID = #{id}
+	</select>
 </mapper>

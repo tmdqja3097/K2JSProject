@@ -10,7 +10,7 @@ public class ScheduleManagerService {
 
 	public List<String> receiveDay(long startDay) throws Exception {
 		int count = 0;
-		
+
 		List<String> dat = new ArrayList<String>();
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -24,20 +24,20 @@ public class ScheduleManagerService {
 
 		long lastDay = startDay + 6;
 
-		if (count < 7) {
 			for (int i = 0; i < 7; i++) {
-				if (startDay > cal.getActualMaximum(month)) {
+				if (count < 7) {
+					if (startDay > cal.getActualMaximum(month)) {
 					startDay = 1;
 					month = month + 1;
 					lastDay = startDay + 6 - count;
 
-					Date date1 = new Date(year, month - 1, (int)startDay - 1);
-					dat.add((int)startDay + "/" + weekSdf.format(date1));
+					Date date1 = new Date(year, month - 1, (int) startDay - 1);
+					dat.add((int) startDay + "/" + weekSdf.format(date1));
 					count++;
 					startDay++;
 				} else {
-					Date date1 = new Date(year, month - 1, (int)startDay - 1);
-					dat.add((int)startDay + "/" + weekSdf.format(date1));
+					Date date1 = new Date(year, month - 1, (int) startDay - 1);
+					dat.add((int) startDay + "/" + weekSdf.format(date1));
 					count++;
 					startDay++;
 				}

@@ -27,12 +27,20 @@
 			<label>회원 핸드폰번호 : <span>${member.phone}</span>
 			</label>
 		</div>
-		<button class="btn btn-normal">수정하기</button>
+		<div class="row">
+			<label>캐시 잔액 : <span>${member.cash}</span>
+			</label>
+			<button class="btn btn-primary" id="addCash"> 캐시 충전 </button>
+		</div>
+		<button class="btn btn-normal" id="updateInfo">개인 정보 수정</button>
 	</div>
 	
 	<script type="text/javascript">
-	$(".btn").click(function() {
+	$("#updateInfo").click(function() {
 				location.href="${pageContext.request.contextPath}/member/MemberUpdate";
+	})
+	$("#addCash").click(function() {
+		location.href="${pageContext.request.contextPath}/member/MemberAddCash";
 	})
 	</script>
 </body>
