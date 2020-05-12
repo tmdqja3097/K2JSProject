@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,25 +20,44 @@ public class MatchController {
 	@Autowired
 	private MatchService matchService;
 	
-	
-	@GetMapping("matchList")
-	public ModelAndView matchList(Date date, MatchVO matchVO) throws Exception {
-		
-		List<MatchVO> ar = matchService.matchList(date);
+	@GetMapping("todayMatchList")
+	public ModelAndView todayMatchList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
-		System.out.println(ar);
-		System.out.println(date);
-		//System.out.println(matchVO.getMatchTime());
-		
-		mv.addObject("list", ar);
-		mv.addObject("date", date);
-		mv.setViewName("./home");
-		
+		//mv.addObject("vo",matchVO);
+		mv.setViewName("home");
 		return mv;
-		
-	}//end matchList
+	}
 	
+	@GetMapping("getMatch")
+	public void matchList(int matchTime, Model model) throws Exception{
+
+		
+		List<MatchVO> matchVOs = matchService.matchList(matchTime);
+		int i = matchVOs.size();
+		
+		model.addAttribute("matchs",matchVOs);
+		model.addAttribute("i",i);
+		
+	
+	}
+	
+	/*
+	 * @GetMapping("matchList") public ModelAndView matchList(Date date, MatchVO
+	 * matchVO) throws Exception {
+	 * 
+	 * List<MatchVO> ar = matchService.matchList(date); ModelAndView mv = new
+	 * ModelAndView();
+	 * 
+	 * System.out.println(ar); System.out.println(date);
+	 * //System.out.println(matchVO.getMatchTime());
+	 * 
+	 * mv.addObject("list", ar); mv.addObject("date", date);
+	 * mv.setViewName("./home");
+	 * 
+	 * return mv;
+	 * 
+	 * }//end matchList
+	 */	
 	
 	@GetMapping("matchSelect")
 	public ModelAndView matchSelect(long num) throws Exception{

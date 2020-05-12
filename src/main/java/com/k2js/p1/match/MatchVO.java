@@ -8,6 +8,7 @@ public class MatchVO {
 	private String title;
 	private String contents;
 	private Date matchTime;
+	
 	private String fileImage;
 	private long count;
 	private int gender;

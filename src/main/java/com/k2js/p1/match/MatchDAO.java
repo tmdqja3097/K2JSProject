@@ -19,8 +19,8 @@ public class MatchDAO {
 		return session.selectOne(NAMESPACE+"matchDate", matchVO);
 	}
 	
-	public List<MatchVO> matchList(Date date) throws Exception{
-		return session.selectList(NAMESPACE+"matchList", date);
+	public List<MatchVO> matchList(int day) throws Exception{
+		return session.selectList(NAMESPACE+"matchList", day);
 	}
 	
 	public MatchVO matchSelect(long num) throws Exception{

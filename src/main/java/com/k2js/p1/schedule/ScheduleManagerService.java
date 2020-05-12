@@ -24,8 +24,8 @@ public class ScheduleManagerService {
 
 		long lastDay = startDay + 6;
 
-		if (count < 7) {
 			for (int i = 0; i < 7; i++) {
+				if (count < 7) {
 				if (startDay > cal.getActualMaximum(month)) {
 					startDay = 1;
 					month = month + 1;
