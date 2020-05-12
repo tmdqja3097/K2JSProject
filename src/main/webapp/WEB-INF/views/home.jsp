@@ -28,6 +28,7 @@
 	}
 	
 	/* match-filter */
+	
 	.match-result{
 		width: 10%; 
 		height: 30px;
@@ -64,8 +65,6 @@
 	}
 	
 	/* calendar */
-
-	
 	
 </style>	
 </head>
@@ -84,7 +83,7 @@
 					<li data-target="#myCarousel" data-slide-to="1"></li>
 					<li data-target="#myCarousel" data-slide-to="2"></li>
 				</ol>
-
+		
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner slide_edge">
 					<div class="item active">
@@ -238,7 +237,7 @@
 						</tr>
 						  
 						  
-							<c:if test="${no eq 1}">
+							<%-- <c:if test="${no eq 1}">
 								<h1>경기가 없어요</h1>
 							</c:if>
 							<c:if test="${no ne 1}">
@@ -254,7 +253,7 @@
 								<td>${vo.capacity}</td>
 							</tr>
 						</c:forEach>
-							</c:if>
+							</c:if> --%>
 						
 						
 					</table>
@@ -282,6 +281,7 @@
 		getList(startDay);
 	})
 	getList(startDay);
+	getDayList(startDay);
 	
 	function getList(startDay) {
 		$.get("getList?startDay="+startDay, function(result) {
@@ -290,10 +290,70 @@
 		})
 	}
 	
+	//1. 날짜를 한번 더 눌렀을 때 중복된 값이 또 나오면 안됌;
+	//2. id = day+i의 순서를 정해줘야함
+	
+	/* $("#list").mouseover(function() {
+		$("#day"+0).click(function() {			
+			$.get("matchList?matchTime="+startDay, function(result) {
+				console.log(result);
+				$("#get-day-list").append(result);
+			});
+		});		 
+	}); */
+	
+	var matchCount = "<c:out value='${matchView}'/>";
+	
+	/* $("#list").on("click", $("#day"+0), function() {
+		if($(".day-list").parent().mouseup()){
+			$.get("matchList?matchTime="+startDay, function(result) {
+				console.log(result);
+				if(matchCount==0){
+					$("#get-day-list").append(result);
+				}else{
+					alert("a");
+				}
+					    
+			});
+		}
+	}); */
+	
+	var startDays = parseInt(startDay);
+	
+	function getDayList() {   
+		$("#day-list").on("click", ".day-list", function() {
+			for(var i=0; i<1; i++){ 
+				
+				$.get("matchList?matchTime="+startDays+fu, function(result) {
+					$("#get-day-list").append(result);
+				});
+			}
+		});
+	}
 	
 	
+	
+		
+	
+	 /* $("#list").on("mouseenter", $("#day"+0), function() {
+		$("#day"+0).mouseup(function() {
+			$.get("matchList?matchTime="+startDay, function(result) {
+				if(matchCount==0){
+					$("#get-day-list").append(result);
+				}else{
+					$("#get-day-list").remove(result);
+				}
+				      
+			});
+		});
+	}); */
 	
 
+	/* $("#day0").click(function() {
+		alert("g");
+	}); */
+	
+	
 	$(function() {
 		$("#all-area").click(function() {
 			$('div.modal').modal({

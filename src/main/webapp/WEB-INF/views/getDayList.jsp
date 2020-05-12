@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<c:forEach items="${list}" var="vo">
-	<tr class="get-day-list">
+<c:forEach items="${list}" var="vo" varStatus="i">
+	<tr id="listNum${i.index}" class="get-day-list">
 		<td>${vo.num}</td>
 		<td>${vo.title}</td>
 		<td>${vo.contents}</td>

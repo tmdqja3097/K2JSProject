@@ -29,6 +29,7 @@ public class MatchController {
 		
 		List<MatchVO> ar = matchService.matchList(day);
 		
+		//match 개수
 		int matchView = ar.size();
 		
 		int s = 0;
@@ -36,11 +37,11 @@ public class MatchController {
 			s = 1;
 		}
 		System.out.println(matchView);
-		 mv.addObject("no",s);
 		
+		mv.addObject("no",s);
 		mv.addObject("list", ar);
 		mv.addObject("matchView", matchView);
-		mv.setViewName("./home");
+		mv.setViewName("./getDayList");
 		
 		return mv;	
 	}//end matchList
