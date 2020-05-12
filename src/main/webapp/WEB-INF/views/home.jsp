@@ -107,7 +107,6 @@
 
 		getList(startDay);
 		
-		
 		function getList(startDay) {
 			$.get("getList?startDay=" + startDay, function(result) {
 				$("#day-list").append(result);
