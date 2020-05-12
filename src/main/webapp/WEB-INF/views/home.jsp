@@ -26,7 +26,6 @@
 #myCarousel>a {
 	border-radius: 50px;
 	z-index: 0;
-
 	background-image: none;
 }
 
@@ -68,51 +67,6 @@
 
 /* calendar */
 </style>
-
-	background-image : none;
-	}
-	
-	/* match-filter */
-	
-	.match-result{
-		width: 10%; 
-		height: 30px;
-		float: left; 
-		text-align: center;
-	}
-	
-	.match-wrapper{
-		width: 20%;
-		height: 30px;
-		margin-left: 80%; 
-		text-align: center;
-	}
-	
-	/* match-filter */
-	
-	/* modal */
-	.filterCheck{
-		float: left;
-		opacity: 0;
-		width: 5px;
-		height: 5px;
-	}
-	
-	.checkLabel{
-		background-color: #ffc645;
-		width: 50px;
-		height: 30px;
-		text-align: center;
-		border-radius:30px;
-		padding-top: 5px;  
-		float: left;
-		cursor: pointer;
-	}
-	
-	/* calendar */
-	
-</style>	
-
 </head>
 
 
@@ -129,7 +83,7 @@
 					<li data-target="#myCarousel" data-slide-to="1"></li>
 					<li data-target="#myCarousel" data-slide-to="2"></li>
 				</ol>
-		
+
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner slide_edge">
 					<div class="item active">
@@ -168,8 +122,6 @@
 				<hr>
 			</div>
 
-			
-			<!-- calendar -->
 
 			<div id="match-box" style="width: 100%; height: 100px;">
 				<div style="width: 5%; height: 100px; float: left;">
@@ -177,10 +129,8 @@
 				</div>
 				<div id="list"
 					style="width: 90%; height: 100px; float: left; overflow: hidden;">
-					
 					<ul class="nav nav-tabs" id="day-list">
 					</ul>
-					
 				</div>
 				<div style="width: 5%; height: 100px; float: left;">
 					<button id="next">→</button>
@@ -191,23 +141,11 @@
 
 
 
-
 			<div class="match-filter" style="border: black solid 1px;">
 				<div class="match-result"
 					style="border: red solid 1px; padding-top: 3px;">
 					<p>${i}개의매치</p>
 					<a href="${pageContext.request.contextPath}/matchList">list</a>
-
-			<!-- calendar -->
-			
-			
-			
-			
-			<div class="match-filter" style="border: black solid 1px;"> 
-				<div class="match-result" style="border: red solid 1px; padding-top: 3px;">
-					<p>${matchView}개의 매치</p>
-					<a href="${pageContext.request.contextPath}/matchLList?matchTime=${vo.matchTime}">list</a>				
-
 				</div>
 
 				<div class="match-wrapper" style="border: blue solid 1px">
@@ -277,18 +215,12 @@
 
 						</div>
 
-
 					</div>
 				</div>
 			</div>
 			<div class="container">
 				<div class="row">
 					<table class="table table-condensed">
-
-
-			<div class="container">
-				<div class="row">
-					<table class="table table-condensed" id="get-day-list">
 
 						<tr>
 							<td>Num</td>
@@ -300,7 +232,6 @@
 							<td>Gender</td>
 							<td>Capacity</td>
 						</tr>
-
 					</table>
 					<c:catch>
 						<c:if test="${i eq 0}">
@@ -311,6 +242,8 @@
 					<table id="dDayMatch">
 					</table>
 				</div>
+			</div>
+			</div>
 			</div>
 
 
@@ -395,155 +328,5 @@
 					}
 				});
 			</script>
-
-						  
-						  
-							<%-- <c:if test="${no eq 1}">
-								<h1>경기가 없어요</h1>
-							</c:if>
-							<c:if test="${no ne 1}">
-						<c:forEach items="${list}" var="vo">
-							<tr>
-								<td>${vo.num}</td>
-								<td>${vo.title}</td>
-								<td>${vo.contents}</td>
-								<td>${vo.matchTime}</td>
-								<td>${vo.fileImage}</td>
-								<td>${vo.count}</td>
-								<td>${vo.gender}</td>
-								<td>${vo.capacity}</td>
-							</tr>
-						</c:forEach>
-							</c:if> --%>
-						
-						
-					</table>
-				</div>
-			</div>
-			
-			
-			
-			
-			
-			
-		
-		</div>
-		
-	</div>
-	
-<script type="text/javascript">
-
-	var sysdate = new Date();
-	var startDay = parseInt((sysdate.getDate()+100+"").substr(1,3));
-	
-	$("#next").click(function() {
-		$("#day-list").empty();
-		startDay = startDay+1;
-		getList(startDay);
-	})
-	getList(startDay);
-	getDayList(startDay);
-	
-	function getList(startDay) {
-		$.get("getList?startDay="+startDay, function(result) {
-			//console.log(result);
-			$("#day-list").append(result);
-		})
-	}
-	
-	//1. 날짜를 한번 더 눌렀을 때 중복된 값이 또 나오면 안됌;
-	//2. id = day+i의 순서를 정해줘야함
-	
-	/* $("#list").mouseover(function() {
-		$("#day"+0).click(function() {			
-			$.get("matchList?matchTime="+startDay, function(result) {
-				console.log(result);
-				$("#get-day-list").append(result);
-			});
-		});		 
-	}); */
-	
-	var matchCount = "<c:out value='${matchView}'/>";
-	
-	/* $("#list").on("click", $("#day"+0), function() {
-		if($(".day-list").parent().mouseup()){
-			$.get("matchList?matchTime="+startDay, function(result) {
-				console.log(result);
-				if(matchCount==0){
-					$("#get-day-list").append(result);
-				}else{
-					alert("a");
-				}
-					    
-			});
-		}
-	}); */
-	
-	var startDays = parseInt(startDay);
-	
-	function getDayList() {   
-		$("#day-list").on("click", ".day-list", function() {
-			for(var i=0; i<1; i++){ 
-				
-				$.get("matchList?matchTime="+startDays+fu, function(result) {
-					$("#get-day-list").append(result);
-				});
-			}
-		});
-	}
-	
-	
-	
-		
-	
-	 /* $("#list").on("mouseenter", $("#day"+0), function() {
-		$("#day"+0).mouseup(function() {
-			$.get("matchList?matchTime="+startDay, function(result) {
-				if(matchCount==0){
-					$("#get-day-list").append(result);
-				}else{
-					$("#get-day-list").remove(result);
-				}
-				      
-			});
-		});
-	}); */
-	
-
-	/* $("#day0").click(function() {
-		alert("g");
-	}); */
-	
-	
-	$(function() {
-		$("#all-area").click(function() {
-			$('div.modal').modal({
-				remote : 'layer.html'
-			});
-		});
-	});
-	
-	
-	$(".checkLabel").click(function() {
-		if($(".filterCheck")){
-			$(".chec")
-			$(".checkLabel").css("background","gray");
-		}
-		
-		if($(".filterCheck")==false){
-			$(".checkLabel").css("background","#ffc645");
-		}
-	});
-	
-		
-</script>
-	
-	 	
-	
-	
-
-  
-	
-
 </body>
 </html>

@@ -10,6 +10,7 @@
 	select * from match where to_char(matchTime,'dd') = #{day}
 </select>
 
+
 <select id="matchSelect" parameterType="Long" resultType="MatchVO">
 	select * from match where num=#{num}
 </select>
