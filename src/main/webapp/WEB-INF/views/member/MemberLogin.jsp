@@ -56,7 +56,12 @@
 								gender : gender
 							},
 							success : function(result) {
-								alert(result);
+								if(result != null) {
+									location.href="../";
+								} else {
+									alert("로그인 실패");
+									location.href="./MemberLogin";
+								}
 							}
 						});
 					}
