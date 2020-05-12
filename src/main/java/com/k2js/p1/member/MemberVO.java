@@ -16,7 +16,16 @@ public class MemberVO {
 	private String phone;
 	private Date birth;
 	private int cash;
+	private int age;
 	
+	
+	
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public String getId() {
 		return id;
 	}

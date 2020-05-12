@@ -33,6 +33,7 @@
 					없다면 여기에서 가입하세요</a></span>
 		</div>
 	</div>
+
 	<script type="text/javascript">
 		Kakao.init('c5126e0fcae8eba0e1ed7a9c58dc7812');
 		Kakao.Auth.createLoginButton({
@@ -42,20 +43,20 @@
 					url : '/v2/user/me',
 					success : function(res) {
 						var gender = 1;
-						if(res.kakao_account['gender'] == 'male') {
+						if (res.kakao_account['gender'] == 'male') {
 							gender = 0;
-						} 
+						}
 						$.ajax({
 							type : "post",
-							url : "${pageContext.request.contextPath}/member/MemberKakaoLogin",
+							url : "./MemberKakaoLogin",
 							data : {
 								id : res.kakao_account['email'],
-								name : res.	kakao_account.profile['nickname'],
-								age : res.kakao_account['age_range'],
+								name : res.kakao_account.profile['nickname'],
+								birth1 : res.kakao_account['birthday'],
 								gender : gender
 							},
 							success : function(result) {
-								alert("연동 및 로그인 완료");
+								alert(result);
 							}
 						});
 					}
@@ -65,9 +66,6 @@
 				alert(JSON.stringify(err));
 			}
 		});
-		
-		function ffoo(){}
-		
 	</script>
 </body>
 </html>

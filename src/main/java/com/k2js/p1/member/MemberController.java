@@ -34,17 +34,18 @@ public class MemberController {
 	}
 
 	@PostMapping("MemberKakaoLogin")
-	public String memberKakaoLogin(MemberVO memberVO, HttpSession session) throws Exception {
-		System.out.println("MemberKakaoLogin");
-		String path = "";
-		System.out.println(memberVO);
-		/*
-		 * if(memberVO == null) { path = "redirect:./MemberLogin"; } else { memberVO =
-		 * memberService.memberKakaoLogin(memberVO); session.setAttribute("member",
-		 * memberVO); path = "redirect:../"; }
-		 */
-		return path;
+	public ModelAndView memberKakaoLogin(MemberVO memberVO, String birth1, HttpSession session, ModelAndView mav) throws Exception {
 
+		DateFormat sdf = new SimpleDateFormat("mmdd");
+		memberVO.setBirth(sdf.parse(birth1));
+		memberVO = memberService.memberKakaoLogin(memberVO);
+
+		if (memberVO != null) {
+			session.setAttribute("member", memberVO);
+		}
+		mav.addObject("result", memberVO);
+		mav.setViewName("common/ajaxResult");
+		return mav;
 	}
 
 	@PostMapping("MemberLogin")
@@ -89,8 +90,9 @@ public class MemberController {
 	}
 
 	@PostMapping("MemberUpdate")
-	public String memberUpdate(MemberVO memberVO, HttpSession session) throws Exception {
+	public String memberUpdate(MemberVO memberVO, String birth, HttpSession session) throws Exception {
 		memberVO.setId(((MemberVO) session.getAttribute("member")).getId());
+		System.out.println(birth);
 		System.out.println(memberVO.getId());
 		int result = memberService.memberUpdate(memberVO);
 		if (result > 0) {

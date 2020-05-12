@@ -10,16 +10,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM MEMBER WHERE ID = #{id} AND PW = #{pw}
 	</select>
 	<insert id="memberNew" parameterType="memberVO">
-		INSERT INTO MEMBER VALUES (#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0)
+		INSERT INTO MEMBER VALUES
+		(#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0)
 	</insert>
 	<update id="memberUpdate" parameterType="memberVO">
-		UPDATE MEMBER SET PW=#{pw}, NAME=#{name}, PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
+		UPDATE MEMBER SET
+		PW=#{pw}, NAME=#{name}, PHONE=#{phone},EMAIL=#{email} WHERE ID=#{id}
 	</update>
 	<insert id="memberKakaoNew" parameterType="memberVO">
-		INSERT INTO KAKAOMEMBER VALUE (#{id}, #{name}, #{phone}, #{gender}, #{age}, 0)
+		INSERT INTO
+		KAKAOMEMBER VALUES (#{id}, #{name}, #{birth}, #{gender},#{phone}, 0)
 	</insert>
-	
-	<select id="memberKakaoJoin" parameterType="memberVO" resultType="memberVO">
+
+	<select id="memberKakaoLogin" parameterType="memberVO"
+		resultType="memberVO">
 		SELECT * FROM KAKAOMEMBER WHERE ID = #{id}
 	</select>
 </mapper>

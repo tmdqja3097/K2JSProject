@@ -9,15 +9,16 @@
 		
 	<!-- Interceptor -->
 	<beans:bean class ="com.k2js.p1.interceptor.MemberInterceptor" id="memberInterceptor"></beans:bean>
-	<interceptors>
+	<!-- <interceptors>
 		<interceptor>
 			<mapping path="/member/*"/>
 			<exclude-mapping path="/member/MemberLogin"/>
 			<exclude-mapping path="/member/MemberLogout"/>
 			<exclude-mapping path="/member/MemberNew"/>
+			<exclude-mapping path="/member/MemberKakaoLogin"/>
 			<beans:ref bean="memberInterceptor"/>
 		</interceptor>
-	</interceptors>
+	</interceptors> -->
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->

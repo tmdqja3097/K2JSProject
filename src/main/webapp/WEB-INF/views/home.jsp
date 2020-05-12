@@ -85,13 +85,14 @@
 			</div>
 		</div>
 	</div>
+
 	<script type="text/javascript">
 		var sysdate = new Date();
 		var count = 0;
 		var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));
 
 		$("#next").click(function() {
-			$("#day-list").empty();
+			$("#day-list").empty();	
 			startDay = startDay + 1;
 			count++;
 			getList(startDay);
@@ -105,12 +106,13 @@
 		})
 
 		getList(startDay);
-
+		
+		
 		function getList(startDay) {
 			$.get("getList?startDay=" + startDay, function(result) {
-				console.log(result);
 				$("#day-list").append(result);
 			});
+			
 			console.log(count);
 			if (count == 0) {
 				$("#pre").prop("disabled", "disabled");
