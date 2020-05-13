@@ -12,8 +12,7 @@ public class MemberDAO {
 	private SqlSession sqlSession;
 	
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
-		memberVO = sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
-		return memberVO;
+		return sqlSession.selectOne(NAMESPACE+"memberLogin", memberVO);
 	}
 	public int memberNew(MemberVO memberVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberNew", memberVO);
@@ -28,7 +27,6 @@ public class MemberDAO {
 		return sqlSession.insert(NAMESPACE+"memberKakaoNew", memberVO);
 	}
 	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {
-		System.out.println("kakaoLogin");
 		return sqlSession.selectOne(NAMESPACE+"memberKakaoLogin", memberVO);
 	}
 }

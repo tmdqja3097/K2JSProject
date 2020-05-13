@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<insert id="memberKakaoNew" parameterType="memberVO">
 		INSERT INTO
-		KAKAOMEMBER VALUES (#{id}, #{name}, #{birth}, #{gender},#{phone}, 0)
+		KAKAOMEMBER VALUES (#{id}, #{name},#{phone}, #{birth}, #{gender}, 0)
 	</insert>
 
 	<select id="memberKakaoLogin" parameterType="memberVO"

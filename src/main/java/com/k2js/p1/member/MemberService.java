@@ -25,16 +25,14 @@ public class MemberService {
 		if (memberVO.getPhone() == null) {
 			memberVO.setPhone("000-0000-0000");
 		}
-		System.out.println(memberVO.getPhone());
-		System.out.println("memberService");
+		System.out.println("memberKakaoLogin");
 		MemberVO mVO = memberDAO.memberKakaoLogin(memberVO);
+		
 		if (mVO == null) {
 			int result = memberDAO.memberKakaoNew(memberVO);
-			System.out.println(result);
 
 			if (result > 0) {
 				mVO = memberDAO.memberKakaoLogin(memberVO);
-				System.out.println(memberVO);
 			}
 		}
 
