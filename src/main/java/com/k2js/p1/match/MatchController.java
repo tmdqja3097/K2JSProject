@@ -28,7 +28,6 @@ public class MatchController {
 		
 		model.addAttribute("matchs",matchVOs);
 		model.addAttribute("i",i);
-	
 		
 	}
 		

@@ -220,24 +220,7 @@
 			</div>
 			<div class="container">
 				<div class="row">
-					<table class="table table-condensed">
-
-						<tr>
-							<td>Num</td>
-							<td>Title</td>
-							<td>Contents</td>
-							<td>MatchTime</td>
-							<td>FileImage</td>
-							<td>Count</td>
-							<td>Gender</td>
-							<td>Capacity</td>
-						</tr>
-					</table>
-					<c:catch>
-						<c:if test="${i eq 0}">
-							<h1>경기가 없어요</h1>
-						</c:if>
-					</c:catch>
+					
 
 					<table id="dDayMatch">
 					</table>
@@ -253,6 +236,7 @@
 				var count = 0;
 				var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));
 				var selectDay = startDay;
+				var daily = "";
 				
 
 				getList(startDay);
@@ -278,6 +262,7 @@
 				function getList(startDay) {
 					$.get("getList?startDay=" + startDay, function(result) {
 						$("#day-list").append(result);
+						
 					});
 					console.log(count);
 					if (count == 0) {
@@ -295,18 +280,25 @@
 				
 				function getMatch(selectDay) {
 					$.get("getMatch?matchTime=" + selectDay, function(result) {
+						console.log(result);
 						$("#dDayMatch").append(result);
 					})
 				}
 
 				// 날짜 누르면 해당 날짜의 경기 리스트 화면에 출력
 				$("#day-list").on("click", ".day-list", function() {
-					$("#dDayMatch").empty();
+					
+					$("#dDayMatch").empty();			
 					var days = $(this).text().split('/');
 					selectDay = parseInt(days[0]);
+					days[1]
 					getMatch(selectDay);
-
+					$(this).css("background","#3534A5");
+					$(this).css("color","white");
+					
 				});
+				
+				
 
 
 				$(function() {

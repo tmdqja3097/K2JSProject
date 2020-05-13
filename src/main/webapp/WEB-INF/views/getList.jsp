@@ -5,7 +5,7 @@
 
 
 <c:forEach items="${day}" var="date" varStatus="i">
-	<li id="day${i.index}" class="day-list"><a>${date}</a></li>
+	<li id="day${i.index}" class="day-list">${date}</li>
 </c:forEach>
 
 
