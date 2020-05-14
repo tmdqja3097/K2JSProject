@@ -31,7 +31,9 @@ public class MatchController {
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
 		int i = matchVOs.size();
 		
-		
+
+		System.out.println(i);
+
 		model.addAttribute("matchs",matchVOs);
 		model.addAttribute("i",i);
 		
