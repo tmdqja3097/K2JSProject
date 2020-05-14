@@ -7,7 +7,7 @@
 
 
 <select id="matchList" parameterType="java.lang.Integer" resultType="MatchVO">
-	select * from match where to_char(matchTime,'dd') = #{day}
+	select * from match where to_char(matchTime,'dd') = #{day} and matchTime>sysdate order by matchTime asc
 </select>
 
 

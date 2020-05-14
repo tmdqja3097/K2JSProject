@@ -8,8 +8,22 @@ public class MatchVO {
 	private String title;
 	private String contents;
 	private Date matchTime;
+	private String time;
+	private String fullTime;
+	
+	public String getFullTime() {
+		return fullTime;
+	}
+	public void setFullTime(String fullTime) {
+		this.fullTime = fullTime;
+	}
+	public String getTime() { 
+		return matchTime.toString().substring(10, 16); 
+	}
+	 
 	
 	private String fileImage;
+	
 	private long count;
 	private int gender;
 	private long capacity;

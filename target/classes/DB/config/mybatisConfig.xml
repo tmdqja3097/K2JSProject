@@ -11,6 +11,7 @@
   		<typeAlias type="java.util.List" alias="List"/>
 		<typeAlias type="java.util.Date" alias="Date"/>		
 		<typeAlias type="com.k2js.p1.match.MatchVO" alias="MatchVO"/>
+		<typeAlias type="com.k2js.p1.stadium.StadiumVO" alias="StadiumVO"/>
   		
   	</typeAliases>
   </configuration>
