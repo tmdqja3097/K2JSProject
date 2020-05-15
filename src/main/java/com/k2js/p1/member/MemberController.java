@@ -39,6 +39,7 @@ public class MemberController {
 		memberVO = memberService.memberKakaoLogin(memberVO);
 
 		if (memberVO != null) {
+			//Cookie작업
 			session.setAttribute("member", memberVO);
 		}
 		mav.addObject("result", memberVO);
@@ -50,6 +51,7 @@ public class MemberController {
 	public String memberLogin(MemberVO memberVO, HttpSession session) throws Exception {
 		memberVO = memberService.memberLogin(memberVO);
 		if (memberVO != null) {
+			//Cookie작업
 			session.setAttribute("member", memberVO);
 		} else {
 			return "redirect:./MemberLogin";
@@ -66,7 +68,6 @@ public class MemberController {
 	public String memberNew(MemberVO memberVO, String birth_year, String birth_month, String birth_day)
 			throws Exception {
 		String date = birth_year + "/" + birth_month + "/" + birth_day;
-		System.out.println(date);
 		DateFormat sdf = new SimpleDateFormat("yyyy/mm/dd");
 		Date birth = (Date) sdf.parse(date);
 		memberVO.setBirth(birth);

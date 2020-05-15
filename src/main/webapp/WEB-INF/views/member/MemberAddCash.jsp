@@ -88,46 +88,17 @@
 				$("#howCharge").append(result);
 			})
 		}
-		
+
 		/* 결제 방법 선택 */
-		$("#howCharge").on("click", "#kakaobtn", function() {
-			$.post("./KakaoPay",{money : money},function(result) {
-				alert("OK");
-			})
-			
-		});
+		$("#howCharge").on(
+				"click",
+				"#kakaobtn",
+				function() {
+			/* 		open("./KakaoPay?money=" + money, "_blank",
+							"width=500, height=600", true); */
+					location.href="./KakaoPay?money=" + money;		
+				});
 
-
-		/* 					$.ajax({
-		 type : "post",
-		 url : "./KakaoPayCharged",
-		 data : {
-		
-		 }
-		 }) */
-			/* Kakao.init('c5126e0fcae8eba0e1ed7a9c58dc7812');
-			Kakao.API.request({
-				url : '/v1/payment/ready',
-				data : {
-				Authorization : 'KakaoAK 9cd9eafac1eac29eb3a3a8e894c16f31',
-				cid : "TC0ONETIME",
-				partner_order_id : 'K2JS',
-				partner_user_id : '${member.id}',
-				item_name : 'cash',
-				quantity : 1,
-				total_amount : money,
-				vat_amount : 200,
-				tax_free_amount : 0,
-				approval_url : './charge/Success',
-				fail_url : './charge/Fail',
-				cancel_url : './charge/Cancel'},
-				success : function(res) {
-					alert('성공');
-				},
-				fail : function(error) {
-					alert('실패');
-				}
-			}) */
 		/* 카카오페이 결제 */
 	</script>
 </body>
