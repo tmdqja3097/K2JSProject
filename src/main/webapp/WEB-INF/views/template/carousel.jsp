@@ -5,8 +5,9 @@
 <style type="text/css">
 
  .slide_img {
-	width: 70%;
-	height: 100px;
+	margin-top : 20px;
+	width: 100%;
+	height: 600px;
 } 
 
 .slide_edge {

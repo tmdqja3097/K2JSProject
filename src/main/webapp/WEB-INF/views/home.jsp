@@ -63,11 +63,11 @@
 	padding: 0 0 0 0;
 }
 </style>
-</head>
 <body>
-
-
 	<c:import url="./template/header.jsp"></c:import>
+	<c:import url="./template/body.jsp"></c:import>
+
+
 
 	<div>
 		<div class="container  slide_img ">
@@ -303,5 +303,7 @@
 			}
 		});
 	</script>
+	<footer></footer>
+
 </body>
 </html>

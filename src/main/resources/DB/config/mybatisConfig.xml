@@ -2,18 +2,27 @@
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
-  
-  <configuration>
-  	<typeAliases>
+<configuration>
+	<typeAliases>
 
-  		<typeAlias type="com.k2js.p1.member.MemberVO" alias="memberVO"/>
-  		<typeAlias type="java.lang.Long" alias="Long"/>
-  		<typeAlias type="java.lang.String" alias="String"/>
-  		<typeAlias type="java.util.List" alias="List"/>
-		<typeAlias type="java.util.Date" alias="Date"/>		
-		<typeAlias type="com.k2js.p1.match.MatchVO" alias="MatchVO"/>
-		<typeAlias type="com.k2js.p1.stadium.StadiumVO" alias="StadiumVO"/>
-  		
+		<typeAlias type="com.k2js.p1.member.MemberVO"
+			alias="memberVO" />
+		<typeAlias type="java.lang.Long" alias="Long" />
+		<typeAlias type="java.lang.String" alias="String" />
+		<typeAlias type="java.util.List" alias="List" />
+		<typeAlias type="java.util.Date" alias="Date" />
+		<typeAlias type="com.k2js.p1.match.MatchVO" alias="MatchVO" />
+		<typeAlias type="com.k2js.p1.stadium.StadiumVO"
+			alias="StadiumVO" />
+		<typeAlias type="com.k2js.p1.notice.NoticeVO"
+			alias="NoticeVO" />
+		<typeAlias type="com.k2js.p1.qna.QnaVO" alias="QnaVO" />
+		<!-- <typeAlias type="com.k2js.p1.member.MemberVO" alias="MemberVO"/> -->
+		<typeAlias type="com.k2js.p1.board.file.BoardFileVO"
+			alias="BoardFileVO" />
+		<typeAlias type="com.k2js.p1.util.Pager" alias="Pager" />
 
-  	</typeAliases>
-  </configuration>
+	</typeAliases>
+</configuration>
+
+
