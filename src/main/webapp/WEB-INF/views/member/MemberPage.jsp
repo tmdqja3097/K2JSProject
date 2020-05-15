@@ -30,18 +30,28 @@
 		<div class="row">
 			<label>캐시 잔액 : <span>${member.cash}</span>
 			</label>
-			<button class="btn btn-primary" id="addCash"> 캐시 충전 </button>
+			<button class="btn btn-primary" id="addCash">캐시 충전</button>
 		</div>
 		<button class="btn btn-normal" id="updateInfo">개인 정보 수정</button>
+		<button class="btn btn-danger" id="deleteInfo">회원 탈퇴</button>
 	</div>
-	
+
 	<script type="text/javascript">
-	$("#updateInfo").click(function() {
-				location.href="${pageContext.request.contextPath}/member/MemberUpdate";
-	})
-	$("#addCash").click(function() {
-		location.href="${pageContext.request.contextPath}/member/MemberAddCash";
-	})
+		$("#updateInfo")
+				.click(
+						function() {
+							location.href = "${pageContext.request.contextPath}/member/MemberUpdate";
+						})
+		$("#addCash")
+				.click(
+						function() {
+							location.href = "${pageContext.request.contextPath}/member/MemberAddCash";
+						})
+		$("#deleteInfo")
+				.click(
+						function() {
+							location.href = "./MemberDelete";
+						})
 	</script>
 </body>
 </html>

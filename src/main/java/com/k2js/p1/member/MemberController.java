@@ -100,15 +100,21 @@ public class MemberController {
 		}
 		return "redirect:./";
 	}
+	
+	@GetMapping("MemberDelete")
+	public String memberDelete(HttpSession session) throws Exception {
+		System.out.println("MemberDelete");
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		int result = memberService.memberDelete(memberVO);
+		if(result >0) {
+			session.invalidate();
+		}
+		return "redirect:../";
+	} 
 
 	@GetMapping("MemberAddCash")
 	public String memberAddCash() throws Exception {
 		return "member/MemberAddCash";
-	}
-
-	@PostMapping("MemberAddCash")
-	public void memberAddCash(MemberVO memberVO) throws Exception {
-
 	}
 
 	@GetMapping("CultureCharge")

@@ -38,4 +38,7 @@ public class MemberService {
 
 		return mVO;
 	}
+	public int memberDelete(MemberVO memberVO) throws Exception {
+		return memberDAO.memberDelete(memberVO);
+	}
 }

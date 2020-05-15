@@ -29,4 +29,10 @@ public class MemberDAO {
 	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"memberKakaoLogin", memberVO);
 	}
+	public int memberDelete(MemberVO memberVO) throws Exception {
+		return sqlSession.delete(NAMESPACE+"memberDelete", memberVO);
+	}
+	public int memberKakaoDelete(MemberVO memberVO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"memberKakaoDelete", memberVO);
+	}
 }

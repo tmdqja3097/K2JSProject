@@ -26,4 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		resultType="memberVO">
 		SELECT * FROM KAKAOMEMBER WHERE ID = #{id}
 	</select>
+	<delete id="memberDelete" parameterType="memberVO">
+		DELETE MEMBER WHERE ID = #{id}
+	</delete>
+	<delete id="memberKakaoDelete" parameterType="memberVO">
+		DELETE KAKAOMEMBER WHERE ID =#{id}
+	</delete>
 </mapper>

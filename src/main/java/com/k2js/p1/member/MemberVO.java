@@ -17,8 +17,7 @@ public class MemberVO {
 	private Date birth;
 	private int cash;
 	private int age;
-	
-	
+// kakao 유저 고유 토큰값	
 	
 	public int getAge() {
 		return age;

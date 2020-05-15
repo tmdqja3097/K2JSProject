@@ -37,7 +37,8 @@
 	</div>
 
 	<script type="text/javascript">
-		var money = parseInt($("#money").val());
+		var money = 0;
+		money = parseInt($("#money").val());
 		$("#money")
 				.change(
 						function() {
@@ -53,7 +54,6 @@
 						})
 		$("#self").on("blur", "#selfMoney", function() {
 			money = $("#selfMoney").val();
-			alert("결제금액:" + money);
 		})
 
 		/* 금액 선택 및 직접입력   */
@@ -61,7 +61,6 @@
 			$("#CaCaoPay").addClass("active");
 			$("#Culture").removeClass("active");
 			$("#PhoneCash").removeClass("active");
-			alert(money);
 			KakaoPay(money);
 		})
 		$("#Culture").click(function() {
