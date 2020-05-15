@@ -14,9 +14,20 @@
 </c:import>
 
 <style type="text/css">
-.slide_img {
-	width: 70%;
-	height: 100px;
+ .slide_img {
+	margin-top : 20px;
+	width: 100%;
+	height: 600px;
+} 
+
+.slide_edge {
+	border-radius: 50px;
+}
+
+#myCarousel>a {
+	border-radius: 50px;
+	z-index: 0;
+	background-image: none;
 }
 
 /* match-filter */
@@ -65,10 +76,6 @@
 </style>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	<c:import url="./template/body.jsp"></c:import>
-
-
-
 	<div>
 		<div class="container  slide_img ">
 
@@ -303,7 +310,6 @@
 			}
 		});
 	</script>
-	<footer></footer>
 
 </body>
 </html>

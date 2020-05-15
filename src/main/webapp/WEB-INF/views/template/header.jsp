@@ -104,7 +104,6 @@ footer {
 
 
 <nav class="navbar navbar-inverse">
-	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
 				id="logo" alt="logo"
@@ -115,7 +114,6 @@ footer {
 				<span class="icon-bar"></span> <span class="icon-bar"></span></a>
 			</button>
 		</div>
-	</div>
 
 	<div>
 		<ul class="nav navbar-nav navbar-right collapse navbar-collapse">
