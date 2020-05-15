@@ -5,6 +5,8 @@ import java.util.*;
 
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class ScheduleManagerService {
 
@@ -24,9 +26,11 @@ public class ScheduleManagerService {
 
 		long lastDay = startDay + 6;
 
-			for (int i = 0; i < 7; i++) {
-				if (count < 7) {
-					if (startDay > cal.getActualMaximum(month)) {
+		for (int i = 0; i < 7; i++) {
+			if (count < 7) {
+
+				if (startDay > cal.getActualMaximum(month)) {
+
 					startDay = 1;
 					month = month + 1;
 					lastDay = startDay + 6 - count;
@@ -36,11 +40,13 @@ public class ScheduleManagerService {
 					count++;
 					startDay++;
 				} else {
+
 					Date date1 = new Date(year, month - 1, (int) startDay - 1);
 					dat.add((int) startDay + "/" + weekSdf.format(date1));
 					count++;
 					startDay++;
 				}
+
 			}
 		}
 		return dat;

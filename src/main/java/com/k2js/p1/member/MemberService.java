@@ -3,8 +3,10 @@ package com.k2js.p1.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class MemberService {
+
 
 	@Autowired
 	private MemberDAO memberDAO;
@@ -41,4 +43,5 @@ public class MemberService {
 	public int memberDelete(MemberVO memberVO) throws Exception {
 		return memberDAO.memberDelete(memberVO);
 	}
+
 }
