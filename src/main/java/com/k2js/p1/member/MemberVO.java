@@ -1,35 +1,53 @@
 package com.k2js.p1.member;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
 @Component
 public class MemberVO {
-
-	private String userName;
-	private String userPassword;
-	private String userEmail;
+	
+	private String id;
+	private String name;
+	private String pw;
+	private String email;
 	private int gender;
-	private String userPhone;
-	private Date userBirth;
-	public String getUserName() {
-		return userName;
+	private String phone;
+	private Date birth;
+	private int cash;
+	private int age;
+// kakao 유저 고유 토큰값	
+	
+	public int getAge() {
+		return age;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setAge(int age) {
+		this.age = age;
 	}
-	public String getUserPassword() {
-		return userPassword;
+	public String getId() {
+		return id;
 	}
-	public void setUserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getUserEmail() {
-		return userEmail;
+	public String getName() {
+		return name;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public int getGender() {
 		return gender;
@@ -37,18 +55,26 @@ public class MemberVO {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public String getUserPhone() {
-		return userPhone;
+	public String getPhone() {
+		return phone;
 	}
-	public void setUserPhone(String userPhone) {
-		this.userPhone = userPhone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public Date getUserBirth() {
-		return userBirth;
+	public Date getBirth() {
+		return birth;
 	}
-	public void setUserBirth(Date userBirth) {
-		this.userBirth = userBirth;
+	public void setBirth(Date birth) {
+		this.birth = birth;
+	}
+	public int getCash() {
+		return cash;
+	}
+	public void setCash(int cash) {
+		this.cash = cash;
 	}
 	
 	
+	
+
 }

@@ -103,7 +103,6 @@ hs_err_pid*
 *.htm
 *.html
 *.js
-*.jsp
 *.php
 *.rss
 *.wasm
@@ -135,3 +134,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+target/m2e-wtp/web-resources/META-INF/maven/com.k2js/p1/pom.properties
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
+
+src/main/webapp/WEB-INF/spring/root-context.xml
+src/main/resources/DB/config/db.properties
+target/m2e-wtp/web-resources/META-INF/maven/com.k2js/p1/pom.properties
