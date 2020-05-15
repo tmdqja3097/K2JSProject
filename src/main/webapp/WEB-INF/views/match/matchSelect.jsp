@@ -15,21 +15,23 @@
 element.style {       
 	overflow: hidden;
 }
-#info1{
-	margin-left: 19%;
-	
+.info{
+	margin-left: 19%;	
 }     
-#info1 > li {         
+.info > li {         
 	list-style: none;
 	display: inline-block;
 	width:170px;
 	height:120px;
-	border: 1px solid black;
 	margin: 0 auto;
-
+	border-radius:10px; 
 	background-color: #EEEEEE;
 	text-align: center;
 
+}
+
+.noFeature{
+	opacity: 0.2;
 }
 </style>
 </head>
@@ -47,8 +49,8 @@ element.style {
 	<a><p id="map_view">지도보기</p></a>
 	<a class="copy">주소 복사하기</a>
 	
-	<h1>진행방식</h1>
-	<ul id ="info1">
+	<h1>진행 방식</h1>
+	<ul class ="info">
 	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/6vs6.svg" style="width: 120px; height: 90px;">
 		<p>6 vs 6 매치</p>
 	</li>
@@ -73,7 +75,51 @@ element.style {
 	</li>
 	</ul>
 
-	${stadiumVO.info}
+	<h1>구장 시설</h1>
+	<ul class ="info">
+	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/size.svg" style="width: 120px; height: 90px;">
+		<p>${stadiumVO.stadiumSize}</p>
+	</li>
+	
+	<c:if test="${stadiumVO.shower eq 0}">
+	<li class = "noFeature"><img alt="" src="../../${pageContext.request.contextPath}/resources/images/shower.svg" style="width: 120px; height: 90px;">
+		<p>샤워장</p>
+	</li>
+	</c:if>
+	<c:if test="${stadiumVO.shower eq 1}">
+	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/shower.svg" style="width: 120px; height: 90px;">
+		<p>샤워장</p>
+	</li>
+	</c:if>
+	
+	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/parking.svg" style="width: 120px; height: 90px;">
+		<c:if test="${stadiumVO.parking eq 1}"><p>유료 주차</p></c:if>
+		<c:if test="${stadiumVO.parking eq 0}"><p>무료 주차</p></c:if>
+	</li>
+	
+	<c:if test="${stadiumVO.shoes eq 0}">
+	<li class = "noFeature"><img alt="" src="../../${pageContext.request.contextPath}/resources/images/rental.svg" style="width: 120px; height: 90px;">
+		<p>풋살화 대여</p>
+	</li>
+	</c:if>
+	<c:if test="${stadiumVO.shoes eq 1 }">
+	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/rental.svg" style="width: 120px; height: 90px;">
+		<p>풋살화 대여</p>
+	</li>
+	</c:if>
+	
+	<c:if test="${stadiumVO.cloth eq 0 }">
+	<li class = "noFeature"><img alt="" src="../../${pageContext.request.contextPath}/resources/images/rentalwear.svg" style="width: 120px; height: 90px;">
+		<p>운동복 대여</p>
+	</li>
+	</c:if>
+	<c:if test="${stadiumVO.cloth eq 1 }">
+	<li><img alt="" src="../../${pageContext.request.contextPath}/resources/images/rentalwear.svg" style="width: 120px; height: 90px;">
+		<p>운동복 대여</p>
+	</li>
+	</c:if>
+	</ul>
+	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
