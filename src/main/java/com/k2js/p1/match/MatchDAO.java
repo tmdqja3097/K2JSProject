@@ -14,13 +14,10 @@ public class MatchDAO {
 	private SqlSession session;
 	private final String NAMESPACE = "com.k2js.p1.match.MatchDAO.";
 	
-	//경기날짜
-	public Date matchDate(MatchVO matchVO) throws Exception{
-		return session.selectOne(NAMESPACE+"matchDate", matchVO);
-	}
 	
-
-
+	public int matchDelete(long num)throws Exception{
+		return session.delete(NAMESPACE+"matchDelete",num);
+	}
 	public List<MatchVO> matchList(int day) throws Exception{
 		return session.selectList(NAMESPACE+"matchList", day);
 	}
@@ -28,5 +25,14 @@ public class MatchDAO {
 	public MatchVO matchSelect(long num) throws Exception{
 		return session.selectOne(NAMESPACE+"matchSelect", num);
 	}
+	
+	public int matchWrite(MatchVO matchVO) throws Exception{
+		return session.insert(NAMESPACE+"matchWrite", matchVO);
+	}
+	
+	public long matchNum() throws Exception{
+		return session.selectOne(NAMESPACE+"matchNum");
+	}
+	
 	
 }

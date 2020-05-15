@@ -10,7 +10,18 @@ public class MatchVO {
 	private Date matchTime;
 	private String time;
 	private String fullTime;
+	private String stadiumName;
+	private String fileImage;
+	private long count;
+	private int gender;
+	private long capacity;
 	
+	public String getStadiumName() {
+		return stadiumName;
+	}
+	public void setStadiumName(String stadiumName) {
+		this.stadiumName = stadiumName;
+	}
 	public String getFullTime() {
 		return fullTime;
 	}
@@ -20,13 +31,6 @@ public class MatchVO {
 	public String getTime() { 
 		return matchTime.toString().substring(10, 16); 
 	}
-	 
-	
-	private String fileImage;
-	
-	private long count;
-	private int gender;
-	private long capacity;
 	
 	public long getNum() {
 		return num;

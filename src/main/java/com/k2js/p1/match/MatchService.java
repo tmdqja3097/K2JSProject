@@ -12,10 +12,15 @@ public class MatchService {
 	@Autowired
 	private MatchDAO matchDAO;
 	
-	public Date matchDate(MatchVO matchVO) throws Exception{
-		return matchDAO.matchDate(matchVO);
+	public int matchDelete(long num)throws Exception{
+		return matchDAO.matchDelete(num);
 	}
 	
+	public int matchWrite(MatchVO matchVO)throws Exception{
+		matchVO.setNum(matchDAO.matchNum());
+		System.out.println("number : "+matchVO.getNum());
+		return matchDAO.matchWrite(matchVO);
+	}
 
 	public List<MatchVO> matchList(int day) throws Exception{
 
@@ -25,7 +30,7 @@ public class MatchService {
 	public MatchVO matchSelect(long num) throws Exception{
 		MatchVO matchVO = matchDAO.matchSelect(num);
 		
-		String fullTime = matchDAO.matchSelect(num).getMatchTime().toString();
+		String fullTime = matchVO.getMatchTime().toString();
 	
 		String yoil = fullTime.substring(0,3);
 		String month = fullTime.substring(4,7);

@@ -15,6 +15,27 @@
 	select * from match where num=#{num}
 </select>
 
+<!-- <insert id="matchWrite" parameterType="MatchVO">
+	insert into notice values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},#{count},#{gender},#{capacity})
+</insert>
+ -->
+<insert id="matchWrite" parameterType="MatchVO">
+	insert into match values(#{num},#{title},'1',#{matchTime},#{stadiumName},'1',0,#{gender},0)
+</insert>
+
+
+
+<select id="matchNum" resultType="Long">
+		select match_seq.nextval from dual
+</select>
+
+<delete id="matchDelete" parameterType="Long">
+	delete match where num=#{num}
+</delete>
+
+
+
+
 
 
 

@@ -10,7 +10,7 @@ public class StadiumService {
 	@Autowired
 	private StadiumDAO stadiumDAO;
 	
-	public StadiumVO stadiumSelect(String title) throws Exception{
-		return stadiumDAO.stadiumSelect(title);
+	public StadiumVO stadiumSelect(String stadiumName) throws Exception{
+		return stadiumDAO.stadiumSelect(stadiumName);
 	}
 }

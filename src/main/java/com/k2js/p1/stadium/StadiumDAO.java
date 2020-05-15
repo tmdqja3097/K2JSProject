@@ -11,7 +11,7 @@ public class StadiumDAO {
 	private SqlSession session;
 	private final String NAMESPACE = "com.k2js.p1.stadium.StadiumDAO.";
 	
-	public StadiumVO stadiumSelect(String title) throws Exception{
-		return session.selectOne(NAMESPACE+"stadiumSelect", title);
+	public StadiumVO stadiumSelect(String stadiumName) throws Exception{
+		return session.selectOne(NAMESPACE+"stadiumSelect", stadiumName);
 	}
 }

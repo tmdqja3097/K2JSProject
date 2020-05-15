@@ -171,6 +171,8 @@
 			<div>
 				<ul id="dDayMatch" class="myUL">
 				</ul>
+				
+				<a href="./match/matchWrite"  class="btn btn-default" style="margin-left: 93%">글쓰기</a> 
 			</div>
 
 
@@ -194,32 +196,32 @@
 						<div class="modal-body-filter">
 							<h4>지역을 선택하세요</h4>
 							<ul class="modal-list" style="list-style: none;">
-								<li><input type="checkbox" id="1" class="filterCheck grey"
-									value="1"> <label for="1" class="checkLabel">서울</label>
+								<li><input type="checkbox" id="ml1" class="filterCheck grey"
+									value="1"> <label id="mlL1" for="ml1" class="checkLabel">서울</label>
 								</li>
-								<li><input type="checkbox" id="2" class="filterCheck grey"
-									value="2"> <label for="2" class="checkLabel">대구</label>
+								<li><input type="checkbox" id="ml2" class="filterCheck grey"
+									value="2"> <label id="mlL2" for="ml2" class="checkLabel">대구</label>
 								</li>
-								<li><input type="checkbox" id="3" class="filterCheck"
-									value="3"> <label for="3" class="checkLabel">경기</label>
+								<li><input type="checkbox" id="ml3" class="filterCheck"
+									value="3"> <label id="mlL3" for="ml3" class="checkLabel">경기</label>
 								</li>
-								<li><input type="checkbox" id="4" class="filterCheck"
-									value="4"> <label for="4" class="checkLabel">광주</label>
+								<li><input type="checkbox" id="ml4" class="filterCheck"
+									value="4"> <label id="mlL4" for="ml4" class="checkLabel">광주</label>
 								</li>
-								<li><input type="checkbox" id="5" class="filterCheck"
-									value="5"> <label for="5" class="checkLabel">대전</label>
+								<li><input type="checkbox" id="ml5" class="filterCheck"
+									value="5"> <label id="mlL5" for="ml5" class="checkLabel">대전</label>
 								</li>
-								<li><input type="checkbox" id="6" class="filterCheck"
-									value="6"> <label for="6" class="checkLabel">인천</label>
+								<li><input type="checkbox" id="ml6" class="filterCheck"
+									value="6"> <label id="mlL6" for="ml6" class="checkLabel">인천</label>
 								</li>
-								<li><input type="checkbox" id="7" class="filterCheck"
-									value="7"> <label for="7" class="checkLabel">부산</label>
+								<li><input type="checkbox" id="ml7" class="filterCheck"
+									value="7"> <label id="mlL7" for="ml7" class="checkLabel">부산</label>
 								</li>
-								<li><input type="checkbox" id="8" class="filterCheck"
-									value="8"> <label for="8" class="checkLabel">울산</label>
+								<li><input type="checkbox" id="ml8" class="filterCheck"
+									value="8"> <label id="mlL8" for="ml8" class="checkLabel">울산</label>
 								</li>
-								<li><input type="checkbox" id="9" class="filterCheck"
-									value="9"> <label for="9" class="checkLabel">충북</label>
+								<li><input type="checkbox" id="ml9" class="filterCheck"
+									value="9"> <label id="mlL9" for="ml9" class="checkLabel">충북</label>
 								</li>
 							</ul>
 						</div>
@@ -316,14 +318,42 @@
 		});
 	});
 
-	$(".checkLabel").click(function() {
-		if ($(".filterCheck")) {
-			$(".chec")
-			$(".checkLabel").css("background", "gray");
+	
+$(document).ready(function() {
+		
+		for (var i = 1; i < 10; i++) {			
+			$("#mlL"+i).toggleClass("unchecked");
+			$("#mlL"+i).click(function() {    
+				var text = $(".btn-all-area").text();
+				$(this).toggleClass("checked");
+				 
+				if(!$("#ml"+i).checked){
+					  
+					if (text=="모든 지역") {
+						$(".btn-all-area").text("선택 지역");  
+					} else {
+						$(".btn-all-area").text("모든 지역");
+					}
+					
+				}else{
+					$(".btn-all-area").text("모든 지역");
+				}
+				
+				
+			});
+			
 		}
 
-		if ($(".filterCheck") == false) {
-			$(".checkLabel").css("background", "#ffc645");
+	});
+
+var v1 = $("#ml1").val();
+	$(".modal-footer").click(function() {
+		if($("#ml1").prop("checked")){
+			//var vv1 = Number(v1); 
+			console.log(v1);
+			$.get("./match/matchSelect?address="+v1, function() {
+				console.log(v1);
+			});
 		}
 	});
 </script>

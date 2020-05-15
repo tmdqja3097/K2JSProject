@@ -103,5 +103,15 @@ border : none;}
 /* modal */
  
  
+ .unchecked{
+	background-color:#FFC645;
+	color:#2A2A2A;
+}
+
+.checked{      
+	background-color:#EEEEEE;
+	color:#999999;
+}
+ 
  
 </style>  

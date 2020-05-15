@@ -7,7 +7,7 @@
 
 
 <select id="stadiumSelect" parameterType="String" resultType="StadiumVO">
-	select * from stadium where name=#{title}
+	select * from stadium where name=#{stadiumName}
 </select>
 
 
