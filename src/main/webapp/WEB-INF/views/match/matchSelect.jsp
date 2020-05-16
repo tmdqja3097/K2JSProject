@@ -56,8 +56,7 @@ element.style {
   </style>
 </head>
 <body>
-
-<h1>MatchSelect Page</h1>
+<c:import url="../template/header.jsp"></c:import>
 <c:import url="../template/matchCarousel.jsp"></c:import>
 
 <div id="map" style="width: 100%; height: 500px; z-index: 0"></div>

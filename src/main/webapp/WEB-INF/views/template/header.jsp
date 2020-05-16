@@ -144,7 +144,7 @@ footer {
 					class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 		</ul>
 	</c:if>
-	<div id="mySidenav" class="right_sidenav">
+	<div id="mySidenav" class="right_sidenav" style="z-index: 3;">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<a href="#">K2JS 소개</a> <a href="#">매니저 지원</a> <a
 			href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a>

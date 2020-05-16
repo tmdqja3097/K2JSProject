@@ -52,7 +52,7 @@
 }
 </style>
 </head>
-<body>
+<body style="padding: 0;">
 	<c:import url="../template/header.jsp"></c:import>
 
 	<div class="container">

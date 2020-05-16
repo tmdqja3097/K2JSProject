@@ -115,7 +115,7 @@ background-color
 }
 </style>
 </head>
-<body>
+<body style="padding: 0;">
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 		<h3>${fn:toUpperCase(board)} Update</h3>

@@ -115,7 +115,7 @@
   	
   </style>
 </head>
-<body>
+<body style="padding: 30;">
 <c:if test="${board eq 'notice' }">
 <c:import url="../template/header.jsp"></c:import>
 	<form action="./${board}List">
@@ -199,7 +199,7 @@
 	 
 	
 </c:if>
-<footer></footer>
+
 <script type="text/javascript">
 	function press(f){
 		if(f.keyCode == 13){ 

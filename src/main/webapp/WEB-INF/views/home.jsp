@@ -28,17 +28,16 @@
 .match-result {
 	width: 10%;
 	height: 30px;
-	float: left;
+	
 	text-align: center;
 }
 
-.match-wrapper {
-	margin-left: 82%;
-	position: relative;
+.match-wrapper {	
+
+ margin-left: 0px;
 }
 
 .match-wrapper p {
-	text-align: left;
 	display: inline;
 }
 
@@ -49,7 +48,7 @@
 	float: left;
 	opacity: 0;
 	width: 5px;
-	height: 5px;
+	height: 5px; 
 }
 
 .checkLabel {

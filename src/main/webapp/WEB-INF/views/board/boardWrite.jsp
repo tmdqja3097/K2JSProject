@@ -117,7 +117,7 @@ background-color
 <c:import url="../template/boot.jsp"></c:import>
 <c:import url="../template/summer.jsp"></c:import>
 </head>
-<body>
+<body style="padding: 0;">
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
 		<h3>${fn:toUpperCase(board)} Write </h3>
