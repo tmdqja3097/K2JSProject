@@ -136,6 +136,18 @@ body {
 /* match-filter */
 
 /* modal */
+.modal-list1{
+	height: 100px;   
+}
+
+.modal-list1 > li{
+	display: inline-block;
+	margin-right: 5px;
+	margin-top: 5px; 
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
 .filterCheck {
 	float: left;
 	opacity: 0;

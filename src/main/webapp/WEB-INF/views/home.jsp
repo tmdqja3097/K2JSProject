@@ -135,7 +135,7 @@
 			style="margin-left: 93%">글쓰기</a>
 	</div>
 
-	<div class="modal fade" id="layerpop">
+	<div class="modal fade" id="layerpop1">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 30px;">
 
@@ -151,9 +151,9 @@
 					<div class="modal-body-filter">
 						<h4>지역을 선택하세요</h4>
 						<ul class="modal-list" style="list-style: none;">
-							<li><input type="checkbox" id="ml1" class="filterCheck grey"
+							<li><input type="checkbox" id="ml1" class="filterCheck"
 								value="1"> <label id="mlL1" for="ml1" class="checkLabel">서울</label></li>
-							<li><input type="checkbox" id="ml2" class="filterCheck grey"
+							<li><input type="checkbox" id="ml2" class="filterCheck"
 								value="2"> <label id="mlL2" for="ml2" class="checkLabel">대구</label></li>
 							<li><input type="checkbox" id="ml3" class="filterCheck"
 								value="3"> <label id="mlL3" for="ml3" class="checkLabel">경기</label></li>
@@ -169,6 +169,59 @@
 								value="8"> <label id="mlL8" for="ml8" class="checkLabel">울산</label></li>
 							<li><input type="checkbox" id="ml9" class="filterCheck"
 								value="9"> <label id="mlL9" for="ml9" class="checkLabel">충북</label></li>
+						</ul>
+					</div>
+				</div>
+				<!-- Footer -->
+				<div class="modal-footer"
+					style="background-color: #ffc645; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; text-align: center; cursor: pointer;">
+					<h5>적용하기</h5>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="modal fade" id="layerpop2">
+		<div class="modal-dialog">
+			<div class="modal-content" style="border-radius: 30px;">
+
+				<!-- header -->
+				<div class="modal-header" style="margin-top: 10px;">
+					<!-- 닫기(x) 버튼 -->
+					<button type="button" class="close" data-dismiss="modal">취소</button>
+					<!-- header title -->
+					<h4 class="modal-title">카테고리</h4>
+				</div>       
+				<!-- body -->
+				<div class="modal-body" style="height: 400px;">
+					<div class="modal-body-filter">
+						<ul class="modal-list1" style="list-style: none;">
+							<h4>성별</h4><br>
+							<li><input type="checkbox" id="gender_m" class="filterCheck"
+								value="1"> <label id="mlL1" for="gender_m" class="checkLabel">남성</label></li>
+							<li><input type="checkbox" id="gender_w" class="filterCheck"
+								value="2"> <label id="mlL2" for="gender_w" class="checkLabel">여성</label></li>
+							<li><input type="checkbox" id="gender_u" class="filterCheck"
+								value="0"> <label id="mlL3" for="gender_u" class="checkLabel" style="width: 90px;">남녀 모두</label></li>
+						</ul>
+						<ul class="modal-list1">
+							<h4>개인/팀</h4><br>
+							<li><input type="checkbox" id="type_match" class="filterCheck"
+								value="match"> <label id="mlL4" for="type_match" class="checkLabel">개인</label></li>
+							<li><input type="checkbox" id="type_cup" class="filterCheck"
+								value="cup"> <label id="mlL5" for="type_cup" class="checkLabel">팀</label></li>
+						</ul>
+						<ul class="modal-list1">
+							<h4>레벨</h4><br>
+							<li><input type="checkbox" id="level_begin" class="filterCheck"
+								value="begin"> <label id="mlL6" for="level_begin" class="checkLabel">초급</label></li>
+							<li><input type="checkbox" id="level_middle" class="filterCheck"
+								value="middle"> <label id="mlL7" for="level_middle" class="checkLabel">중급</label></li>
+							<li><input type="checkbox" id="level_every" class="filterCheck"
+								value="every"> <label id="mlL8" for="level_every" class="checkLabel" style="width: 70px;">누구나</label></li>
 						</ul>
 					</div>
 				</div>
@@ -275,6 +328,11 @@
 
 				});
 
+			}
+			
+			
+			for (var i = 0; i < array.length; i++) {
+				
 			}
 
 		});
