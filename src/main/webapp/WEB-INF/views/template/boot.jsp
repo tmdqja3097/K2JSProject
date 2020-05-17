@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset =UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language ="java" contentType ="text/html; charset =UTF-8"
+    pageEncoding ="UTF-8"%>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -11,7 +11,6 @@
 /* 전체  바디 */
 body {
 	padding: 0 20%;
-	box-sizing: border-box;
 }
 /* 헤더 */
 #logo {
@@ -28,16 +27,11 @@ body {
 	border: none;
 }
 
-.navbar-inverse {
-	background-color: white;
-	border: none;
-}
-
 .navbar-inverse .navbar-nav>li>a:hover {
 	color: black;
 }
 /* 경기 리스트 */
-#match-box {
+    #match-box {
 	height: 100px;
 }
 

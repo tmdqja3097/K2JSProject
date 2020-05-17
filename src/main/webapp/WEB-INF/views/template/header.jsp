@@ -104,16 +104,16 @@ footer {
 
 
 <nav class="navbar navbar-inverse">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
-			id="logo" alt="logo"
-			src="${pageContext.request.contextPath}/resources/images/k2.jpg"></a>
-		<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar"> -->
-		<!-- <a class="navbar-brand" href="#"></a><span class="icon-bar"></span>
+		<div class="navbar-header">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
+				id="logo" alt="logo"
+				src="${pageContext.request.contextPath}/resources/images/k2.jpg"></a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<a class="navbar-brand" href="#"></a><span class="icon-bar"></span>
 				<span class="icon-bar"></span> <span class="icon-bar"></span></a>
-			</button> -->
-	</div>
+			</button>
+		</div>
 
 	<div>
 		<ul class="nav navbar-nav navbar-right collapse navbar-collapse">

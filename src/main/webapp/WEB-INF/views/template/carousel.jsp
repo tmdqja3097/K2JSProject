@@ -4,29 +4,25 @@
 
 <style type="text/css">
 
- .slide_img { 
-	width: 100%;      
-	padding: 0;
-	height: 0px; 
-	margin-bottom: -69px; 
+ .slide_img {
+	margin-top : 20px;
+	width: 100%;
+	height: 600px;
 } 
 
 .slide_edge {
-	
+	border-radius: 50px;
 }
 
-.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
-	height: 500px;
-}
 #myCarousel>a {
-	
+	border-radius: 50px;
 	z-index: 0;
 	background-image: none;
 }
 </style>
-	
+
     <div class="container  slide_img ">
-			<div id="myCarousel" class="carousel slide" data-ride="carousel" style="z-index: 1">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel" >
 				<!-- Indicators -->
 				<ol class="carousel-indicators">
 					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -37,15 +33,16 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner slide_edge">
 					<div class="item active">
-						<img src="../../${pageContext.request.contextPath}/resources/images/foot1.png" alt="Los Angeles" style="width: 100%;"height="50px">
+
+						<img src="${pageContext.request.contextPath}/resources/images/foot1.png" alt="Los Angeles" style="width: 100%;"height="50px">
 					</div>
 
 					<div class="item">
-						<img src="../../${pageContext.request.contextPath}/resources/images/foot2.png" alt="Chicago" style="width: 100%;" height="50px">
+						<img src="${pageContext.request.contextPath}/resources/images/foot2.png" alt="Chicago" style="width: 100%;" height="50px">
 					</div>
 
 					<div class="item">
-						<img src="../../${pageContext.request.contextPath}/resources/images/foot3.png" alt="New york" style="width: 100%;"height="50px">
+						<img src="${pageContext.request.contextPath}/resources/images/foot3.png" alt="New york" style="width: 100%;"height="50px">
 					</div>
 				</div>
 
@@ -61,4 +58,3 @@
 				</a>
 			</div>
 		</div>
-		
