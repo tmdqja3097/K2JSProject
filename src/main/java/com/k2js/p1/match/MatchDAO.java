@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class MatchDAO {
 
@@ -32,6 +33,10 @@ public class MatchDAO {
 	
 	public long matchNum() throws Exception{
 		return session.selectOne(NAMESPACE+"matchNum");
+	}
+	
+	public int matchUpdate(MatchVO matchVO) throws Exception {
+		return session.update(NAMESPACE+"matchUpdate", matchVO);
 	}
 	
 	

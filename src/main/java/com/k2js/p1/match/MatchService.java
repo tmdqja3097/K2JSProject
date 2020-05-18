@@ -5,12 +5,21 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+
 
 @Service
 public class MatchService {
 
 	@Autowired
 	private MatchDAO matchDAO;
+	
+	
+	public int matchUpdate(MatchVO matchVO) throws Exception {
+		return matchDAO.matchUpdate(matchVO);
+	}
+	
 	
 	public int matchDelete(long num)throws Exception{
 		return matchDAO.matchDelete(num);
@@ -23,7 +32,10 @@ public class MatchService {
 	}
 
 	public List<MatchVO> matchList(int day) throws Exception{
-
+		List<MatchVO> matchs = matchDAO.matchList(day);
+		/*
+		 * for(int i=0;i<matchs.size();i++) { if(matchs.get(i).getGender()) }
+		 */
 		return matchDAO.matchList(day);
 	}
 	

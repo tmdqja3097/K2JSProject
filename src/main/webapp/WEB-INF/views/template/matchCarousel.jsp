@@ -11,7 +11,7 @@ body {
 	width: 100%;
 	padding: 0;
 	height: 0px;
-	margin-bottom: -69px;
+	margin-bottom: -69px; 
 }
 
 .slide_edge {

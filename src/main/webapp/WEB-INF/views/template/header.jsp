@@ -51,7 +51,7 @@
 }
 
 .right_sidenav a {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 8px 8px 32px; 
 	text-decoration: none;
 	font-size: 25px;
 	color: gray;
@@ -89,11 +89,13 @@ footer {
 	height: 300px;
 }
 
+""
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
 	.sidenav {
 		height: auto;
-		padding: 15px;
+		/* padding: 15px;  */
+		
 	}
 	.row.content {
 		height: auto;
@@ -116,9 +118,9 @@ footer {
 	</div>
 
 	<div>
-		<ul class="nav navbar-nav navbar-right collapse navbar-collapse">
+		<ul class="nav navbar-nav navbar-right collapse navbar-collapse" style="margin-right: 0px;">
 			<li><a href="#"> <span
-					style="font-size: 30px; color: gray; margin-top: 0px; float: float; cursor: pointer"
+					style="font-size: 30px; color: gray; margin-top: 0px; float: float; cursor: pointer;"
 					onclick="openNav()">&#9776; </span>
 			</a></li>
 		</ul>

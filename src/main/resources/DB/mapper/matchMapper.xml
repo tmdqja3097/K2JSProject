@@ -15,14 +15,13 @@
 	select * from match where num=#{num}
 </select>
 
-<!-- <insert id="matchWrite" parameterType="MatchVO">
-	insert into notice values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},#{count},#{gender},#{capacity})
-</insert>
- -->
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},'1',#{matchTime},#{stadiumName},'1',0,#{gender},0)
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},'Image',#{gender},#{capacity})
 </insert>
 
+<update id="matchUpdate" parameterType="MatchVO">
+		update match set title=#{title}, contents=#{contents}, matchTime=#{matchTime} where num=#{num}
+</update>
 
 
 <select id="matchNum" resultType="Long">

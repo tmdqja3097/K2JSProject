@@ -12,8 +12,7 @@
  
   .notice_head{
   	background-color: #3534AB;
-  	padding: 15px;
-  	margin: 15px 130px; 	
+  	padding: 15px;	
   	border-radius: 30px;
   	color:white;
   }
@@ -29,7 +28,6 @@
   #myUL {
 	list-style-type: none;
 	padding: 0;
-	margin: 30px 130px;
 }
 
 #myUL li a {
@@ -71,14 +69,14 @@
 	
 	.w3-border-bottom{
 		margin-top: 40px;
-		margin-left: 130px;
+		
 		
 		
 	}
 	#d1{
 		background-color: #3534AB;
 		color: white;
-		margin: 0px 130px; 
+		margin: 0px ; 
 		
 	}
 	
@@ -98,7 +96,7 @@
 	.h4{
 		margin-top:40px;
 		color:#3534AB;
-		margin-left: 140px;
+		text-align:center;
 		font-weight: bold;
 		
 	}
@@ -115,7 +113,7 @@
   	
   </style>
 </head>
-<body style="padding: 30;">
+<body>
 <c:if test="${board eq 'notice' }">
 <c:import url="../template/header.jsp"></c:import>
 	<form action="./${board}List">
@@ -131,7 +129,7 @@
 		</c:forEach>
 	</ul>
 	
-	<a href="./${board}Write" class="btn btn-default" style="margin-left: 85%">글쓰기</a>
+	<a href="./${board}Write" class="btn btn-default" style="float: right;">글쓰기</a>
 	
 	 <div id="page_num" style="margin-left:45%">
 		<ul class="pagination">
@@ -194,7 +192,7 @@
 	</form>
 
 	
-	<a href="./${board}Write" class="btn btn-default" style="margin: 0 0 3% 85%">글쓰기</a>
+	<a href="./${board}Write" class="btn btn-default" style="float: right;">글쓰기</a>
 	
 	 
 	

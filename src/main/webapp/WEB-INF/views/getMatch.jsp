@@ -76,7 +76,7 @@
 	height: 50px;
 	padding: 5 30 5 30px;
 	margin-bottom: 10px;
-	margin-left: 80%;
+	margin-left: 85%;
 	position: absolute;
 	text-align: center;
 	line-height: 3;
@@ -131,7 +131,7 @@
 		<c:forEach items="${matchs}"  var="vo">
 			<li><a href="./match/matchSelect?num=${vo.num}">
 			<div class="div_time" style="position:absolute;"><p style="line-height: 4">${vo.time}</p></div> 
-			<div class="div_title" style="position: absolute;"><h4 style="line-height: 2.7" id="h4">${vo.title}</h4><div class="div_gender" id="p"><c:if test="${vo.gender eq 1}">남성</c:if><c:if test="${vo.gender eq 2}">여성</c:if> </div></div>
+			<div class="div_title" style="position: absolute;"><h4 style="line-height: 2.7" id="h4">${vo.title}</h4><div class="div_gender" id="p"><c:if test="${vo.gender eq 1}">남성 매치</c:if><c:if test="${vo.gender eq 2}">여성 매치</c:if><c:if test="${vo.gender eq 3}">혼성 매치</c:if> </div></div>
 			<c:if test="${vo.count lt 12}">
 			<div class="div_status" style="background-color: #3534A5 " ><div class="statusFull" ><p>신청가능</p></div></div>
 			</c:if>

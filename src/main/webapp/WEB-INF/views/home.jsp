@@ -131,7 +131,7 @@
 		</ul>
 
 		<a href="./match/matchWrite" class="btn btn-default"
-			style="margin-left: 93%">글쓰기</a>
+			style="float: right;">글쓰기</a>
 	</div>
 
 	<div class="modal fade" id="layerpop">

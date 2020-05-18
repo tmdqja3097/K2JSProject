@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
@@ -57,49 +57,77 @@ public class MatchController {
 
 		return mv;
 	}
-	
+
 	@GetMapping("/match/matchWrite")
-	public String matchWrite() throws Exception{
+	public String matchWrite() throws Exception {
 		return "match/matchWrite";
 	}
-	
+
 	@PostMapping("/match/matchWrite")
-	public ModelAndView matchWrite(MatchVO matchVO, String day, String time)throws Exception{
+	public ModelAndView matchWrite(MatchVO matchVO, String day, String time) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		
-		String date = day+time;
+
+		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
-		Date dDate = (Date)dfm.parse(date);	
+		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
-		
+
 		int result = matchService.matchWrite(matchVO);
-		
 		System.out.println(result);
-		if(result>0) {
+		if (result > 0) {
 			mv.setViewName("redirect:../");
 		}
 		return mv;
 	}
-	
+
 	@GetMapping("/match/matchDelete")
-	public ModelAndView matchDelete(long num)throws Exception{
+	public ModelAndView matchDelete(long num) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		int result = matchService.matchDelete(num);
-		if(result>0) {
+		if (result > 0) {
 			mv.setViewName("redirect:../");
 		}
 		return mv;
-		
+
 	}
-	
+
 	@GetMapping("/match/matchUpdate")
-	public String matchUpdate(long num,Model model)throws Exception{
+	public String boardUpdate(long num, Model model) throws Exception {
 		MatchVO matchVO = matchService.matchSelect(num);
-		model.addAttribute("matchVO",matchVO);
-		
+		model.addAttribute("matchVO", matchVO);
 		return "match/matchUpdate";
 	}
-	
 
+	@PostMapping("/match/matchUpdate")
+	public String matchUpdate(MatchVO matchVO,String day, String time) throws Exception {
+		
+		
+		String date = day + time;
+		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
+		Date dDate = (Date) dfm.parse(date);
+		matchVO.setMatchTime(dDate);
+		
+		int result = matchService.matchUpdate(matchVO);
+		String path = "";
+		result=0;
+		if (result > 0) {
+			path = "redirect:../";
+		} else {
+			path = "redirect:./matchSelect?num=" + matchVO.getNum();
+		}
+		return path;
+	}
+	
+	@GetMapping("/match/matchJoin")
+	public ModelAndView matchJoin(long num)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MatchVO matchVO= matchService.matchSelect(num);
+		
+		mv.addObject("matchVO",matchVO);
+		mv.setViewName("match/matchJoin");
+		
+		return mv;
+	}
+	
 
 }// end class

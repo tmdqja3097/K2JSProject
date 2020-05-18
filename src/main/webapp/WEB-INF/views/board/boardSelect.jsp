@@ -70,11 +70,8 @@
 				</c:forEach>
 			</div>
 			<div>
-				<a href="./${board}Update?num=${vo.num}" class="btn btn-default b1">Update</a>
-				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default">Delete</a>
-				<c:if test="${board ne 'notice'}">
-					<a href="./${board}Reply?num=${vo.num}" class="btn btn-default" style="margin-left: 92.5%">Reply</a>
-				</c:if>
+				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default" style="float: right;">Delete</a>
+				<a href="./${board}Update?num=${vo.num}" class="btn btn-default" style="float: right;">Update</a>
 			</div>
 
 			<h4>다른 키워드로 찾아보세요</h4>
