@@ -135,6 +135,8 @@
 			style="margin-left: 93%">글쓰기</a>
 	</div>
 
+	
+
 	<div class="modal fade" id="layerpop1">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 30px;">
@@ -150,9 +152,9 @@
 				<div class="modal-body" style="height: 150px;">
 					<div class="modal-body-filter">
 						<h4>지역을 선택하세요</h4>
-						<ul class="modal-list" style="list-style: none;">
+						<ul class="modal-list" style="list-style: none; padding-top: 10px;">
 							<li><input type="checkbox" id="ml1" class="filterCheck"
-								value="1"> <label id="mlL1" for="ml1" class="checkLabel">서울</label></li>
+								value="seoul"> <label id="mlL1" for="ml1" class="checkLabel">서울</label></li>
 							<li><input type="checkbox" id="ml2" class="filterCheck"
 								value="2"> <label id="mlL2" for="ml2" class="checkLabel">대구</label></li>
 							<li><input type="checkbox" id="ml3" class="filterCheck"
@@ -201,27 +203,27 @@
 						<ul class="modal-list1" style="list-style: none;">
 							<h4>성별</h4><br>
 							<li><input type="checkbox" id="gender_m" class="filterCheck"
-								value="1"> <label id="mlL1" for="gender_m" class="checkLabel">남성</label></li>
+								value="1"> <label id="mlL-1" for="gender_m" class="checkLabel">남성</label></li>
 							<li><input type="checkbox" id="gender_w" class="filterCheck"
-								value="2"> <label id="mlL2" for="gender_w" class="checkLabel">여성</label></li>
+								value="2"> <label id="mlL-2" for="gender_w" class="checkLabel">여성</label></li>
 							<li><input type="checkbox" id="gender_u" class="filterCheck"
-								value="0"> <label id="mlL3" for="gender_u" class="checkLabel" style="width: 90px;">남녀 모두</label></li>
+								value="0"> <label id="mlL-3" for="gender_u" class="checkLabel" style="width: 90px;">남녀 모두</label></li>
 						</ul>
 						<ul class="modal-list1">
 							<h4>개인/팀</h4><br>
 							<li><input type="checkbox" id="type_match" class="filterCheck"
-								value="match"> <label id="mlL4" for="type_match" class="checkLabel">개인</label></li>
+								value="match"> <label id="mlL-4" for="type_match" class="checkLabel">개인</label></li>
 							<li><input type="checkbox" id="type_cup" class="filterCheck"
-								value="cup"> <label id="mlL5" for="type_cup" class="checkLabel">팀</label></li>
+								value="cup"> <label id="mlL-5" for="type_cup" class="checkLabel">팀</label></li>
 						</ul>
 						<ul class="modal-list1">
 							<h4>레벨</h4><br>
 							<li><input type="checkbox" id="level_begin" class="filterCheck"
-								value="begin"> <label id="mlL6" for="level_begin" class="checkLabel">초급</label></li>
+								value="begin"> <label id="mlL-6" for="level_begin" class="checkLabel">초급</label></li>
 							<li><input type="checkbox" id="level_middle" class="filterCheck"
-								value="middle"> <label id="mlL7" for="level_middle" class="checkLabel">중급</label></li>
+								value="middle"> <label id="mlL-7" for="level_middle" class="checkLabel">중급</label></li>
 							<li><input type="checkbox" id="level_every" class="filterCheck"
-								value="every"> <label id="mlL8" for="level_every" class="checkLabel" style="width: 70px;">누구나</label></li>
+								value="every"> <label id="mlL-8" for="level_every" class="checkLabel" style="width: 70px;">누구나</label></li>
 						</ul>
 					</div>
 				</div>
@@ -311,12 +313,12 @@
 			for (var i = 1; i < 10; i++) {
 				$("#mlL" + i).toggleClass("unchecked");
 				$("#mlL" + i).click(function() {
-					var text = $(".btn-all-area").text();
+					var text1 = $(".btn-all-area").text();
 					$(this).toggleClass("checked");
 
 					if (!$("#ml" + i).checked) {
 
-						if (text == "모든 지역") {
+						if (text1 == "모든 지역") {
 							$(".btn-all-area").text("선택 지역");
 						} else {
 							$(".btn-all-area").text("모든 지역");
@@ -325,26 +327,49 @@
 					} else {
 						$(".btn-all-area").text("모든 지역");
 					}
-
+						
+				});
+				
+				$("#mlL-"+i).toggleClass("uncheck");
+				$("#mlL-"+i).click(function () {
+					var text2 = $(".btn-all-match").text();
+					$(this).toggleClass("check");
 				});
 
 			}
 			
-			
-			for (var i = 0; i < array.length; i++) {
-				
-			}
 
 		});
-
+	   
+		
+		
+		
+		
+		var sn = "<c:out value='${matchVO.stadiumName}'/>";
+		var num = "<c:out value='${vo.num}'/>";
+		var sa = "<c:out value='${stadiumVO.address}'/>";
 		var v1 = $("#ml1").val();
 		$(".modal-footer").click(function() {
+			var numCount = 1;
 			if ($("#ml1").prop("checked")) {
-				//var vv1 = Number(v1); 
-				console.log(v1);
-				$.get("./match/matchSelect?address=" + v1, function() {
-					console.log(v1);
-				});
+				numCount++;
+				console.log(num);
+				console.log(sa);
+				for (var i = 1; i < numCount; i++) {
+					$.get("./match/matchSelect?num="+i+"&address="+v1, function() {
+						console.log(v1);
+						if(v1=="seoul"){
+							$("#getMatchList").addClass("addressHidden");							
+						}
+						
+					});
+				}
+			}else{
+				for (var i = 1; i < 3; i++) {
+					$.get("./match/matchSelect?num="+i+"&address="+v1, function() {
+						$("#getMatchList").addClass("addressView");
+					});
+				}
 			}
 		});
 	</script>

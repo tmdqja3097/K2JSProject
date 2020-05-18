@@ -14,7 +14,6 @@ public class MatchDAO {
 	private SqlSession session;
 	private final String NAMESPACE = "com.k2js.p1.match.MatchDAO.";
 	
-	
 	public int matchDelete(long num)throws Exception{
 		return session.delete(NAMESPACE+"matchDelete",num);
 	}

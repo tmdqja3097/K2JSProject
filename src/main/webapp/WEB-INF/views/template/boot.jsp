@@ -175,5 +175,24 @@ body {
 	background-color: #EEEEEE;
 	color: #999999;
 }
+
+.uncheck {
+	background-color: #EEEEEE;
+	color: #999999; 
+}
+
+.check {
+	background-color: #FFC645;
+	color: #2A2A2A;
+}
+
+/* addressHidden */
+.addressHidden {
+	display: none;
+}
+      
+.addressView {    
+	display: block;
+}
 </style>
 

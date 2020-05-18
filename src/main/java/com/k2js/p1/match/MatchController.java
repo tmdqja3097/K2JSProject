@@ -28,13 +28,28 @@ public class MatchController {
 	private MatchService matchService;
 	@Autowired
 	private StadiumService stadiumService;
-
+	
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
 
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
+		System.out.println(matchVOs.toString());
+		System.out.println(matchVOs.get(0).getNum());
 		int i = matchVOs.size();
-
+		
+		System.out.println(i);
+		System.out.println("--");
+		for (int j = 0; j < i; j++) {
+			System.out.println(j);
+			String stadiumName = matchVOs.get(j).getStadiumName();
+			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
+		 	String ga = stadiumVO.getAddress();
+			model.addAttribute("ga", ga);
+			System.out.println(stadiumVO.getAddress());
+		}
+		
+		
+		
 		model.addAttribute("matchs", matchVOs);
 		model.addAttribute("i", i);
 

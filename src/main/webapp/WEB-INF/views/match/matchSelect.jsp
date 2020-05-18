@@ -243,6 +243,25 @@ element.style {
 			});
 
 		});
+		
+		
+		/* var time = "<c:out value='${fullTime}'/>";
+		var sa = "<c:out value='${stadiumVO.address}'/>";
+		var year = time.substring(0,4);
+		var month = time.substring(6,7);
+		var day = time.substring(9,11);
+		var hm = time.substring(17,22);
+		console.log(time);  
+		console.log(year);	
+		console.log(month); 
+		console.log(day);  
+		console.log(hm);   
+		var total = year+"/"+month+"/"+day+" "+hm;
+		$.get("../getMatch?matchTime="+day+"&address="+sa, function() {
+			console.log(sa);
+		}); */
+		
+		
 	</script>
 
 </body>

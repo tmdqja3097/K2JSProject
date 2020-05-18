@@ -145,9 +145,57 @@ p, li, h4{
 	color: white;
 }
 	
+.match_filter{  
+	height: 50px;    
+}
 
+.match_filter_sub{ 
+	height: 50px; 
+}
+
+.match_filter_sub > li > a{   
+	border: 1px solid blue;  
+	width: 7%;
+	height: 30px;    
+	display: inline-block;
+	margin-top: 10px;
+	padding-top: 5px;
+	text-align: center;
+}
   	
   </style>
+	<div class="match_filter">
+		<ul class="match_filter_sub">
+			<li>
+				<h4>${ga}</h4> 
+				<a href="#" class="match_address1"><input id="mfa1" type="checkbox" value="seoul" style="opacity: 0;">서울</a>
+			</li>  
+			<li>     
+				<a href="#" class="match_address2"><input id="mfa1" type="checkbox" value="daegu" style="opacity: 0;">대구</a>
+			</li>	
+			<li>
+				<a href="#" class="match_address3"><input id="mfa1" type="checkbox" value="kye" style="opacity: 0;">경기</a>
+			</li>
+			<li>
+				<a href="#">광주</a>
+			</li>
+			<li>
+				<a href="#">대전</a>
+			</li>
+			<li>
+				<a href="#">인천</a>
+			</li>
+			<li>
+				<a href="#">부산</a>
+			</li>
+			<li>
+				<a href="#">울산</a>
+			</li>
+			<li>
+				<a href="#">충북</a>
+			</li>	
+		</ul>
+	</div>
 
 	<span>${i}개의매치</span>
 	<div class="match-wrapper" style="display: inline;">	
@@ -164,9 +212,9 @@ p, li, h4{
 	
 	
 	<div id="search_result"><c:if test="${i eq 0}"><p style="text-align: center;">경기가 없습니다.</p></c:if></div>
-		<div style="position: relative; line-height:100%;">
+		<div id="getMatchList" style="position: relative; line-height:100%;">
 		<c:forEach items="${matchs}"  var="vo">
-			<li><a href="./match/matchSelect?num=${vo.num}">
+			<li id="gml"><a href="./match/matchSelect?num=${vo.num}">
 			<div class="div_time" style="position:absolute;"><p style="line-height: 4">${vo.time}</p></div> 
 			<div class="div_title" style="position: absolute;"><h4 style="line-height: 2.7">${vo.title}</h4><div class="div_gender" id="p"><c:if test="${vo.gender eq 1}">남성</c:if><c:if test="${vo.gender eq 2}">여성</c:if> </div></div>
 			<c:if test="${vo.count lt 12}">
@@ -183,4 +231,28 @@ p, li, h4{
 		</div>
 
 			
+<script type="text/javascript">
 
+
+var v1 = $("#mfa1").val();
+var i = "<c:out value='${i}'/>";  
+var va = "<c:out value='${ga}'/>";
+      
+console.log(i);     
+$(".match_address1").on("click" ,function() {
+	for (var j = 1; j <= i; j++) {         
+		$.get("./match/matchSelect?num="+j+"&address="+v1, function() {
+			console.log(j);       
+			console.log(v1);
+			console.log(va);	
+			if(va==v1){ 
+				$("#gml").show();
+			}else {    
+				$("#gml").hide();      
+			}    
+		});  
+	}
+	
+});
+
+</script>
