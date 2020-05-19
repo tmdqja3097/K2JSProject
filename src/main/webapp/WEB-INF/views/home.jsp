@@ -128,6 +128,9 @@
 
 
 	<div>
+		<div class="match_filter">
+		</div>
+		
 		<ul id="dDayMatch" class="myUL">
 		</ul>
 
@@ -135,6 +138,8 @@
 			style="margin-left: 93%">글쓰기</a>
 	</div>
 
+
+		
 	
 
 	<div class="modal fade" id="layerpop1">
@@ -149,18 +154,19 @@
 					<h4 class="modal-title">경기장 또는 지역</h4>
 				</div>
 				<!-- body -->
+				
 				<div class="modal-body" style="height: 150px;">
 					<div class="modal-body-filter">
 						<h4>지역을 선택하세요</h4>
 						<ul class="modal-list" style="list-style: none; padding-top: 10px;">
 							<li><input type="checkbox" id="ml1" class="filterCheck"
-								value="seoul"> <label id="mlL1" for="ml1" class="checkLabel">서울</label></li>
+								name="filterAddr" value="seoul"> <label id="mlL1" for="ml1" class="checkLabel">서울</label></li>
 							<li><input type="checkbox" id="ml2" class="filterCheck"
-								value="2"> <label id="mlL2" for="ml2" class="checkLabel">대구</label></li>
+								name="filterAddr" value="daegu"> <label id="mlL2" for="ml2" class="checkLabel">대구</label></li>
 							<li><input type="checkbox" id="ml3" class="filterCheck"
-								value="3"> <label id="mlL3" for="ml3" class="checkLabel">경기</label></li>
+								name="filterAddr" value="gyeonggi"> <label id="mlL3" for="ml3" class="checkLabel">경기</label></li>
 							<li><input type="checkbox" id="ml4" class="filterCheck"
-								value="4"> <label id="mlL4" for="ml4" class="checkLabel">광주</label></li>
+								name="filterAddr" value="gwangju"> <label id="mlL4" for="ml4" class="checkLabel">광주</label></li>
 							<li><input type="checkbox" id="ml5" class="filterCheck"
 								value="5"> <label id="mlL5" for="ml5" class="checkLabel">대전</label></li>
 							<li><input type="checkbox" id="ml6" class="filterCheck"
@@ -172,15 +178,16 @@
 							<li><input type="checkbox" id="ml9" class="filterCheck"
 								value="9"> <label id="mlL9" for="ml9" class="checkLabel">충북</label></li>
 						</ul>
+						
 					</div>
 				</div>
 				<!-- Footer -->
 				<div class="modal-footer"
 					style="background-color: #ffc645; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; text-align: center; cursor: pointer;">
 					<h5>적용하기</h5>
-
+					
 				</div>
-
+				
 			</div>
 		</div>
 	</div>
@@ -248,7 +255,13 @@
 
 		getList(startDay);
 		getMatch(selectDay);
-
+		
+		function getFilter(startDay) {   
+			$.get("getFilter?day="+startDay, function(result) {
+				$(".match_filter").append(result);
+			});
+		}
+		
 		// 화살표 누르면 시작 날짜 변환
 		$("#next").click(function() {
 			$("#day-list").empty();
@@ -338,14 +351,68 @@
 
 			}
 			
+			
 
 		});
 	   
+		    
+		$(".modal-footer").click(function() {
+			
+			var addressArray = [];
+			
+			$("input[name='filterAddr']:checked").each(function() {
+				addressArray.push($(this).val());
+			});
+			
+			var objParams = {"addressList":addressArray};
+			
+			$.ajax({
+				url:"getMatch",
+				dataType:"json",	
+				type:"POST",
+				data: { addressList:objParams, day : selectDay},
+				success:function(data){
+					alert(data);
+				}
+			});
+			
+		}) ;
+		
+		
+		
+		var v1 = $("#ml1").val();   
+		
+		
+		
+		/* $("#mlL1").click(function() {
+			alert("g");
+			
+			$.post("getMatch", {filterAd:v1}, function() {
+				
+			});
+			
+			function ajax() {
+				$.ajax({
+					url:"/getMatch",
+					data:"address="+v1,
+					type:"POST",
+					success:function(data){
+						alert("success");
+					},
+					error:function(){
+						alert("fail");
+					}
+				});
+			}
+			
+		}); */
 		
 		
 		
 		
-		var sn = "<c:out value='${matchVO.stadiumName}'/>";
+		
+		
+		/* var sn = "<c:out value='${matchVO.stadiumName}'/>";
 		var num = "<c:out value='${vo.num}'/>";
 		var sa = "<c:out value='${stadiumVO.address}'/>";
 		var v1 = $("#ml1").val();
@@ -371,7 +438,7 @@
 					});
 				}
 			}
-		});
+		}); */
 	</script>
 </body>
 </html>

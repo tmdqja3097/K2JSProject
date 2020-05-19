@@ -145,7 +145,7 @@ p, li, h4{
 	color: white;
 }
 	
-.match_filter{  
+/* .match_filter{  
 	height: 50px;    
 }
 
@@ -161,41 +161,10 @@ p, li, h4{
 	margin-top: 10px;
 	padding-top: 5px;
 	text-align: center;
-}
+} */
   	
   </style>
-	<div class="match_filter">
-		<ul class="match_filter_sub">
-			<li>
-				<h4>${ga}</h4> 
-				<a href="#" class="match_address1"><input id="mfa1" type="checkbox" value="seoul" style="opacity: 0;">서울</a>
-			</li>  
-			<li>     
-				<a href="#" class="match_address2"><input id="mfa1" type="checkbox" value="daegu" style="opacity: 0;">대구</a>
-			</li>	
-			<li>
-				<a href="#" class="match_address3"><input id="mfa1" type="checkbox" value="kye" style="opacity: 0;">경기</a>
-			</li>
-			<li>
-				<a href="#">광주</a>
-			</li>
-			<li>
-				<a href="#">대전</a>
-			</li>
-			<li>
-				<a href="#">인천</a>
-			</li>
-			<li>
-				<a href="#">부산</a>
-			</li>
-			<li>
-				<a href="#">울산</a>
-			</li>
-			<li>
-				<a href="#">충북</a>
-			</li>	
-		</ul>
-	</div>
+	
 
 	<span>${i}개의매치</span>
 	<div class="match-wrapper" style="display: inline;">	
@@ -232,27 +201,9 @@ p, li, h4{
 
 			
 <script type="text/javascript">
+  
 
 
-var v1 = $("#mfa1").val();
-var i = "<c:out value='${i}'/>";  
-var va = "<c:out value='${ga}'/>";
-      
-console.log(i);     
-$(".match_address1").on("click" ,function() {
-	for (var j = 1; j <= i; j++) {         
-		$.get("./match/matchSelect?num="+j+"&address="+v1, function() {
-			console.log(j);       
-			console.log(v1);
-			console.log(va);	
-			if(va==v1){ 
-				$("#gml").show();
-			}else {    
-				$("#gml").hide();      
-			}    
-		});  
-	}
 	
-});
 
 </script>

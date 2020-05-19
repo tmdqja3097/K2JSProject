@@ -2,9 +2,12 @@ package com.k2js.p1.match;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,19 +38,26 @@ public class MatchController {
 	public void matchList(int matchTime, Model model) throws Exception {
 
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
-		System.out.println(matchVOs.toString());
-		System.out.println(matchVOs.get(0).getNum());
+		//System.out.println(matchVOs.toString());
+		//System.out.println(matchVOs.get(0).getNum());
 		int i = matchVOs.size();
 		
-		System.out.println(i);
-		System.out.println("--");
+		//System.out.println(i);
+		//System.out.println("--");
+		
 		for (int j = 0; j < i; j++) {
-			System.out.println(j);
+			//System.out.println(j);
 			String stadiumName = matchVOs.get(j).getStadiumName();
 			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-		 	String ga = stadiumVO.getAddress();
-			model.addAttribute("ga", ga);
-			System.out.println(stadiumVO.getAddress());
+			
+			String [] s = new String[i];
+			s[j] = stadiumVO.getAddress();
+			
+			
+		 	//System.out.println(s[j]);
+	
+			model.addAttribute("s", s[j]);
+			//System.out.println(stadiumVO.getAddress());
 		}
 		
 		
@@ -54,6 +66,29 @@ public class MatchController {
 		model.addAttribute("i", i);
 
 	}
+	
+	
+	@ResponseBody
+	@PostMapping("getMatch")
+	public void matchList1(@RequestParam(value="addressList[]") List<String> addressList, int day, Model model) throws Exception{
+		System.out.println(day);
+		System.out.println(addressList);
+		List<MatchVO> matchVOs = matchService.matchList(day);
+		int ms = matchVOs.size();
+		List<MatchVO> matchVOs1 = new ArrayList<MatchVO>();
+		
+		for(int i=0; i<ms; i++) {
+			MatchVO matchVO = new MatchVO();
+			String stadiumName = matchVOs.get(0).getStadiumName();
+			matchVO=matchService.matchAddrList(day, stadiumName);
+			matchVOs1.add(matchVO);
+		}
+		model.addAttribute("matchs",matchVOs1);
+		
+		
+	}
+	
+	
 
 	@GetMapping("/match/matchSelect")
 	public ModelAndView matchSelect(long num) throws Exception {

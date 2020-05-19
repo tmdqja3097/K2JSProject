@@ -33,5 +33,9 @@ public class MatchDAO {
 		return session.selectOne(NAMESPACE+"matchNum");
 	}
 	
+	public MatchVO matchAddrList(MatchVO matchVO) throws Exception{
+		return session.selectOne(NAMESPACE+"matchAddrList", matchVO);
+	}
+	
 	
 }

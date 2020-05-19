@@ -34,7 +34,9 @@
 </delete>
 
 
-
+<select id="matchAddrList" resultType="MatchVO" parameterType="MatchVO">
+	select * from match where to_char(matchTime,'dd') = #{day} and stadiumName = #{stadiumName}
+</select>
 
 
 
