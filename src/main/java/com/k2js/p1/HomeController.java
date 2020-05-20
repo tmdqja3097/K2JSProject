@@ -29,5 +29,9 @@ public class HomeController {
 		
 		return "home";
 	}
+	@RequestMapping("popUp")
+	public String popUp() throws Exception {
+		return "popUp";
+	}
 	
 }
