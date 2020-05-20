@@ -10,6 +10,7 @@
 	function closeNav() {
 		document.getElementById("mySidenav").style.width = "0";
 	}
+	
 </script>
 
 <style>
@@ -126,7 +127,7 @@ footer {
 		</ul>
 	</div>
 
-	<c:if test="${ empty member}">
+	<c:if test="${ empty member.email}">
 		<ul class="nav navbar-nav navbar-right ">
 			<li><a
 				href="${pageContext.request.contextPath}/member/MemberNew"><span
@@ -136,7 +137,7 @@ footer {
 					class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
 		</ul>
 	</c:if>
-	<c:if test="${ not empty member}">
+	<c:if test="${ not empty member.email}">
 		<ul class="nav navbar-nav navbar-right ">
 			<li><a
 				href="${pageContext.request.contextPath}/member/MemberPage"><span
@@ -153,6 +154,8 @@ footer {
 		<a href="${pageContext.request.contextPath}/qna/qnaList">자주 묻는 질문</a>
 	</div>
 </nav>
+
+
 
 
 

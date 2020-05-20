@@ -5,121 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>K2JS 회원가입</title>
+<title>카카오 로그인 추가 정보입력</title>
 <c:import url="../template/boot.jsp" />
-<style type="text/css">
-body {
-	padding: 0 38%;
-	box-sizing: border-box;
-}
-
-.container {
-	width: 420px;
-	margin-top: 10px;
-}
-
-.input_box {
-	border-radius: 10px;
-	width: 420px;
-	height: 50px;
-}
-
-.input_box:focus {
-	border-color: #66b3ff;
-	outline: none;
-}
-
-.input_box_sub {
-	width: 140px;
-	height: 50px;
-	border-radius: 10px;
-	vertical-align: middle;
-}
-
-.input_box_sub:focus {
-	border-color: #66b3ff;
-	outline: none;
-}
-
-#logo {
-	position: relative;
-	box-sizing: border-box;
-	width: 240px;
-	height: 60px;
-	margin-top: 20px;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#logo>a>img {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	text-align: center;
-}
-</style>
 </head>
 <body>
-	<div id="logo">
-		<a href="${pageContext.request.contextPath}"><img
-			src="../resources/images/k2.jpg"></a>
-	</div>
+	<c:import url="../template/header.jsp" />
 	<div class="container">
-		<form action="./MemberNew" method="post">
-			<div class="row">
-				<label>아이디</label><br> <input class="input_box" type="text"
-					name="id" maxlength="15" autofocus required id="id">
-			</div>
-
-			<div class="row">
-				<label>비밀번호</label><br> <input class="input_box"
-					type="password" name="pw" id="pw" required id="password1"
-					maxlength="16">
-			</div>
-			<div class="row">
-				<label>비밀번호 확인</label><br> <input class="input_box"
-					type="password" id="pw1" required id="password2">
-			</div>
-			<div class="alert alert-success row input_box" id="success">비밀번호가
-				일치합니다</div>
-			<div class="alert alert-danger row input_box" id="fail">비밀번호가
-				일치하지 않습니다</div>
-			<div class="alert alert-danger row input_box" id="fail_length">비밀번호는
-				최소 6 ~ 최대 16 글자로 입력해주세요.</div>
-			<div class="row">
-				<label>이메일</label><br> <input class="input_box" type="email"
-					name="email" maxlength="150" autofocus required id="eamil"
-					autofocus>
-			</div>
-			<div class="row">
-				<label>이름</label><br> <input class="input_box" type="text"
-					name="name" required id="name">
-			</div>
-			<div class="row">
-				<label>성별</label> <br> <select class="input_box" name="gender"
-					id="gender">
-					<option value="1">남성</option>
-
-					<option value="2">여성</option>
-
-				</select>
-			</div>
-			<div class="row">
-				<label>휴대폰 번호</label> <br> <input class="input_box" type="text"
-					name="phone" required id="phone" placeholder=" 000-0000-0000 양식에 맞춰서 입력">
-			</div>
-
-			<br>
-			<p style="color: #21A064">
-				매치 참여시 본인 확인 및 참여 안내톡을 보내드립니다.<br>이름과 휴대폰 번호를 꼭 바르게 적어주세요!
-			</p>
-			<br>
-
+		<form action="./MemberNewKakao" method="post">
 			<fieldset>
 				<div class="row">
-					<label>생년월일</label><br> <select class="input_box_sub"
-						name="birth_year" required id="birth_year"><option
-							value="1930">1930</option>
+					<label>회원 이메일</label><input type="email" name="email"
+						maxlength="150" required id="eamil" autofocus>
+				</div>
+				<br>
+				
+				<div class="row">
+					<label>휴대폰 번호</label> <input type="text" name="phone" required
+						id="phone">
+				</div>
+
+				<br>
+				<p style="color: #21A064">
+					매치 참여시 본인 확인 및 참여 안내톡을 보내드립니다.<br>이름과 휴대폰 번호를 꼭 바르게 적어주세요!
+				</p>
+				<br>
+
+				<div class="row">
+
+					<label>생년월일</label> <select name="birth_year" required
+						id="birth_year"><option value="1930">1930</option>
 						<option value="1931">1931</option>
 						<option value="1932">1932</option>
 						<option value="1933">1933</option>
@@ -209,19 +123,19 @@ body {
 						<option value="2017">2017</option>
 						<option value="2018">2018</option>
 						<option value="2019">2019</option>
-					</select><select class="input_box_sub" name="birth_month" required
-						id="birth_month"><option value="1" selected="selected">1월</option>
-						<option value="2">2월</option>
-						<option value="3">3월</option>
-						<option value="4">4월</option>
-						<option value="5">5월</option>
-						<option value="6">6월</option>
-						<option value="7">7월</option>
-						<option value="8">8월</option>
-						<option value="9">9월</option>
-						<option value="10">10월</option>
-						<option value="11">11월</option>
-						<option value="12">12월</option></select><select class="input_box_sub"
+					</select> <span> 년 </span> <select name="birth_month" required
+						id="birth_month"><option value="1" selected="selected">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option></select> <span>월</span><select
 						name="birth_day" required id="birth_day"><option
 							value="1" selected="selected">1</option>
 						<option value="2">2</option>
@@ -253,7 +167,7 @@ body {
 						<option value="28">28</option>
 						<option value="29">29</option>
 						<option value="30">30</option>
-						<option value="31">31</option></select><br>
+						<option value="31">31</option></select><span>일</span> <br>
 				</div>
 			</fieldset>
 			<div class="row">
@@ -265,52 +179,12 @@ body {
 			</div>
 			<br>
 			<div class="row">
-				<input type="submit" class="btn btn-primary submit input_box" value="회원가입" id="submit">
+				<input type="submit" class="btn submit" value="회원가입" id="submit">
 			</div>
 		</form>
-
-		<br>
-		<div class="row" style="text-align : center;">
-			<span><a href="./MemberLogin">이미 아이디가 있다면 여기에서 로그인하세요</a></span>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-		</div>
 	</div>
-	<div id="searchId"></div>
-	<div id="searchPassword"></div>
 
 	<script type="text/javascript">
-		$("#searchId").hide();
-		$("#searchPassword").hide();
-		$(function() {
-			$("#success").hide();
-			$("#fail").hide();
-			$("#fail_length").hide();
-			$("#pw1").keyup(function() {
-				var pw = $("#pw").val();
-				var pw1 = $("#pw1").val();
-				if (pw.length > 5) {
-					if (pw == pw1) {
-						$("#success").show();
-						$("#fail").hide();
-						$("#fail_length").hide();
-						$("#submit").removeAttr("disabled")
-					} else {
-						$("#success").hide();
-						$("#fail").show();
-						$("#fail_length").hide();
-						$("#submit").prop("disabled", "disabled");
-					}
-				} else {
-					$("#submit").prop("disabled", "disabled");
-					$("#fail_length").show();
-
-				}
-			});
-		});
 	</script>
 </body>
 </html>
