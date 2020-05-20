@@ -23,7 +23,6 @@ public class MemberDAO {
 	}
 	
 	public int memberKakaoNew(MemberVO memberVO) throws Exception {
-		System.out.println("kakaoNew");
 		return sqlSession.insert(NAMESPACE+"memberKakaoNew", memberVO);
 	}
 	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {
@@ -34,5 +33,14 @@ public class MemberDAO {
 	}
 	public int memberKakaoDelete(MemberVO memberVO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"memberKakaoDelete", memberVO);
+	}
+	public int memberFindPwReset(MemberVO memberVO) throws Exception {
+		return sqlSession.update(NAMESPACE + "memberFindPwReset", memberVO);
+	}
+	public MemberVO memberFindPw(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "memberFindPw", memberVO);
+	}
+	public MemberVO memberFindId(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "memberFindId", memberVO);
 	}
 }

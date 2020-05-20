@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>결제 취소</title>
 </head>
 <body>
 <h1>결제가 취소되었습니다.</h1>

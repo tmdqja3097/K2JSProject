@@ -57,17 +57,14 @@ body {
 }
 
 #birth_year {
-	width: 15%;
 	display: inline-block;
 }
 
 #birth_month {
-	width: 15%;
 	display: inline-block;
 }
 
 #birth_day {
-	width: 15%;
 	display: inline-block;
 }
 

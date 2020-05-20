@@ -17,8 +17,15 @@ public class MemberVO {
 	private Date birth;
 	private int cash;
 	private int age;
-// kakao 유저 고유 토큰값	
+	private int loginmt;
 	
+	
+	public int getLoginmt() {
+		return loginmt;
+	}
+	public void setLoginmt(int loginmt) {
+		this.loginmt = loginmt;
+	}
 	public int getAge() {
 		return age;
 	}

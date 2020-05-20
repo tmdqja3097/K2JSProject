@@ -19,10 +19,8 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 		MemberVO memberVO = (MemberVO)request.getSession().getAttribute("member");
 		if (memberVO != null) {
 			result = true;
-			System.out.println("로그인중");
 		} else {
 			result = false;
-			System.out.println("비로그인");
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/member/MemberLogin.jsp");
 			view.forward(request, response);
 		}

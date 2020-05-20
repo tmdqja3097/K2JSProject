@@ -6,4 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="chargeSuccess" parameterType="memberVO">
 		UPDATE KAKAOMEMBER SET CASH = #{cash} WHERE ID = #{id}
 	</update>
+	<update id="chargeSuccess2" parameterType="memberVO">
+		UPDATE MEMBER SET CASH = #{cash} WHERE ID = #{id}
+	</update>
+	<insert id="chargeResult" parameterType="chargeVO">
+		INSERT INTO CHARGE VALUES (CHARGENUM_SEQ.NEXTVAL, #{userId},#{amount},#{chargeMethod},SYSDATE)
+	</insert>
+	<select id="chargeList" parameterType="memberVO" resultType="chargeVO">
+		SELECT * FROM CHARGE WHERE ID = #{id}
+	</select>
 </mapper>

@@ -12,6 +12,7 @@
 <body>
 	<c:import url="../template/header.jsp" />
 	<div class="container">
+		<span id="remainCash" hidden="hidden">${remainCash}</span>
 		<div class="row">캐시 잔액 : ${member.cash}</div>
 		<div class="row">
 			충전 금액 : <select id="money">
@@ -37,25 +38,33 @@
 	</div>
 
 	<script type="text/javascript">
+		var remainCash = $("#remainCash").text();
 		var money = 0;
 		money = parseInt($("#money").val());
-		$("#money")
-				.change(
-						function() {
-							money = $("#money").val();
+		$(function() {
+			if (remainCash > 0) {
+				money = $("#money").val("직접입력");
+				$(this).prop("selected", "selected");
+				change(remainCash);
+			}
+		})
+		function change(remainCash) {
+			$("#self")
+					.append(
+							'<input type="text" placeholder="금액입력" maxlength="6" id="selfMoney" value="'+remainCash+'">');
+		}
+		$("#money").change(function() {
+			money = $("#money").val();
 
-							if (money == '직접입력') {
-								$("#self")
-										.append(
-												'<input type="text" placeholder="금액입력" id="selfMoney">');
-							} else {
-								$("#self").empty();
-							}
-						})
+			if (money == '직접입력') {
+				change(remainCash);
+			} else {
+				$("#self").empty();
+			}
+		})
 		$("#self").on("blur", "#selfMoney", function() {
 			money = $("#selfMoney").val();
 		})
-
 		/* 금액 선택 및 직접입력   */
 		$("#CaCaoPay").click(function() {
 			$("#CaCaoPay").addClass("active");
@@ -89,14 +98,12 @@
 		}
 
 		/* 결제 방법 선택 */
-		$("#howCharge").on(
-				"click",
-				"#kakaobtn",
-				function() {
-			/* 		open("./KakaoPay?money=" + money, "_blank",
-							"width=500, height=600", true); */
-					location.href="./KakaoPay?money=" + money;		
-				});
+		$("#howCharge").on("click", "#kakaobtn", function() {
+			/* 			 		open("./KakaoPay?money=" + money, "_blank",
+			 "width=500, height=600", true);  */
+			location.href = "./KakaoPay?money=" + money;
+
+		});
 
 		/* 카카오페이 결제 */
 	</script>

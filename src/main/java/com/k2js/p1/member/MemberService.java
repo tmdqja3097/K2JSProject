@@ -1,12 +1,13 @@
 package com.k2js.p1.member;
 
+import java.util.Calendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class MemberService {
-
 
 	@Autowired
 	private MemberDAO memberDAO;
@@ -24,24 +25,32 @@ public class MemberService {
 	}
 
 	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {
-		if (memberVO.getPhone() == null) {
-			memberVO.setPhone("000-0000-0000");
-		}
-		System.out.println("memberKakaoLogin");
-		MemberVO mVO = memberDAO.memberKakaoLogin(memberVO);
-		
-		if (mVO == null) {
-			int result = memberDAO.memberKakaoNew(memberVO);
-
-			if (result > 0) {
-				mVO = memberDAO.memberKakaoLogin(memberVO);
-			}
-		}
-
-		return mVO;
+		return memberDAO.memberKakaoLogin(memberVO);
 	}
+
+	public int memberKakaoNew(MemberVO memberVO) throws Exception {
+		return memberDAO.memberKakaoNew(memberVO);
+	}
+
 	public int memberDelete(MemberVO memberVO) throws Exception {
-		return memberDAO.memberDelete(memberVO);
+		if (memberVO.getLoginmt() == 1) {
+			return memberDAO.memberKakaoDelete(memberVO);
+		} else {
+			return memberDAO.memberDelete(memberVO);
+		}
+	}
+	public MemberVO memberFindId(MemberVO memberVO) throws Exception {
+		return memberDAO.memberFindId(memberVO);
+	}
+	public MemberVO memberFindPw(MemberVO memberVO) throws Exception {
+		memberVO = memberDAO.memberFindPw(memberVO);
+		if(memberVO != null) {
+			Calendar cal = Calendar.getInstance();
+			String temPw = ""+cal.getTimeInMillis();
+			memberVO.setPw(temPw);
+			memberDAO.memberFindPwReset(memberVO);
+		}
+		return memberVO;
 	}
 
 }

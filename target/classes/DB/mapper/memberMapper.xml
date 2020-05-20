@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<insert id="memberNew" parameterType="memberVO">
 		INSERT INTO MEMBER VALUES
-		(#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0)
+		(#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0, 0)
 	</insert>
 	<update id="memberUpdate" parameterType="memberVO">
 		UPDATE MEMBER SET
@@ -19,7 +19,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<insert id="memberKakaoNew" parameterType="memberVO">
 		INSERT INTO
-		KAKAOMEMBER VALUES (#{id}, #{name},#{phone}, #{birth}, #{gender}, 0)
+		KAKAOMEMBER VALUES (#{id}, #{name},#{phone},#{email}, #{birth},
+		#{gender}, 0, 1)
 	</insert>
 
 	<select id="memberKakaoLogin" parameterType="memberVO"
@@ -27,9 +28,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM KAKAOMEMBER WHERE ID = #{id}
 	</select>
 	<delete id="memberDelete" parameterType="memberVO">
-		DELETE MEMBER WHERE ID = #{id}
+		DELETE MEMBER WHERE ID =
+		#{id}
 	</delete>
 	<delete id="memberKakaoDelete" parameterType="memberVO">
-		DELETE KAKAOMEMBER WHERE ID =#{id}
+		DELETE KAKAOMEMBER
+		WHERE ID =#{id}
 	</delete>
+	<select id="memberFindId" parameterType="memberVO"
+		resultType="memberVO">
+		SELECT ID FROM MEMBER WHERE EMAIL = #{email} AND
+		NAME=#{name}
+	</select>
+	<select id="memberFindPw" parameterType="memberVO"
+		resultType="memberVO">
+		SELECT * FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND
+		PHONE = #{phone}
+	</select>
+	<update id="memberFindPwReset" parameterType="memberVO">
+		UPDATE MEMBER SET PW=#{pw} WHERE ID=#{id}
+	</update>
 </mapper>
