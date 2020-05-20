@@ -294,7 +294,7 @@ form.orderForm fieldset h3 {
 
 	<script type="text/javascript">
 		var member_cash = $("#memberCash").text();
-		var remainCash = 0;
+		var remainCash = member_cash;
 		getFirstRemainCash();
 		$("#count").change(function() {
 			$("#result_pay").empty();

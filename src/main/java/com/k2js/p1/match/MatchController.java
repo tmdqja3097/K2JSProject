@@ -131,7 +131,7 @@ public class MatchController {
 	}
 	
 	@PostMapping("/match/matchJoin")
-	public ModelAndView matchJoin(MatchVO matchVO)throws Exception{
+	public ModelAndView matchJoin(MatchVO matchVO, int count)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		MatchVO match = matchService.matchSelect(matchVO.getNum());
 		mv.addObject("matchVO",match);
