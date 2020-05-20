@@ -1,5 +1,9 @@
 package com.k2js.p1.stadium;
 
+import java.util.List;
+
+import com.k2js.p1.board.file.BoardFileVO;
+
 public class StadiumVO {
 	private String name;
 	private String address;
@@ -12,6 +16,8 @@ public class StadiumVO {
 	private int shoes;
 	private int cloth;
 	private String info;
+
+	
 	public String getName() {
 		return name;
 	}

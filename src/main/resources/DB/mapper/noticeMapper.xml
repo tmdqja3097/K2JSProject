@@ -21,7 +21,6 @@
 			<result column="oriName" property="oriName"/>
 			<result column="board" property="board"/>	
 		</collection>
-	
 	</resultMap>
 
 	<select id="boardList" parameterType="Pager" resultType="NoticeVO">

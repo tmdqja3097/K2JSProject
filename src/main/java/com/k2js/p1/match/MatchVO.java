@@ -1,6 +1,10 @@
 package com.k2js.p1.match;
 
 import java.util.Date;
+import java.util.List;
+
+import com.k2js.p1.board.file.BoardFileVO;
+import com.k2js.p1.stadium.file.StadiumFileVO;
 
 public class MatchVO {
 
@@ -15,6 +19,15 @@ public class MatchVO {
 	private long count;
 	private int gender;
 	private long capacity;
+	private List<StadiumFileVO> stadiumFileVOs;
+	
+	public List<StadiumFileVO> getStadiumFileVOs() {
+		return stadiumFileVOs;
+	}
+	public void setStadiumFileVOs(List<StadiumFileVO> stadiumFileVOs) {
+		this.stadiumFileVOs = stadiumFileVOs;
+	}
+	
 	
 	public String getStadiumName() {
 		return stadiumName;

@@ -16,7 +16,7 @@
 </head>
 <body> 
 <c:import url="../template/header.jsp"></c:import>
-	<form action="./matchWrite" id="frm" method="post">
+	<form action="./matchWrite" id="frm" method="post" enctype="multipart/form-data">
 	
 		
 		<div class="form-group">
@@ -49,8 +49,12 @@
 				<textarea rows="20" cols="" class="form-control" id="contents"
 					name="contents"></textarea>
 		</div>
-		
-		<input type="button" id="btn" class="btn btn-default" value="Write" style="float:right;" > 
+			
+		<input type="button" id="btn" class="btn btn-default" value="Write" style="float:right; margin-right: 20px;" > 
+		<c:catch>
+			<input type="button" id="add" class="btn btn-default" value="AddFile" style="float:right;" >
+			<div id="file"></div> 
+		</c:catch>
 	</form>
 	
 	<script type="text/javascript" src="../resources/js/matchForm.js">

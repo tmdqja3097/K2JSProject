@@ -57,18 +57,52 @@
 			<textarea rows="20" cols="" class="form-control" id="contents"
 				name="contents"></textarea>
 		</div>
-
+		
 		<input type="button" id="btn" class="btn btn-default" value="Write" style="float: right;">
+		<input type="button" id="add" class="btn btn-default" value="AddFile" style="float: right;">
+			<div id="file">
+			<div class="form-group">
+				<label for="files">Files:</label>
+				<c:forEach items="${matchVO.stadiumFileVOs}" var="fileVO">
+					<p>${fileVO.oriName}<i id="${fileVO.fileNum}"
+							class="glyphicon glyphicon-remove remove fileDelete"></i>
+					</p>
+				</c:forEach>
+			</div>
+			</div>
+
 	</form>
 
 	<script type="text/javascript" src="../resources/js/matchForm.js">
 	</script>
 	<script type="text/javascript">
+	
+	var size = 0;
+	size = ${fn:length(matchVO.stadiumFileVOs)};
+	count = count + size;
+	
 	$(".option").each(function() {
 		if($(this).val() == ${matchVO.gender}){ 
 			$(this).prop("selected", "selected"); 
 		}
 	})
+	
+	$(".fileDelete").click(function() {
+			
+			var check = confirm("정말 지울 거냐??");
+			
+			if(check){
+				var s = $(this);
+				
+				$.post("../boardFile/fileDelete", {fileNum:$(this).attr("id")}, function(data) {
+					if(data.trim()>0){
+						s.parent().remove();
+					}else {
+						alert("File Delete Fail");
+					}
+				} );
+			}
+		});
 	</script>
 
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.k2js.p1.stadium.file.StadiumFileDAO">
+	
+	<insert id="fileInsert" parameterType="StadiumFileVO">
+		insert into stadiumFile values(stadiumFile_seq.nextval, #{num}, #{fileName}, #{oriName})
+	</insert>
+	
+	<select id="fileSelect" parameterType="StadiumFileVO" resultType="StadiumFileVO">
+		select * from stadiumFile where fileNum=#{fileNum}
+	</select>
+	
+	<delete id="fileDelete" parameterType="Long">
+		delete stadiumFile where fileNum=#{fileNum}
+	</delete>	
+
+</mapper>  

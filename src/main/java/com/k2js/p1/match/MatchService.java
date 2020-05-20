@@ -3,9 +3,16 @@ package com.k2js.p1.match;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+
+import com.k2js.p1.stadium.file.StadiumFileDAO;
+import com.k2js.p1.stadium.file.StadiumFileVO;
+import com.k2js.p1.util.FileSaver;
 
 
 
@@ -14,6 +21,12 @@ public class MatchService {
 
 	@Autowired
 	private MatchDAO matchDAO;
+	@Autowired
+	private ServletContext servletContext;
+	@Autowired
+	private FileSaver fileSaver;
+	@Autowired
+	private StadiumFileDAO stadiumFileDAO;
 	
 	
 	public int matchUpdate(MatchVO matchVO) throws Exception {
@@ -25,9 +38,22 @@ public class MatchService {
 		return matchDAO.matchDelete(num);
 	}
 	
-	public int matchWrite(MatchVO matchVO)throws Exception{
+	public int matchWrite(MatchVO matchVO, MultipartFile [] files)throws Exception{
+		String path = servletContext.getRealPath("/resources/uploadstadium");
+		System.out.println(path);
 		matchVO.setNum(matchDAO.matchNum());
-		System.out.println("number : "+matchVO.getNum());
+		
+		for(MultipartFile file : files) {
+			if(file.getSize()>0) {
+				StadiumFileVO stadiumFileVO = new StadiumFileVO();
+				String fileName = fileSaver.saveByTransfer(file, path);
+				stadiumFileVO.setNum(matchVO.getNum());
+				stadiumFileVO.setFileName(fileName);
+				stadiumFileVO.setOriName(file.getOriginalFilename());
+				stadiumFileDAO.fileInsert(stadiumFileVO);
+			}
+		}
+		
 		return matchDAO.matchWrite(matchVO);
 	}
 

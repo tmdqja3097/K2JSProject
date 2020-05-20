@@ -260,6 +260,7 @@ img{
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
+		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(${stadiumVO.location_k},${stadiumVO.location_w}), // 지도의 중심좌표

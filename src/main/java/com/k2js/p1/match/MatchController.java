@@ -46,12 +46,14 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-
+		
+		
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
 		mv.addObject("fullTime", fullTime);
 		mv.addObject("stadiumVO", stadiumVO);
 		mv.addObject("matchVO", matchVO);
+		
 		mv.setViewName("match/matchSelect");
 
 		return mv;
@@ -63,7 +65,7 @@ public class MatchController {
 	}
 
 	@PostMapping("/match/matchWrite")
-	public ModelAndView matchWrite(MatchVO matchVO, String day, String time) throws Exception {
+	public ModelAndView matchWrite(MatchVO matchVO, String day, String time, MultipartFile [] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		String date = day + time;
@@ -71,7 +73,7 @@ public class MatchController {
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
 
-		int result = matchService.matchWrite(matchVO);
+		int result = matchService.matchWrite(matchVO,files);
 		System.out.println(result);
 		if (result > 0) {
 			mv.setViewName("redirect:../");

@@ -5,14 +5,33 @@
 
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
+<resultMap type="MatchVO" id="selectResult">
+		<id column="num" property="num"/>
+		<result column="title" property="title"/>
+		<result column="contents" property="contents"/>
+		<result column="matchTime" property="matchTime"/>
+		<result column="stadiumName" property="stadiumName"/>
+		<result column="fileImage" property="fileImage"/>
+		<result column="count" property="count"/>
+		<result column="gender" property="gender"/>
+		<result column="capacity" property="capacity"/>
+		<collection property="stadiumFileVOs" javaType="List" ofType="StadiumFileVO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>	
+		</collection>
+</resultMap>
 
 <select id="matchList" parameterType="java.lang.Integer" resultType="MatchVO">
 	select * from match where to_char(matchTime,'dd') = #{day} and matchTime>sysdate order by matchTime asc
 </select>
 
 
-<select id="matchSelect" parameterType="Long" resultType="MatchVO">
-	select * from match where num=#{num}
+<select id="matchSelect" parameterType="Long" resultMap="selectResult">
+	select N.*, F.*
+	from match N left join stadiumFile F
+	on (N.num = F.num)
+	where N.num=#{num}
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">

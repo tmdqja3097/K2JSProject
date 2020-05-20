@@ -22,6 +22,8 @@
 			alias="BoardFileVO" />
 		<typeAlias type="com.k2js.p1.util.Pager" alias="Pager" />
 		<typeAlias type="com.k2js.p1.member.charge.ChargeVO" alias="chargeVO"/>
+		<typeAlias type="com.k2js.p1.stadium.file.StadiumFileVO"
+			alias="StadiumFileVO" />
 
 	</typeAliases>
 </configuration>

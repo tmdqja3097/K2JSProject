@@ -49,6 +49,7 @@ public class MemberController {
 		memberVO.setBirth(birth);
 		memberVO.setId(memberVO2.getId());
 		memberVO.setName(memberVO2.getName());
+		memberVO.setGender(memberVO2.getGender());
 		session.invalidate();
 		int result = memberService.memberKakaoNew(memberVO);
 		if (result > 0) {

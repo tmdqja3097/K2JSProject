@@ -85,8 +85,7 @@ public class NoticeController {
 	
 	@RequestMapping(value = "noticeWrite", method = RequestMethod.POST)
 	public ModelAndView boardWrite(NoticeVO notiveVO,MultipartFile [] files, ModelAndView mv)throws Exception{
-		System.out.println(notiveVO.getTitle());
-		System.out.println(notiveVO.getContents());
+		
 		int result = noticeService.boardWrite(notiveVO, files);
 		
 		if(result>0) {

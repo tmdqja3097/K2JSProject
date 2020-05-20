@@ -87,7 +87,6 @@ public class NoticeService implements BoardService{
 				System.out.println(result);
 			}
 		}
-	
 		 return noticeDAO.boardUpdate(boardVO); 
 	}
 

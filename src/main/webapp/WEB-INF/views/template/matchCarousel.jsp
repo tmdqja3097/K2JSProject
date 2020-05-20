@@ -11,7 +11,7 @@ body {
 	width: 100%;
 	padding: 0;
 	height: 0px;
-	margin-bottom: -69px; 
+	margin-bottom: -69px;
 }
 
 .slide_edge {
@@ -34,30 +34,34 @@ body {
 		style="z-index: 1">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1"></li>
-			<li data-target="#myCarousel" data-slide-to="2"></li>
+			<c:forEach items="${matchVO.stadiumFileVOs}" varStatus="i">
+				<c:if test="${i.index eq 0}">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				</c:if>
+				<c:if test="${i.index gt 0}"><li data-target="#myCarousel" data-slide-to="${i.index}"></li>
+				</c:if>
+			</c:forEach>
 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner slide_edge">
-			<div class="item active">
-				<img
-					src="../../${pageContext.request.contextPath}/resources/images/foot1.png"
-					alt="Los Angeles" style="width: 100%;" height="50px">
-			</div>
+			<c:forEach items="${matchVO.stadiumFileVOs}" var="file" varStatus="i">
+				<c:if test="${i.index eq 0}">
+					<div class="item active">
+						<img
+							src="../../${pageContext.request.contextPath}/resources/uploadstadium/${file.fileName}"
+							alt="Los Angeles" style="width: 100%;" height="50px">
+					</div>
+				</c:if>
+				<c:if test="${i.index gt 0 }">
+					<div class="item">
+						<img
+							src="../../${pageContext.request.contextPath}/resources/uploadstadium/${file.fileName}"
+							alt="Los Angeles" style="width: 100%;" height="50px">
+					</div>
+				</c:if>
+			</c:forEach>
 
-			<div class="item">
-				<img
-					src="../../${pageContext.request.contextPath}/resources/images/foot2.png"
-					alt="Chicago" style="width: 100%;" height="50px">
-			</div>
-
-			<div class="item">
-				<img
-					src="../../${pageContext.request.contextPath}/resources/images/foot3.png"
-					alt="New york" style="width: 100%;" height="50px">
-			</div>
 		</div>
 
 		<!-- Left and right controls -->
