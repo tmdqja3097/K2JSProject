@@ -1,5 +1,6 @@
 package com.k2js.p1.match;
 
+import java.math.MathContext;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,33 +35,23 @@ public class MatchController {
 	@Autowired
 	private StadiumService stadiumService;
 	
+	
+	
+	
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
-
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
-		//System.out.println(matchVOs.toString());
-		//System.out.println(matchVOs.get(0).getNum());
+		
+		
 		int i = matchVOs.size();
 		
-		//System.out.println(i);
-		//System.out.println("--");
 		
-		for (int j = 0; j < i; j++) {
-			//System.out.println(j);
-			String stadiumName = matchVOs.get(j).getStadiumName();
-			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-			
-			String [] s = new String[i];
-			s[j] = stadiumVO.getAddress();
-			
-			
-		 	//System.out.println(s[j]);
-	
-			model.addAttribute("s", s[j]);
-			//System.out.println(stadiumVO.getAddress());
-		}
-		
-		
+//		for (int j = 0; j < i; j++) {
+//			MatchVO matchVO = new MatchVO();
+//			String stadiumName = matchVOs.get(j).getStadiumName();
+//			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
+//			matchVO = matchService.matchAddressList(matchTime, stadiumName);
+//		}
 		
 		model.addAttribute("matchs", matchVOs);
 		model.addAttribute("i", i);
@@ -70,22 +61,97 @@ public class MatchController {
 	
 	@ResponseBody
 	@PostMapping("getMatch")
-	public void matchList1(@RequestParam(value="addressList[]") List<String> addressList, int day, Model model) throws Exception{
+	public ModelAndView matchAddrList(String[] addressList, int day, ModelAndView mav) throws Exception{
+		//오늘 날짜 (일)
 		System.out.println(day);
+		//모달에서 누른 value 값(누른 양에 따라 배열로 옴)
 		System.out.println(addressList);
+		System.out.println(addressList.length);
+		System.out.println(addressList[0].toString());
+		System.out.println("---------------");
 		List<MatchVO> matchVOs = matchService.matchList(day);
 		int ms = matchVOs.size();
 		List<MatchVO> matchVOs1 = new ArrayList<MatchVO>();
 		
+		List<MatchVO> matchVOsAddr = new ArrayList<MatchVO>();
+		
 		for(int i=0; i<ms; i++) {
 			MatchVO matchVO = new MatchVO();
-			String stadiumName = matchVOs.get(0).getStadiumName();
-			matchVO=matchService.matchAddrList(day, stadiumName);
+			MatchVO matchVO1 = new MatchVO();
+			
+			String stadiumName = matchVOs.get(i).getStadiumName();
+			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
+			//System.out.println("getaddress: "+stadiumVO.getAddress());
+			
+			String[] address = new String[ms]; 
+			address[i] = stadiumVO.getAddress();
+			
+			System.out.println("addr: "+address[i]);
+			
+			matchVO = matchService.matchAddrList(day, stadiumName);
+			matchVO1 = matchService.matchAddressList(address[i]);
+		
+			
 			matchVOs1.add(matchVO);
+			matchVOsAddr.add(matchVO1);
+			
 		}
-		model.addAttribute("matchs",matchVOs1);
+		
+		mav.addObject("matchs", matchVOs1);
+		
+		System.out.println("address1: "+matchVOsAddr.get(0).getStadiumName());
+//		System.out.println("address2: "+stadiumVOs.get(1).getAddress());
+//		System.out.println("address3: "+stadiumVOs.get(2).getAddress());
+		System.out.println("----");
 		
 		
+		
+		
+		
+		
+//		String[] value = new String[ms];
+//		
+//		for(String address:addressList) {
+//			System.out.println(address);
+//			for(int i=0; i<ms; i++) {
+//				
+//				if(address.equals("seoul")) {
+//					if(stadiumVOs.get(i).getAddress().equals("seoul")) {
+//						value[i] = matchVOs1.get(i).getTitle().toString(); 
+//					}else {
+//						value[i] = "n";
+//					}
+//				}else if(address.equals("daegu")){
+//					if(stadiumVOs.get(i).getAddress().equals("daegu")) {
+//						value[i] = matchVOs1.get(i).getTitle().toString();
+//					}else {
+//						value[i] = "n";
+//					}
+//				}else if(address.equals("gyeonggi")) {
+//					if(stadiumVOs.get(i).getAddress().equals("gyeonggi")) {
+//						value[i] = matchVOs1.get(i).getTitle().toString();
+//					}else {
+//						value[i] = "n";
+//					}
+//				}
+//				else {
+//					value[i] = "not";
+//				}
+//				
+//				
+//			}
+//			System.out.println(value.length);
+//			System.out.println(value[0]);
+//			System.out.println(value[1]);
+//			System.out.println(value[2]);
+//			System.out.println(value[3]);
+//			
+//		}
+		mav.addObject("ms", ms);
+		//mav.addObject("filterValue", value);
+		mav.setViewName("getMatch");
+		
+		return mav;
 	}
 	
 	

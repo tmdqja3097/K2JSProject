@@ -6,11 +6,22 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.k2js.p1.stadium.StadiumDAO;
+import com.k2js.p1.stadium.StadiumVO;
+
 @Service
 public class MatchService {
 
 	@Autowired
 	private MatchDAO matchDAO;
+	@Autowired
+	private StadiumDAO stadiumDAO;
+	
+	public MatchVO matchAddressList(String address) throws Exception{
+		StadiumVO stadiumVO = new StadiumVO();
+		stadiumVO = stadiumDAO.stadiumSelect(address);
+		return matchDAO.matchAddressList(stadiumVO);
+	}
 	
 	public MatchVO matchAddrList(int day, String address) throws Exception{
 		MatchVO matchVO = new MatchVO();

@@ -199,11 +199,6 @@ p, li, h4{
 		</c:forEach>
 		</div>
 
-			
-<script type="text/javascript">
-  
 
 
-	
 
-</script>

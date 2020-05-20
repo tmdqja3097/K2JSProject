@@ -17,7 +17,6 @@ public class MatchVO {
 	private long capacity;
 	private int day;
 	
-	
 	public int getDay() {
 		return day;
 	}

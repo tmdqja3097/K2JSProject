@@ -7,6 +7,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.k2js.p1.stadium.StadiumVO;
+
 @Repository
 public class MatchDAO {
 
@@ -37,5 +39,8 @@ public class MatchDAO {
 		return session.selectOne(NAMESPACE+"matchAddrList", matchVO);
 	}
 	
+	public MatchVO matchAddressList(StadiumVO stadiumVO) throws Exception{
+		return session.selectOne(NAMESPACE+"matchAddressList", stadiumVO);
+	}
 	
 }

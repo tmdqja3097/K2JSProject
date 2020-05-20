@@ -139,7 +139,6 @@
 	</div>
 
 
-		
 	
 
 	<div class="modal fade" id="layerpop1">
@@ -168,15 +167,15 @@
 							<li><input type="checkbox" id="ml4" class="filterCheck"
 								name="filterAddr" value="gwangju"> <label id="mlL4" for="ml4" class="checkLabel">광주</label></li>
 							<li><input type="checkbox" id="ml5" class="filterCheck"
-								value="5"> <label id="mlL5" for="ml5" class="checkLabel">대전</label></li>
+								name="filterAddr" value="daejeon"> <label id="mlL5" for="ml5" class="checkLabel">대전</label></li>
 							<li><input type="checkbox" id="ml6" class="filterCheck"
-								value="6"> <label id="mlL6" for="ml6" class="checkLabel">인천</label></li>
+								name="filterAddr" value="incheon"> <label id="mlL6" for="ml6" class="checkLabel">인천</label></li>
 							<li><input type="checkbox" id="ml7" class="filterCheck"
-								value="7"> <label id="mlL7" for="ml7" class="checkLabel">부산</label></li>
+								name="filterAddr" value="busan"> <label id="mlL7" for="ml7" class="checkLabel">부산</label></li>
 							<li><input type="checkbox" id="ml8" class="filterCheck"
-								value="8"> <label id="mlL8" for="ml8" class="checkLabel">울산</label></li>
+								name="filterAddr" value="ulsan"> <label id="mlL8" for="ml8" class="checkLabel">울산</label></li>
 							<li><input type="checkbox" id="ml9" class="filterCheck"
-								value="9"> <label id="mlL9" for="ml9" class="checkLabel">충북</label></li>
+								name="filterAddr" value="chungbug"> <label id="mlL9" for="ml9" class="checkLabel">충북</label></li>
 						</ul>
 						
 					</div>
@@ -245,6 +244,7 @@
 		</div>
 	</div>
 
+	
 
 	<script type="text/javascript">
 		var sysdate = new Date();
@@ -363,49 +363,29 @@
 			$("input[name='filterAddr']:checked").each(function() {
 				addressArray.push($(this).val());
 			});
-			
-			var objParams = {"addressList":addressArray};
-			
-			$.ajax({
+		
+			jQuery.ajaxSettings.traditional = true; 
+
+			$.ajax({  
 				url:"getMatch",
-				dataType:"json",	
 				type:"POST",
-				data: { addressList:objParams, day : selectDay},
+				data: {addressList : addressArray, day : selectDay},
 				success:function(data){
-					alert(data);
+					console.log(data);
+				},error:function(data){
+					console.log(data);
 				}
 			});
+			
+			
 			
 		}) ;
 		
 		
 		
-		var v1 = $("#ml1").val();   
 		
 		
 		
-		/* $("#mlL1").click(function() {
-			alert("g");
-			
-			$.post("getMatch", {filterAd:v1}, function() {
-				
-			});
-			
-			function ajax() {
-				$.ajax({
-					url:"/getMatch",
-					data:"address="+v1,
-					type:"POST",
-					success:function(data){
-						alert("success");
-					},
-					error:function(){
-						alert("fail");
-					}
-				});
-			}
-			
-		}); */
 		
 		
 		
@@ -440,5 +420,8 @@
 			}
 		}); */
 	</script>
+	
+	
+	
 </body>
 </html>
