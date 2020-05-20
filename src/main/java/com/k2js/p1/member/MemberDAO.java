@@ -23,7 +23,6 @@ public class MemberDAO {
 	}
 	
 	public int memberKakaoNew(MemberVO memberVO) throws Exception {
-		System.out.println("kakaoNew");
 		return sqlSession.insert(NAMESPACE+"memberKakaoNew", memberVO);
 	}
 	public MemberVO memberKakaoLogin(MemberVO memberVO) throws Exception {

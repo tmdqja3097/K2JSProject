@@ -16,7 +16,7 @@
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},'Image',#{gender},#{capacity})
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},'Image',#{count},#{gender},#{capacity})
 </insert>
 
 <update id="matchUpdate" parameterType="MatchVO">

@@ -49,7 +49,6 @@ public class MatchController {
 
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-
 		mv.addObject("fullTime", fullTime);
 		mv.addObject("stadiumVO", stadiumVO);
 		mv.addObject("matchVO", matchVO);
@@ -68,7 +67,7 @@ public class MatchController {
 		ModelAndView mv = new ModelAndView();
 
 		String date = day + time;
-		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
+		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
 
@@ -102,7 +101,7 @@ public class MatchController {
 	public String matchUpdate(MatchVO matchVO,String day, String time) throws Exception {
 		
 		
-		String date = day + time;
+		String date = day + time;	
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
@@ -126,6 +125,15 @@ public class MatchController {
 		mv.addObject("matchVO",matchVO);
 		mv.setViewName("match/matchJoin");
 		
+		return mv;
+	}
+	
+	@PostMapping("/match/matchJoin")
+	public ModelAndView matchJoin(MatchVO matchVO)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MatchVO match = matchService.matchSelect(matchVO.getNum());
+		mv.addObject("matchVO",match);
+		mv.setViewName("match/matchComplete");
 		return mv;
 	}
 	

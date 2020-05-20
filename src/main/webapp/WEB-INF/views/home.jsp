@@ -228,7 +228,6 @@
 
 		function getMatch(selectDay) {
 			$.get("getMatch?matchTime=" + selectDay, function(result) {
-				console.log(result);
 				$("#dDayMatch").append(result);
 			})
 		}

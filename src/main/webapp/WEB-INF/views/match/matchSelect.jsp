@@ -74,6 +74,13 @@ img{
   font-size: 17px;
 }
 
+#navbar_bottom button { 
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
 .sticky {
   position: fixed;
   bottom: 0;
@@ -84,6 +91,12 @@ img{
 	padding: 0 20%;
 }
 
+#start_check{
+	width : 100%; 
+	text-align: center; 
+	line-height: 60px; 
+	background-color: #3540A5; 
+}
 
      
   </style>
@@ -228,13 +241,13 @@ img{
     
     <div style="height: 180px"></div>
     
-    <div id="navbar_bottom" style="z-index: 3; height: 80px; box-sizing: border-box;"> 
+    <div id="navbar_bottom" class="sticky" style="z-index: 3; height: 80px; box-sizing: border-box;"> 
   		<c:if test="${matchVO.count lt 16}"> 
   		<c:if test="${not empty member.id}">
-  		<a href="./matchJoin?num=${matchVO.num}" class="btn start" style="width : 100%; text-align: center; line-height: 60px; background-color: #3540A5; ">신청하기</a>
+  		<button id="start_check" class="btn start">신청하기</button>
   		</c:if>
   		<c:if test="${empty member.id}">
-  		<a href="../member/MemberLogin" class="btn start" style="width : 100%; text-align: center; line-height: 60px; background-color: #3540A5; ">신청하기</a>
+  		<a href="../member/MemberLogin" class="btn start" style="width : 100%; text-align: center; line-height: 60px; background-color: #3540A5; ">신청하기</a> 
   		</c:if>
   		</c:if>
   		<c:if test="${matchVO.count ge 16}">
@@ -299,16 +312,19 @@ img{
 		});
 		
 		
-		window.onscroll = function() {myFunction()};
 
-		var navbar_bottom = document.getElementById("navbar_bottom");
-		var sticky_bottom = navbar_bottom.offsetTop;
-
-		function myFunction() {	
-		    navbar_bottom.classList.add("sticky")	
-		}
+		$("#start_check").click(function(){
+			if(${matchVO.gender}==${member.gender} || ${matchVO.gender}==3){
+				location.href = "./matchJoin?num="+${matchVO.num};   
+			}else{
+				if(${matchVO.gender}==1){
+					alert("본 매치는 남성 전용 매치입니다.");
+				}else if(${matchVO.gender}==2){
+					alert("본 매치는 여성 전용 매치입니다.");
+				}
+			} 
+		});
 		
-
 	</script>
 
 </body>
