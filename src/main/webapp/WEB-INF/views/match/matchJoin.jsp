@@ -294,6 +294,8 @@ form.orderForm fieldset h3 {
 
 	<script type="text/javascript">
 		var member_cash = $("#memberCash").text();
+		var remainCash = member_cash-10000;
+		$("#remain_cash").text("캐시 차감(잔여:"+remainCash+"원)");
 		
 		getFirstRemainCash();
 		$("#count").change(function() {
