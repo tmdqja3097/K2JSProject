@@ -199,7 +199,9 @@ form.orderForm fieldset h3 {
 			
 			<input type="hidden" class="form-control" id="num" name="num" value="${matchVO.num}">
 			
-			
+			<input type="hidden" class="form-control" id="id" name="id" value="${member.id}">
+		
+		
 			<div class="orderTitle">
 				<h2>${matchVO.fullTime}</h2>
 				<h2>${matchVO.stadiumName}풋살구장</h2>

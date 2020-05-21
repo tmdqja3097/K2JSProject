@@ -77,6 +77,8 @@ float : right;
 			<h1> 참여한 경기 목록 </h1>
 			<div class="matchList">
 				
+				
+				
 			</div>
 		</div>
 		<br>
@@ -88,6 +90,11 @@ float : right;
 	</div>
 
 	<script type="text/javascript">
+		var id = "<c:out value='${member.id}'/>";
+		alert(id);
+		
+		
+	
 		$("#chargeList")
 				.click(
 						function() {
@@ -117,6 +124,9 @@ float : right;
 				location.href = "./MemberDelete";
 			}
 		})
+		
+		
+		
 	</script>
 </body>
 </html>
