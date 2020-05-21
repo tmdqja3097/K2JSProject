@@ -90,10 +90,6 @@ float : right;
 	</div>
 
 	<script type="text/javascript">
-		var id = "<c:out value='${member.id}'/>";
-		alert(id);
-		
-		
 	
 		$("#chargeList")
 				.click(

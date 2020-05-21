@@ -79,7 +79,6 @@ public class MatchService {
 	 
 	 public int matchJoin(long num, MemberVO memberVO)throws Exception{
 		 
-		 
 		 return matchDAO.matchJoin(memberVO);
 	 }
 	 

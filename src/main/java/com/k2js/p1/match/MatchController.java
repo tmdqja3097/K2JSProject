@@ -137,7 +137,7 @@ public class MatchController {
 		long count = matchVO.getCount();
 		int result = matchService.matchJoin(matchVO, memberVO);
 		long num = matchVO.getNum();
-		int result2 = matchService.matchJoin(num,memberVO);
+		/* int result2 = matchService.matchJoin(num,memberVO); */
 	 
 		MatchVO match = matchService.matchSelect(matchVO.getNum());
 		mv.addObject("matchVO",match);
