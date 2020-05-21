@@ -12,6 +12,14 @@ public class StadiumVO {
 	private int shoes;
 	private int cloth;
 	private String info;
+	private int day;
+	
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
 	public String getName() {
 		return name;
 	}

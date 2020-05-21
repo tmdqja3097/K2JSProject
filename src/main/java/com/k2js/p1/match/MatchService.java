@@ -17,9 +17,10 @@ public class MatchService {
 	@Autowired
 	private StadiumDAO stadiumDAO;
 	
-	public MatchVO matchAddressList(String address) throws Exception{
+	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
 		StadiumVO stadiumVO = new StadiumVO();
-		stadiumVO = stadiumDAO.stadiumSelect(address);
+		stadiumVO.setAddress(address);
+		stadiumVO.setDay(day);
 		return matchDAO.matchAddressList(stadiumVO);
 	}
 	

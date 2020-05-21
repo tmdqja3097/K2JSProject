@@ -39,7 +39,7 @@
 </select>
 
 <select id="matchAddressList" resultType="MatchVO" parameterType="StadiumVO">
-	select M.* from stadium S, match M where S.name=M.stadiumName AND s.address = #{address};
+	select M.* from stadium S, match M where S.name=M.stadiumName AND S.address = #{address} and to_char(matchTime,'dd') = #{day}
 </select>
 
 

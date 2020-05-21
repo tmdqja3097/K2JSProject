@@ -69,37 +69,50 @@ public class MatchController {
 		System.out.println(addressList.length);
 		System.out.println(addressList[0].toString());
 		System.out.println("---------------");
+		
+		
+		//오늘 날짜의 경기 리스트를 뽑음
 		List<MatchVO> matchVOs = matchService.matchList(day);
+		//경기 개수
 		int ms = matchVOs.size();
-		List<MatchVO> matchVOs1 = new ArrayList<MatchVO>();
-		
+		System.out.println("ms:"+ms);
 		List<MatchVO> matchVOsAddr = new ArrayList<MatchVO>();
+		List<StadiumVO> stadiumVOs = new ArrayList<StadiumVO>();
 		
-		for(int i=0; i<ms; i++) {
+		//String[] addressAll = new String[ms];
+		
+		for(int i=0; i<4; i++) {
 			MatchVO matchVO = new MatchVO();
-			MatchVO matchVO1 = new MatchVO();
 			
-			String stadiumName = matchVOs.get(i).getStadiumName();
+			//경기 리스트에서 각 구장의 정보를 stadiumName에 넣음
+			String stadiumName = matchVOs.get(i).getStadiumName(); 
+			System.out.println("stadiumName:"+stadiumName);
+			//match안에 있는 stadium에 대한 list정보 
 			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-			//System.out.println("getaddress: "+stadiumVO.getAddress());
+			System.out.println("stadiumVO add:"+stadiumVO.getAddress());
+			//stadium list안에 주소에 대한 값
+			//String address = stadiumVO.getAddress();
 			
-			String[] address = new String[ms]; 
-			address[i] = stadiumVO.getAddress();
 			
-			System.out.println("addr: "+address[i]);
+			stadiumVOs.add(stadiumVO);
+			System.out.println(stadiumVOs.size());
+			String address = stadiumVOs.set(i, stadiumVO).getAddress();
+			//stadiumVOs.get(i).getAddress();
 			
-			matchVO = matchService.matchAddrList(day, stadiumName);
-			matchVO1 = matchService.matchAddressList(address[i]);
-		
 			
-			matchVOs1.add(matchVO);
-			matchVOsAddr.add(matchVO1);
+			matchVOs = matchService.matchAddressList(address, day);
+//			System.out.println(address);
+			matchVOsAddr.add(matchVO);
 			
+			System.out.println(matchVOs.get(i).getTitle());
 		}
+		System.out.println(stadiumVOs.get(0).getAddress());
+		System.out.println(stadiumVOs.get(1).getAddress());
+		System.out.println(stadiumVOs.get(2).getAddress());
+		System.out.println(stadiumVOs.get(3).getAddress());
+		mav.addObject("matchs", matchVOs);
 		
-		mav.addObject("matchs", matchVOs1);
-		
-		System.out.println("address1: "+matchVOsAddr.get(0).getStadiumName());
+//		System.out.println("address1: "+matchVOsAddr.get(0).getTitle());
 //		System.out.println("address2: "+stadiumVOs.get(1).getAddress());
 //		System.out.println("address3: "+stadiumVOs.get(2).getAddress());
 		System.out.println("----");
