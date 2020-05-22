@@ -39,7 +39,10 @@
 		border-color: red;
 	}
 	
-
+	.navbar_header {
+		width: 100px;
+		height: 50px;
+	}
 	
 	
 	#myCarousel>a {
@@ -48,7 +51,71 @@
 		background-image: none;
 	}
 	
+	.card_header {      
+		width: 100%;    
+		height: 260px;
+		border: 1px solid black;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
 	
+	.card_body {
+		width: 100%;
+		height: 130px;
+		border: 1px solid yellow;
+		background-color: #F6F6F6;
+		padding-top: 0 50%;   
+		margin: 0;       
+	}
+	
+	.card_top {
+		width: 100%;
+		height: 681px;
+		border: 1px solid purple;
+		margin-bottom: 6px;
+	}
+	
+	.oneday {
+		width:
+	}
+
+	
+	.card_middle {
+		width: 100%;
+		height: 509px;
+		border: 1px solid gray;
+		margin-bottom: 30px;
+		
+	}
+	
+	.card_ranks {
+		width: 100%;
+		height: 775.3px;
+		border: 1px solid black;
+	}
+	
+	.card_rule {
+		width: 100%;
+		height: 459px;
+		border: 1px solid orange;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.card_man>li{
+		display: inline-block;
+		border: 1px solid yellow;
+		width: 212.16px;
+		height: 65px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	.one_man>li {
+		display: inline-block;
+		border: 1px solid blue;
+		
+	}
 	 
 </style>
 </head>
@@ -91,21 +158,69 @@
 	  
 	   
 	  
-	  
-	  <a class="right carousel-control" href="./leagueA">
-	  	<h1> league </h1> 
-	  
-	  </a>
 	</div>
 	
-	<div class="body">
-		<div class="top-bar">
-			<div class="navbar">
-			
+	<div class="card_header">
+		<div class="body">
+			<div class="card_body">
+				<ul class="card_man" style="list-style:none; width: 100%; height: 50px; color: blue;">
+					<li> 남자 일정
+						<a href="./manCar">
+							<img alt=""
+							src="${pageContext.request.contextPath}/resources/images/manCar.svg"
+							style="list-stlye:none; width: 100%; height: 25px;"> 
+						</a>   
+					</li>	
+					<li> 남자 랭킹 
+						<a href="./manRanks">
+							<img alt=""
+							src="${pageContext.request.contextPath}/resources/images/manGraph.svg"
+							style="list-stlye:none; width: 100%; height: 25px;">  
+						</a>  
+					</li>
+					<li> 여자 일정 
+						<a href="./womanCar">
+							<img alt=""
+							src="${pageContext.request.contextPath}/resources/images/womanCar.svg"
+							style="list-stlye:none; width: 100%; height: 25px;">
+						</a>  
+					</li>
+					<li> 여자 랭킹 
+						<a href="./womanRanks">
+							<img alt=""
+							src="${pageContext.request.contextPath}/resources/images/womanGraph.svg"
+							style="list-stlye:none; width: 100%; height: 25px;">
+						</a> 
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="card_top">
+		<div class="oneday">
+			<div class="card_middle">	
+				<ul class="one_man">
+					<li> 원데이 팀 남성리그 in 용산 7구장 </li>	
+					<li> 원데이 팀 남성리그 in 용산 6구장 </li>	
+					<li> 원데이 팀 남성리그 in 상암스포츠 C면 </li>
+					<li> 원데이 팀 남성리그 in 용산 1구장 </li>	
+				</ul>
 			</div>
 		</div>
 	</div>
 
+
+	<div class="card_ranks">
+	</div>
+	
+	
+	<div class="card_rule">
+		
+	</div>
+	
+	
 
 	<%-- <div class="woman">
 		<img

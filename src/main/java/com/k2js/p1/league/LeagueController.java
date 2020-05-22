@@ -17,5 +17,25 @@ public class LeagueController {
 		public void leagueA() {
 		
 	}
+	
+	@GetMapping("manCar") 
+		public void manCar() {
+
+	}
+	
+	@GetMapping("womanCar") 
+		public void womanCar() {
+		
+	}
+	
+	@GetMapping("manRanks") 
+		public void manRanks() {
+		
+	}
+	
+	@GetMapping("womanRanks") 
+		public void womanRanks() {
+		
+	}
 }
 
