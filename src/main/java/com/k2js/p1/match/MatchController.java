@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,14 +49,13 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-		
-		
+
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
 		mv.addObject("fullTime", fullTime);
 		mv.addObject("stadiumVO", stadiumVO);
 		mv.addObject("matchVO", matchVO);
-		
+
 		mv.setViewName("match/matchSelect");
 
 		return mv;
@@ -66,7 +67,7 @@ public class MatchController {
 	}
 
 	@PostMapping("/match/matchWrite")
-	public ModelAndView matchWrite(MatchVO matchVO, String day, String time, MultipartFile [] files) throws Exception {
+	public ModelAndView matchWrite(MatchVO matchVO, String day, String time, MultipartFile[] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 
 		String date = day + time;
@@ -74,7 +75,7 @@ public class MatchController {
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
 
-		int result = matchService.matchWrite(matchVO,files);
+		int result = matchService.matchWrite(matchVO, files);
 		System.out.println(result);
 		if (result > 0) {
 			mv.setViewName("redirect:../");
@@ -101,17 +102,16 @@ public class MatchController {
 	}
 
 	@PostMapping("/match/matchUpdate")
-	public String matchUpdate(MatchVO matchVO,String day, String time) throws Exception {
-		
-		
-		String date = day + time;	
+	public String matchUpdate(MatchVO matchVO, String day, String time) throws Exception {
+
+		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
-		
+
 		int result = matchService.matchUpdate(matchVO);
 		String path = "";
-		result=0;
+		result = 0;
 		if (result > 0) {
 			path = "redirect:../";
 		} else {
@@ -119,31 +119,29 @@ public class MatchController {
 		}
 		return path;
 	}
-	
+
 	@GetMapping("/match/matchJoin")
-	public ModelAndView matchJoin(long num)throws Exception{
+	public ModelAndView matchJoin(long num) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MatchVO matchVO= matchService.matchSelect(num);
-		
-		mv.addObject("matchVO",matchVO);
+		MatchVO matchVO = matchService.matchSelect(num);
+		mv.addObject("matchVO", matchVO);
 		mv.setViewName("match/matchJoin");
-		
+
 		return mv;
 	}
-	
+
 	@PostMapping("/match/matchJoin")
-	public ModelAndView matchJoin(MatchVO matchVO, MemberVO memberVO)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		long count = matchVO.getCount();
-		int result = matchService.matchJoin(matchVO, memberVO);
-		long num = matchVO.getNum();
-		/* int result2 = matchService.matchJoin(num,memberVO); */
-	 
-		MatchVO match = matchService.matchSelect(matchVO.getNum());
-		mv.addObject("matchVO",match);
-		mv.setViewName("match/matchComplete");
+	public ModelAndView matchJoin(MatchVO matchVO, HttpSession session, int counted, ModelAndView mv, int dicountMoney) throws Exception {
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		int result = matchService.matchJoin(matchVO, memberVO, counted, dicountMoney);
+		if (result > 0) {
+			MatchVO match = matchService.matchSelect(matchVO.getNum());
+			mv.addObject("matchVO", match);
+			mv.setViewName("match/matchComplete");
+		} else {
+			mv.setViewName("match/matchFail");
+		}
 		return mv;
 	}
-	
 
 }// end class

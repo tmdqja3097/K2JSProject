@@ -36,7 +36,6 @@ public class MemberController {
 		return "redirect:../";
 	}
 
-
 	@GetMapping("MemberNewKakao")
 	public String memberNewKakao() throws Exception {
 		return "member/MemberNewKakao";
@@ -76,18 +75,21 @@ public class MemberController {
 		mav.setViewName("common/ajaxResult");
 		return mav;
 	}
+
 	@GetMapping("MemberLogin")
-	public String memberLogin(@CookieValue(value="cId", required = false) String cId, Model model, HttpSession session, HttpServletRequest request) throws Exception {
-		model.addAttribute("cId",cId);
+	public String memberLogin(@CookieValue(value = "cId", required = false) String cId, Model model,
+			HttpSession session, HttpServletRequest request) throws Exception {
+		model.addAttribute("cId", cId);
 		String Referer = request.getHeader("Referer");
 		session.setAttribute("Referer", Referer);
 		return "member/MemberLogin";
 	}
 
 	@PostMapping("MemberLogin")
-	public String memberLogin(MemberVO memberVO, HttpSession session, String chbox,HttpServletResponse response, String Referer) throws Exception {
+	public String memberLogin(MemberVO memberVO, HttpSession session, String chbox, HttpServletResponse response,
+			String Referer) throws Exception {
 		Cookie cookie = new Cookie("cId", "");
-		if(chbox != null) {
+		if (chbox != null) {
 			cookie.setValue(memberVO.getId());
 		}
 		response.addCookie(cookie);
@@ -95,11 +97,11 @@ public class MemberController {
 		if (memberVO != null) {
 			// Cookie작업
 			session.setAttribute("member", memberVO);
-			
+
 		} else {
 			return "redirect:./MemberLogin";
 		}
-		return "redirect:"+Referer;
+		return "redirect:" + Referer;
 	}
 
 	@GetMapping("MemberNew")
@@ -154,7 +156,7 @@ public class MemberController {
 
 	@GetMapping("MemberAddCash")
 	public String memberAddCash(@RequestParam(defaultValue = "0") int remainCash, Model model) throws Exception {
-		model.addAttribute("remainCash",remainCash);
+		model.addAttribute("remainCash", remainCash);
 		return "member/MemberAddCash";
 	}
 
@@ -197,16 +199,22 @@ public class MemberController {
 		mav.setViewName("common/ajaxResult");
 		return mav;
 	}
+
 	@GetMapping("getCapaList")
 	public void getCapaList(Model model, HttpSession session) throws Exception {
 		int size = 0;
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
 		List<MatchVO> ar = memberService.memberCapaList(memberVO);
+		String time[] = new String[ar.size()];
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/hh/mm/a");
 		if(ar.size() != 0 ) {
 			size = ar.size();
+			for(int i = 0 ; i < ar.size(); i++) {
+				time[i] = sdf.format(ar.get(i).getMatchTime());
+				ar.get(i).setRealTime(time[i]);
+			}
 		}
 		model.addAttribute("i", size);
 		model.addAttribute("list",ar);
-		
 	}
 }

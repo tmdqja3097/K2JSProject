@@ -68,12 +68,17 @@ body {
 	display: inline-block;
 }
 
+.daybutton {
+ 	border-radius : 10px;
+	background-color : white;
+}
 #pre {
 	width: 100%;
 	height: 100px;
+	z-index: 999;
 }
-
 #next {
+background
 	width: 100%;
 	height: 100px;
 	z-index: 999;
@@ -99,10 +104,11 @@ body {
 }
 
 .day-list {
+	border-radius : 10px;
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
-	width: 11%;
+	width: 10.5%;
 	float: left;
 }
 

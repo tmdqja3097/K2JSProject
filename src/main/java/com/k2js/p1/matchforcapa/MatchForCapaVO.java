@@ -7,6 +7,15 @@ public class MatchForCapaVO {
 	
 	private long num;
 	private long capaListNum;
+	private int count;
+	
+	
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public long getNum() {
 		return num;
 	}

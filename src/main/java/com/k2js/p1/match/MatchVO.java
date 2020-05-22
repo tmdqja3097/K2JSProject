@@ -12,19 +12,13 @@ public class MatchVO {
 	private String title;
 	private String contents;
 	private Date matchTime;
+	private String realTime;
 	private String time;
 	private String fullTime;
 	private String stadiumName;
 	private long count;
 	private int gender;
-	private String joinMemberId;
 	
-	public String getJoinMemberId() {
-		return joinMemberId;
-	}
-	public void setJoinMemberId(String joinMemberId) {
-		this.joinMemberId = joinMemberId;
-	}
 	private List<StadiumFileVO> stadiumFileVOs;
 	
 	public List<StadiumFileVO> getStadiumFileVOs() {
@@ -34,6 +28,12 @@ public class MatchVO {
 		this.stadiumFileVOs = stadiumFileVOs;
 	}
 	
+	public String getRealTime() {
+		return realTime;
+	}
+	public void setRealTime(String realTime) {
+		this.realTime = realTime;
+	}
 	
 	public String getStadiumName() {
 		return stadiumName;

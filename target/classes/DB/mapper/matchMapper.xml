@@ -34,7 +34,7 @@
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},'joinMemberId:')
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender})
 </insert>
 
 <update id="matchUpdate" parameterType="MatchVO">
@@ -51,7 +51,13 @@
 </delete>
 
 <update id="matchJoin" parameterType="MatchVO">
-	update match set count=#{count}, joinMemberId=#{joinMemberId} where num=#{num}
+	update match set count=#{count} where num=#{num}
+</update>
+<insert id="matchForCapa" parameterType="matchForCapaVO">
+	INSERT INTO matchforcapa VALUES (#{num}, #{capaListNum},#{count})
+</insert>
+<update id="discountMemberCash" parameterType="memberVO">
+	UPDATE MEMBER SET CASH=#{cash} WHERE ID = #{id}
 </update>
 
 

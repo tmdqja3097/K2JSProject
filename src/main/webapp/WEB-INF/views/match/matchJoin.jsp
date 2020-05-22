@@ -165,43 +165,39 @@ form.orderForm fieldset h3 {
 	line-height: 18px;
 }
 
-.box2{
+.box2 {
 	margin-top: 40px;
 }
 
 .btnWrap {
-    margin-top: 20px;
-    width: 100%;
-    text-align: center;
-    
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
 }
 
 .btn.order {
-    background-color: #FFC645;
-    width: 80%;
-    font-size: 18px;
-    line-height: 18px;
-    margin: 0 auto;
-    color: #3540A5;
-    border-radius: 100px;
-    padding: 15px 10px;
-    
-    
+	background-color: #FFC645;
+	width: 80%;
+	font-size: 18px;
+	line-height: 18px;
+	margin: 0 auto;
+	color: #3540A5;
+	border-radius: 100px;
+	padding: 15px 10px;
 }
-
 </style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<div>
 		<form action="./matchJoin" id="form" class="orderForm" method="post">
-			
-			
-			<input type="hidden" class="form-control" id="num" name="num" value="${matchVO.num}">
-			
-			<input type="hidden" class="form-control" id="id" name="id" value="${member.id}">
-		
-		
+
+
+			<input type="hidden" class="form-control" id="num" name="num"
+				value="${matchVO.num}"> <input type="hidden"
+				class="form-control" id="id" name="id" value="${member.id}">
+
+
 			<div class="orderTitle">
 				<h2>${matchVO.fullTime}</h2>
 				<h2>${matchVO.stadiumName}풋살구장</h2>
@@ -212,8 +208,8 @@ form.orderForm fieldset h3 {
 					<div class="inputWrap" style="display: block;">
 						<label>신청 인원</label>
 						<div class="inputWrapper">
-							<select name="count" id="count" class="inputFull">
-								<c:forEach end="8" var="i" begin="1">
+							<select name="counted" id="count" class="inputFull">
+								<c:forEach end="${16-matchVO.count}" var="i" begin="1">
 									<option value="${i}">${i}명</option>
 								</c:forEach>
 							</select>
@@ -227,12 +223,14 @@ form.orderForm fieldset h3 {
 					<div class="payRowWrap">
 						<div class="payRow">
 							<span>이용 금액</span>
-							<div id="result_pay"><p id="match_cash">10,000원</p></div>
+							<div id="result_pay">
+								<p id="match_cash">10,000원</p>
+							</div>
 						</div>
 						<div class="payRow">
-							<span id="remain_cash">
-								캐시 차감(잔여:${member.cash-10000}원)
-							</span>
+							<span id="remain_cash"> 캐시 차감(잔여:${member.cash-10000}원) </span> <input
+								type="text" hidden="hidden" name="dicountMoney"
+								id="dicountMoney">
 							<div id="result_cash">
 								<p id="sum_cash" class="addFee">10,000원</p>
 							</div>
@@ -258,37 +256,40 @@ form.orderForm fieldset h3 {
 					<div class="confirm">
 						<input type="checkbox" name="#" class="checkbox"
 							id="confirmCorona"> <label for="confirmCorona"
-							id="agreeCorona">4/24 ~ 5/6 기간 동안 이태원 인근에 방문하신 사실이 없음에 동의합니다</label>
+							id="agreeCorona">4/24 ~ 5/6 기간 동안 이태원 인근에 방문하신 사실이 없음에
+							동의합니다</label>
 					</div>
 					<div class="termBox box2">
 						<p>
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">코로나
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">코로나
 								예방을 위하여 최근&nbsp;</span><strong
-								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">4/24
+								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">4/24
 								~ 5/6 기간 동안 이태원 인근에 방문 이력이 있으신 분은 참가를 제한</strong><span
-								style="color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">하고
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">하고
 								있습니다. 또한 경기 중&nbsp;</span><strong
-								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">팀
+								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">팀
 								밸런스 조정을 위한 조끼 교환을 진행하지 않습니다.</strong><br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">방문
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">방문
 								사실을 거짓으로 진술하거나 고의로 사실을 누락·은폐하여 매치를 참여하지 않도록 협조 바랍니다.</span><br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: 12px;">원활한
-								진행을 위하여 매니저 안내에 많은 협조 부탁드립니다.</span><br></p>
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">원활한
+								진행을 위하여 매니저 안내에 많은 협조 부탁드립니다.</span><br>
+						</p>
 					</div>
 				</fieldset>
 				<div class=btnWrap>
-					<input type="button" id="btnApply" class="btn order" value="결제 및 신청">		
+					<input type="button" id="btnApply" class="btn order"
+						value="결제 및 신청">
 				</div>
-			
+
 			</div>
 
 		</form>
@@ -306,6 +307,7 @@ form.orderForm fieldset h3 {
 			var count = $("#count").val();
 			count = (count*10000);
 			remainCash = member_cash-count;
+			$("#dicountMoney").val(count);
 			if(remainCash>=0){
 				$("#remain_cash").text("캐시 차감(잔여:"+remainCash+"원)");
 			}else{

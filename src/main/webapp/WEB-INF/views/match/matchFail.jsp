@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>경기 신청 불가</title>
 <c:import url="../template/boot.jsp"></c:import>
 <style type="text/css">
 .orderTitle {
@@ -100,17 +100,11 @@ img{
 		<div class="completeWrap">
 			<h4>신청이 완료됐습니다</h4>
 			<div class="orderTitle">
-				<h2>${matchVO.fullTime}</h2>
-				<br>
-				<h2>${matchVO.stadiumName}풋살구장</h2>
-			</div>
-			<div class="btnWrap">
-				<a href="../member/MemberPage" class="btn start">마이페이지</a> <a
-					href="#" class="btn start copy">친구에게 공유하기</a>
+				<h2>경기 신청이 마감되었습니다.</h2>
 			</div>
 		</div>
 		<div class="please">
-			<h2>꼭 지켜주세요!</h2>
+			<h2>K2JS의 경기 규칙!</h2>
 			<ul>
 			<li><img src="../resources/images/minmax.svg"><div class="descWrap"><p>경기 시간 엄수</p><span>경기 시간 전에 도착해주세요</span></div></li>
 			<li><img src="../resources/images/turf.svg"><div class="descWrap"><p>축구화 금지</p><span>부상 방지를 위해 축구화 착용을 금지하고 있습니다. 반드시 풋살화 또는 운동화를 착용해주세요.</span></div></li>
@@ -122,23 +116,7 @@ img{
 
 
 	<script type="text/javascript">
-		/* 	var address = "<c:out value='${stadiumVO.address}'/>"; */
-
-		document
-				.querySelector(".copy")
-				.addEventListener(
-						"click",
-						function() {
-							var tempElem = document.createElement('textarea');
-							tempElem.value = "http://localhost:8080${pageContext.request.contextPath}/match/matchSelect?num=${matchVO.num}"
-							document.body.appendChild(tempElem);
-
-							tempElem.select();
-							document.execCommand("copy");
-							document.body.removeChild(tempElem);
-
-							alert("주소가 클립보드에 복사되었습니다");
-						});
+	
 	</script>
 </body>
 </html>

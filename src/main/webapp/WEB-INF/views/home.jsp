@@ -109,9 +109,9 @@
 		</div>
 	</div>
 
-	<div id="match-box" style="width: 100%; height: 100px;">
+	<div id="match-box" class="btn" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">
-			<button id="pre">←</button>
+			<button id="pre" class="btn daybutton">←</button>
 		</div>
 		<div id="list"
 			style="width: 90%; height: 100px; float: left; overflow: hidden;">
@@ -119,7 +119,7 @@
 			</ul>
 		</div>
 		<div style="width: 5%; height: 100px; float: left;">
-			<button id="next">→</button>
+			<button id="next" class="btn daybutton">→</button>
 		</div>
 	</div>
 
@@ -199,41 +199,46 @@
 				<div class="modal-footer">
 					<input type="checkbox" id="chbox" title="noRepeat"> <label
 						for="noRepeat">오늘 하루 동안 그만 보기</label>
-					<button type="button" class="btn btn-default" data-dismiss="modal" id="modalbtn">Close</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="modalbtn">Close</button>
 				</div>
 			</div>
 
 		</div>
 	</div>
 	<script type="text/javascript">
-		$("#modalbtn").on("click",function() {
+		$("#modalbtn").on("click", function() {
 			closeModal();
 		})
-		function setCookie(name, value, day){
+		function setCookie(name, value, day) {
 			var today = new Date();
 			today.setDate(today.getDate() + day);
-			document.cookie = name+"="+ value + "; path=/; expires="+today.toGMTString()+";";
+			document.cookie = name + "=" + value + "; path=/; expires="
+					+ today.toGMTString() + ";";
 		}
 		function closeModal() {
-			if($("#chbox").prop("checked") == true){
+			if ($("#chbox").prop("checked") == true) {
 				setCookie("popUpexe", 1, 1);
 			}
 		}
 		cookiedata = document.cookie;
 		window.onload = function() {
-			if(cookiedata.indexOf("popUpexe=1")<0){
+			if (cookiedata.indexOf("popUpexe=1") < 0) {
 				$("#myModal").modal();
 			}
 		};
 		var sysdate = new Date();
 		var count = 0;
 		var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));
+		if(count == 0 ){
 		var selectDay = startDay;
+		}
+		
 		var daily = "";
 
 		getList(startDay);
 		getMatch(selectDay);
-
+		getSelectDay(selectDay);
 		// 화살표 누르면 시작 날짜 변환
 		$("#next").click(function() {
 			$("#day-list").empty();
@@ -252,9 +257,7 @@
 		function getList(startDay) {
 			$.get("getList?startDay=" + startDay, function(result) {
 				$("#day-list").append(result);
-
 			});
-			console.log(count);
 			if (count == 0) {
 				$("#pre").prop("disabled", "disabled");
 				$("#next").removeAttr("disabled");
@@ -275,14 +278,21 @@
 
 		// 날짜 누르면 해당 날짜의 경기 리스트 화면에 출력
 		$("#day-list").on("click", ".day-list", function() {
-
 			$("#dDayMatch").empty();
 			var days = $(this).text().split('/');
 			selectDay = parseInt(days[0]);
-			days[1]
 			getMatch(selectDay);
-
 		});
+
+		function getSelectDay(selectDay) {
+			$("#day-list").on("click", ".day-list", function() {
+				$(".day-list").css("background-color", "white");
+				$(this).css("background-color", "#3534A5");
+			});
+		}
+		function getFixDay(selectDay) {
+			
+		}
 
 		$(function() {
 			$("#all-area").click(function() {
@@ -322,9 +332,7 @@
 		$(".modal-footer").click(function() {
 			if ($("#ml1").prop("checked")) {
 				//var vv1 = Number(v1); 
-				console.log(v1);
 				$.get("./match/matchSelect?address=" + v1, function() {
-					console.log(v1);
 				});
 			}
 		});
