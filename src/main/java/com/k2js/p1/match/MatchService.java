@@ -24,12 +24,11 @@ public class MatchService {
 		return matchDAO.matchAddressList(stadiumVO);
 	}
 	
-	public MatchVO matchAddrList(int day, String address) throws Exception{
-		MatchVO matchVO = new MatchVO();
-		matchVO.setDay(day);
-		matchVO.setStadiumName(address);
-		return matchDAO.matchAddrList(matchVO);
-	}
+	/*
+	 * public MatchVO matchAddrList(int day, String address) throws Exception{
+	 * MatchVO matchVO = new MatchVO(); matchVO.setDay(day);
+	 * matchVO.setStadiumName(address); return matchDAO.matchAddrList(matchVO); }
+	 */
 	
 	public int matchDelete(long num)throws Exception{
 		return matchDAO.matchDelete(num);

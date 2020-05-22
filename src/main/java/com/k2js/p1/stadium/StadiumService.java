@@ -11,8 +11,11 @@ public class StadiumService {
 	private StadiumDAO stadiumDAO;
 
 	public StadiumVO stadiumSelect(String stadiumName) throws Exception {
-
 		return stadiumDAO.stadiumSelect(stadiumName);
 	}
 
+	public List<StadiumVO> stadiumList(String stadiumName) throws Exception{
+		return stadiumDAO.stadiumList(stadiumName);
+	}
+	
 }

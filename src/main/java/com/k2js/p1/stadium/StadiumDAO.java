@@ -17,4 +17,8 @@ public class StadiumDAO {
 		return session.selectOne(NAMESPACE+"stadiumSelect", stadiumName);
 	}
 	
+	public List<StadiumVO> stadiumList(String stadiumName) throws Exception{
+		return session.selectList(NAMESPACE+"stadiumList", stadiumName);
+	}
+	
 }

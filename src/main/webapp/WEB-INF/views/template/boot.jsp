@@ -185,14 +185,5 @@ body {
 	background-color: #FFC645;
 	color: #2A2A2A;
 }
-
-/* addressHidden */
-.addressHidden {
-	display: none;
-}
-      
-.addressView {    
-	display: block;
-}
 </style>
 

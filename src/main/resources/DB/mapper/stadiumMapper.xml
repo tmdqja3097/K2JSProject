@@ -10,6 +10,10 @@
 	select * from stadium where name=#{stadiumName}
 </select>
 
+<select id="stadiumList" parameterType="String" resultType="StadiumVO">
+	select * from stadium where name=#{stadiumName}
+</select>
+
 
 
 

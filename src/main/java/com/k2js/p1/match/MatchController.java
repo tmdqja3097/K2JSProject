@@ -5,6 +5,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -34,139 +36,64 @@ public class MatchController {
 	private MatchService matchService;
 	@Autowired
 	private StadiumService stadiumService;
-	
-	
-	
-	
-	@GetMapping("getMatch")
-	public void matchList(int matchTime, Model model) throws Exception {
-		List<MatchVO> matchVOs = matchService.matchList(matchTime);
-		
-		
-		int i = matchVOs.size();
-		
-		
-//		for (int j = 0; j < i; j++) {
-//			MatchVO matchVO = new MatchVO();
-//			String stadiumName = matchVOs.get(j).getStadiumName();
-//			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-//			matchVO = matchService.matchAddressList(matchTime, stadiumName);
-//		}
-		
-		model.addAttribute("matchs", matchVOs);
-		model.addAttribute("i", i);
 
+	@GetMapping("getMatch")
+	public void matchList(Model model, int matchTime) throws Exception {
+		List<MatchVO> ar = new ArrayList<MatchVO>();
+		ar = matchService.matchList(matchTime);
+		int i = ar.size();
+		model.addAttribute("i", i);
+		model.addAttribute("matchs", ar);
 	}
 	
-	
-	@ResponseBody
 	@PostMapping("getMatch")
-	public ModelAndView matchAddrList(String[] addressList, int day, ModelAndView mav) throws Exception{
-		//오늘 날짜 (일)
-		System.out.println(day);
-		//모달에서 누른 value 값(누른 양에 따라 배열로 옴)
-		System.out.println(addressList);
+	public void matchList(String[] addressList,int day, Model model) throws Exception {
+		List<MatchVO> ar = new ArrayList<MatchVO>();
 		System.out.println(addressList.length);
-		System.out.println(addressList[0].toString());
-		System.out.println("---------------");
-		
-		
-		//오늘 날짜의 경기 리스트를 뽑음
-		List<MatchVO> matchVOs = matchService.matchList(day);
-		//경기 개수
-		int ms = matchVOs.size();
-		System.out.println("ms:"+ms);
-		List<MatchVO> matchVOsAddr = new ArrayList<MatchVO>();
-		List<StadiumVO> stadiumVOs = new ArrayList<StadiumVO>();
-		
-		//String[] addressAll = new String[ms];
-		
-		for(int i=0; i<4; i++) {
-			MatchVO matchVO = new MatchVO();
-			
-			//경기 리스트에서 각 구장의 정보를 stadiumName에 넣음
-			String stadiumName = matchVOs.get(i).getStadiumName(); 
-			System.out.println("stadiumName:"+stadiumName);
-			//match안에 있는 stadium에 대한 list정보 
-			StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-			System.out.println("stadiumVO add:"+stadiumVO.getAddress());
-			//stadium list안에 주소에 대한 값
-			//String address = stadiumVO.getAddress();
-			
-			
-			stadiumVOs.add(stadiumVO);
-			System.out.println(stadiumVOs.size());
-			String address = stadiumVOs.set(i, stadiumVO).getAddress();
-			//stadiumVOs.get(i).getAddress();
-			
-			
-			matchVOs = matchService.matchAddressList(address, day);
-//			System.out.println(address);
-			matchVOsAddr.add(matchVO);
-			
-			System.out.println(matchVOs.get(i).getTitle());
+		for (String addr : addressList) {
+			// addr : 지역 이름
+			List<MatchVO> ar1 = matchService.matchAddressList(addr, day);
+			for(int i = 0; i < ar1.size(); i++) {
+				ar.add(ar1.get(i));
+			}
 		}
-		System.out.println(stadiumVOs.get(0).getAddress());
-		System.out.println(stadiumVOs.get(1).getAddress());
-		System.out.println(stadiumVOs.get(2).getAddress());
-		System.out.println(stadiumVOs.get(3).getAddress());
-		mav.addObject("matchs", matchVOs);
 		
-//		System.out.println("address1: "+matchVOsAddr.get(0).getTitle());
-//		System.out.println("address2: "+stadiumVOs.get(1).getAddress());
-//		System.out.println("address3: "+stadiumVOs.get(2).getAddress());
-		System.out.println("----");
 		
+		List<Date> d = null;
+		
+		for(int i = 0 ; i < ar.size(); i++) {
+			System.out.println("real:"+ar.get(i).getMatchTime());
+			d = new ArrayList<Date>();
+			d.add(ar.get(i).getMatchTime());
+		}
 		
 		
 		
+		Collections.sort(d, new Comparator<Date>() {
+			
+			@Override
+			public int compare(Date o1, Date o2) {
+
+				if(o1.getTime() < o2.getTime()) {
+					return -1;
+				}else if(o1.getTime() == o2.getTime()) {
+					return 0;
+				}else {
+					return 1;
+				}
+				
+			}
+				
+		});
+		
+		System.out.println("d:"+d.get(0).toString());
 		
 		
-//		String[] value = new String[ms];
-//		
-//		for(String address:addressList) {
-//			System.out.println(address);
-//			for(int i=0; i<ms; i++) {
-//				
-//				if(address.equals("seoul")) {
-//					if(stadiumVOs.get(i).getAddress().equals("seoul")) {
-//						value[i] = matchVOs1.get(i).getTitle().toString(); 
-//					}else {
-//						value[i] = "n";
-//					}
-//				}else if(address.equals("daegu")){
-//					if(stadiumVOs.get(i).getAddress().equals("daegu")) {
-//						value[i] = matchVOs1.get(i).getTitle().toString();
-//					}else {
-//						value[i] = "n";
-//					}
-//				}else if(address.equals("gyeonggi")) {
-//					if(stadiumVOs.get(i).getAddress().equals("gyeonggi")) {
-//						value[i] = matchVOs1.get(i).getTitle().toString();
-//					}else {
-//						value[i] = "n";
-//					}
-//				}
-//				else {
-//					value[i] = "not";
-//				}
-//				
-//				
-//			}
-//			System.out.println(value.length);
-//			System.out.println(value[0]);
-//			System.out.println(value[1]);
-//			System.out.println(value[2]);
-//			System.out.println(value[3]);
-//			
-//		}
-		mav.addObject("ms", ms);
-		//mav.addObject("filterValue", value);
-		mav.setViewName("getMatch");
+		int i = ar.size();
 		
-		return mav;
+		model.addAttribute("i", i);
+		model.addAttribute("matchs", ar);
 	}
-	
 	
 
 	@GetMapping("/match/matchSelect")
