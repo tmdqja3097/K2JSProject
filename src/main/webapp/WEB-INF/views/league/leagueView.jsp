@@ -23,6 +23,13 @@
 		border: 1px solid green;
 	}
 	
+	/* 매치, 리그, 고객상담 (헤더 아래) */
+	.header_wrapper {
+		width: 100%;
+		height: 72px;
+		border: 1px solid red;
+		margin-bottom: 30px;
+	}
 	
 	/* 헤더-상단바 */
 	.top-bar {
@@ -57,29 +64,44 @@
 		border: 1px solid black;
 		margin-top: 30px;
 		margin-bottom: 30px;
+	
 	}
 	
 	.card_body {
-		width: 100%;
-		height: 130px;
+		width: 90%;        
+		height: 110px;        
 		border: 1px solid yellow;
 		background-color: #F6F6F6;
-		padding-top: 0 50%;   
-		margin: 0;       
+		margin: 75px;
+		
 	}
 	
+	/* 일정 */
+	.card_man>li{ 
+		display: inline-block;
+		border: 1px solid #FF48C7;
+		width: 212px;   
+		height: 65px;            
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	
+	/* 일정 헤더 */
 	.card_top {
 		width: 100%;
 		height: 681px;
 		border: 1px solid purple;
-		margin-bottom: 6px;
+		margin-bottom: 30px;
 	}
 	
-	.oneday {
-		width:
+	/* 일정: 원데이리그 남성 */
+	.onedayteam {
+		width: 100%;
+		height: 72px;
+		border: 1px solid green;
 	}
 
-	
+	/* 일정 중간 */
 	.card_middle {
 		width: 100%;
 		height: 509px;
@@ -88,12 +110,44 @@
 		
 	}
 	
+		
+	.one_man>li {
+		display: inline-block;
+		border: 1px solid blue;
+		width: 100%;
+		height: 173px;
+		padding: 15px;
+		
+	}
+	
+	/* 랭킹 헤더 */
 	.card_ranks {
 		width: 100%;
 		height: 775.3px;
 		border: 1px solid black;
+		margin-top: 30px;
 	}
 	
+	/* "랭킹" */
+	.ranks_header {
+		width: 100%;
+		height: 72px;
+		padding: 30px 20px 10px;
+	}
+	
+	/* 랭킹 순위 */
+	.ranks_header {
+		width: 100%;
+		height: 603.3px;  
+		background-color: black;
+		position: center;       
+		
+	}
+	
+
+	
+	
+	/* 리그 헤더 */
 	.card_rule {
 		width: 100%;
 		height: 459px;
@@ -102,25 +156,21 @@
 		margin-bottom: 30px;
 	}
 	
-	.card_man>li{
-		display: inline-block;
-		border: 1px solid yellow;
-		width: 212.16px;
-		height: 65px;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-	
-	.one_man>li {
-		display: inline-block;
-		border: 1px solid blue;
-		
-	}
-	 
+   /* 리그 규칙 */	 
+   .rule_header {
+   		display: inline-block;
+   		width: 50%;
+		padding: 20px 10px;
+   		border: 1px solid red;
+   		margin: 0px;
+    }
+
+   
 </style>
 </head>
 <body>  
 	<c:import url="../template/header.jsp"></c:import>
+<!-- 	c:import - 불러오기 -->	
 <!-- 	<h1> league page </h1>
 	<div id = "plabheader">
 		<div class = "plabmain">
@@ -129,6 +179,9 @@
 			</div>
 		</div>
 	</div> -->
+	
+	<div class="header_wrapper"></div>
+	
 	
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
 	  <!-- Indicators -->
@@ -168,28 +221,28 @@
 						<a href="./manCar">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manCar.svg"
-							style="list-stlye:none; width: 100%; height: 25px;"> 
+							style="width: 100%; height: 25px;"> 
 						</a>   
 					</li>	
 					<li> 남자 랭킹 
 						<a href="./manRanks">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manGraph.svg"
-							style="list-stlye:none; width: 100%; height: 25px;">  
+							style="width: 100%; height: 25px;">  
 						</a>  
 					</li>
 					<li> 여자 일정 
 						<a href="./womanCar">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanCar.svg"
-							style="list-stlye:none; width: 100%; height: 25px;">
+							style="width: 100%; height: 25px;">
 						</a>  
 					</li>
 					<li> 여자 랭킹 
 						<a href="./womanRanks">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanGraph.svg"
-							style="list-stlye:none; width: 100%; height: 25px;">
+							style="width: 100%; height: 25px;">
 						</a> 
 					</li>
 				</ul>
@@ -199,25 +252,47 @@
 	
 	
 	<div class="card_top">
-		<div class="oneday">
-			<div class="card_middle">	
-				<ul class="one_man">
-					<li> 원데이 팀 남성리그 in 용산 7구장 </li>	
-					<li> 원데이 팀 남성리그 in 용산 6구장 </li>	
-					<li> 원데이 팀 남성리그 in 상암스포츠 C면 </li>
-					<li> 원데이 팀 남성리그 in 용산 1구장 </li>	
-				</ul>
+		<div class="onedayteam";>
+			<div class="oneday";>
+				<div class="card_middle">	
+					<ul class="one_man">
+						<li> 원데이 팀 남성리그 in 용산 7구장 </li>	
+						<li> 원데이 팀 남성리그 in 용산 6구장 </li>	
+						<li> 원데이 팀 남성리그 in 상암스포츠 C면 </li>
+						<li> 원데이 팀 남성리그 in 용산 1구장 </li>	
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 
 
 	<div class="card_ranks">
+		<div class="ranks_header">
+			<div class="ranks_body">
+			
+			</div>
+		</div>
 	</div>
 	
 	
-	<div class="card_rule">
-		
+	<div class="card_rule">	
+		<div class="rule_header">
+			<ul>
+				<li>👋🏻
+					<h3> 골킥은 무조건 손으로 </h3>
+				</li>
+				<li>⌛ 
+					<h3> 킥인은 4초 안에 </h3>
+				</li>
+				<li>🔙 
+					<h3> 백패스는 1번만 </h3>
+				</li>
+				<li>😬 
+					<h3> 위반시 간접 프리킥 </h3>
+				<li>
+			</ul>
+		</div>
 	</div>
 	
 	
