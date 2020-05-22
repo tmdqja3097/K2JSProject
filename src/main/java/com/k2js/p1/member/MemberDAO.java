@@ -1,8 +1,13 @@
 package com.k2js.p1.member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.k2js.p1.match.MatchVO;
+import com.k2js.p1.matchforcapa.MatchForCapaVO;
 
 @Repository
 public class MemberDAO {
@@ -43,4 +48,11 @@ public class MemberDAO {
 	public MemberVO memberFindId(MemberVO memberVO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "memberFindId", memberVO);
 	}
+	public List<MatchForCapaVO> memberCapaList(MemberVO memberVO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "memberCapaList", memberVO);
+	}
+	public MatchVO memberLastCapa(MatchForCapaVO mfcVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "memberLastCapa", mfcVO);
+	}
 }
+ 

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<c:import url="./template/boot.jsp"></c:import>
+<c:import url="../template/boot.jsp"></c:import>
 <style>
 .notice_head a {
 	color: white;
@@ -99,14 +99,26 @@
 }
 </style>
 </head>
-	<div class="search result">
-		<c:if test="${i eq 0}">
-			<p style="text-align: center;">참여 경기가 없습니다.</p>
-		</c:if>
-		<c:if test="${i gt 0}">
-			<c:forEach items="">
-				
-			</c:forEach>
-		</c:if>
-	</div>
+<div class="search result">
+	<c:if test="${i eq 0}">
+		<p style="text-align: center;">참여 경기가 없습니다.</p>
+	</c:if>
+	<c:if test="${i gt 0}">
+		<c:forEach items="${list}" var="vo">
+			<li>
+				<div class="">
+					<p style="line-height: 4">${vo.time}</p>
+				</div>
+				<div class="">
+					<h4 style="line-height: 2.7" id="h4">${vo.title}</h4>
+					<div class="div_gender" id="p">
+						<c:if test="${vo.gender eq 1}">남성 매치</c:if>
+						<c:if test="${vo.gender eq 2}">여성 매치</c:if>
+						<c:if test="${vo.gender eq 3}">혼성 매치</c:if>
+					</div>
+				</div>
+			</li>
+		</c:forEach>
+	</c:if>
+</div>
 </html>

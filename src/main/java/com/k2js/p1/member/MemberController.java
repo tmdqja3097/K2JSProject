@@ -3,6 +3,7 @@ package com.k2js.p1.member;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.k2js.p1.match.MatchVO;
 
 @Controller
 @RequestMapping("/member/**")
@@ -196,7 +199,14 @@ public class MemberController {
 	}
 	@GetMapping("getCapaList")
 	public void getCapaList(Model model, HttpSession session) throws Exception {
+		int size = 0;
 		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		List<MatchVO> ar = memberService.memberCapaList(memberVO);
+		if(ar.size() != 0 ) {
+			size = ar.size();
+		}
+		model.addAttribute("i", size);
+		model.addAttribute("list",ar);
 		
 	}
 }

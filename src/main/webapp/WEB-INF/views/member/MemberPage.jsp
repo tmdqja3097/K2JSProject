@@ -90,7 +90,8 @@ float : right;
 	<script type="text/javascript">
 	
 		$(function() {
-			$.get("member/getCapaList", function(result) {
+			$.get("./getCapaList", function(result) {
+				console.log(result);
 				$("#matchList").append(result);
 			})
 		})
