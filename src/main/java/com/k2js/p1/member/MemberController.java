@@ -53,7 +53,7 @@ public class MemberController {
 		session.invalidate();
 		int result = memberService.memberKakaoNew(memberVO);
 		if (result > 0) {
-			mav.setViewName("redirect:../");
+			mav.setViewName("member/MemberLogin");
 		} else {
 			mav.setViewName("./");
 		}
@@ -113,7 +113,7 @@ public class MemberController {
 		memberVO.setBirth(birth);
 		int result = memberService.memberNew(memberVO);
 		if (result > 0) {
-			return "redirect:../";
+			return "member/MemberLogin";
 		}
 		return "redirect:./";
 	}
@@ -193,5 +193,10 @@ public class MemberController {
 		}
 		mav.setViewName("common/ajaxResult");
 		return mav;
+	}
+	@GetMapping("getCapaList")
+	public void getCapaList(Model model, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
 	}
 }

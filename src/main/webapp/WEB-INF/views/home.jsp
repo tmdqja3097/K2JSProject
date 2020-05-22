@@ -28,13 +28,11 @@
 .match-result {
 	width: 10%;
 	height: 30px;
-	
 	text-align: center;
 }
 
-.match-wrapper {	
-
- margin-left: 0px;
+.match-wrapper {
+	margin-left: 0px;
 }
 
 .match-wrapper p {
@@ -48,7 +46,7 @@
 	float: left;
 	opacity: 0;
 	width: 5px;
-	height: 5px; 
+	height: 5px;
 }
 
 .checkLabel {
@@ -183,7 +181,50 @@
 	</div>
 
 
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">코로나 전염확산 주의 안내</h4>
+				</div>
+				<div class="modal-body">
+					<p>근래 확진자가 다녀간 지역을 방문하셨거나,</p>
+					<p>코로나 관련 증상이 있으신 회원님은</p>
+					<p>단체참여를 자제하여 주시기 바랍니다.</p>
+				</div>
+				<div class="modal-footer">
+					<input type="checkbox" id="chbox" title="noRepeat"> <label
+						for="noRepeat">오늘 하루 동안 그만 보기</label>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="modalbtn">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 	<script type="text/javascript">
+		$("#modalbtn").on("click",function() {
+			closeModal();
+		})
+		function setCookie(name, value, day){
+			var today = new Date();
+			today.setDate(today.getDate() + day);
+			document.cookie = name+"="+ value + "; path=/; expires="+today.toGMTString()+";";
+		}
+		function closeModal() {
+			if($("#chbox").prop("checked") == true){
+				setCookie("popUpexe", 1, 1);
+			}
+		}
+		cookiedata = document.cookie;
+		window.onload = function() {
+			if(cookiedata.indexOf("popUpexe=1")<0){
+				$("#myModal").modal();
+			}
+		};
 		var sysdate = new Date();
 		var count = 0;
 		var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));

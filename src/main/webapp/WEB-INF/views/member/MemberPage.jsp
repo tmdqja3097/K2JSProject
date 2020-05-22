@@ -75,7 +75,7 @@ float : right;
 		</div>
 		<div class="lastMatch">
 			<h1> 참여한 경기 목록 </h1>
-			<div class="matchList">
+			<div id="matchList">
 				
 			</div>
 		</div>
@@ -88,6 +88,12 @@ float : right;
 	</div>
 
 	<script type="text/javascript">
+	
+		$(function() {
+			$.get("member/getCapaList", function(result) {
+				$("#matchList").append(result);
+			})
+		})
 		$("#chargeList")
 				.click(
 						function() {

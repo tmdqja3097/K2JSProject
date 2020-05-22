@@ -18,8 +18,14 @@ public class MemberVO {
 	private int cash;
 	private int age;
 	private int loginmt;
+	private long capaListNum;
 	
-	
+	public long getCapaListNum() {
+		return capaListNum;
+	}
+	public void setCapaListNum(long capaListNum) {
+		this.capaListNum = capaListNum;
+	}
 	public int getLoginmt() {
 		return loginmt;
 	}
