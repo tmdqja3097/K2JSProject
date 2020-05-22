@@ -5,15 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <title>Insert title here</title> -->
 
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+<c:import url="../template/boot.jsp" />
 
 <style type="text/css">
 
@@ -57,59 +52,57 @@
 		z-index: 0;
 		background-image: none;
 	}
+
 	
-	.card_header {      
-		width: 100%;    
-		height: 260px;
-		border: 1px solid black;
-		margin-top: 30px;
-		margin-bottom: 30px;
-	
-	}
-	
-	.card_body {
-		width: 90%;        
-		height: 110px;        
-		border: 1px solid yellow;
-		background-color: #F6F6F6;
-		margin: 75px;
+	/* 일정 */
+	.oneday_header {
+		width: 100%;
+		height: 681px;
+		
+		margin-top: 70px;
 		
 	}
 	
-	/* 일정 */
+	.oneday_top {      
+		width: 100%;
+		height: 85px;
+	}
+	
+	.oneday_body {
+		width: 100%;
+		height: 500px;
+		
+	}
+	
+	.oneday_box1{
+		width: 25%;
+		height: 150px;
+		padding-left: 30px;
+		display: inline-block;
+		border-radius: 20px;
+		background-color: #fafafa;
+	}
+	         
+	.oneday_box2{
+		width: 25%;
+		height: 150px;
+		padding-left: 30px;
+		display: inline-block;
+		border-radius: 20px;
+		background-color: #fafafa;
+	}
+	
+
+	
 	.card_man>li{ 
 		display: inline-block;
 		border: 1px solid #FF48C7;
-		width: 212px;   
+		width: 20%;  
 		height: 65px;            
-		margin-top: 30px;
-		margin-bottom: 30px;
-	}
-	
-	/* 일정 헤더 */
-	.card_top {
-		width: 100%;
-		height: 681px;
-		border: 1px solid purple;
-		margin-bottom: 30px;
-	}
-	
-	/* 일정: 원데이리그 남성 */
-	.onedayteam {
-		width: 100%;
-		height: 72px;
-		border: 1px solid green;
+		margin-top: 20px;    
+		text-align: center;
 	}
 
-	/* 일정 중간 */
-	.card_middle {
-		width: 100%;
-		height: 509px;
-		border: 1px solid gray;
-		margin-bottom: 30px;
-		
-	}
-	
 		
 	.one_man>li {
 		display: inline-block;
@@ -118,42 +111,38 @@
 		height: 173px;
 		padding: 15px;
 		
-	}
+	}       
 	
 	/* 랭킹 헤더 */
-	.card_ranks {
+	.ranks_card {
 		width: 100%;
 		height: 775.3px;
-		border: 1px solid black;
 		margin-top: 30px;
 	}
-	
+	  
 	/* "랭킹" */
-	.ranks_header {
+	.ranks_top {
 		width: 100%;
-		height: 72px;
-		padding: 30px 20px 10px;
+		height: 85px;
+	
 	}
 	
-	/* 랭킹 순위 */
-	.ranks_header {
+	/* "랭킹 순위" */
+	.ranks_body {
 		width: 100%;
-		height: 603.3px;  
-		background-color: black;
-		position: center;       
-		
+		height: 500px;
+	
 	}
+	       
 	
 
-	
-	
 	/* 리그 헤더 */
 	.card_rule {
 		width: 100%;
-		height: 459px;
-		border: 1px solid orange;
+		height: 459px;    
 		margin-top: 30px;
 		margin-bottom: 30px;
+		text-align: center;
 	}
 	
    /* 리그 규칙 */	 
@@ -164,6 +153,8 @@
    		border: 1px solid red;
    		margin: 0px;
     }
+    
+    
 
    
 </style>
@@ -204,71 +195,75 @@
 	      	   alt="Chicago" style="width:100%;" height="50px">
 	    	   <div class="carousel-caption"></div>
 	    </div>
-	
 	  </div>
 	
-	  <!-- Left and right controls -->
 	  
-	   
 	  
 	</div>
 	
-	<div class="card_header">
 		<div class="body">
 			<div class="card_body">
 				<ul class="card_man" style="list-style:none; width: 100%; height: 50px; color: blue;">
-					<li> 남자 일정
+					<li> 
 						<a href="./manCar">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manCar.svg"
-							style="width: 100%; height: 25px;"> 
+							style="width: 100%; height: 25px;">
+							남자 일정 
 						</a>   
 					</li>	
-					<li> 남자 랭킹 
+					<li> 
 						<a href="./manRanks">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manGraph.svg"
 							style="width: 100%; height: 25px;">  
+							남자 랭킹 
 						</a>  
 					</li>
-					<li> 여자 일정 
+					<li>  
 						<a href="./womanCar">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanCar.svg"
 							style="width: 100%; height: 25px;">
+							여자 일정
 						</a>  
 					</li>
-					<li> 여자 랭킹 
+					<li>  
 						<a href="./womanRanks">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanGraph.svg"
 							style="width: 100%; height: 25px;">
+							여자 랭킹
 						</a> 
 					</li>
 				</ul>
 			</div>
 		</div>
-	</div>
-	
-	
-	<div class="card_top">
-		<div class="onedayteam";>
-			<div class="oneday";>
-				<div class="card_middle">	
-					<ul class="one_man">
-						<li> 원데이 팀 남성리그 in 용산 7구장 </li>	
-						<li> 원데이 팀 남성리그 in 용산 6구장 </li>	
-						<li> 원데이 팀 남성리그 in 상암스포츠 C면 </li>
-						<li> 원데이 팀 남성리그 in 용산 1구장 </li>	
-					</ul>
-				</div>
-			</div>
+		
+		
+	  <div class="oneday_header">
+	  	<div class="oneday_top">
+	  		<h2> 일정 </h2>
+			<a href="./manCar"> 원데이리그 남성 </a> 
+			<a href="./womanCar"> 원데이리그 여성 </a>
+	  	</div>
+		<div class="oneday_body">
+			<div class="oneday_box1"></div>
+			<div class="oneday_box1"></div>
+			<div class="oneday_box2"></div>
+			<div class="oneday_box2"></div>
+
+			<div class="oneday_end"></div>
 		</div>
 	</div>
+	   
 
 
-	<div class="card_ranks">
-		<div class="ranks_header">
+	<div class="ranks_card">
+		<div class="ranks_top">
+		<h2> 랭킹 </h2>
+			<a href="./manRanks"> 원데이리그 남성 </a> 
+			<a href="./womanRanks"> 원데이리그 여성 </a>
 			<div class="ranks_body">
 			
 			</div>
@@ -277,8 +272,42 @@
 	
 	
 	<div class="card_rule">	
-		<div class="rule_header">
-			<ul>
+		<ul style="list-style:none;">
+			<div class="oneday_box1">
+				<li>
+					<h3> 👋🏻 
+						<p> 골킥은 무조건 손으로 </p>
+					</h3>
+				</li>
+
+			</div>
+			<div class="oneday_box1">
+				<li>
+					<h3> ⌛  
+						<p> 킥인은 4초 안에 </p>
+					</h3>
+				</li>
+			</div>    
+			<div class="oneday_box2">
+				<li>
+					<h3> 🔙 
+						<p> 백패스는 1번만 </p>
+					</h3>
+				</li>
+			</div>
+			<div class="oneday_box2">
+				<li>
+					<h3> 😬  
+						<p> 위반시 간접 프리킥 </p>
+					</h3>
+				<li>
+			</div>
+		</ul>  
+		
+		<!-- <div class="rule_header"> -->
+		<!--       
+			<ul  style="list-style:none;">
+			
 				<li>👋🏻
 					<h3> 골킥은 무조건 손으로 </h3>
 				</li>
@@ -291,9 +320,9 @@
 				<li>😬 
 					<h3> 위반시 간접 프리킥 </h3>
 				<li>
-			</ul>
-		</div>
-	</div>
+			</ul> -->
+		
+	</div>       
 	
 	
 

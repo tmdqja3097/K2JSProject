@@ -71,6 +71,8 @@
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
+	
+	<a href = "./league/leagueView">리그</a>
 	<div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
@@ -113,7 +115,7 @@
 		</div>
 	</div>
 	
-	<a href = "./league/leagueView">리그</a>
+	
 
 	<div id="match-box" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">

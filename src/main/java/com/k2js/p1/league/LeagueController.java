@@ -37,5 +37,15 @@ public class LeagueController {
 		public void womanRanks() {
 		
 	}
+	
+	@GetMapping("onedayMan")
+		public void onedayMan() {
+		
+	}
+	
+	@GetMapping("onedayWoman")
+		public void onedayWoman() {
+		
+	}
 }
 
