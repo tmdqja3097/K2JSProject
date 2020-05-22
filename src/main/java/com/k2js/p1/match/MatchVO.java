@@ -15,10 +15,16 @@ public class MatchVO {
 	private String time;
 	private String fullTime;
 	private String stadiumName;
-	private String fileImage;
 	private long count;
 	private int gender;
-	private long capacity;
+	private String joinMemberId;
+	
+	public String getJoinMemberId() {
+		return joinMemberId;
+	}
+	public void setJoinMemberId(String joinMemberId) {
+		this.joinMemberId = joinMemberId;
+	}
 	private List<StadiumFileVO> stadiumFileVOs;
 	
 	public List<StadiumFileVO> getStadiumFileVOs() {
@@ -69,12 +75,6 @@ public class MatchVO {
 	public void setMatchTime(Date matchTime) {
 		this.matchTime = matchTime;
 	}
-	public String getFileImage() {
-		return fileImage;
-	}
-	public void setFileImage(String fileImage) {
-		this.fileImage = fileImage;
-	}
 	public long getCount() {
 		return count;
 	}
@@ -86,12 +86,6 @@ public class MatchVO {
 	}
 	public void setGender(int gender) {
 		this.gender = gender;
-	}
-	public long getCapacity() {
-		return capacity;
-	}
-	public void setCapacity(long capacity) {
-		this.capacity = capacity;
 	}
 	
 }

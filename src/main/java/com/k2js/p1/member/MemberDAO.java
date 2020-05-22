@@ -26,7 +26,6 @@ public class MemberDAO {
 	public int memberUpdate(MemberVO memberVO) throws Exception {
 		return sqlSession.update(NAMESPACE+"memberUpdate", memberVO);
 	}
-	
 	public int memberKakaoNew(MemberVO memberVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"memberKakaoNew", memberVO);
 	}

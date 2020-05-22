@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
 
@@ -131,8 +132,13 @@ public class MatchController {
 	}
 	
 	@PostMapping("/match/matchJoin")
-	public ModelAndView matchJoin(MatchVO matchVO, int count)throws Exception{
+	public ModelAndView matchJoin(MatchVO matchVO, MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		long count = matchVO.getCount();
+		int result = matchService.matchJoin(matchVO, memberVO);
+		long num = matchVO.getNum();
+		/* int result2 = matchService.matchJoin(num,memberVO); */
+	 
 		MatchVO match = matchService.matchSelect(matchVO.getNum());
 		mv.addObject("matchVO",match);
 		mv.setViewName("match/matchComplete");

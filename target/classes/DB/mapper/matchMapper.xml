@@ -11,10 +11,9 @@
 		<result column="contents" property="contents"/>
 		<result column="matchTime" property="matchTime"/>
 		<result column="stadiumName" property="stadiumName"/>
-		<result column="fileImage" property="fileImage"/>
 		<result column="count" property="count"/>
 		<result column="gender" property="gender"/>
-		<result column="capacity" property="capacity"/>
+		<result column="joinMemberId" property="joinMemberId"/>
 		<collection property="stadiumFileVOs" javaType="List" ofType="StadiumFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>
@@ -35,11 +34,11 @@
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},'Image',#{count},#{gender},#{capacity})
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},'joinMemberId:')
 </insert>
 
 <update id="matchUpdate" parameterType="MatchVO">
-		update match set title=#{title}, contents=#{contents}, matchTime=#{matchTime} where num=#{num}
+		update match set title=#{title}, contents=#{contents}, matchTime=#{matchTime}, count=#{count} where num=#{num}
 </update>
 
 
@@ -50,6 +49,10 @@
 <delete id="matchDelete" parameterType="Long">
 	delete match where num=#{num}
 </delete>
+
+<update id="matchJoin" parameterType="MatchVO">
+	update match set count=#{count}, joinMemberId=#{joinMemberId} where num=#{num}
+</update>
 
 
 

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
+import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.file.StadiumFileDAO;
 import com.k2js.p1.stadium.file.StadiumFileVO;
 import com.k2js.p1.util.FileSaver;
@@ -64,6 +64,24 @@ public class MatchService {
 		 */
 		return matchDAO.matchList(day);
 	}
+	
+	 public int matchJoin(MatchVO matchVO, MemberVO memberVO)throws Exception{
+		 MatchVO match = matchSelect(matchVO.getNum());
+		 long count = matchVO.getCount();
+		 match.setCount(match.getCount()+count);
+			
+		 String joinMemberId = match.getJoinMemberId();
+		 match.setJoinMemberId(joinMemberId+memberVO.getId()+",");
+	
+		 
+		 return matchDAO.matchJoin(match);
+	 }
+	 
+	 public int matchJoin(long num, MemberVO memberVO)throws Exception{
+		 
+		 return matchDAO.matchJoin(memberVO);
+	 }
+	 
 	
 	public MatchVO matchSelect(long num) throws Exception{
 		MatchVO matchVO = matchDAO.matchSelect(num);

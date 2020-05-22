@@ -77,6 +77,8 @@ float : right;
 			<h1> 참여한 경기 목록 </h1>
 			<div id="matchList">
 				
+				
+				
 			</div>
 		</div>
 		<br>
@@ -89,12 +91,14 @@ float : right;
 
 	<script type="text/javascript">
 	
+
 		$(function() {
 			$.get("./getCapaList", function(result) {
 				console.log(result);
 				$("#matchList").append(result);
 			})
 		})
+
 		$("#chargeList")
 				.click(
 						function() {
@@ -124,6 +128,9 @@ float : right;
 				location.href = "./MemberDelete";
 			}
 		})
+		
+		
+		
 	</script>
 </body>
 </html>
