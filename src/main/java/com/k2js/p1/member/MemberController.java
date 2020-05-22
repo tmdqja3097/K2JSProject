@@ -194,4 +194,9 @@ public class MemberController {
 		mav.setViewName("common/ajaxResult");
 		return mav;
 	}
+	@GetMapping("getCapaList")
+	public void getCapaList(Model model, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		
+	}
 }
