@@ -58,7 +58,6 @@
 	.oneday_header {
 		width: 100%;
 		height: 681px;
-		
 		margin-top: 70px;
 		
 	}
@@ -75,16 +74,17 @@
 	}
 	
 	.oneday_box1{
-		width: 25%;
+		width: 30%;
 		height: 150px;
 		padding-left: 30px;
 		display: inline-block;
 		border-radius: 20px;
 		background-color: #fafafa;
+		
 	}
 	         
 	.oneday_box2{
-		width: 25%;
+		width: 30%;
 		height: 150px;
 		padding-left: 30px;
 		display: inline-block;
@@ -96,7 +96,6 @@
 	
 	.card_man>li{ 
 		display: inline-block;
-		border: 1px solid #FF48C7;
 		width: 20%;  
 		height: 65px;            
 		margin-top: 20px;    
@@ -162,14 +161,6 @@
 <body>  
 	<c:import url="../template/header.jsp"></c:import>
 <!-- 	c:import - 불러오기 -->	
-<!-- 	<h1> league page </h1>
-	<div id = "plabheader">
-		<div class = "plabmain">
-			<div class = "palbheader-main">
-			
-			</div>
-		</div>
-	</div> -->
 	
 	<div class="header_wrapper"></div>
 	
@@ -201,43 +192,42 @@
 	  
 	</div>
 	
-		<div class="body">
-			<div class="card_body">
-				<ul class="card_man" style="list-style:none; width: 100%; height: 50px; color: blue;">
-					<li> 
-						<a href="./manCar">
-							<img alt=""
+	
+	<div class="body">
+			<ul class="card_man" style="list-style:none; width: 100%; height: 50px;">
+				<li> 
+					<a href="./manCar">
+						<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manCar.svg"
 							style="width: 100%; height: 25px;">
 							남자 일정 
-						</a>   
-					</li>	
-					<li> 
-						<a href="./manRanks">
-							<img alt=""
+					</a>   
+				</li>	
+				<li> 
+					<a href="./manRanks">
+						<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manGraph.svg"
 							style="width: 100%; height: 25px;">  
 							남자 랭킹 
-						</a>  
-					</li>
-					<li>  
-						<a href="./womanCar">
+					</a>  
+				</li>
+				<li>  
+					<a href="./womanCar">
 							<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanCar.svg"
 							style="width: 100%; height: 25px;">
 							여자 일정
-						</a>  
-					</li>
-					<li>  
-						<a href="./womanRanks">
-							<img alt=""
+					</a>  
+				</li>
+				<li>  
+					<a href="./womanRanks">
+						<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/womanGraph.svg"
 							style="width: 100%; height: 25px;">
 							여자 랭킹
-						</a> 
-					</li>
-				</ul>
-			</div>
+					</a> 
+				</li>
+			</ul>
 		</div>
 		
 		
@@ -276,7 +266,7 @@
 			<div class="oneday_box1">
 				<li>
 					<h3> 👋🏻 
-						<p> 골킥은 무조건 손으로 </p>
+						<p> 골킥은 무조건 손 </p>
 					</h3>
 				</li>
 
@@ -304,34 +294,8 @@
 			</div>
 		</ul>  
 		
-		<!-- <div class="rule_header"> -->
-		<!--       
-			<ul  style="list-style:none;">
-			
-				<li>👋🏻
-					<h3> 골킥은 무조건 손으로 </h3>
-				</li>
-				<li>⌛ 
-					<h3> 킥인은 4초 안에 </h3>
-				</li>
-				<li>🔙 
-					<h3> 백패스는 1번만 </h3>
-				</li>
-				<li>😬 
-					<h3> 위반시 간접 프리킥 </h3>
-				<li>
-			</ul> -->
 		
 	</div>       
-	
-	
-
-	<%-- <div class="woman">
-		<img
-			src="${pageContext.request.contextPath}/resources/images/woman.PNG"
-			alt="Woman" style="width: 100%;" height="300px">
-	</div> --%>
-	
 	
 
 </body>
