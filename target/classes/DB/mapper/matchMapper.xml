@@ -34,13 +34,16 @@
 </delete>
 
 
-<select id="matchAddrList" resultType="MatchVO" parameterType="MatchVO">
-	select * from match where to_char(matchTime,'dd') = #{day} and stadiumName = #{stadiumName}
-</select>
-
 <select id="matchAddressList" resultType="MatchVO" parameterType="StadiumVO">
 	select M.* from stadium S, match M where S.name=M.stadiumName AND S.address = #{address} and to_char(matchTime,'dd') = #{day}
 </select>
 
+<select id="matchGenderList" resultType="MatchVO" parameterType="MatchVO">
+	select * from match where gender=#{gender} and to_char(matchTime, 'dd') = #{day}
+</select>
+
+<select id="matchTwiceList" resultType="MatchVO" parameterType="StadiumVO">
+	select M.* from stadium S, match M where S.name=M.stadiumName and S.address = #{address} and to_char(matchTime,'dd') = #{day} and M.gender=#{gender}
+</select>
 
 </mapper>

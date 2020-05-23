@@ -141,7 +141,6 @@
 	</div>
 
 
-
 		<div class="modal fade" id="layerpop1">
 			<div class="modal-dialog">
 				<div class="modal-content" style="border-radius: 30px;">
@@ -190,10 +189,10 @@
 							</ul>
 
 						</div>
-					</div>
+					</div>      
 					<!-- Footer -->
-					<div class="modal-footer" 
-						data-dismiss="modal" style="background-color: #ffc645; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; text-align: center; cursor: pointer;">
+					<div class="modal-footer1 mofo"  
+						data-dismiss="modal">
 						<h5>적용하기</h5>
 
 					</div>    
@@ -214,49 +213,26 @@
 					<h4 class="modal-title">카테고리</h4>
 				</div>
 				<!-- body -->
-				<div class="modal-body" style="height: 400px;">
+				<div class="modal-body" style="height: 150px;">
 					<div class="modal-body-filter">
 						<ul class="modal-list1" style="list-style: none;">
 							<h4>성별</h4>
 							<br>
 							<li><input type="checkbox" id="gender_m" class="filterCheck"
-								value="1"> <label id="mlL-1" for="gender_m"
+								name="filterGender" value="1"> <label id="mlL-1" for="gender_m"
 								class="checkLabel">남성</label></li>
 							<li><input type="checkbox" id="gender_w" class="filterCheck"
-								value="2"> <label id="mlL-2" for="gender_w"
+								name="filterGender" value="2"> <label id="mlL-2" for="gender_w"
 								class="checkLabel">여성</label></li>
 							<li><input type="checkbox" id="gender_u" class="filterCheck"
-								value="0"> <label id="mlL-3" for="gender_u"
+								name="filterGender" value="3"> <label id="mlL-3" for="gender_u"
 								class="checkLabel" style="width: 90px;">남녀 모두</label></li>
-						</ul>
-						<ul class="modal-list1">
-							<h4>개인/팀</h4>
-							<br>
-							<li><input type="checkbox" id="type_match"
-								class="filterCheck" value="match"> <label id="mlL-4"
-								for="type_match" class="checkLabel">개인</label></li>
-							<li><input type="checkbox" id="type_cup" class="filterCheck"
-								value="cup"> <label id="mlL-5" for="type_cup"
-								class="checkLabel">팀</label></li>
-						</ul>
-						<ul class="modal-list1">
-							<h4>레벨</h4>
-							<br>
-							<li><input type="checkbox" id="level_begin"
-								class="filterCheck" value="begin"> <label id="mlL-6"
-								for="level_begin" class="checkLabel">초급</label></li>
-							<li><input type="checkbox" id="level_middle"
-								class="filterCheck" value="middle"> <label id="mlL-7"
-								for="level_middle" class="checkLabel">중급</label></li>
-							<li><input type="checkbox" id="level_every"
-								class="filterCheck" value="every"> <label id="mlL-8"
-								for="level_every" class="checkLabel" style="width: 70px;">누구나</label></li>
 						</ul>
 					</div>
 				</div>
 				<!-- Footer -->
-				<div class="modal-footer"
-					style="background-color: #ffc645; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; text-align: center; cursor: pointer;">
+				<div class="modal-footer2 mofo"  
+					data-dismiss="modal">
 					<h5>적용하기</h5>
 
 				</div>
@@ -334,13 +310,7 @@
 
 		});
 
-		$(function() {
-			$("#all-area").click(function() {
-				$('div.modal').modal({
-					remote : 'layer.html'
-				});
-			});
-		});
+		       
 
 		$(document).ready(function() {
 
@@ -374,7 +344,7 @@
 
 		});
 
-		$(".modal-footer").click(function() {
+		$(".modal-footer1").click(function() {
 			var addressArray = [];
 
 			$("input[name='filterAddr']:checked").each(function() {
@@ -399,8 +369,37 @@
 					console.log(result);
 				}
 			});
+			
 		});
-
+		   
+		$(".modal-footer2").click(function() {
+			
+			var genderArray = [];
+			
+			$("input[name='filterGender']:checked").each(function() {
+				genderArray.push($(this).val());
+			});
+			
+			$.ajax({
+				url:"getMatch",
+				type:"POST",
+				data:{
+					genderList : genderArray,
+					day : selectDay
+				},
+				traditional: true,
+				success: function(result){
+					$("#layerpop2").modal('hide');
+					
+					$("#dDayMatch").empty();
+					$("#dDayMatch").append(result);
+				},
+				error: function(result){
+					console.log(result);
+				}
+			});
+			
+		});
 	</script>
 
 

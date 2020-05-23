@@ -13,7 +13,14 @@ public class StadiumVO {
 	private int cloth;
 	private String info;
 	private int day;
+	private int gender;
 	
+	public int getGender() {
+		return gender;
+	}
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
 	public int getDay() {
 		return day;
 	}

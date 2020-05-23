@@ -17,18 +17,27 @@ public class MatchService {
 	@Autowired
 	private StadiumDAO stadiumDAO;
 	
+	public List<MatchVO> matchTwiceList(String address, int gender, int day) throws Exception{
+		StadiumVO stadiumVO = new StadiumVO();
+		stadiumVO.setAddress(address);
+		stadiumVO.setDay(day);
+		stadiumVO.setGender(gender);
+		return matchDAO.matchTwiceList(stadiumVO);
+	}
+	
+	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
+		MatchVO matchVO = new MatchVO();
+		matchVO.setGender(gender);
+		matchVO.setDay(day);
+		return matchDAO.matchGenderList(matchVO);
+	}
+	
 	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
 		StadiumVO stadiumVO = new StadiumVO();
 		stadiumVO.setAddress(address);
 		stadiumVO.setDay(day);
 		return matchDAO.matchAddressList(stadiumVO);
 	}
-	
-	/*
-	 * public MatchVO matchAddrList(int day, String address) throws Exception{
-	 * MatchVO matchVO = new MatchVO(); matchVO.setDay(day);
-	 * matchVO.setStadiumName(address); return matchDAO.matchAddrList(matchVO); }
-	 */
 	
 	public int matchDelete(long num)throws Exception{
 		return matchDAO.matchDelete(num);

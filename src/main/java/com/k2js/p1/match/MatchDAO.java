@@ -35,12 +35,16 @@ public class MatchDAO {
 		return session.selectOne(NAMESPACE+"matchNum");
 	}
 	
-	public MatchVO matchAddrList(MatchVO matchVO) throws Exception{
-		return session.selectOne(NAMESPACE+"matchAddrList", matchVO);
-	}
-	
 	public List<MatchVO> matchAddressList(StadiumVO stadiumVO) throws Exception{
 		return session.selectList(NAMESPACE+"matchAddressList", stadiumVO);
+	}
+	
+	public List<MatchVO> matchGenderList(MatchVO matchVO) throws Exception{
+		return session.selectList(NAMESPACE+"matchGenderList", matchVO);
+	}
+	
+	public List<MatchVO> matchTwiceList(StadiumVO stadiumVO) throws Exception{
+		return session.selectList(NAMESPACE+"matchTwiceList", stadiumVO);
 	}
 	
 }

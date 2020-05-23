@@ -167,7 +167,7 @@ p, li, h4{
 	
 
 	<span>${i}개의매치</span>
-	<div class="match-wrapper" style="display: inline;">	
+	<div class="match-wrapper" style="display: inline;">
 				<button class="btn-all-area" data-target="#layerpop1"
 					data-toggle="modal"
 					style="border: hidden; background-color: white; padding-top: 3px;">모든 지역</button>
@@ -185,7 +185,7 @@ p, li, h4{
 		<c:forEach items="${matchs}"  var="vo">
 			<li id="gml"><a href="./match/matchSelect?num=${vo.num}">
 			<div class="div_time" style="position:absolute;"><p style="line-height: 4">${vo.time}</p></div> 
-			<div class="div_title" style="position: absolute;"><h4 style="line-height: 2.7">${vo.title}</h4><div class="div_gender" id="p"><c:if test="${vo.gender eq 1}">남성</c:if><c:if test="${vo.gender eq 2}">여성</c:if> </div></div>
+			<div class="div_title" style="position: absolute;"><h4 style="line-height: 2.7">${vo.title}</h4><div class="div_gender" id="p"><c:if test="${vo.gender eq 1}">남성</c:if><c:if test="${vo.gender eq 2}">여성</c:if><c:if test="${vo.gender eq 3}">남녀모두</c:if> </div></div>
 			<c:if test="${vo.count lt 12}">
 			<div class="div_status" style="background-color: #3534A5 " ><div class="statusFull" ><p>신청가능</p></div></div>
 			</c:if>

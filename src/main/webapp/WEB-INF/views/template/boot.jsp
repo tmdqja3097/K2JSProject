@@ -129,9 +129,19 @@ body {
 
 .match-wrapper {
 	width: 20%;
-	height: 30px;
+	height: 50px;
 	margin-left: 80%;
 	text-align: center;
+}
+
+.mofo {
+	height:50px; 
+	background-color: #ffc645; 
+	border-bottom-left-radius: 30px; 
+	border-bottom-right-radius: 30px; 
+	text-align:center; 
+	padding-top:7px; 
+	cursor: pointer;
 }
 /* match-filter */
 
@@ -165,15 +175,15 @@ body {
 	float: left;
 	cursor: pointer;
 }
-/* modal */
+
 .unchecked {
-	background-color: #FFC645;
-	color: #2A2A2A;
+	background-color: #EEEEEE;
+	color: #999999;
 }
 
 .checked {
-	background-color: #EEEEEE;
-	color: #999999;
+	background-color: #FFC645;
+	color: #2A2A2A;
 }
 
 .uncheck {
@@ -185,5 +195,6 @@ body {
 	background-color: #FFC645;
 	color: #2A2A2A;
 }
+/* modal */
 </style>
 
