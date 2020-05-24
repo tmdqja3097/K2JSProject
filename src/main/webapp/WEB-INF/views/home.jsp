@@ -62,9 +62,38 @@
 	cursor: pointer;
 }
 
+
+
 /* calendar */
 #dDayMatch {
 	padding: 0 0 0 0;
+}
+
+
+.preNext{
+	background-color: white;
+	border: none;
+	outline: none;
+}
+
+.dateNum{
+	font-size: 20px;
+}
+
+.yoil{
+	font-size: 13px;
+}
+
+.day-list {
+    display: inline-block;
+    height: 100px;
+    margin: 0 0.4%;
+    width: 3%;
+    float: left;
+}
+
+#day-list>li>a:hover{
+	color: white;
 }
 </style>
 <body>
@@ -113,7 +142,7 @@
 
 	<div id="match-box" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">
-			<button id="pre">←</button>
+			<button id="pre" class = "preNext" >←</button>
 		</div>
 		<div id="list"
 			style="width: 90%; height: 100px; float: left; overflow: hidden;">
@@ -121,7 +150,7 @@
 			</ul>
 		</div>
 		<div style="width: 5%; height: 100px; float: left;">
-			<button id="next">→</button>
+			<button id="next" class = "preNext">→</button>
 		</div>
 	</div>
 
