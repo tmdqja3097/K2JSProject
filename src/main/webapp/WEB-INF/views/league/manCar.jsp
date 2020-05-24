@@ -33,6 +33,8 @@
 	.man_body {
 		width: 90%;
 		height: 2523px;
+		margin-left: 50px;
+		margin-top: 30px;
 	}
 
 	
@@ -41,8 +43,9 @@
 		height: 171px;
 		display: inline-block;
 		margin-top: 30px;
+		margin-left: 37px;
 		border-radius: 20px;
-		border: 1px solid gray;
+		background-color: #fafafa;
 	}
 	
 	
@@ -116,9 +119,16 @@
 			<div class="body_box1"></div>
 			<div class="body_box1"></div>
 			<div class="body_box1"></div>
-			
-			
-
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
 		</div>
 	</div>   
 	

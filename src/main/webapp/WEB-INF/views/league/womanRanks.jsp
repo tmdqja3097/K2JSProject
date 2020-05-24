@@ -24,11 +24,28 @@
 		text-align: center;
 	}
 	
-	.ranks_home {
+	/* 랭킹 전체 박스 */
+	.rank_home {
 		width: 100%;
 		height: 3711.42px;
-		margin-top: 40px;
-		border: 1px solid blue;
+		border: 1px solid gray;
+		margin-top: 50px;
+	}
+	
+	/* 전체 박스 안에 또 박스 */
+	
+	.home_body {
+		width: 80%;
+		height: 3571.42px;
+		border: 1px solid red; 
+		margin-left: 110px;   
+		margin-top: 65px;  
+	}
+	
+	.body_box {
+		width: 30%;
+		height: 241px;
+		border: 1px solid yellow;
 	}
 	
 
@@ -82,7 +99,14 @@
 			</ul>
 		</div>
 		
-		<div class="ranks_home"></div>
+		<div class="rank_home">
+			<div class="home_body">
+				<div class="body_box"></div>
+				<div class="body_box"></div>
+				<div class="body_box"></div>
+				  
+			</div>
+		</div>
 
 
 </body>

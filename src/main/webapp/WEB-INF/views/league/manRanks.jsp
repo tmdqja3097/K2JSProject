@@ -24,21 +24,29 @@
 		text-align: center;
 	}
 	
-	.ranks_home {
+	/* 랭킹 전체 박스 */
+	.rank_home {
 		width: 100%;
 		height: 3711.42px;
-		margin-top: 40px;
-		border: 1px solid blue;
+		border: 1px solid gray;
+		margin-top: 50px;
 	}
 	
-	.ranks_king {
+	/* 전체 박스 안에 또 박스 */
+	
+	.home_body {
+		width: 80%;
+		height: 3571.42px;
+		border: 1px solid red; 
+		margin-left: 110px;   
+		margin-top: 65px;  
+	}
+	
+	.body_box {
 		width: 30%;
 		height: 241px;
-		padding: 20px 0;
-		text-align: center;
-		border: 1px solid blue;
+		border: 1px solid yellow;
 	}
-	
 	
 
 </style>
@@ -90,31 +98,16 @@
 			</ul>
 		</div>
 		
-		<div class="ranks_home">
-			<div class="ranks_king">	
-				<ul style="list-style:none; width: 100%; height: 50px;">
-					<a> 🥇
-						<li> 깨비 FS </li>
-					</a>
-				</ul>
-			</div>	
-			<div class="ranks_king">
-				<ul style="list-style:none; width: 100%; height: 50px;">
-					<a> 🥈
-						<li> T.S.P </li>
-					</a>
-				</ul>
-			</div>	
-			<div class="ranks_king">
-				<ul style="list-style:none; width: 100%; height: 50px;">
-					<a> 🥉
-						<li> B.O.K </li>
-					</a>
-				</ul>
+		
+		<div class="rank_home">
+			<div class="home_body">
+				<div class="body_box"></div>
+				<div class="body_box"></div>
+				<div class="body_box"></div>
+				  
 			</div>
-			<div class="ranks_king"></div>
 		</div>
-
+		
 
 </body>
 </html>

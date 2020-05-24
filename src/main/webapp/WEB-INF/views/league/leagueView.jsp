@@ -199,7 +199,7 @@
 					<a href="./manCar">
 						<img alt=""
 							src="${pageContext.request.contextPath}/resources/images/manCar.svg"
-							style="width: 100%; height: 25px;">
+							style="width: 100%; height: 25px;" >
 							남자 일정 
 					</a>   
 				</li>	
