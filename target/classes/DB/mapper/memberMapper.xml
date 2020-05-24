@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<insert id="memberNew" parameterType="memberVO">
 		INSERT INTO MEMBER VALUES
-		(#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0, 0, null, CAPALISTNUM_SEQ.nextval)
+		(#{id},#{pw},#{name},#{phone},#{email},#{birth},#{gender},0, 0, CAPALISTNUM_SEQ.nextval)
 	</insert>
 	<update id="memberUpdate" parameterType="memberVO">
 		UPDATE MEMBER SET
