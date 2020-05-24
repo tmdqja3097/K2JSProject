@@ -28,7 +28,6 @@
 	.rank_home {
 		width: 100%;
 		height: 3711.42px;
-		border: 1px solid gray;
 		margin-top: 50px;
 	}
 	
@@ -37,7 +36,6 @@
 	.home_body {
 		width: 80%;
 		height: 3571.42px;
-		border: 1px solid red; 
 		margin-left: 110px;   
 		margin-top: 65px;  
 	}
@@ -45,7 +43,6 @@
 	.body_box {
 		width: 30%;
 		height: 241px;
-		border: 1px solid yellow;
 	}
 	
 
