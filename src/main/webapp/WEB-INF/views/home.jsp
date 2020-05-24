@@ -78,9 +78,11 @@
 
 .dateNum{
 	font-size: 20px;
+	font-family: 'Apple SD Gothic Neo','Noto Sans CJK KR', 'Malgun Gothic', 'dotum', 'gulim',sans-serif;
 }
 
 .yoil{
+	font-family: 'Apple SD Gothic Neo','Noto Sans CJK KR', 'Malgun Gothic', 'dotum', 'gulim',sans-serif;
 	font-size: 13px;
 }
 
@@ -98,7 +100,7 @@
 </style>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	<div>
+	<div >
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
@@ -139,13 +141,13 @@
 			</a>
 		</div>
 	</div>
-
+	
 	<div id="match-box" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">
 			<button id="pre" class = "preNext" >←</button>
 		</div>
 		<div id="list"
-			style="width: 90%; height: 100px; float: left; overflow: hidden;">
+			style="width: 90%; height: 100px; float: left; overflow: hidden; " >
 			<ul class="nav nav-tabs" id="day-list">
 			</ul>
 		</div>

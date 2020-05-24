@@ -149,9 +149,9 @@ footer {
 	</c:if>
 	<div id="mySidenav" class="right_sidenav" style="z-index: 3;">
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="#">K2JS 소개</a> <a href="#">매니저 지원</a> <a
-			href="${pageContext.request.contextPath}/notice/noticeList">공지사항</a>
-		<a href="${pageContext.request.contextPath}/qna/qnaList">자주 묻는 질문</a>
+		<a href="#" style="text-decoration: none;">K2JS 소개</a> <a href="#" style="text-decoration: none;">매니저 지원</a> <a
+			href="${pageContext.request.contextPath}/notice/noticeList" style="text-decoration: none;">공지사항</a>
+		<a href="${pageContext.request.contextPath}/qna/qnaList" style="text-decoration: none;">자주 묻는 질문</a>
 	</div>
 </nav>
 
