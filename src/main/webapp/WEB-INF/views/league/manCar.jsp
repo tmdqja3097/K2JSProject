@@ -14,7 +14,6 @@
 	body {
 		padding: 0 20%;
 		box-sizing: border-box;
-		border: 1px solid green;
 	}
 	
 	.card_man>li{ 
@@ -40,9 +39,10 @@
 	.body_box1 {
 		width: 430px;
 		height: 171px;
-		border: 1px solid yellow;
 		display: inline-block;
 		margin-top: 30px;
+		border-radius: 20px;
+		border: 1px solid gray;
 	}
 	
 	
@@ -112,6 +112,11 @@
 			<div class="body_box1"></div>
 			<div class="body_box1"></div>
 			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			<div class="body_box1"></div>
+			
 			
 
 		</div>

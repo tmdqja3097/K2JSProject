@@ -39,10 +39,13 @@
 	.body_box {
 		width: 430px;
 		height: 171px;
-		border: 1px solid yellow;
 		display: inline-block;
 		margin-top: 30px;
+		border-radius: 20px;
+		border: 1px solid gray;
 	}
+	
+	
 	
 	
 	
@@ -56,7 +59,7 @@
 <c:import url="../template/header.jsp"></c:import> 
 
    
-		<div class="man_wrapper">
+		<div class="woman_wrapper">
 			<img src="${pageContext.request.contextPath}/resources/images/onedayWoman.PNG"
 		 	style="width: 100%; height: 300px;">   
 		
@@ -102,14 +105,20 @@
 		    
 	
 	<div class="woman_home">
-		<div class="man_body">
+		<div class="woman_body">
 			<div class="body_box"></div> 
 			<div class="body_box"></div>
 			<div class="body_box"></div>
 			<div class="body_box"></div>
 			<div class="body_box"></div>
 			<div class="body_box"></div>
-
+			<div class="body_box"></div>
+			<div class="body_box"></div>
+			<div class="body_box"></div>
+			<div class="body_box"></div>
+			<div class="body_box"></div>
+			<div class="body_box"></div>
+			
 		</div>
 	</div>   
 	
