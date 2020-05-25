@@ -131,8 +131,6 @@
 
 
 	<div>
-		<div class="match_filter"></div>
-
 		<ul id="dDayMatch" class="myUL">
 		</ul>
 
@@ -140,6 +138,7 @@
 			style="margin-left: 93%">글쓰기</a>
 	</div>
 
+	<a href="./league/leagueView">league</a>
 
 		<div class="modal fade" id="layerpop1">
 			<div class="modal-dialog">
@@ -253,11 +252,6 @@
 		getList(startDay);
 		getMatch(selectDay);
 
-		function getFilter(startDay) {
-			$.get("getFilter?day=" + startDay, function(result) {
-				$(".match_filter").append(result);
-			});
-		}
 
 		// 화살표 누르면 시작 날짜 변환
 		$("#next").click(function() {
@@ -344,6 +338,7 @@
 
 		});
 
+		
 		$(".modal-footer1").click(function() {
 			var addressArray = [];
 
@@ -369,7 +364,6 @@
 					console.log(result);
 				}
 			});
-			
 		});
 		   
 		$(".modal-footer2").click(function() {

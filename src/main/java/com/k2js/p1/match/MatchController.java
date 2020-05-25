@@ -48,64 +48,40 @@ public class MatchController {
 	
 	@PostMapping("getMatch")
 	public void matchList(String[] addressList, int[] genderList, int day, Model model) throws Exception {
-		if(addressList==null) {
-			if(genderList==null) {
-				List<MatchVO> matchs = matchService.matchList(day);
-				int i = matchs.size();
-				model.addAttribute("i", i);
-				model.addAttribute("matchs", matchs);
-			} else {
-				List<MatchVO> mat = new ArrayList<MatchVO>();
-				System.out.println("gender:"+genderList.length);
-				for(int gen : genderList) {
-					List<MatchVO> mat1 = matchService.matchGenderList(gen, day);
-					for(int i=0; i<mat1.size(); i++) {
-						mat.add(mat1.get(i));
-					}
+		
+		if(addressList==null && genderList==null) {
+			List<MatchVO> matchs = matchService.matchList(day);
+			int i = matchs.size();
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", matchs);
+		} else if(addressList!=null && genderList==null) {
+			List<MatchVO> ar = new ArrayList<MatchVO>();
+			System.out.println("address:"+addressList.length);
+			for (String addr : addressList) {
+				// addr : 지역 이름
+				List<MatchVO> ar1 = matchService.matchAddressList(addr, day);
+				for(int i = 0; i < ar1.size(); i++) {
+					ar.add(ar1.get(i));
 				}
-				int i = mat.size();
-				
-				model.addAttribute("i", i);
-				model.addAttribute("matchs", mat);
 			}
+			int i = ar.size();
 			
-		} else if(addressList!=null){
-			if(genderList==null) {
-				List<MatchVO> ar = new ArrayList<MatchVO>();
-				System.out.println("address:"+addressList.length);
-				for (String addr : addressList) {
-					// addr : 지역 이름
-					List<MatchVO> ar1 = matchService.matchAddressList(addr, day);
-					for(int i = 0; i < ar1.size(); i++) {
-						ar.add(ar1.get(i));
-					}
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", ar);
+		} else if(addressList==null && genderList!=null) {
+			List<MatchVO> mat = new ArrayList<MatchVO>();
+			System.out.println("gender:"+genderList.length);
+			for(int gen : genderList) {
+				List<MatchVO> mat1 = matchService.matchGenderList(gen, day);
+				for(int i=0; i<mat1.size(); i++) {
+					mat.add(mat1.get(i));
 				}
-				int i = ar.size();
-				
-				model.addAttribute("i", i);
-				model.addAttribute("matchs", ar);
-			} else if(genderList!=null) {
-				List<MatchVO> matchAG = new ArrayList<MatchVO>();
-				for(String addr : addressList) {
-					for(int gen : genderList) {
-						List<MatchVO> matchAG1 = matchService.matchTwiceList(addr, gen, day);
-						for(int i=0; i<matchAG1.size(); i++) {
-							matchAG.add(matchAG1.get(i));
-						}
-					}
-				}
-				int i = matchAG.size();
-				System.out.println(matchAG.get(0).getTitle());
-				model.addAttribute("i", i);
-				model.addAttribute("matchs", matchAG);
 			}
+			int i = mat.size();
 			
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", mat);
 		}
-		
-		
-		
-		
-		
 		
 		
 		
@@ -114,13 +90,14 @@ public class MatchController {
 		
 //		List<Date> d = null;
 //		
-//		for(int i = 0 ; i < ar.size(); i++) {
-//			System.out.println("real:"+ar.get(i).getMatchTime());
+//		for(int j = 0 ; j < ar.size(); j++) {
+//			System.out.println("real:"+ar.get(j).getMatchTime());
 //			d = new ArrayList<Date>();
-//			d.add(ar.get(i).getMatchTime());
+//			for(int k=0; k<=j; k++) {
+//				d.add(ar.get(k).getMatchTime());
+//			}
 //		}
-//		
-//		
+//		System.out.println("timelist:"+d.size());
 //		
 //		Collections.sort(d, new Comparator<Date>() {
 //			
@@ -134,12 +111,8 @@ public class MatchController {
 //				}else {
 //					return 1;
 //				}
-//				
 //			}
-//				
 //		});
-//		
-//		System.out.println("d:"+d.get(0).toString());
 		
 		
 		

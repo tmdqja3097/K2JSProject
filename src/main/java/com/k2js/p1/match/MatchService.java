@@ -17,13 +17,6 @@ public class MatchService {
 	@Autowired
 	private StadiumDAO stadiumDAO;
 	
-	public List<MatchVO> matchTwiceList(String address, int gender, int day) throws Exception{
-		StadiumVO stadiumVO = new StadiumVO();
-		stadiumVO.setAddress(address);
-		stadiumVO.setDay(day);
-		stadiumVO.setGender(gender);
-		return matchDAO.matchTwiceList(stadiumVO);
-	}
 	
 	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
 		MatchVO matchVO = new MatchVO();

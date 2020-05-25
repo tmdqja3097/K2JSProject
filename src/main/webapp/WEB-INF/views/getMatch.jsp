@@ -1,37 +1,4 @@
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<div>${i}개의매치</div>
-
-<table class="table table-condensed">
-
-	<tr>
-		<td>Num</td>
-		<td>Title</td>
-		<td>Contents</td>
-		<td>MatchTime</td>
-		<td>FileImage</td>
-		<td>Count</td>
-		<td>Gender</td>
-		<td>Capacity</td>
-	</tr>
-</table>
-
-<c:forEach items="${matchs}" var="vo">
-	<tr>
-		<td>${vo.num}</td>
-		<td>${vo.title}</td>
-		<td>${vo.contents}</td>
-		<td>${vo.matchTime}</td>
-		<td>${vo.fileImage}</td>
-		<td>${vo.gender}</td>
-		<td>${vo.capacity}</td>
-	</tr>
-</c:forEach>
- --%>
- 
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
@@ -54,7 +21,6 @@
 	list-style-type: none;
 	margin-left: 0px;
 	width: 100%;
-
 }
 
 .myUL li a {
@@ -144,25 +110,6 @@ p, li, h4{
 	font-size: small;
 	color: white;
 }
-	
-/* .match_filter{  
-	height: 50px;    
-}
-
-.match_filter_sub{ 
-	height: 50px; 
-}
-
-.match_filter_sub > li > a{   
-	border: 1px solid blue;  
-	width: 7%;
-	height: 30px;    
-	display: inline-block;
-	margin-top: 10px;
-	padding-top: 5px;
-	text-align: center;
-} */
-  	
   </style>
 	
 
@@ -171,12 +118,10 @@ p, li, h4{
 				<button class="btn-all-area" data-target="#layerpop1"
 					data-toggle="modal"
 					style="border: hidden; background-color: white; padding-top: 3px;">모든 지역</button>
-				<!-- <span id="all-area" data-target="#layerpop" data-toggle="modal" style="cursor: pointer; padding-right: 5px;">모든 지역</span> -->
 				
 				<button class="btn-all-match" data-target="#layerpop2"
 					data-toggle="modal"
 					style="border: hidden; background-color: white; padding-top: 3px;">모든 매치</button>
-				<!-- <span id="all-match" style="cursor: pointer; padding-left: 5px;">모든매치</span> -->
 	</div>
 	
 	
@@ -198,7 +143,7 @@ p, li, h4{
 			</a></li>
 		</c:forEach>
 		</div>
-
+	
 
 
 

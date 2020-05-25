@@ -20,6 +20,7 @@
 		<!-- <typeAlias type="com.k2js.p1.member.MemberVO" alias="MemberVO"/> -->
 		<typeAlias type="com.k2js.p1.board.file.BoardFileVO"
 			alias="BoardFileVO" />
+		<typeAlias type="com.k2js.p1.league.LeagueVO" alias="LeagueVO"/>
 		<typeAlias type="com.k2js.p1.util.Pager" alias="Pager" />
 
 	</typeAliases>

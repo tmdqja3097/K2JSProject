@@ -43,8 +43,4 @@ public class MatchDAO {
 		return session.selectList(NAMESPACE+"matchGenderList", matchVO);
 	}
 	
-	public List<MatchVO> matchTwiceList(StadiumVO stadiumVO) throws Exception{
-		return session.selectList(NAMESPACE+"matchTwiceList", stadiumVO);
-	}
-	
 }

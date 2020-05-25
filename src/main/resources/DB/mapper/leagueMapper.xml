@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.k2js.p1.league.LeagueDAO">
+
+
+<select id="leagueMaleList" parameterType="LeagueVO" resultType="LeagueVO">
+	select * from teamMale where teamName = #{teamName, jdbcType=VARCHAR}
+</select>
+
+<select id="leagueFemaleList" parameterType="String" resultType="LeagueVO">
+	select * from teamFemale where teamName = #{teamName}
+</select>
+
+<insert id="leagueMaleWrite" parameterType="LeagueVO">
+	insert into teamMale values(#{teamName}, #{gender}, #{matchName}, #{matchDate}, #{matchLocation}, #{ranking})
+</insert>
+
+</mapper>
