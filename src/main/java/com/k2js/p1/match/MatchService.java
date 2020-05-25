@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
+import com.k2js.p1.member.charge.ChargeDAO;
 import com.k2js.p1.stadium.file.StadiumFileDAO;
 import com.k2js.p1.stadium.file.StadiumFileVO;
 import com.k2js.p1.util.FileSaver;
@@ -27,7 +28,9 @@ public class MatchService {
 	private FileSaver fileSaver;
 	@Autowired
 	private StadiumFileDAO stadiumFileDAO;
-
+	@Autowired
+	private ChargeDAO chargeDAO;
+	
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return matchDAO.matchUpdate(matchVO);
 	}
@@ -62,20 +65,20 @@ public class MatchService {
 		 */
 		return matchDAO.matchList(day);
 	}
-	
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
+
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public int matchJoin(MatchVO matchVO, MemberVO memberVO, int counted, int dicountMoney) throws Exception {
 		int result = 0;
 		MatchForCapaVO mfcVO = new MatchForCapaVO();
 		matchVO.setCount(matchVO.getCount() + counted);
 		if (matchVO.getCount() < 17) {
-			 result = matchDAO.matchJoin(matchVO);
+			result = matchDAO.matchJoin(matchVO);
 			if (result > 0) {
 				mfcVO.setCapaListNum(memberVO.getCapaListNum());
 				mfcVO.setNum(matchVO.getNum());
 				mfcVO.setCount(counted);
 				matchDAO.matchForCapa(mfcVO);
-				memberVO.setCash(memberVO.getCash()-dicountMoney);
+				memberVO.setCash(memberVO.getCash() - dicountMoney);
 				result = matchDAO.discountMemberCash(memberVO);
 			}
 		}
@@ -141,4 +144,21 @@ public class MatchService {
 		matchVO.setFullTime(fullTime);
 		return matchVO;
 	}
-}
+
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
+	public int matchCancel(MatchForCapaVO mfcVO, MemberVO memberVO) throws Exception {
+		//매치신청 결제정보 호출
+		mfcVO = matchDAO.matchCancel(mfcVO);
+		//결제정보에서 삭제 
+		int result =matchDAO.matchCancel2(mfcVO);
+		MatchVO matchVO = matchDAO.matchSelect(mfcVO.getNum());
+		matchVO.setNum(mfcVO.getNum());
+		matchVO.setCount(matchVO.getCount() - mfcVO.getCount());
+		//해당 매치 정보에서 카운트 차감
+		matchDAO.matchJoin(matchVO);
+		//멤버에서 캐쉬를 카운트만큼 입금
+		int count = mfcVO.getCount()*10000;
+		memberVO.setCash(memberVO.getCash()+count);
+		return chargeDAO.cancelMoneyCharge(memberVO);
+	}
+}	

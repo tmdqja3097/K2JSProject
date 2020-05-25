@@ -334,6 +334,7 @@
 				$(this).css("background-color", "#3534A5");
 			});
 		}
+		
 		function getFixDay(selectDay) {
 
 		}

@@ -16,13 +16,11 @@ public class MatchDAO {
 	private SqlSession session;
 	private final String NAMESPACE = "com.k2js.p1.match.MatchDAO.";
 
-	public int matchJoin(MatchVO match) {
-		return session.update(NAMESPACE + "matchJoin", match);
+	public int matchJoin(MatchVO matchVO) {
+		return session.update(NAMESPACE + "matchCount", matchVO);
 	}
 
 	public int matchForCapa(MatchForCapaVO mfcVO) {
-		System.out.println(mfcVO.getCapaListNum());
-		System.out.println(mfcVO.getNum());
 		return session.insert(NAMESPACE + "matchForCapa", mfcVO);
 	}
 
@@ -52,5 +50,11 @@ public class MatchDAO {
 
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return session.update(NAMESPACE + "matchUpdate", matchVO);
+	}
+	public MatchForCapaVO matchCancel(MatchForCapaVO mfcVO) throws Exception {
+		return session.selectOne(NAMESPACE + "matchCancel", mfcVO);
+	}
+	public int matchCancel2(MatchForCapaVO mfcVO) throws Exception {
+		return session.delete(NAMESPACE + "matchCancel2", mfcVO);
 	}
 }
