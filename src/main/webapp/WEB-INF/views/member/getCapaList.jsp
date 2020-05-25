@@ -49,7 +49,8 @@
 							<c:if test="${vo.gender eq 3}">혼성 매치</c:if>
 						</p>
 					</td>
-					<td><input type="button" id="joinDecision${i.index}" class="decision" style="float : right;"></td>
+					<td><input type="button" id="joinDecision${i.index}"
+						class="decision" style="float: right;" title="${vo.num}"></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -57,33 +58,39 @@
 	<script type="text/javascript">
 		$(function() {
 			for (var day = 0; day < '${i}'; day++) {
-				var matchTime = $("#time"+day).text().trim();
+				var matchTime = $("#time" + day).text().trim();
 				matchTime = matchTime.split("/");
 				if (matchTime[5] == "오후") {
 					matchTime[3] = parseInt(matchTime[3]) + 12;
 				}
-	
+
 				matchTime = new Date(matchTime[0], matchTime[1] - 1,
 						matchTime[2], matchTime[3], matchTime[4]);
 				var currentTime = new Date();
 				if (matchTime > currentTime) {
-					$("#joinDecision"+day).prop("value", "참가취소");
-					$("#joinDecision"+day).addClass("btn btn-danger");
-				}else if (matchTime < currentTime) {
-					$("#joinDecision"+day).prop("value", "경기완료");
-					$("#joinDecision"+day).prop("disabled","disabled");
-					$("#joinDecision"+day).addClass("btn btn-normal");
+					$("#joinDecision" + day).prop("value", "참가취소");
+					$("#joinDecision" + day).addClass("btn btn-danger");
+				} else if (matchTime < currentTime) {
+					$("#joinDecision" + day).prop("value", "경기완료");
+					$("#joinDecision" + day).prop("disabled", "disabled");
+					$("#joinDecision" + day).addClass("btn btn-normal");
 				}
 			}
 		})
-		
-		$(".decision").each(function() {
-			$(this).on("click", function () {
-				alert($(this).val());
-				
-				//참가 취소 코드 ++ 
-			})
-		})
+
+		$(".decision").each(
+				function() {
+
+					$(this).on(
+							"click",
+							function() {
+									
+								var num = parseInt($(this).attr("title"));
+								window.open("../match/matchCancel?num=" + num,
+										"_blank", "width=400 height=400");
+								//참가 취소 코드 ++ 
+							})
+				})
 	</script>
 </div>
 </html>

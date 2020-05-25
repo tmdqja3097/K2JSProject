@@ -8,8 +8,14 @@ public class MatchForCapaVO {
 	private long num;
 	private long capaListNum;
 	private int count;
+	private long reqNum;
 	
-	
+	public long getReqNum() {
+		return reqNum;
+	}
+	public void setReqNum(long reqNum) {
+		this.reqNum = reqNum;
+	}
 	public int getCount() {
 		return count;
 	}

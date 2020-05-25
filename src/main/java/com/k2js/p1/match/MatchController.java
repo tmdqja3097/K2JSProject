@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
@@ -76,7 +77,6 @@ public class MatchController {
 		matchVO.setMatchTime(dDate);
 
 		int result = matchService.matchWrite(matchVO, files);
-		System.out.println(result);
 		if (result > 0) {
 			mv.setViewName("redirect:../");
 		}
@@ -142,6 +142,20 @@ public class MatchController {
 			mv.setViewName("match/matchFail");
 		}
 		return mv;
+	}
+	
+	@GetMapping("/match/matchCancel")
+	public String matchCancel(long num, Model model) throws Exception {
+		model.addAttribute("num", num);
+		return "match/matchCancel";
+	}
+	@PostMapping("/match/matchCancel")
+	public void matchCancel(long num, HttpSession session) throws Exception {
+		MatchForCapaVO mfcVO = new MatchForCapaVO();
+		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		mfcVO.setNum(num);
+		mfcVO.setCapaListNum(memberVO.getCapaListNum());
+		matchService.matchCancel(mfcVO, memberVO);
 	}
 
 }// end class

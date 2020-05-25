@@ -31,7 +31,7 @@
 		<p>충전 방식</p>
 		<ul class="nav nav-tabs">
 			<li id="Culture"><a href="#">상품권</a></li>
-			<li id="CaCaoPay"><a href="#">카카오페이</a></li>
+			<li id="KaCaoPay"><a href="#">카카오페이</a></li>
 			<li id="PhoneCash"><a href="#">핸드폰</a></li>
 		</ul>
 		<div class="container" id="howCharge"></div>
@@ -46,6 +46,7 @@
 				money = $("#money").val("직접입력");
 				$(this).prop("selected", "selected");
 				change(remainCash);
+				money = remainCash;
 			}
 		})
 		function change(remainCash) {
@@ -66,7 +67,7 @@
 			money = $("#selfMoney").val();
 		})
 		/* 금액 선택 및 직접입력   */
-		$("#CaCaoPay").click(function() {
+		$("#KaCaoPay").click(function() {
 			$("#CaCaoPay").addClass("active");
 			$("#Culture").removeClass("active");
 			$("#PhoneCash").removeClass("active");
@@ -99,6 +100,7 @@
 
 		/* 결제 방법 선택 */
 		$("#howCharge").on("click", "#kakaobtn", function() {
+			alert(money);
 			/* 			 		open("./KakaoPay?money=" + money, "_blank",
 			 "width=500, height=600", true);  */
 			location.href = "./KakaoPay?money=" + money;
