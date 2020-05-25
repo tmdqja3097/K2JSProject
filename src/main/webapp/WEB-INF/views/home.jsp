@@ -139,6 +139,8 @@
 		<a href="./match/matchWrite" class="btn btn-default"
 			style="margin-left: 93%">글쓰기</a>
 	</div>
+	
+	<c:import url="./template/footer.jsp"></c:import>
 
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">

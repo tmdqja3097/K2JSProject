@@ -16,7 +16,7 @@
 		box-sizing: border-box;
 	}
 	
-	.card_man>li{ 
+	.card_man > li { 
 		display: inline-block;
 		width: 20%;  
 		height: 65px;            

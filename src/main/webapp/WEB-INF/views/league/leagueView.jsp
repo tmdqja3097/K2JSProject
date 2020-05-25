@@ -73,25 +73,25 @@
 		
 	}
 	
-	.oneday_box1{
+	 .oneday_box1{
 		width: 30%;
-		height: 150px;
+		height: 130px;
 		padding-left: 30px;
 		display: inline-block;
 		border-radius: 20px;
 		background-color: #fafafa;
 		
 	}
+
 	         
-	.oneday_box2{
+	 .oneday_box2{
 		width: 30%;
-		height: 150px;
+		height: 130px;
 		padding-left: 30px;
-		display: inline-block;
-		border-radius: 20px;
+		display: inline-block; 
+		border-radius: 20px;   
 		background-color: #fafafa;
 	}
-	
 
 	
 	.card_man>li{ 
@@ -142,15 +142,38 @@
 		margin-top: 30px;
 		margin-bottom: 30px;
 		text-align: center;
+		
 	}
+	   
+	
+	/* 리그 헤더 안에 박스 */
+	.rule_box {  
+		width: 90%;   
+		height: 290px;
+		padding: 10px;  
+		margin-top: 15px;  
+		margin-left: 50px;     
+	    
+	}
+	
+	/* 리그 헤더 안에 작은 박스 */
+	.rule_he {
+		width: 90%;
+		height: 72px;
+		margin-left: 35px;
+		margin-top: 10px;
+		text-align: left;
+		
+	}
+	
 	
    /* 리그 규칙 */	 
    .rule_header {
    		display: inline-block;
    		width: 50%;
 		padding: 20px 10px;
-   		border: 1px solid red;
-   		margin: 0px;
+   		margin: 0px; 
+  
     }
     
     
@@ -241,10 +264,10 @@
 			<div class="oneday_box1"></div>
 			<div class="oneday_box1"></div>
 			<div class="oneday_box2"></div>
-			<div class="oneday_box2"></div>
-
+			<div class="oneday_box2"></div>      
 			<div class="oneday_end"></div>
 		</div>
+		
 	</div>
 	   
 
@@ -262,39 +285,43 @@
 	
 	
 	<div class="card_rule">	
-		<ul style="list-style:none;">
-			<div class="oneday_box1">
-				<li>
-					<h3> 👋🏻 
-						<p> 골킥은 무조건 손 </p>
-					</h3>
-				</li>
+		<div class="rule_he">
+			<h2> 리그 규칙 </h2>
 
-			</div>
-			<div class="oneday_box1">
-				<li>
-					<h3> ⌛  
-						<p> 킥인은 4초 안에 </p>
-					</h3>
-				</li>
-			</div>    
-			<div class="oneday_box2">
-				<li>
-					<h3> 🔙 
-						<p> 백패스는 1번만 </p>
-					</h3>
-				</li>
-			</div>
-			<div class="oneday_box2">
-				<li>
-					<h3> 😬  
-						<p> 위반시 간접 프리킥 </p>
-					</h3>
-				<li>
-			</div>
-		</ul>  
-		
-		
+		</div>    
+		<div class="rule_box">
+			<ul style="list-style:none;">
+				<div class="oneday_box1">
+					<li>
+						<h4> 👋🏻 
+							<p style="margin-top:10px"> 골킥은 무조건 손 </p>
+						</h4>
+					</li>
+	  
+				</div>
+				<div class="oneday_box1">
+					<li>
+						<h4> ⌛  
+							<p style="margin-top:10px"> 킥인은 4초 안에 </p>
+						</h4>
+					</li>
+				</div>    
+				<div class="oneday_box2">
+					<li>
+						<h4> 🔙 
+							<p style="margin-top:10px"> 백패스는 1번만 </p>
+						</h4>
+					</li>  
+				</div>     
+				<div class="oneday_box2" style="margin-top:10px;">
+					<li>   
+						<h4> 😬  
+							<p style="margin-top:10px"> 위반시 간접 프리킥 </p>
+						</h4>
+					<li>
+				</div>
+			</ul>  
+		</div>
 	</div>       
 	
 

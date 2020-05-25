@@ -43,6 +43,11 @@
 	.body_box {
 		width: 30%;
 		height: 241px;
+		display: inline-block;
+		margin-left: 20px;
+		margin-top: 15px; 
+		border-radius: 35px; 
+		background-color: #fafafa; 
 	}
 	
 
@@ -98,6 +103,7 @@
 		
 		<div class="rank_home">
 			<div class="home_body">
+	
 				<div class="body_box"></div>
 				<div class="body_box"></div>
 				<div class="body_box"></div>
