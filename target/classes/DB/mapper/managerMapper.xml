@@ -21,7 +21,7 @@
 
 
 	<insert id="addManager" parameterType="ManagerVO">
-		insert into manager values(#{num},#{name},#{gender},#{age},#{phone},#{account})
+		insert into manager values(manager_seq.nextval,#{name},#{gender},#{age},#{phone},#{home},#{account})
 	</insert>
 	
 	<select id="managerNum" resultType="Long">

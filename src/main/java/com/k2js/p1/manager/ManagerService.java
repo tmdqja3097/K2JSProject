@@ -13,7 +13,7 @@ import com.k2js.p1.util.FileSaver;
 
 
 @Service
-public class ManagerService {
+public class ManagerService{
 
 	@Autowired
 	private ManagerDAO managerDAO;	
@@ -26,13 +26,11 @@ public class ManagerService {
 	
 
 	public int addManager(ManagerVO managerVO, MultipartFile [] files) throws Exception {
-		// TODO Auto-generated method stub
 		String path = servletContext.getRealPath("/resources/uploadmanager");
 		System.out.println(path);
 		
 		//sequence 번호 받기
 		managerVO.setNum(managerDAO.managerNum());
-		//notice table insert
 		int result = managerDAO.addManager(managerVO);
 		
 		for(MultipartFile file : files) {

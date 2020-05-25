@@ -68,7 +68,6 @@ public class MatchController {
 	@PostMapping("/match/matchWrite")
 	public ModelAndView matchWrite(MatchVO matchVO, String day, String time, MultipartFile [] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
-
 		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		Date dDate = (Date) dfm.parse(date);

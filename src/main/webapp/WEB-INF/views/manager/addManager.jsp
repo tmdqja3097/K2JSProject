@@ -45,7 +45,7 @@
 		<input type="button" id="btn" class="btn btn-default" value="Write" style="float:right; margin-right: 20px;" > 
 		
 		<c:catch>
-			<input type="button" id="add" class="btn btn-default" value="AddFile" style="float:right;" >
+			<input type="button" id="add" class="btn btn-default" value="AddFile" style="float:right;" name="files">
 			<div id="file"></div> 
 		</c:catch>
 		
