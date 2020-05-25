@@ -60,45 +60,44 @@
 	cursor: pointer;
 }
 
-
-
 /* calendar */
 #dDayMatch {
 	padding: 0 0 0 0;
 }
 
-
-.preNext{
+.preNext {
 	background-color: white;
 	border: none;
 	outline: none;
 }
 
-.dateNum{
+.dateNum {
 	font-size: 20px;
-	font-family: 'Apple SD Gothic Neo','Noto Sans CJK KR', 'Malgun Gothic', 'dotum', 'gulim',sans-serif;
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Malgun Gothic',
+		'dotum', 'gulim', sans-serif;
 }
 
-.yoil{
-	font-family: 'Apple SD Gothic Neo','Noto Sans CJK KR', 'Malgun Gothic', 'dotum', 'gulim',sans-serif;
+.yoil {
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Malgun Gothic',
+		'dotum', 'gulim', sans-serif;
 	font-size: 13px;
 }
 
 .day-list {
-    display: inline-block;
-    height: 100px;
-    margin: 0 0.4%;
-    width: 3%;
-    float: left;
+	display: inline-block;
+	height: 100px;
+	margin: 0 0.4%;
+	width: 11%;
+	float: left;
 }
 
-#day-list>li>a:hover{
+#day-list>li>a:hover {
 	color: white;
 }
 </style>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	<div >
+	<div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
@@ -139,20 +138,34 @@
 			</a>
 		</div>
 	</div>
+	<!-- <div id="match-box" class="btn" style="width: 100%; height: 100px;">
+		<div style="width: 5%; height: 100px; float: left;">
+			<button id="next" class="btn daybutton">→</button>
+		</div>
+			<div id="list"
+				style="width: 90%; height: 100px; float: left; overflow: hidden;">
+				<ul class="nav nav-tabs" id="day-list">
+				</ul>
+			</div>
+			<div>
+			<button id="next" class="preNext">→</button>
+		</div>
+	</div> -->
+ 
 
+	<div id="match-box" style="width: 100%; height: 100px;">
+		<div style="width: 5%; height: 100px; float: left;">
+			<button id="pre" class="preNext">←</button>
+		</div>
 		<div id="list"
-			style="width: 90%; height: 100px; float: left; overflow: hidden; " >
+			style="width: 90%; height: 100px; float: left; overflow: hidden;">
 			<ul class="nav nav-tabs" id="day-list">
 			</ul>
 		</div>
 		<div style="width: 5%; height: 100px; float: left;">
-
-			<button id="next" class="btn daybutton">→</button>
-
-			<button id="next" class = "preNext">→</button>
-
+			<button id="next" class="preNext" disabled="">→</button>
 		</div>
-	
+	</div> 
 
 
 	<div>
@@ -261,10 +274,10 @@
 		var sysdate = new Date();
 		var count = 0;
 		var startDay = parseInt((sysdate.getDate() + 100 + "").substr(1, 3));
-		if(count == 0 ){
-		var selectDay = startDay;
+		if (count == 0) {
+			var selectDay = startDay;
 		}
-		
+
 		var daily = "";
 
 		getList(startDay);
@@ -322,7 +335,7 @@
 			});
 		}
 		function getFixDay(selectDay) {
-			
+
 		}
 
 		$(function() {
