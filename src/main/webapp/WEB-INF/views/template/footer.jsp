@@ -48,6 +48,10 @@
 	.p {
 		text-align: right;
 	}
+	
+	.p1 {
+		text-align: right;
+	}
 </style>
 </head>
 <body>
@@ -55,7 +59,7 @@
 	<div class="footer">
 		<div>
 			<p class="p"> 풋살하고 싶을 땐, 플랩풋볼</p>
-			<span class="p"> 서울특별시 마포구 마포대로 10길 12 트레퍼빌딩 4층 405호 </span>
+			<span class="p1"> 서울특별시 마포구 마포대로 10길 12 트레퍼빌딩 4층 405호 </span>
 		</div>
 		
 		<div class="footerWrap">	
