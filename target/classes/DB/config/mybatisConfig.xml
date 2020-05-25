@@ -25,6 +25,10 @@
 		<typeAlias type="com.k2js.p1.stadium.file.StadiumFileVO"
 			alias="StadiumFileVO" />
 			<typeAlias type="com.k2js.p1.matchforcapa.MatchForCapaVO" alias="matchForCapaVO"/>
+			<typeAlias type="com.k2js.p1.manager.file.ManagerFileVO"
+			alias="ManagerFileVO" />
+			<typeAlias type="com.k2js.p1.manager.ManagerVO"
+			alias="ManagerVO" />
 
 	</typeAliases>
 </configuration>
