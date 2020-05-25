@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.k2js.p1.manager.file.ManagerFileDAO">
+	
+	<insert id="fileInsert" parameterType="ManagerFileVO">
+		insert into managerFile values(file_seq.nextval, #{num}, #{fileName}, #{oriName}, #{board})
+	</insert>
+	
+	<select id="fileSelect" parameterType="ManagerFileVO" resultType="ManagerFileVO">
+		select * from managerFile where fileNum=#{fileNum}
+	</select>
+	
+	<delete id="fileDelete" parameterType="Long">
+		delete managerFile where fileNum=#{fileNum}
+	</delete>
+	
+
+</mapper>  

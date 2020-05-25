@@ -9,7 +9,7 @@
 		location="classpath:DB/config/db.properties" />
 	<!-- Root Context: defines shared resources visible to all other web components -->
  
-
+ 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
 		id="propertyPlaceholderConfigurer">
