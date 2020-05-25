@@ -191,6 +191,8 @@ form.orderForm fieldset h3 {
 	<c:import url="../template/header.jsp"></c:import>
 	<div>
 		<form action="./matchJoin" id="form" class="orderForm" method="post">
+		
+		<input type="text" name="count" hidden="hidden" value="${matchVO.count}">
 
 
 			<input type="hidden" class="form-control" id="num" name="num"
@@ -301,6 +303,7 @@ form.orderForm fieldset h3 {
 		$("#remain_cash").text("캐시 차감(잔여:"+remainCash+"원)");
 		
 		getFirstRemainCash();
+		
 		$("#count").change(function() {
 			$("#result_pay").empty();
 			$("#result_cash").empty();
@@ -332,7 +335,7 @@ form.orderForm fieldset h3 {
 				if($("#remain_cash").text()=="잔액 부족"){
 					var check = confirm("잔액이 부족합니다. 캐시를 충전하시겠습니까?");
 					if(check){
-						location.href="../member/MemberAddCash?remainCash="+remainCash;	
+						location.href="../member/MemberAddCash?remainCash="+(-remainCash);	
 					}
 				} else{
 				$("#form").submit();

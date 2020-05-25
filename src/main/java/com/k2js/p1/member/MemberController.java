@@ -161,7 +161,7 @@ public class MemberController {
 	}
 
 	@GetMapping("CultureCharge")
-	public void CultureCharge(Model model, long cash) throws Exception {
+	public void CultureCharge(Model model) throws Exception {
 	}
 
 	@GetMapping("KakaoPayCharge")

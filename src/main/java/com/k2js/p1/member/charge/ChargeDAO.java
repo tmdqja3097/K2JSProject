@@ -26,4 +26,7 @@ public class ChargeDAO {
 	public List<ChargeVO> chargeList(MemberVO memberVO) throws Exception {
 		return sqlSession.selectList(NAMESPACE+"chargeList",memberVO);
 	}
+	public int cancelMoneyCharge(MemberVO memberVO) throws Exception {
+		return sqlSession.update(NAMESPACE + "cancelMoneyCharge", memberVO);
+	}
 }

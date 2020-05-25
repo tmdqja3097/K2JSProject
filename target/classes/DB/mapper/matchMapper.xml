@@ -50,20 +50,22 @@
 	delete match where num=#{num}
 </delete>
 
-<update id="matchJoin" parameterType="MatchVO">
+<update id="matchCount" parameterType="MatchVO">
 	update match set count=#{count} where num=#{num}
 </update>
 <insert id="matchForCapa" parameterType="matchForCapaVO">
-	INSERT INTO matchforcapa VALUES (#{num}, #{capaListNum},#{count})
+	INSERT INTO matchforcapa VALUES (#{num}, #{capaListNum},#{count}, reqNum_seq.nextval)
 </insert>
 <update id="discountMemberCash" parameterType="memberVO">
 	UPDATE MEMBER SET CASH=#{cash} WHERE ID = #{id}
 </update>
 
+<select id="matchCancel" parameterType="matchForCapaVO" resultType="matchForCapaVO">
+	SELECT * FROM MATCHFORCAPA WHERE NUM = #{num} AND CAPALISTNUM = #{capaListNum}
+</select>
 
-
-
-
-
+<delete id="matchCancel2" parameterType="matchForCapaVO">
+	DELETE MATCHFORCAPA WHERE REQNUM = #{reqNum}
+</delete>
 
 </mapper>
