@@ -1,5 +1,7 @@
 package com.k2js.p1.manager;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.k2js.p1.board.BoardVO;
+import com.k2js.p1.util.Pager;
 
 @Controller
 @RequestMapping("/manager/**")
@@ -37,4 +42,17 @@ public class ManagerController {
 		}
 		return mv;
 	}
+	
+	@GetMapping("managerList")
+	public ModelAndView managerList(Pager pager, ModelAndView mv)throws Exception{	
+		 List<ManagerVO> ar = managerService.managerList(pager);
+		 mv.addObject("list", ar);
+		 mv.addObject("pager", pager);
+		 
+		 mv.setViewName("manager/managerList");
+		 
+		 return mv;
+	}
+	
+	
 }

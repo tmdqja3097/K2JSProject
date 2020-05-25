@@ -34,7 +34,7 @@
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender})
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},#{managerNum})
 </insert>
 
 <update id="matchUpdate" parameterType="MatchVO">

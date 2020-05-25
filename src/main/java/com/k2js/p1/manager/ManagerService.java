@@ -1,14 +1,18 @@
 package com.k2js.p1.manager;
 
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.k2js.p1.board.BoardVO;
 import com.k2js.p1.manager.file.ManagerFileDAO;
 import com.k2js.p1.manager.file.ManagerFileVO;
 import com.k2js.p1.util.FileSaver;
+import com.k2js.p1.util.Pager;
 
 
 
@@ -24,7 +28,6 @@ public class ManagerService{
 	@Autowired
 	private ManagerFileDAO managerFileDAO;
 	
-
 	public int addManager(ManagerVO managerVO, MultipartFile [] files) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadmanager");
 		System.out.println(path);
@@ -45,4 +48,17 @@ public class ManagerService{
 		}
 		return result;
 	}
+	
+	public ManagerVO managerSelect(long num)throws Exception{
+		return managerDAO.managerSelect(num);
+	}
+	
+	public List<ManagerVO> managerList(Pager pager) throws Exception {
+		pager.makeRow();
+		long totalCount = managerDAO.managerCount(pager);
+		pager.makePage(totalCount);
+		
+		return managerDAO.managerList(pager);
+	}
+
 }

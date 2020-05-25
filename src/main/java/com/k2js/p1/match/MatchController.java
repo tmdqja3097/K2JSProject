@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.k2js.p1.manager.ManagerService;
+import com.k2js.p1.manager.ManagerVO;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
@@ -31,6 +33,8 @@ public class MatchController {
 	private MatchService matchService;
 	@Autowired
 	private StadiumService stadiumService;
+	@Autowired
+	private ManagerService managerService;
 
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
@@ -49,13 +53,16 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-
+		long managerNum = matchVO.getManagerNum();
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
+		ManagerVO managerVO = managerService.managerSelect(managerNum);
+		
+		mv.addObject("managerVO",managerVO);
 		mv.addObject("fullTime", fullTime);
 		mv.addObject("stadiumVO", stadiumVO);
 		mv.addObject("matchVO", matchVO);
-
+		
 		mv.setViewName("match/matchSelect");
 
 		return mv;
@@ -73,7 +80,7 @@ public class MatchController {
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
-
+		
 		int result = matchService.matchWrite(matchVO, files);
 		System.out.println(result);
 		if (result > 0) {

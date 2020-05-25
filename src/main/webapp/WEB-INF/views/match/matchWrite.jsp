@@ -36,6 +36,10 @@
 				class="form-control" id="writer" name="stadiumName">
 		</div>
 		<div class="form-group">
+			<label for="manager">담당 매니저:</label> <input type="text"
+				class="form-control" id="managerNum" name="managerNum">
+		</div>
+		<div class="form-group">
 			<label for="writer">성별:</label> 
 			 <select name="gender" id="gender">
 			 	<option value="none">선택</option>

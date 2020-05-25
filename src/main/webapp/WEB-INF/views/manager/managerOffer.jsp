@@ -294,7 +294,8 @@ element.style {
 		<c:if test="${member.id eq admin}"> 
 		<div class="titleWrap" style="text-align: center;">
 			<div class="btnWrap">
-				<a href="./addManager" class="btn btn-default" style="float: right;">매니저 추가하기</a>
+				<a href="./addManager" class="btn btn-default" style="float: right; ">매니저 추가하기</a>
+				<a href="./managerList" class="btn btn-default" style="float: right; margin-right: 20px;">매니저 리스트 보기</a>
 			</div>
 		</div>
 		</c:if>

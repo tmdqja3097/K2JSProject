@@ -18,7 +18,14 @@ public class MatchVO {
 	private String stadiumName;
 	private long count;
 	private int gender;
+	private int managerNum;
 	
+	public int getManagerNum() {
+		return managerNum;
+	}
+	public void setManagerNum(int managerNum) {
+		this.managerNum = managerNum;
+	}
 	private List<StadiumFileVO> stadiumFileVOs;
 	
 	public List<StadiumFileVO> getStadiumFileVOs() {
