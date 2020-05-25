@@ -28,10 +28,9 @@ public class ManagerController {
 	}
 
 	@PostMapping("addManager")
-	public ModelAndView addManager(ManagerVO managerVO, MultipartFile[] files, ModelAndView mv) throws Exception {
-		System.out.println("files : " +managerVO.getHome());
-		System.out.println("files : "+files);
-		int result = managerService.addManager(managerVO, files);
+	public ModelAndView addManager(ManagerVO managerVO, MultipartFile file, ModelAndView mv) throws Exception {
+
+		int result = managerService.addManager(managerVO, file);
 
 		if (result > 0) {
 			mv.setViewName("redirect:./managerOffer");
@@ -47,12 +46,28 @@ public class ManagerController {
 	public ModelAndView managerList(Pager pager, ModelAndView mv)throws Exception{	
 		 List<ManagerVO> ar = managerService.managerList(pager);
 		 mv.addObject("list", ar);
-		 mv.addObject("pager", pager);
-		 
-		 mv.setViewName("manager/managerList");
-		 
+		 mv.addObject("pager", pager); 
+		 mv.setViewName("manager/managerList");	 
 		 return mv;
 	}
 	
+	@PostMapping("managerDelete")
+	public ModelAndView managerDelete(long[] num, ModelAndView mv)throws Exception{
+		
+		int length = num.length;
+		for(int i=0;i<length;i++) {
+			long number = num[i];
+			int result = managerService.managerDelete(number);
+			
+			if(result>0) {
+				mv.addObject("result", "해당 매니저에 대한 정보가 삭제되었습니다.");
+			}else {
+				mv.addObject("result", "삭제 실패");
+			}
+			mv.addObject("path", "./managerList");
+			mv.setViewName("common/result");
+		}
+		return mv;
+	}
 	
 }

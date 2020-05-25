@@ -38,6 +38,7 @@ public class MatchController {
 	@Autowired
 	private ManagerService managerService;
 
+	
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
 
@@ -55,10 +56,10 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-		long managerNum = matchVO.getManagerNum();
+		long manager_num = matchVO.getManagerNum();
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
-		ManagerVO managerVO = managerService.managerSelect(managerNum);
+		ManagerVO managerVO = managerService.managerSelect(manager_num);
 		
 		mv.addObject("managerVO",managerVO);
 		mv.addObject("fullTime", fullTime);

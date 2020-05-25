@@ -13,7 +13,7 @@
 		<result column="stadiumName" property="stadiumName"/>
 		<result column="count" property="count"/>
 		<result column="gender" property="gender"/>
-		<result column="joinMemberId" property="joinMemberId"/>
+		<result column="managerNum" property="managerNum"/>	
 		<collection property="stadiumFileVOs" javaType="List" ofType="StadiumFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>

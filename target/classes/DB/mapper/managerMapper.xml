@@ -12,8 +12,7 @@
 		<result column="age" property="age" />
 		<result column="phone" property="phone" />
 		<result column="home" property="home" />
-		<collection property="managerFileVOs" javaType="List"
-			ofType="ManagerFileVO">
+		<collection property="managerFileVO" ofType="ManagerFileVO">
 			<id column="fileNum" property="fileNum" />
 			<result column="fileName" property="fileName" />
 			<result column="oriName" property="oriName" />
@@ -23,7 +22,7 @@
 
 	<insert id="addManager" parameterType="ManagerVO">
 		insert into manager
-		values(manager_seq.nextval,#{name},#{gender},#{age},#{phone},#{home},#{account})
+		values(manager_seq.nextval,#{name},#{gender},#{age},#{phone},#{home})
 	</insert>
 
 	<select id="managerNum" resultType="Long">
@@ -42,16 +41,20 @@
 
 	<select id="managerList" parameterType="Pager"
 		resultMap="selectManager">
-
-		SELECT N.* FROM (SELECT N.*, ROWNUM R FROM
-		(SELECT * FROM MANAGER M LEFT JOIN MANAGERFILE F ON(M.NUM = F.NUM))N)
-		where R between #{startRow} and #{lastRow}; 
-
+		select * 
+		from (	select M.*, rownum R  
+     			from (select * 
+           			  from manager left join managerFile on(manager.num=managerFile.num)) M)
+		where R between #{startRow} and #{lastRow}
 	</select>
 
 	<select id="managerCount" parameterType="Pager"
 		resultType="Long">
 		select count(num) from manager
 	</select>
+	
+	<delete id="managerDelete" parameterType="Long">
+		delete from manager where num = #{num}
+	</delete>
 
 </mapper>

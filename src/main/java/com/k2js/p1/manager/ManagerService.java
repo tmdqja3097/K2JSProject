@@ -28,7 +28,7 @@ public class ManagerService{
 	@Autowired
 	private ManagerFileDAO managerFileDAO;
 	
-	public int addManager(ManagerVO managerVO, MultipartFile [] files) throws Exception {
+	public int addManager(ManagerVO managerVO, MultipartFile file) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadmanager");
 		System.out.println(path);
 		
@@ -36,16 +36,13 @@ public class ManagerService{
 		managerVO.setNum(managerDAO.managerNum());
 		int result = managerDAO.addManager(managerVO);
 		
-		for(MultipartFile file : files) {
-			if(file.getSize()>0) {
-				ManagerFileVO managerFileVO = new ManagerFileVO();
-				String fileName = fileSaver.saveByTransfer(file, path);
-				managerFileVO.setNum(managerVO.getNum());
-				managerFileVO.setFileName(fileName);
-				managerFileVO.setOriName(file.getOriginalFilename());
-				managerFileDAO.fileInsert(managerFileVO);
-			}
-		}
+		ManagerFileVO managerFileVO = new ManagerFileVO();
+		String fileName = fileSaver.saveByTransfer(file, path);
+		managerFileVO.setNum(managerVO.getNum());
+		managerFileVO.setFileName(fileName);
+		managerFileVO.setOriName(file.getOriginalFilename());
+		managerFileDAO.fileInsert(managerFileVO);
+		
 		return result;
 	}
 	
@@ -60,5 +57,9 @@ public class ManagerService{
 		
 		return managerDAO.managerList(pager);
 	}
-
+	
+	public int managerDelete(long number)throws Exception{
+		return managerDAO.managerDelete(number);
+		
+	}
 }

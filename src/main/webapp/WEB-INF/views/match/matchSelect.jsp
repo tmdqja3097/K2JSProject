@@ -289,19 +289,19 @@ img {
 					<div class="profPhoto">
 
 						<img
-							src="https://plab-football.s3.amazonaws.com/media/PARK_KYU_CHUL.jpeg">
+							src="../resources/uploadmanager/${managerVO.managerFileVO.fileName }">
 
 					</div>
 					<div class="profID">
 						<span class="txt2">매니저</span>
-						<p class="txt5"></p>
+						<p class="txt5">${managerVO.name }</p>
 					</div>
 				</div>
 				<div class="mngDesc">
-					<p class="txt2">안녕하세요. 플랩풋볼  ${managerVO.name} 매니저입니다. 재미있게 운동하고 만족하며 돌아가실 수
-						있도록 최선을 다하겠습니다. 저와 함께 플랩하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
+					<p class="txt2">안녕하세요. K2JS ${managerVO.name} 매니저입니다. 재미있게 운동하고 만족하며 돌아가실 수
+						있도록 최선을 다하겠습니다. 저와 함께 풋살하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
 					<div class="applyMng">
-						<a href="/manager/apply/">플랩풋볼 매니저에 대해 알아보기</a>
+						<a href="../manager/managerOffer">플랩풋볼 매니저에 대해 알아보기</a>
 					</div>
 				</div>
 			</div>

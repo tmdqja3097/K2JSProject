@@ -17,12 +17,15 @@ public class ManagerDAO {
 	private SqlSession sqlSession;
 	
 	private final String NAMESPACE="com.k2js.p1.manager.ManagerDAO.";
-
+	
+	public int managerDelete(long number)throws Exception{
+		return sqlSession.delete(NAMESPACE+"managerDelete",number);
+	}
+	
 	public long managerNum() throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"managerNum");
 	}
 	
-
 	public int addManager(ManagerVO managerVO) throws Exception {
 		return sqlSession.insert(NAMESPACE+"addManager", managerVO);		
 	}
