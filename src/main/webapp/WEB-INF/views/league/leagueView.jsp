@@ -11,30 +11,29 @@
 <body>
 
 	<h1>leagueView page</h1>
-
-	<table >
-		<tr>
-			<td>팀이름</td>
-			<td>매치 경기</td>
-			<td>매치 날짜</td>
-			<td>매치 장소</td>
-			<td>랭킹</td>		
-		</tr>   
-	</table>
-      
-	<table>
-	<c:forEach items="${leagues}" var="lea">
-			<tr>
-				<td>${lea.teamName}</td>
-				<td>${lea.matchName}</td>
-				<td>${lea.matchDate}</td>
-				<td>${lea.matchLocation}</td>
-				<td>${lea.ranking}</td>
-			</tr>
-	</c:forEach>
-	</table>
 	
-	<a href="./leagueWrite">남자 리그 작성</a>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<td>순위/팀</td>
+				<td>승</td>
+				<td>무</td>
+				<td>패</td>
+				<td>점수</td>		
+			</tr>   
+			<c:forEach items="${leagues}" var="lea"> 
+					<tr> 
+						<td><span>${lea.rank} &nbsp;&nbsp;&nbsp;&nbsp;</span><a href="./leagueSelect?teamName=${lea.teamName}">${lea.teamName}</a></td>
+						<td>${lea.win}</td>
+						<td>${lea.draw}</td>
+						<td>${lea.lose}</td>
+						<td>${lea.point}</td>
+					</tr>
+			</c:forEach>
+		</table>
+	</div>    
+	<a href="./leagueWrite" class="btn btn-default">리그 작성</a>
+	
 
 </body>
 </html>

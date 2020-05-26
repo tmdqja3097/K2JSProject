@@ -5,17 +5,27 @@
 
 <mapper namespace="com.k2js.p1.league.LeagueDAO">
 
-
-<select id="leagueMaleList" parameterType="LeagueVO" resultType="LeagueVO">
-	select * from teamMale where teamName = #{teamName, jdbcType=VARCHAR}
+<select id="leagueTeamList" resultType="LeagueVO">
+	select * from team order by point desc
 </select>
 
-<select id="leagueFemaleList" parameterType="String" resultType="LeagueVO">
-	select * from teamFemale where teamName = #{teamName}
+<select id="leagueSelect" parameterType="String" resultType="LeagueVO">
+	select * from team where teamName = #{teamName}
 </select>
 
-<insert id="leagueMaleWrite" parameterType="LeagueVO">
-	insert into teamMale values(#{teamName}, #{gender}, #{matchName}, #{matchDate}, #{matchLocation}, #{ranking})
+<insert id="leagueWrite" parameterType="LeagueVO">
+	insert into team values(#{teamName}, #{win}, #{draw}, #{lose}, #{gender}, #{point})
 </insert>
+
+
+
+<delete id="leagueDelete" parameterType="String">
+	delete team where teamName = #{teamName}
+</delete>
+
+
+<select id="leagueMaleList" parameterType="String" resultType="LeagueVO">
+	select * from teamMale where matchName = #{name, jdbcType=VARCHAR}
+</select>
 
 </mapper>

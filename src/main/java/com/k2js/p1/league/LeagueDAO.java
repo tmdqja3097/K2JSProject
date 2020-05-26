@@ -13,16 +13,25 @@ public class LeagueDAO {
 	private SqlSession session;
 	private final String NAMESPACE = "com.k2js.p1.league.LeagueDAO.";
 	
-	public List<LeagueVO> leagueMaleList(LeagueVO leagueVO) throws Exception{
-		return session.selectList(NAMESPACE+"leagueMaleList", leagueVO);
+	public List<LeagueVO> leagueTeamList() throws Exception{
+		return session.selectList(NAMESPACE+"leagueTeamList");
 	}
 	
-	public List<LeagueVO> leagueFemaleList(String teamName) throws Exception{
-		return session.selectList(NAMESPACE+"leagueFemaleList", teamName);
+	public LeagueVO leagueSelect(String teamName) throws Exception{
+		return session.selectOne(NAMESPACE+"leagueSelect", teamName);
 	}
 	
-	public int leagueMaleWrite(LeagueVO leagueVO) throws Exception{
-		return session.insert(NAMESPACE+"leagueMaleWrite", leagueVO);
+	public int leagueDelete(String teamName) throws Exception{
+		return session.delete(NAMESPACE+"leagueDelete", teamName);
+	}
+	
+	public List<LeagueVO> leagueMaleList(String name) throws Exception{
+		return session.selectList(NAMESPACE+"leagueMaleList", name);
+	}
+	
+	
+	public int leagueWrite(LeagueVO leagueVO) throws Exception{
+		return session.insert(NAMESPACE+"leagueWrite", leagueVO);
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.k2js.p1.league;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.k2js.p1.match.MatchService;
 import com.k2js.p1.match.MatchVO;
+import com.k2js.p1.stadium.StadiumService;
+import com.k2js.p1.stadium.StadiumVO;
+
 
 @Controller
 @RequestMapping("/league/**")
@@ -27,10 +31,32 @@ public class LeagueController {
 	private MatchService matchService;
 	
 	@GetMapping("leagueView")
-	public void leagueMaleList(String teamName, Model model) throws Exception{
-		List<LeagueVO> leagues = leagueService.leagueMaleList(teamName);
-		System.out.println(teamName);
-		System.out.println(leagues.get(0).getTeamName());
+	public void leagueMaleList(String teamName, LeagueVO leagueVO, Model model) throws Exception{
+		List<LeagueVO> leagues = leagueService.leagueTeamList();
+		
+		long point = 0;
+		long rank = 0;
+		
+		List<Long> pointList = new ArrayList<Long>();
+		
+		for(int i=0; i<leagues.size(); i++) {
+			leagues.get(i).setPoint(point);
+			
+			
+//			pointList.add(leagueP);
+//			for(int j=0; j<leagues.size(); j++) {
+//				
+//			}
+//			
+//			Collections.sort(pointList, Collections.reverseOrder());
+//			
+//			System.out.println("pl:"+pointList.get(i));
+			
+			
+		 	rank = rank+1;
+		 	leagues.get(i).setRank(rank);
+		}
+		
 		model.addAttribute("leagues", leagues);
 	}
 	
@@ -40,21 +66,12 @@ public class LeagueController {
 	}
 	
 	@PostMapping("leagueWrite")
-	public ModelAndView leagueMaleWrite(LeagueVO leagueVO, long num, String day, String time) throws Exception{
+	public ModelAndView leagueMaleWrite(LeagueVO leagueVO) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
-		MatchVO matchVO = matchService.matchSelect(num);
-		Date date = matchVO.getMatchTime();
-		
-//		String date = day+time;
-//		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
-//		Date dDate = (Date)dfm.parse(date);	
-//		matchVO.setMatchTime(dDate);
-		
-		leagueVO.setMatchDate(date);
-		
-		int result = leagueService.leagueMaleWrite(leagueVO);
+		int result = leagueService.leagueWrite(leagueVO);
 		System.out.println(result);
+		
 		if(result > 0) {
 			mav.setViewName("redirect:./leagueView");
 		}else {
@@ -62,4 +79,29 @@ public class LeagueController {
 		}
 		return mav;
 	}
+	
+	@GetMapping("leagueSelect")
+	public ModelAndView leagueSelect(String teamName) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		
+		LeagueVO leagueVO = leagueService.leagueSelect(teamName);
+		
+		mav.addObject("leagueVO", leagueVO);
+		mav.setViewName("league/leagueSelect");
+		
+		return mav;
+	}
+	
+	
+	@GetMapping("leagueDelete")
+	public ModelAndView leagueDelete(String teamName) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		int result = leagueService.leagueDelete(teamName);
+		
+		if(result>0) {
+			mav.setViewName("redirect:../league/leagueView");
+		}
+		return mav;
+	}
+	
 }

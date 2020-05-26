@@ -15,32 +15,29 @@
 	<form action="./leagueWrite" id="frm" method="post">
 	
 		<div class="form-group">
-				<label for="teamName">팀 이름:</label> <input type="text"
+				<label for="teamName">팀 명:</label> <input type="text"
 					class="form-control" id="teamName" name="teamName">
 		</div>
 		<div class="form-group">
+				<label for="win">승:</label> <input type="text"
+					class="form-control" id="win" name="win">
+		</div>
+		<div class="form-group">
+				<label for="draw">무:</label> <input type="text"
+					class="form-control" id="draw" name="draw">
+		</div>
+		<div class="form-group">
+				<label for="lose">패:</label> <input type="text"
+					class="form-control" id="lose" name="lose">
+		</div>
+		<div class="form-group">
 				<label for="gender">성별:</label> <input type="text"
-					class="form-control" id="gender" name="gender">
+					class="form-control" id="gender" name="gender" placeholder="남성리그는 1 / 여성리그는 2">
 		</div>
 		<div class="form-group">
-				<label for="matchName">경기 제목:</label> <input type="text"
-					class="form-control" id="matchName" name="matchName">
-		</div>
-		<div class="form-group">
-				<label for="matchDate">경기 날짜:</label> <input type="date"
-					class="form-control" id="matchDate" name="matchDate">
-		</div>
-		<div class="form-group">
-			<label for="matchTime">경기 시간:</label> <input type="time"
-				class="form-control" id="matchTime" name="matchTime">
-		</div>
-		<div class="form-group">
-				<label for="matchLocation">경기 장소:</label> <input type="text"
-					class="form-control" id="matchLocation" name="matchLocation">
-		</div>
-		<div class="form-group">
-				<label for="ranking">랭킹:</label> <input type="text"
-					class="form-control" id="ranking" name="ranking">
+				<label for="point">점수:</label>
+				<input type="text" 
+					class="form-control" id="point" name="point" readonly="readonly" hidden="point" value="0">
 		</div>
 		
 		<input type="submit" id="btn" class="btn btn-default" value="Write">
