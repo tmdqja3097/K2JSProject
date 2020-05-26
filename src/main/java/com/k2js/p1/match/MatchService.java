@@ -1,5 +1,8 @@
 package com.k2js.p1.match;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -30,7 +33,7 @@ public class MatchService {
 	private StadiumFileDAO stadiumFileDAO;
 	@Autowired
 	private ChargeDAO chargeDAO;
-	
+
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return matchDAO.matchUpdate(matchVO);
 	}
@@ -147,18 +150,50 @@ public class MatchService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public int matchCancel(MatchForCapaVO mfcVO, MemberVO memberVO) throws Exception {
-		//매치신청 결제정보 호출
+		int count = 0;
+		int daycount = 0;
+		// 매치신청 결제정보 호출
 		mfcVO = matchDAO.matchCancel(mfcVO);
-		//결제정보에서 삭제 
-		int result =matchDAO.matchCancel2(mfcVO);
+		// 결제정보에서 삭제
+		matchDAO.matchCancel2(mfcVO);
 		MatchVO matchVO = matchDAO.matchSelect(mfcVO.getNum());
 		matchVO.setNum(mfcVO.getNum());
 		matchVO.setCount(matchVO.getCount() - mfcVO.getCount());
-		//해당 매치 정보에서 카운트 차감
+		// 해당 매치 정보에서 카운트 차감
 		matchDAO.matchJoin(matchVO);
-		//멤버에서 캐쉬를 카운트만큼 입금
-		int count = mfcVO.getCount()*10000;
-		memberVO.setCash(memberVO.getCash()+count);
+		// 날자 비교 및 환불금액 변동사항
+		Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String dat = sdf.format(matchVO.getMatchTime());
+		String dat1 = sdf.format(date);
+		//// 경기 날자
+		String str[] = dat.split("/");
+		int year = Integer.parseInt(str[0]);
+		int month = Integer.parseInt(str[1]);
+		int maxday = cal.getActualMaximum(month-1);
+		int day = Integer.parseInt(str[2]) - 2;
+		//// 현재 날자
+		String str1[] = dat1.split("/");
+		int year1 = Integer.parseInt(str[0]);
+		int month1 = Integer.parseInt(str1[1]);
+		int day1 = Integer.parseInt(str[2]);
+		if (year == year1 && month == month1) {
+			daycount = day - day1;
+		} else if (year == year1 && month > month1) {
+			daycount = (day+maxday)-day1;
+		} else if ( year != year1) {
+			daycount = (day+31)-day1;
+		}
+		if (daycount > 2) {
+			count = mfcVO.getCount() * 10000;
+		} else if (daycount < 2 && daycount > 1) {
+			count = mfcVO.getCount() * 8000;
+		} else if (daycount < 1) {
+			count = mfcVO.getCount() * 3000;
+		}
+		// 멤버에서 캐쉬를 카운트만큼 입금
+		memberVO.setCash(memberVO.getCash() + count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}
-}	
+}

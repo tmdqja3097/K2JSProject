@@ -124,7 +124,11 @@ form{
 
 			var resultDiv = document.getElementById('clickLatlng');
 			resultDiv.innerHTML = message;
-
+		
+			var wido = latlng.getLat();
+			var kyungdo = latlng.getLng();
+			$("#location_w").val(wido);
+			$("#location_k").val(kyungdo);
 		});
 		
 	</script>
