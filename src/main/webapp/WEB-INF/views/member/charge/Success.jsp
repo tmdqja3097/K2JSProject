@@ -14,5 +14,8 @@
 	<br /> 결제금액: ${info.amount.total}
 	<br /> 결제방법: ${info.payment_method_type}
 	<br />
+	<script type="text/javascript">
+	opener.document.location.reload();
+	</script>
 </body>
 </html>

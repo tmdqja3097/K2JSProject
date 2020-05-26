@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -20,20 +20,23 @@
 	</c:if>
 	<c:if test="${i gt 0}">
 		<table class="table table-hover">
+		<thead>
 			<tr>
-				<td>
+				<th>
 					<p>경기 시간
-				</td>
-				<td>
+				</th>
+				<th>
 					<p>경기 구장
-				</td>
-				<td>
+				</th>
+				<th>
 					<p>성별
-				</td>
-				<td>
-					<p style="float: right;">참가 여부
-				</td>
+				</th>
+				<th>
+					<p style="float: right;">참가 상태
+				</th>
 			</tr>
+			</thead>
+			<tbody>			
 			<c:forEach items="${list}" var="vo" varStatus="i">
 				<tr>
 					<td>
@@ -53,6 +56,7 @@
 						class="decision" style="float: right;" title="${vo.num}"></td>
 				</tr>
 			</c:forEach>
+			</tbody>
 		</table>
 	</c:if>
 	<script type="text/javascript">
@@ -84,7 +88,6 @@
 					$(this).on(
 							"click",
 							function() {
-									
 								var num = parseInt($(this).attr("title"));
 								window.open("../match/matchCancel?num=" + num,
 										"_blank", "width=400 height=400");

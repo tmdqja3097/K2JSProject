@@ -94,7 +94,6 @@ float : right;
 
 		$(function() {
 			$.get("./getCapaList", function(result) {
-				console.log(result);
 				$("#matchList").append(result);
 			})
 		})
@@ -112,7 +111,7 @@ float : right;
 		$("#addCash")
 				.click(
 						function() {
-							location.href = "${pageContext.request.contextPath}/member/MemberAddCash";
+							open("${pageContext.request.contextPath}/member/MemberAddCash","_blank","width=500 height=500")
 						})
 		$("#deleteInfo").click(function() {
 			var loginmt = '${member.loginmt}';

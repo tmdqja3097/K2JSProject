@@ -8,14 +8,59 @@
 <title>캐쉬 충전</title>
 <c:import url="../template/boot.jsp" />
 <script src="../resources/js/kakao.js"></script>
+<script src="https://kit.fontawesome.com/1a953cf392.js"
+	crossorigin="anonymous"></script>
+<style type="text/css">
+.header {
+	height: 50px;
+	color: black;
+	line-height: 50px;
+	font-family: "나눔바른고딕", nanumbarungothic, se_NanumBarunGothic,
+		AppleSDGothicNeo, sans-serif, simhei;
+	font-weight: bold;
+	text-shadow: black;
+	font-size: 24px;
+	border-bottom: 0.5px solid black;
+}
+
+.nav-tabs>li>a {
+	height: 60px;
+	width: 100%;
+	line-height: 60px;
+	box-sizing: border-box;
+}
+.nav>li>a{
+padding : 0 24px;
+}
+
+.chargeMethod {
+padding-top : 10px;
+box-sizing:border-box;
+border-top : 0.5px solid black;
+border-bottom : 0.5px solid black;
+}
+.remain {
+font-family: "나눔바른고딕", nanumbarungothic, se_NanumBarunGothic,
+		AppleSDGothicNeo, sans-serif, simhei;
+		font-size : 11px;
+		font-weight: bold;
+}
+.remain>span {
+color : #ff3300;
+}
+#selfMoney {
+	width : 152px;
+}
+</style>
 </head>
 <body>
-	<c:import url="../template/header.jsp" />
-	<div class="container">
+	<div class="header"><i class="fas fa-coins"></i> 캐쉬 충전</div>
+	<br>
+	<div>
 		<span id="remainCash" hidden="hidden">${remainCash}</span>
-		<div class="row">캐시 잔액 : ${member.cash}</div>
-		<div class="row">
-			충전 금액 : <select id="money">
+		<div class="remain">(캐시 잔액 : <span>${member.cash}</span>)</div>
+		<div >
+			결제 금액 : <select id="money">
 				<option>1000</option>
 				<option>3000</option>
 				<option selected="selected">5000</option>
@@ -25,15 +70,17 @@
 				<option>직접입력</option>
 			</select>
 		</div>
-		<div class="row" id="self"></div>
+		<div id="self"></div>
 		<br>
 
-		<p>충전 방식</p>
-		<ul class="nav nav-tabs">
-			<li id="Culture"><a href="#">상품권</a></li>
-			<li id="KaCaoPay"><a href="#">카카오페이</a></li>
-			<li id="PhoneCash"><a href="#">핸드폰</a></li>
-		</ul>
+		<div class="chargeMethod">
+			<p>결제 수단</p>
+			<ul class="nav nav-tabs">
+				<li id="Culture"><a href="#">상품권</a></li>
+				<li id="KaCaoPay"><a href="#">카카오페이</a></li>
+				<li id="PhoneCash"><a href="#">핸드폰</a></li>
+			</ul>
+		</div>
 		<div class="container" id="howCharge"></div>
 	</div>
 
@@ -83,6 +130,7 @@
 			$("#PhoneCash").addClass("active");
 			$("#Culture").removeClass("active");
 			$("#CaCaoPay").removeClass("active");
+			PhoneCharge(money);
 		})
 
 		function CultureCharge(money) {
@@ -96,6 +144,9 @@
 			$.get("./charge/KakaoPayCharge?cash=" + money, function(result) {
 				$("#howCharge").append(result);
 			})
+		}
+		function PhoneCharge(money) {
+			$("#howCharge").empty();
 		}
 
 		/* 결제 방법 선택 */

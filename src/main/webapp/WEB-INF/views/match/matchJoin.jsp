@@ -335,7 +335,7 @@ form.orderForm fieldset h3 {
 				if($("#remain_cash").text()=="잔액 부족"){
 					var check = confirm("잔액이 부족합니다. 캐시를 충전하시겠습니까?");
 					if(check){
-						location.href="../member/MemberAddCash?remainCash="+(-remainCash);	
+						open("${pageContext.request.contextPath}/member/MemberAddCash?remainCash="+(-remainCash),"_blank","width=500 height=500");	
 					}
 				} else{
 				$("#form").submit();
