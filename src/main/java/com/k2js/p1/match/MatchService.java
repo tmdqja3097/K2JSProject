@@ -157,8 +157,8 @@ public class MatchService {
 		//해당 매치 정보에서 카운트 차감
 		matchDAO.matchJoin(matchVO);
 		//멤버에서 캐쉬를 카운트만큼 입금
-		int count = mfcVO.getCount()*10000;
-		memberVO.setCash(memberVO.getCash()+count);
+		long count = mfcVO.getCount()*10000;
+		memberVO.setCash(memberVO.getCash()+(int)count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}
 }	
