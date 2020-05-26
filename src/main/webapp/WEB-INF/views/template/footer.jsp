@@ -9,11 +9,10 @@
 <style type="text/css">
 
 	.footer {
-		width: 100%;
+		width: 170%;
 		height: 448px;
 		color: white;
-		background-color: black;    
-		
+		background-color: black;       
 	}
 	
 	.footerWrap {
