@@ -14,10 +14,6 @@
 	<form action="./addManager" id="managerForm" method="post" enctype="multipart/form-data">
 		
 		<div class="form-group">
-			<label for="file">사진:</label> <input type="file"
-				class="form-control" id="file" name="file">
-		</div>
-		<div class="form-group">
 			<label for="name">이름:</label> <input type="text"
 				class="form-control" id="name" name="name">
 		</div>
@@ -41,9 +37,17 @@
 			<label for="phone">전화 번호:</label> <input type="text"
 				class="form-control" id="phone" name="phone">
 		</div>
+		<div class="form-group">
+			<label for="account">계좌 번호:</label> <input type="text"
+				class="form-control" id="account" name="account">
+		</div>
 		
 		<input type="button" id="btn" class="btn btn-default" value="Write" style="float:right; margin-right: 20px;" > 
 		
+		<c:catch>
+			<input type="button" id="add" class="btn btn-default" value="AddFile" style="float:right;" name="files">
+			<div id="file"></div> 
+		</c:catch>
 		
 	</form>
 	

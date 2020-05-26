@@ -6,7 +6,7 @@
 <mapper namespace="com.k2js.p1.manager.file.ManagerFileDAO">
 	
 	<insert id="fileInsert" parameterType="ManagerFileVO">
-		insert into managerFile values(file_seq.nextval, #{num}+1, #{fileName}, #{oriName})
+		insert into managerFile values(file_seq.nextval, #{num}, #{fileName}, #{oriName})
 	</insert>
 	
 	<select id="fileSelect" parameterType="ManagerFileVO" resultType="ManagerFileVO">

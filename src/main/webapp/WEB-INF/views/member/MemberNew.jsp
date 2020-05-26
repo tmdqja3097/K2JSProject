@@ -310,27 +310,6 @@ body {
 
 				}
 			});
-
-		$("#pw").change(function() {
-				var pw = $("#pw").val();
-				var pw1 = $("#pw1").val();
-				if (pw.length > 5) {
-					if (pw == pw1) {
-						$("#success").show();
-						$("#fail").hide();
-						$("#fail_length").hide();
-						$("#submit").removeAttr("disabled")
-					} else {
-						$("#success").hide();
-						$("#fail").show();
-						$("#fail_length").hide();
-						$("#submit").prop("disabled", "disabled");
-					}
-				} else {
-					$("#submit").prop("disabled", "disabled");
-					$("#fail_length").show();
-				}
-			});
 		});
 	</script>
 </body>

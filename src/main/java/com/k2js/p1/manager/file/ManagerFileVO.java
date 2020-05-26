@@ -6,7 +6,6 @@ public class ManagerFileVO {
 	private String fileName;
 	private String oriName;
 	
-	
 	public long getFileNum() {
 		return fileNum;
 	}

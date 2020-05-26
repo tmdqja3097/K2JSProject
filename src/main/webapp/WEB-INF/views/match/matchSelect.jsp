@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <c:import url="../template/boot.jsp"></c:import>
 <meta charset="utf-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 <style>
 #map {
 	margin-top: 69px;
@@ -161,8 +165,7 @@ img {
 	<c:import url="../template/matchCarousel.jsp"></c:import>
 
 	<div id="map" style="width: 100%; height: 500px; z-index: 0"></div>
-	
-	<input type="hidden" id="gender" value="${member.gender}">
+
 
 	<div style="margin: auto; width: 1000px">
 		<br>
@@ -172,7 +175,7 @@ img {
 			<p
 				style="font-size: 30px; font-weight: bold; color: #3534A5; cursor: pointer; margin-bottom: 1px;">${stadiumVO.name}</p>
 			<p style="margin-bottom: 3px;">${stadiumVO.address}</p>
-			<a class="copy">주소 복사하기&nbsp;</a> <a id="map_view">| 지도 보기</a><br>
+			<a class="copy">주소 복사하기&nbsp; </a><a id="map_view">| 지도 보기</a> <br>
 			<br>
 			<p
 				style="font-size: 10px; font-weight: normal; color: #999999; margin-bottom: 1px">참가비
@@ -248,10 +251,10 @@ img {
 
 				<li><img alt=""
 					src="../../${pageContext.request.contextPath}/resources/images/parking.svg">
-					<c:if test="${stadiumVO.parking eq 0}">
-						<p>무료 주차</p>
-					</c:if> <c:if test="${stadiumVO.parking eq 1}">
+					<c:if test="${stadiumVO.parking eq 1}">
 						<p>유료 주차</p>
+					</c:if> <c:if test="${stadiumVO.parking eq 0}">
+						<p>무료 주차</p>
 					</c:if></li>
 
 				<c:if test="${stadiumVO.shoes eq 0}">
@@ -286,19 +289,19 @@ img {
 					<div class="profPhoto">
 
 						<img
-							src="../resources/uploadmanager/${managerVO.managerFileVO.fileName }">
+							src="https://plab-football.s3.amazonaws.com/media/PARK_KYU_CHUL.jpeg">
 
 					</div>
 					<div class="profID">
 						<span class="txt2">매니저</span>
-						<p class="txt5">${managerVO.name }</p>
+						<p class="txt5"></p>
 					</div>
 				</div>
 				<div class="mngDesc">
-					<p class="txt2">안녕하세요. K2JS ${managerVO.name} 매니저입니다. 재미있게 운동하고 만족하며 돌아가실 수
-						있도록 최선을 다하겠습니다. 저와 함께 풋살하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
+					<p class="txt2">안녕하세요. 플랩풋볼 박규철 매니저입니다. 재미있게 운동하고 만족하며 돌아가실 수
+						있도록 최선을 다하겠습니다. 저와 함께 플랩하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
 					<div class="applyMng">
-						<a href="../manager/managerOffer">플랩풋볼 매니저에 대해 알아보기</a>
+						<a href="/manager/apply/">플랩풋볼 매니저에 대해 알아보기</a>
 					</div>
 				</div>
 			</div>
@@ -513,12 +516,10 @@ img {
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
-		/* var location_w = "<c:out value='${stadiumVO.address}'/>";
-		var address = "<c:out value='${stadiumVO.address}'/>"; */
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k}), // 지도의 중심좌표
+			center : new kakao.maps.LatLng(${stadiumVO.location_k},${stadiumVO.location_w}), // 지도의 중심좌표
 			level : 3
 		// 지도의 확대 레벨
 		};
@@ -526,7 +527,7 @@ img {
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 		// 마커가 표시될 위치입니다 
-		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k});
+		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_k},${stadiumVO.location_w});
 
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
@@ -568,20 +569,11 @@ img {
 		});
 		
 		
-		
-		
-		
-		
-		var gender = $("#gender").val();
-		
 
 		$("#start_check").click(function(){
-			if(gender == null){
-				gender = 1;
-			}
-			if(${matchVO.gender}==gender || ${matchVO.gender}==3){
+			if(${matchVO.gender}==${member.gender} || ${matchVO.gender}==3){
 				location.href = "./matchJoin?num="+${matchVO.num};   
-			}else{ 
+			}else{
 				if(${matchVO.gender}==1){
 					alert("본 매치는 남성 전용 매치입니다.");
 				}else if(${matchVO.gender}==2){

@@ -7,6 +7,7 @@ import com.k2js.p1.board.file.BoardFileVO;
 public class StadiumVO {
 	private String name;
 	private String address;
+	private String image;
 	private double location_k;
 	private double location_w;
 	private String stadiumSize;
@@ -28,6 +29,12 @@ public class StadiumVO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public double getLocation_k() {
 		return location_k;

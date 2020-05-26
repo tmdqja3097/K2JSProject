@@ -11,7 +11,8 @@ public class ManagerVO {
 	private int gender;
 	private String phone;
 	private String home;
-	private ManagerFileVO managerFileVO;
+	private String account;
+	private List<ManagerFileVO> managerFileVOs;
 	
 	public int getGender() {
 		return gender;
@@ -20,11 +21,11 @@ public class ManagerVO {
 		this.gender = gender;
 	}
 	
-	public ManagerFileVO getManagerFileVO() {
-		return managerFileVO;
+	public List<ManagerFileVO> getManagerFileVOs() {
+		return managerFileVOs;
 	}
-	public void setManagerFileVO(ManagerFileVO managerFileVO) {
-		this.managerFileVO = managerFileVO;
+	public void setManagerFileVOs(List<ManagerFileVO> managerFileVOs) {
+		this.managerFileVOs = managerFileVOs;
 	}
 	public long getNum() {
 		return num;
@@ -55,6 +56,12 @@ public class ManagerVO {
 	}
 	public void setHome(String home) {
 		this.home = home;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	
 }

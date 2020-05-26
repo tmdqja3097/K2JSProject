@@ -13,7 +13,7 @@
 		<result column="stadiumName" property="stadiumName"/>
 		<result column="count" property="count"/>
 		<result column="gender" property="gender"/>
-		<result column="managerNum" property="managerNum"/>	
+		<result column="joinMemberId" property="joinMemberId"/>
 		<collection property="stadiumFileVOs" javaType="List" ofType="StadiumFileVO">
 			<id column="fileNum" property="fileNum"/>
 			<result column="fileName" property="fileName"/>
@@ -34,7 +34,7 @@
 </select>
 
 <insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},#{managerNum})
+	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender})
 </insert>
 
 <update id="matchUpdate" parameterType="MatchVO">
