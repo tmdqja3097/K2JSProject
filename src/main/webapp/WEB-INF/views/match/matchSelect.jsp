@@ -161,7 +161,8 @@ img {
 	<c:import url="../template/matchCarousel.jsp"></c:import>
 
 	<div id="map" style="width: 100%; height: 500px; z-index: 0"></div>
-
+	
+	<input type="hidden" id="gender" value="${member.gender}">
 
 	<div style="margin: auto; width: 1000px">
 		<br>
@@ -171,7 +172,7 @@ img {
 			<p
 				style="font-size: 30px; font-weight: bold; color: #3534A5; cursor: pointer; margin-bottom: 1px;">${stadiumVO.name}</p>
 			<p style="margin-bottom: 3px;">${stadiumVO.address}</p>
-			<a class="copy">주소 복사하기&nbsp; </a><a id="map_view">| 지도 보기</a> <br>
+			<a class="copy">주소 복사하기&nbsp;</a> <a id="map_view">| 지도 보기</a><br>
 			<br>
 			<p
 				style="font-size: 10px; font-weight: normal; color: #999999; margin-bottom: 1px">참가비
@@ -512,10 +513,12 @@ img {
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
+		/* var location_w = "<c:out value='${stadiumVO.address}'/>";
+		var address = "<c:out value='${stadiumVO.address}'/>"; */
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(${stadiumVO.location_k},${stadiumVO.location_w}), // 지도의 중심좌표
+			center : new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k}), // 지도의 중심좌표
 			level : 3
 		// 지도의 확대 레벨
 		};
@@ -523,7 +526,7 @@ img {
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 		// 마커가 표시될 위치입니다 
-		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_k},${stadiumVO.location_w});
+		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k});
 
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
@@ -565,11 +568,20 @@ img {
 		});
 		
 		
+		
+		
+		
+		
+		var gender = $("#gender").val();
+		
 
 		$("#start_check").click(function(){
-			if(${matchVO.gender}==${member.gender} || ${matchVO.gender}==3){
+			if(gender == null){
+				gender = 1;
+			}
+			if(${matchVO.gender}==gender || ${matchVO.gender}==3){
 				location.href = "./matchJoin?num="+${matchVO.num};   
-			}else{
+			}else{ 
 				if(${matchVO.gender}==1){
 					alert("본 매치는 남성 전용 매치입니다.");
 				}else if(${matchVO.gender}==2){

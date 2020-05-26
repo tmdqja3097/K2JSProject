@@ -40,12 +40,12 @@ form{
 				class="form-control" id="address" name="address">
 		</div>
 		<div class="form-group">
-			<label for="writer">경도(위 지도를 참조해서 소수점 아래 6자리까지 입력)</label> <input type="text"
-				class="form-control" id="location_k" name="location_k">
-		</div>
-		<div class="form-group">
 			<label for="writer">위도(위 지도를 참조해서 소수점 아래 6자리까지 입력)</label> <input type="text"
 				class="form-control" id="location_w" name="location_w">
+		</div>
+		<div class="form-group">
+			<label for="writer">경도(위 지도를 참조해서 소수점 아래 6자리까지 입력)</label> <input type="text"
+				class="form-control" id="location_k" name="location_k">
 		</div>
 		<div class="form-group">
 			<label for="writer">구장 사이즈(가로x세로 형태로 입력) : </label> <input type="text"
@@ -94,7 +94,7 @@ form{
 	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			center : new kakao.maps.LatLng(37.556518,126.919628), // 지도의 중심좌표
 			level : 3
 		// 지도의 확대 레벨
 		};
