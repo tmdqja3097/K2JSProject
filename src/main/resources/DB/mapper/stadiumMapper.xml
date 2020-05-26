@@ -10,6 +10,13 @@
 	select * from stadium where name=#{stadiumName}
 </select>
 
+<insert id="addStadium" parameterType="StadiumVO">
+	insert into stadium values(#{name},#{address},#{location_w},#{location_k},#{stadiumSize},#{shower},#{parking},#{shoes},#{cloth},#{info})
+</insert>
+
+<select id="stadiumList" resultType="StadiumVO">
+	select * from stadium
+</select>
 
 
 

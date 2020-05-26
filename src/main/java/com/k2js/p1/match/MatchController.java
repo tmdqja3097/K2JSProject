@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+
+import com.k2js.p1.manager.ManagerService;
+import com.k2js.p1.manager.ManagerVO;
 import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
@@ -32,11 +35,15 @@ public class MatchController {
 	private MatchService matchService;
 	@Autowired
 	private StadiumService stadiumService;
+	@Autowired
+	private ManagerService managerService;
 
+	
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
 
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
+		
 		int i = matchVOs.size();
 
 		model.addAttribute("matchs", matchVOs);
@@ -50,21 +57,28 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-
+		long manager_num = matchVO.getManagerNum();
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
+		ManagerVO managerVO = managerService.managerSelect(manager_num);
+		
+		mv.addObject("managerVO",managerVO);
 		mv.addObject("fullTime", fullTime);
 		mv.addObject("stadiumVO", stadiumVO);
 		mv.addObject("matchVO", matchVO);
-
+		
 		mv.setViewName("match/matchSelect");
 
 		return mv;
 	}
 
 	@GetMapping("/match/matchWrite")
-	public String matchWrite() throws Exception {
-		return "match/matchWrite";
+	public ModelAndView matchWrite() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		mv.addObject("stadiumVOs",stadiumVOs);
+		mv.setViewName("match/matchWrite");
+		return mv;
 	}
 
 	@PostMapping("/match/matchWrite")
@@ -74,7 +88,7 @@ public class MatchController {
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddHH:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
-
+		
 		int result = matchService.matchWrite(matchVO, files);
 		if (result > 0) {
 			mv.setViewName("redirect:../");

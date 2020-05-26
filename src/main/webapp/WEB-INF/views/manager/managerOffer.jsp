@@ -221,7 +221,7 @@ element.style {
 			</h1>
 			<p>경기당(2시간) 25,000원의 활동비가 지급됩니다.</p>
 		</div>
-		<img src="../resources/images/k2js_manager.png" alt="">
+		<img src="../resources/images/k2js_manager.png" alt="" width="100%" style="padding-left: 2%">
 	</div>
 	
 	<div class="bSection">
@@ -291,10 +291,11 @@ element.style {
 				<a href="https://docs.google.com/forms/d/e/1FAIpQLSfVXs2UygE8Awnev-U2_6OuFqvC6eF4rcNXc8FxPw0iztpBVA/viewform?usp=sf_link" target="_blank" class="btn action" style="margin: 0 auto;" id="submitApplicationButton">지원서 작성하기</a>
 			</div>
 		</div>
-		<c:if test="${member.id eq admin}"> 
+		<c:if test="${member.id eq 'admin'}"> 
 		<div class="titleWrap" style="text-align: center;">
 			<div class="btnWrap">
-				<a href="./addManager" class="btn btn-default" style="float: right;">매니저 추가하기</a>
+				<a href="./addManager" class="btn btn-default" style="float: right; ">매니저 추가하기</a>
+				<a href="./managerList" class="btn btn-default" style="float: right; margin-right: 20px;">매니저 리스트 보기</a>
 			</div>
 		</div>
 		</c:if>
