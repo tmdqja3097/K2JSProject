@@ -50,6 +50,11 @@ public class MatchController {
 		model.addAttribute("i", i);
 
 	}
+	
+	@GetMapping("about")
+	public void about()throws Exception{
+		
+	}
 
 	@GetMapping("/match/matchSelect")
 	public ModelAndView matchSelect(long num) throws Exception {
