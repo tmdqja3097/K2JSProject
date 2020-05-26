@@ -39,12 +39,14 @@ $("#btn").click(function() {
 		var date = $("#date").val();
 		var time = $("#time").val();
 		var gender=$("#gender").val();
-		console.log(gender);
+		var stadiumName =$("#stadiumName").val();
+		
 		var ch1 = title !="";
 		var ch2 = date  !="";
 		var ch3 = time  !="";
 		var ch4 = gender!="none";	
 		var ch5 = true;
+		var ch6 = stadiumName !="none";
 
 		$(".files").each(function() {
 			if($(this).val()==""){
@@ -53,7 +55,7 @@ $("#btn").click(function() {
 		});
 		
 		
-		if(ch1 && ch2 && ch3 && ch4 && ch5){
+		if(ch1 && ch2 && ch3 && ch4 && ch5 && ch6){
 			$("#frm").submit();
 		}else {
 			alert("필수 요소는 다 입력하세요");

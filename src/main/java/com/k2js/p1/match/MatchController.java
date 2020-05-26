@@ -43,6 +43,7 @@ public class MatchController {
 	public void matchList(int matchTime, Model model) throws Exception {
 
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
+		
 		int i = matchVOs.size();
 
 		model.addAttribute("matchs", matchVOs);
@@ -72,8 +73,12 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchWrite")
-	public String matchWrite() throws Exception {
-		return "match/matchWrite";
+	public ModelAndView matchWrite() throws Exception {
+		ModelAndView mv = new ModelAndView();
+		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		mv.addObject("stadiumVOs",stadiumVOs);
+		mv.setViewName("match/matchWrite");
+		return mv;
 	}
 
 	@PostMapping("/match/matchWrite")

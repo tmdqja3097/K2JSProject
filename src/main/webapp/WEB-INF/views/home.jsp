@@ -172,7 +172,9 @@
 		</ul>
 
 		<a href="./match/matchWrite" class="btn btn-default"
-			style="float: right;">글쓰기</a>
+			style="float: right;">매치 추가하기</a>
+		<a href="./stadium/addStadium" class="btn btn-default"
+			style="float: right; margin-right: 10px;">구장 추가하기</a>
 	</div>
 
 	<div class="modal fade" id="layerpop">

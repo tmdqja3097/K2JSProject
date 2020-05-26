@@ -54,7 +54,7 @@
 	</select>
 	
 	<delete id="managerDelete" parameterType="Long">
-		delete from manager where num = #{num}
+		delete from manager where num = #{num} 
 	</delete>
 
 </mapper>

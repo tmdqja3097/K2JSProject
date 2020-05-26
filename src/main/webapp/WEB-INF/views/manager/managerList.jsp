@@ -31,7 +31,7 @@
 	display: block
 }
 
-img {
+.manager_img img {
 	margin-top: -15px;
 	margin-left: 25px;
 	width: 64px;
@@ -39,7 +39,7 @@ img {
 	border-radius: 100px;
 	object-fit: cover;
 	vertical-align: middle;
-	border: 2px solid black;
+	border: 1px solid black;
 	margin-left: 25px;
 }
 
@@ -52,11 +52,27 @@ table tr td {
 input {
 	line-height: 80px;
 }
+
+.title {
+	text-align: center;
+	margin: 8% 0%;
+}
+
+h2{
+	font-size: 30px;
+	font-weight: 300;
+	border-bottom: 3px solid #FFC645;
+	display: inline-block;
+	margin-bottom: 8px;
+	margin-left: 15px;
+}
 </style>
 </head>
 <body>
 	<c:import url="../template/header.jsp"></c:import>
-	<h1>managerList</h1>
+	<div class="title">
+		<h2>MANAGERS</h2>
+	</div>
 	<form action="./managerDelete" id="frm" method="post">
 		<table class="table">
 			<thead>
@@ -71,16 +87,17 @@ input {
 			</thead>
 			<c:forEach items="${list}" var="manager" varStatus="i">
 				<tr>
-					<td><input type="checkbox" class="input" name="num"
+					<td><input type="checkbox" class="check_input" name="num"
 						value="${manager.num}">
-						<div>
+						<div class="manager_img">
 							<img alt=""
 								src="../resources/uploadmanager/${manager.managerFileVO.fileName}"></td>
 					<td style="line-height: 80px;">${manager.num}</td>
 					<td style="line-height: 80px;">${manager.name}</td>
-					<td style="line-height: 80px;">${manager.gender}</td>
+					<td style="line-height: 80px;"><c:if test="${manager.gender eq 1}">남성</c:if><c:if test="${manager.gender eq 2}">여성</c:if></td>
 					<td style="line-height: 80px;">${manager.phone}</td>
 					<td style="line-height: 80px;">${manager.home}</td>
+				</tr>
 			</c:forEach>
 		</table>
 		<input type="button" value="매니저 삭제" id="btn" class="btn btn-default"
@@ -104,24 +121,29 @@ input {
 		</ul>
 	</div>
 
+
 	<script type="text/javascript">
+	
+
 		$("#btn").click(function() {
-
 			var check1 = false;
-
-			$(".input").each(function() {
-				if ($(".input").attr("checked") == "checked") {
+			
+			$(".check_input").each(function() {
+				if ($(this).prop("checked") == true) {
 					check1 = true;
-					alert(1111);
 				}
 			});
 
-			var check2 = confirm("정말 해당 매니저에 대한 정보를 삭제하시겠습니까?");
-			if (check2) {
-				$("#frm").submit();
+			if (check1) {
+				var check2 = confirm("정말 해당 매니저에 대한 정보를 삭제하시겠습니까?");
+				if (check2) {
+					$("#frm").submit();
+				}
 			}
 		});
 	</script>
+
+
 
 </body>
 </html>
