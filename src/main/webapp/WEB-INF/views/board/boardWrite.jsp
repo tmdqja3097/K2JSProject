@@ -93,6 +93,20 @@ body {
 	font-size: x-small;
 }
 
+h3{
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold; 
+	border-bottom : 3px solid #FFC645;
+	display:inline;
+	margin-bottom: 8px;
+	border-bottom: 3px solid #FFC645;
+}
+
+#frm{
+	margin-top: 50px;
+}
+
 
 </style>
 <c:import url="../template/boot.jsp"></c:import>
@@ -101,7 +115,7 @@ body {
 <body style="padding: 0;">
 	<c:import url="../template/header.jsp"></c:import>
 	<div class="container">
-		<h3>${fn:toUpperCase(board)} Write </h3>
+		<h3>${fn:toUpperCase(board)} WRITE</h3>
 
 
 		<form action="./${board}Write" id="frm" method="post"
@@ -112,7 +126,7 @@ body {
 			</div>
 			<div class="form-group">
 				<label for="writer">Writer:</label> <input type="text"
-					class="form-control" id="writer" value="writer"
+					class="form-control" id="writer" value="admin"
 					readonly="readonly" name="writer">
 			</div>
 			<div class="form-group">

@@ -161,6 +161,7 @@ public class MatchService {
 		matchVO.setCount(matchVO.getCount() - mfcVO.getCount());
 		// 해당 매치 정보에서 카운트 차감
 		matchDAO.matchJoin(matchVO);
+
 		// 날자 비교 및 환불금액 변동사항
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
@@ -194,6 +195,11 @@ public class MatchService {
 		}
 		// 멤버에서 캐쉬를 카운트만큼 입금
 		memberVO.setCash(memberVO.getCash() + count);
+
+		//멤버에서 캐쉬를 카운트만큼 입금
+		long count = mfcVO.getCount()*10000;
+		memberVO.setCash(memberVO.getCash()+(int)count);
+
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}
 }

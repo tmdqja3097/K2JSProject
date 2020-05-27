@@ -6,7 +6,7 @@
 	<typeAliases>
 
 		<typeAlias type="com.k2js.p1.member.MemberVO"
-			alias="memberVO" />
+			alias="memberVO" /> 
 		<typeAlias type="java.lang.Long" alias="Long" />
 		<typeAlias type="java.lang.String" alias="String" />
 		<typeAlias type="java.util.List" alias="List" />

@@ -7,7 +7,7 @@ public class MatchForCapaVO {
 	
 	private long num;
 	private long capaListNum;
-	private int count;
+	private long count;
 	private long reqNum;
 	
 	public long getReqNum() {
@@ -16,10 +16,10 @@ public class MatchForCapaVO {
 	public void setReqNum(long reqNum) {
 		this.reqNum = reqNum;
 	}
-	public int getCount() {
+	public long getCount() {
 		return count;
 	}
-	public void setCount(int count) {
+	public void setCount(long count) {
 		this.count = count;
 	}
 	public long getNum() {
