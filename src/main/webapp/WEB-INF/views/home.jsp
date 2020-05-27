@@ -137,19 +137,6 @@
 			</a>
 		</div>
 	</div>
-	<!-- <div id="match-box" class="btn" style="width: 100%; height: 100px;">
-		<div style="width: 5%; height: 100px; float: left;">
-			<button id="next" class="btn daybutton">→</button>
-		</div>
-			<div id="list"
-				style="width: 90%; height: 100px; float: left; overflow: hidden;">
-				<ul class="nav nav-tabs" id="day-list">
-				</ul>
-			</div>
-			<div>
-			<button id="next" class="preNext">→</button>
-		</div>
-	</div> -->
 
 
 	<div id="match-box" style="width: 100%; height: 100px;">
@@ -165,16 +152,15 @@
 			<button id="next" class="preNext" disabled="">→</button>
 		</div>
 	</div>
-
-
 	<div>
 		<ul id="dDayMatch" class="myUL">
 		</ul>
-
-		<a href="./match/matchWrite" class="btn btn-default"
-			style="float: right;">매치 추가하기</a> <a href="./stadium/addStadium"
-			class="btn btn-default" style="float: right; margin-right: 10px;">구장
-			추가하기</a>
+		<c:if test="${not empty member and member.id eq 'admin'}">
+			<a href="./match/matchWrite" class="btn btn-default"
+				style="float: right;">매치 추가하기</a>
+			<a href="./stadium/addStadium" class="btn btn-default"
+				style="float: right; margin-right: 10px;">구장 추가하기</a>
+		</c:if>
 	</div>
 
 	<div class="modal fade" id="layerpop">
@@ -252,6 +238,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 		$("#modalbtn").on("click", function() {
 			closeModal();
 		})
