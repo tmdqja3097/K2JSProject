@@ -95,7 +95,53 @@
 	color: white;
 }
 </style>
-<body>
+<body style="padding: 0 0;">
+
+<!-- <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div>
+    <div class="col-sm-8 text-left"> 
+    
+    
+    
+    
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="body_container" style="padding: 0 20%;"> 
 
 	<c:import url="./template/header.jsp"></c:import>
 	
@@ -160,6 +206,9 @@
 	<div>
 		<ul id="dDayMatch" class="myUL">
 		</ul>
+	</div>
+	
+	<div style="margin-bottom: 100px;">
 		<c:if test="${not empty member and member.id eq 'admin'}">
 			<a href="./match/matchWrite" class="btn btn-default"
 				style="float: right;">매치 추가하기</a>
@@ -167,7 +216,6 @@
 				style="float: right; margin-right: 10px;">구장 추가하기</a>
 		</c:if>
 	</div>
-
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 30px;">
@@ -375,6 +423,8 @@
 			}
 		});
 	</script>
+	
+	</div>
 	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>

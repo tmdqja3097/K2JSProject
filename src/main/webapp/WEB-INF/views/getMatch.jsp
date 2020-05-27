@@ -65,7 +65,7 @@
 	display: inline;
 	background-color: blue;
 	/* margin-right: 10%; */
-	width: 150px;
+	width: 15%;
 	height: 50px;
 	padding: 5 30 5 30px;
 	margin-bottom: 10px;

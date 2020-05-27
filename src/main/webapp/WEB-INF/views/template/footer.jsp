@@ -14,7 +14,7 @@ margin-top : 50px;
 	color: #999;
 	margin-bottom: 20px;
 	float: right;
-	margin-left: 50px;
+	
 	text-align: left;
 }
 
@@ -74,7 +74,7 @@ margin-top : 50px;
 }
 </style>
 
-<div class="footer">
+<div class="footer" style="padding: 0 20%;">
 	<ul class="fo1 fo" style="list-style: none;">
 		<h3 style="font-size: 15px;">매치</h3>
 		<li><a href=""> 전체 매치 </a></li>

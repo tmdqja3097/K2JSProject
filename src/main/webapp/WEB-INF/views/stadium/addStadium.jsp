@@ -133,6 +133,8 @@ form{
 		
 	</script>
 	
+	
+	
 	<script type="text/javascript" src="../resources/js/stadiumForm.js">
 	
 	</script>
