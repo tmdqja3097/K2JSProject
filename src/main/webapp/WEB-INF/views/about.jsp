@@ -58,36 +58,137 @@ img {
 }
 
 .aboutTitle {
-    padding: 0 20px;
+	padding: 0 20px;
 }
 
 .aboutTitle .hen {
-    font-size: 54px;
-    -webkit-text-stroke: 2px black;
+	font-size: 54px;
+	-webkit-text-stroke: 2px black;
 }
+
 .aboutTitle .hen {
-    font-size: 44px;
+	font-size: 44px;
 }
 
 .aboutTitle h1 {
-    font-size: 40px;
-    line-height: 46px;
+	font-size: 40px;
+	line-height: 46px;
 }
 
 .aboutTitle h1 {
-    font-size: 32px;
-    font-weight: 700;
-    text-align: center;
-    word-break: keep-all;
-    line-height: 44px;
+	font-size: 32px;
+	font-weight: 700;
+	text-align: center;
+	word-break: keep-all;
+	line-height: 44px;
 }
 
 .aboutTitle p {
+	font-size: 20px;
+	color: #666;
+	margin-top: 10px;
+	font-weight: 300;
+}
+
+.aboutSec .subFeature ul {
+	overflow: auto;
+}
+
+ol, ul, li {
+	list-style: none;
+}
+
+.subFeature ul li {
+	float: left;
+	width: 33.333%;
+	padding: 0 3%;
+	text-align: center;
+	margin: 30px 0;
+	text-align: center;
+	display: inline-block;
+}
+
+ul {
+	display: block;
+	list-style-type: disc;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	margin-bottom: 100px;
+}
+
+.subFeature ul li .feature .featureTxt h3 {
+	font-size: 24px;
+	margin: 10px 0;
+}
+
+.subFeature ul li p {
+	font-size: 18px;
+	color: #999;
+	line-height: 24px;
+}
+
+.mainFeature .aboutTitle {
+    padding: 0 20px;
+}
+
+.aboutSec .mainFeature {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.mainFeature .aboutTitle p {
     font-size: 20px;
     color: #666;
     margin-top: 10px;
     font-weight: 300;
+    line-height: 24px;
+    word-break: keep-all;
 }
+
+.mainFeature .aboutImg {
+    margin-bottom: 50px;
+    
+}
+
+.btn.survey {
+    width: 320px;
+}
+.btn.survey {
+    background-color: #3540A5;
+    width: 60%;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 0 auto;
+}
+
+.btn {
+    width: 100%;
+    background-color: #3540A5;
+    color: white;
+    border-radius: 6px;
+    border: none;
+    box-shadow: none;
+    padding: 15px 10px;
+    transition: background-color 0.3s ease-out;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+
 </style>
 </head>
 <body>
@@ -143,10 +244,79 @@ img {
 		<h1 class="hen">LET'S PLAB</h1>
 		<p>풋살하고 싶을 땐 주저하지 말고 렛츠 플랩!</p>
 	</div>
+
+	<div class="subFeature">
+		<ul>
+			<li>
+				<div class="feature">
+					<div class="featureTxt">
+						<h3>내가 하고 싶을 때</h3>
+						<p>아침부터 심야, 평일부터 주말까지</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="feature">
+					<div class="featureTxt">
+						<h3>내가 하고 싶은 곳에서</h3>
+						<p>집, 회사, 학교 등 나와 가까운 구장에서!</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="feature">
+					<div class="featureTxt">
+						<h3>내가 하고 싶은 사람들과</h3>
+						<p>여성 매치, 혼성 매치, 중급 매치, 초급 매치 그리고 레슨까지</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="aboutSec">
+		<div class="mainFeature">
+			<div class="aboutImg">
+				<img
+					src="./resources/images/plabbb.png"
+					alt="매니저가 여러분의 풋살을 도와드려요">
+			</div>
+			<div class="aboutTitle">
+				<h2>혼자 와도 즐겁게!</h2>
+				<p>혼자 와도 어색하지 않도록 현장에서 매니저가 시작부터 끝까지 매끄러운 진행을 이어갑니다.</p>
+			</div>
+		</div>
+	</div>
 	
 	<div class="subFeature">
 					<ul>
-						
+						<li>
+							<div class="feature">
+								<div class="featureTxt">
+									<h3>친절한 매니저</h3>
+									<p>각 경기에 배정된 매니저가 매끄러운 경기 진행과 장비 등을 세심하게 챙겨드립니다.</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="feature">
+								<div class="featureTxt">
+									<h3>서로 배려하는 플랩 문화</h3>
+									<p>참가자들끼리 서로 존중하고 배려하기 때문에 부담없이 즐겁게 운동할 수 있어요</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="feature">
+								<div class="featureTxt">
+									<h3>친구랑 와도 꿀잼!</h3>
+									<p>어렵게 친구들을 모을 필요 없어요. 친구 두세 명과 함께 와도 즐겁게 운동할 수 있습니다.</p>
+								</div>
+								<div class="btnWrap" style="text-align: center;">
+									<button id="btnSurvey" class="btn survey copy" style="display: inline-block;">친구 초대 하기</button>
+								</div>
+							</div>
+						</li>
 					</ul>
 				</div>
 
@@ -230,6 +400,22 @@ img {
 				} // End if
 			});
 		});
+		
+		document
+		.querySelector(".copy")
+		.addEventListener(
+				"click",
+				function() {
+					var tempElem = document.createElement('textarea');
+					tempElem.value = "http://localhost:8080${pageContext.request.contextPath}"
+					document.body.appendChild(tempElem);
+
+					tempElem.select();
+					document.execCommand("copy");
+					document.body.removeChild(tempElem);
+
+					alert("주소가 클립보드에 복사되었습니다");
+				});
 	</script>
 </body>
 </html>
