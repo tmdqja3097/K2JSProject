@@ -62,7 +62,7 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-		long manager_num = matchVO.getManagerNum();
+		long manager_num = matchVO.getManagerNum();  
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
 		ManagerVO managerVO = managerService.managerSelect(manager_num);
