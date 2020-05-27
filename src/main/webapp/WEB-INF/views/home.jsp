@@ -169,14 +169,16 @@
 
 	<div>
 		<ul id="dDayMatch" class="myUL">
-		</ul>
-
-		<a href="./match/matchWrite" class="btn btn-default"
-			style="float: right;">매치 추가하기</a> <a href="./stadium/addStadium"
-			class="btn btn-default" style="float: right; margin-right: 10px;">구장
-			추가하기</a>
+		</ul>	
 	</div>
-
+	
+		
+		<div>
+			<a href="./match/matchWrite" class="btn btn-default" style="float: right;">매치 추가하기</a>	
+			<a href="./stadium/addStadium" class="btn btn-default" style="float: right; margin-right: 10px;">구장 추가하기</a>
+		</div>
+		
+		
 	<div class="modal fade" id="layerpop">
 		<div class="modal-dialog">
 			<div class="modal-content" style="border-radius: 30px;">
@@ -382,6 +384,8 @@
 				});
 			}
 		});
+		
+		alert("${member.id}");
 	</script>
 </body>
 </html>
