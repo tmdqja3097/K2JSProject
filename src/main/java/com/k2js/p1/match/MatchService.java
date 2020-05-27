@@ -24,7 +24,7 @@ public class MatchService {
 		matchVO.setDay(day);
 		return matchDAO.matchGenderList(matchVO);
 	}
-	
+	 
 	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
 		StadiumVO stadiumVO = new StadiumVO();
 		stadiumVO.setAddress(address);

@@ -38,7 +38,7 @@
 				<label for="point">점수:</label>
 				<input type="text" 
 					class="form-control" id="point" name="point" readonly="readonly" hidden="point" value="0">
-		</div>
+		</div> 
 		
 		<input type="submit" id="btn" class="btn btn-default" value="Write">
 	</form>

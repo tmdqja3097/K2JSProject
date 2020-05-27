@@ -6,40 +6,53 @@
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
 
-<select id="matchList" parameterType="java.lang.Integer" resultType="MatchVO">
-	select * from match where to_char(matchTime,'dd') = #{day} and matchTime>sysdate order by matchTime asc
-</select>
+	<select id="matchList" parameterType="java.lang.Integer"
+		resultType="MatchVO">
+		select * from match where to_char(matchTime,'dd') = #{day}
+		and
+		matchTime>sysdate order by matchTime asc
+	</select>
 
 
-<select id="matchSelect" parameterType="Long" resultType="MatchVO">
-	select * from match where num=#{num}
-</select>
+	<select id="matchSelect" parameterType="Long"
+		resultType="MatchVO">
+		select * from match where num=#{num}
+	</select>
 
-<!-- <insert id="matchWrite" parameterType="MatchVO">
-	insert into notice values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},#{count},#{gender},#{capacity})
-</insert>
- -->
-<insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},'1',#{matchTime},#{stadiumName},'1',0,#{gender},0)
-</insert>
-
-
-
-<select id="matchNum" resultType="Long">
-		select match_seq.nextval from dual
-</select>
-
-<delete id="matchDelete" parameterType="Long">
-	delete match where num=#{num}
-</delete>
+	<!-- <insert id="matchWrite" parameterType="MatchVO"> insert into notice 
+		values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{fileImage},#{count},#{gender},#{capacity}) 
+		</insert> -->
+	<insert id="matchWrite" parameterType="MatchVO">
+		insert into match
+		values(#{num},#{title},'1',#{matchTime},#{stadiumName},'1',0,#{gender},0)
+	</insert>
 
 
-<select id="matchAddressList" resultType="MatchVO" parameterType="StadiumVO">
-	select M.* from stadium S, match M where S.name=M.stadiumName AND S.address = #{address} and to_char(matchTime,'dd') = #{day} and matchTime>sysdate order by matchTime asc
-</select>
 
-<select id="matchGenderList" resultType="MatchVO" parameterType="MatchVO">
-	select * from match where gender=#{gender} and to_char(matchTime, 'dd') = #{day} and matchTime>sysdate order by matchTime asc
-</select>
+	<select id="matchNum" resultType="Long">
+		select match_seq.nextval from
+		dual
+	</select>
+
+	<delete id="matchDelete" parameterType="Long">
+		delete match where
+		num=#{num}
+	</delete>
+
+
+	<select id="matchAddressList" resultType="MatchVO"
+		parameterType="StadiumVO">
+		select m.* from match m full join stadium s on(m.stadiumname = s.name) where s.address like '%'||#{address}||'%' and to_char(matchTime,'dd') = #{day} and
+		matchTime>sysdate
+		order by matchTime asc
+	</select>
+
+	<select id="matchGenderList" resultType="MatchVO"
+		parameterType="MatchVO">
+		select * from match where gender=#{gender} and
+		to_char(matchTime, 'dd') =
+		#{day} and matchTime>sysdate order by
+		matchTime asc
+	</select>
 
 </mapper>

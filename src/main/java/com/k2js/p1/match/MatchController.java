@@ -49,6 +49,7 @@ public class MatchController {
 	@PostMapping("getMatch")
 	public void matchList(String[] addressList, int[] genderList, int day, Model model) throws Exception {
 		
+		
 		if(addressList==null && genderList==null) {
 			List<MatchVO> matchs = matchService.matchList(day);
 			int i = matchs.size();
@@ -58,6 +59,7 @@ public class MatchController {
 			List<MatchVO> ar = new ArrayList<MatchVO>();
 			System.out.println("address:"+addressList.length);
 			for (String addr : addressList) {
+				
 				// addr : 지역 이름
 				List<MatchVO> ar1 = matchService.matchAddressList(addr, day);
 				for(int i = 0; i < ar1.size(); i++) {

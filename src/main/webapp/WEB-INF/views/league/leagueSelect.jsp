@@ -11,15 +11,12 @@
 <body>
 
 	<h1>leagueSelect Page</h1>
-
-
-	<h3>랭킹</h3>
-	<h3>${leagueVO.rank}</h3>
-
+	
+        
 	<h3>포인트</h3>
 	<h3>${leagueVO.point}</h3>
 
-
+	<a href="./leagueUpdate?teamName=${leagueVO.teamName}" class="btn btn-default">팀 수정</a>
 	<a href="./leagueDelete?teamName=${leagueVO.teamName}" class="btn btn-default">팀 지우기</a>
 
 </body>

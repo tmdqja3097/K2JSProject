@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<html>
+<html> 
 <head>
 <title>Home</title>
 <c:import url="./template/boot.jsp">
@@ -159,31 +159,31 @@
 							<ul class="modal-list"
 								style="list-style: none; padding-top: 10px;">
 								<li><input type="checkbox" id="ml1" class="filterCheck"
-									name="filterAddr" value="seoul"> <label id="mlL1"
+									name="filterAddr" value="서울"> <label id="mlL1"
 									for="ml1" class="checkLabel">서울</label></li>
 								<li><input type="checkbox" id="ml2" class="filterCheck"
-									name="filterAddr" value="daegu"> <label id="mlL2"
+									name="filterAddr" value="대구"> <label id="mlL2"
 									for="ml2" class="checkLabel">대구</label></li>
 								<li><input type="checkbox" id="ml3" class="filterCheck"
-									name="filterAddr" value="gyeonggi"> <label id="mlL3"
+									name="filterAddr" value="경기"> <label id="mlL3"
 									for="ml3" class="checkLabel">경기</label></li>
 								<li><input type="checkbox" id="ml4" class="filterCheck"
-									name="filterAddr" value="gwangju"> <label id="mlL4"
+									name="filterAddr" value="광주"> <label id="mlL4"
 									for="ml4" class="checkLabel">광주</label></li>
 								<li><input type="checkbox" id="ml5" class="filterCheck"
-									name="filterAddr" value="daejeon"> <label id="mlL5"
+									name="filterAddr" value="대전"> <label id="mlL5"
 									for="ml5" class="checkLabel">대전</label></li>
 								<li><input type="checkbox" id="ml6" class="filterCheck"
-									name="filterAddr" value="incheon"> <label id="mlL6"
+									name="filterAddr" value="인천"> <label id="mlL6"
 									for="ml6" class="checkLabel">인천</label></li>
 								<li><input type="checkbox" id="ml7" class="filterCheck"
-									name="filterAddr" value="busan"> <label id="mlL7"
+									name="filterAddr" value="부산"> <label id="mlL7"
 									for="ml7" class="checkLabel">부산</label></li>
 								<li><input type="checkbox" id="ml8" class="filterCheck"
-									name="filterAddr" value="ulsan"> <label id="mlL8"
+									name="filterAddr" value="울산"> <label id="mlL8"
 									for="ml8" class="checkLabel">울산</label></li>
 								<li><input type="checkbox" id="ml9" class="filterCheck"
-									name="filterAddr" value="chungbug"> <label id="mlL9"
+									name="filterAddr" value="충북"> <label id="mlL9"
 									for="ml9" class="checkLabel">충북</label></li>
 							</ul>
 

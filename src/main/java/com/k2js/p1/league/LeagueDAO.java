@@ -17,6 +17,11 @@ public class LeagueDAO {
 		return session.selectList(NAMESPACE+"leagueTeamList");
 	}
 	
+	public List<LeagueVO> leagueTeamGenderList(int gender) throws Exception{
+		return session.selectList(NAMESPACE+"leagueTeamGenderList", gender);
+	}
+	
+	
 	public LeagueVO leagueSelect(String teamName) throws Exception{
 		return session.selectOne(NAMESPACE+"leagueSelect", teamName);
 	}
@@ -25,13 +30,12 @@ public class LeagueDAO {
 		return session.delete(NAMESPACE+"leagueDelete", teamName);
 	}
 	
-	public List<LeagueVO> leagueMaleList(String name) throws Exception{
-		return session.selectList(NAMESPACE+"leagueMaleList", name);
-	}
-	
-	
 	public int leagueWrite(LeagueVO leagueVO) throws Exception{
 		return session.insert(NAMESPACE+"leagueWrite", leagueVO);
+	}
+	
+	public int leagueUpdate(LeagueVO leagueVO) throws Exception{
+		return session.update(NAMESPACE+"leagueUpdate", leagueVO);
 	}
 	
 }

@@ -10,7 +10,14 @@ public class LeagueVO {
 	private int gender;
 	private long point;
 	private long rank;
+	private double winRate;
 	
+	public double getWinRate() {
+		return winRate;
+	}
+	public void setWinRate(double winRate) {
+		this.winRate = winRate;
+	}
 	public long getRank() {
 		return rank;
 	}
@@ -21,17 +28,7 @@ public class LeagueVO {
 		return point;
 	}
 	public long setPoint(long point) {
-		if(win>0) {
-			for(int i=0; i<win; i++) {
-				point=point+3;				
-			}
-		}
-		
-		if(draw>0) {
-			for(int i=0; i<draw; i++) {
-				point=point+1;
-			}
-		}
+		point = win*3 + draw;		 
 		return this.point = point;
 	}
 	public String getTeamName() {

@@ -6,7 +6,11 @@
 <mapper namespace="com.k2js.p1.league.LeagueDAO">
 
 <select id="leagueTeamList" resultType="LeagueVO">
-	select * from team order by point desc
+	select team.* ,rank() over(order by point desc)as rank from team
+</select>
+
+<select id="leagueTeamGenderList" parameterType="Integer" resultType="LeagueVO">
+	select team.* ,rank() over(order by point desc)as rank from team where gender=#{gender}
 </select>
 
 <select id="leagueSelect" parameterType="String" resultType="LeagueVO">
@@ -17,15 +21,13 @@
 	insert into team values(#{teamName}, #{win}, #{draw}, #{lose}, #{gender}, #{point})
 </insert>
 
-
+<update id="leagueUpdate" parameterType="LeagueVO">
+	update team set win=#{win}, draw=#{draw}, lose=#{lose}, point=#{point} where teamName=#{teamName}
+</update>
 
 <delete id="leagueDelete" parameterType="String">
 	delete team where teamName = #{teamName}
 </delete>
 
-
-<select id="leagueMaleList" parameterType="String" resultType="LeagueVO">
-	select * from teamMale where matchName = #{name, jdbcType=VARCHAR}
-</select>
 
 </mapper>
