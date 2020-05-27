@@ -32,8 +32,17 @@
 				class="form-control" id="time" name="time">
 		</div>
 		<div class="form-group">
-			<label for="writer">구장:</label> <input type="text"
-				class="form-control" id="writer" name="stadiumName">
+			<label for="writer">구장</label> 
+				<select name="stadiumName" id="stadiumName">
+				<option value="none">선택</option>
+				<c:forEach items="${stadiumVOs}" var="vos">
+				<option value="${vos.name}">${vos.name}</option>
+				</c:forEach>
+				</select>
+		</div>
+		<div class="form-group">
+			<label for="manager">담당 매니저:</label> <input type="text"
+				class="form-control" id="managerNum" name="managerNum">
 		</div>
 		<div class="form-group">
 			<label for="writer">성별:</label> 

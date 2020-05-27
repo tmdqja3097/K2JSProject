@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>  
 	<groupId>com.k2js</groupId>
-	<artifactId>p1</artifactId>
+	<artifactId>p1</artifactId> 
 	<name>K2JSProject</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>

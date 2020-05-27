@@ -151,7 +151,6 @@ color : #ff3300;
 
 		/* 결제 방법 선택 */
 		$("#howCharge").on("click", "#kakaobtn", function() {
-			alert(money);
 			/* 			 		open("./KakaoPay?money=" + money, "_blank",
 			 "width=500, height=600", true);  */
 			location.href = "./KakaoPay?money=" + money;

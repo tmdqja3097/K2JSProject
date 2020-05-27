@@ -257,9 +257,9 @@ body {
 				</div>
 			</fieldset>
 			<div class="row">
-				<span title="agree">K2JS <a href="#" target="_blank">서비스
+				<span title="agree">K2JS <a href="../term" target="_blank">서비스
 						이용 약관</a> 및 <a href="
-							#" target="_blank">개인 정보 수집 및 이용</a>에
+							../privacy" target="_blank">개인 정보 수집 및 이용</a>에
 					동의합니다.
 				</span> <input type="checkbox" id="agree" required>
 			</div>
@@ -308,6 +308,27 @@ body {
 					$("#submit").prop("disabled", "disabled");
 					$("#fail_length").show();
 
+				}
+			});
+
+		$("#pw").change(function() {
+				var pw = $("#pw").val();
+				var pw1 = $("#pw1").val();
+				if (pw.length > 5) {
+					if (pw == pw1) {
+						$("#success").show();
+						$("#fail").hide();
+						$("#fail_length").hide();
+						$("#submit").removeAttr("disabled")
+					} else {
+						$("#success").hide();
+						$("#fail").show();
+						$("#fail_length").hide();
+						$("#submit").prop("disabled", "disabled");
+					}
+				} else {
+					$("#submit").prop("disabled", "disabled");
+					$("#fail_length").show();
 				}
 			});
 		});

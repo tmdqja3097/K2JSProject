@@ -54,4 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="memberLastCapa" parameterType="matchForCapaVO" resultType="MatchVO">
 		SELECT * FROM MATCH WHERE NUM = #{num}
 	</select>
+	<select id="memberSearch" parameterType="memberVO" resultType="memberVO">
+		SELECT * FROM MEMBER WHERE ID=#{id}
+	</select>
 </mapper>

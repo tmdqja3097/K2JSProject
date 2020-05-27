@@ -36,7 +36,7 @@ body>p>span {
 	<br>
 	<p class="warning">※취소확인시 바로 취소가 진행되며 환불금액이 입금됩니다.</p>
 	<form action="./matchCancel" method="post">
-	<input type="text" hidden="hidden" name="num" value="${num}">
+	<input type="text" hidden="hidden" name="num" value="${num}" id="num">
 	<input type="checkbox" id="reqchbox" required="required">
 	<input type="submit" id="reqBtn" value="취소 약관에 동의합니다.">
 	</form>

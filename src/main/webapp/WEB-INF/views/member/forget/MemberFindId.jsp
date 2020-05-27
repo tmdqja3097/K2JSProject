@@ -77,6 +77,7 @@ background-color: #337ab7;
 						alert("해당 정보의 회원이 없습니다.");
 					}
 					window.close();
+					
 				}
 			})
 		})
