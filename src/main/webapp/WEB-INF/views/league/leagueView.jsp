@@ -22,9 +22,25 @@
 	.header_wrapper {
 		width: 100%;
 		height: 72px;
+		
+		
+		
+	}
+	
+	.hearder_wrapper2 {
+		width: 80%;
+		height: 72px;
 		border: 1px solid red;
 		margin-bottom: 30px;
+		
 	}
+	
+	.match_box {
+		width: 25%;
+		height: 45px;
+		border-bottom: 2px solid #FFC645;       
+	}
+
 	
 	/* 헤더-상단바 */
 	.top-bar {
@@ -185,7 +201,15 @@
 	<c:import url="../template/header.jsp"></c:import>
 <!-- 	c:import - 불러오기 -->	
 	
-	<div class="header_wrapper"></div>
+	<div class="header_wrapper">
+		<div class="header_wrapper2">
+			<div class="match_box"> 
+				<ul>
+					<h1 class="match"> 매치 </h1>
+				</ul>
+			</div>   
+		</div>
+	</div>
 	
 	
 	<div id="myCarousel" class="carousel slide" data-ride="carousel">
