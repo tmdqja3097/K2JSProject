@@ -21,6 +21,7 @@ public class StadiumService {
 	}
 	
 	public List<StadiumVO> stadiumList()throws Exception{
+		System.out.println("list");
 		return stadiumDAO.stadiumList();
 	}
 }

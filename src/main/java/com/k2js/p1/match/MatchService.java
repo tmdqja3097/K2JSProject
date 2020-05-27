@@ -198,6 +198,9 @@ public class MatchService {
 		}
 		// 멤버에서 캐쉬를 카운트만큼 입금
 		memberVO.setCash(memberVO.getCash() + count);
+		//멤버에서 캐쉬를 카운트만큼 입금
+		count = mfcVO.getCount()*10000;
+		memberVO.setCash(memberVO.getCash()+(int)count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}
 }

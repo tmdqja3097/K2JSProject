@@ -66,6 +66,7 @@ public class ManagerController {
 			}
 			mv.addObject("path", "./managerList");
 			mv.setViewName("common/result");
+			System.out.println("1");
 		}
 		return mv;
 	}

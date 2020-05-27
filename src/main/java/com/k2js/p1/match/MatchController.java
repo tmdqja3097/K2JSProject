@@ -49,6 +49,11 @@ public class MatchController {
 		model.addAttribute("i", i);
 
 	}
+	
+	@GetMapping("about")
+	public void about()throws Exception{
+		
+	}
 
 	@GetMapping("/match/matchSelect")
 	public ModelAndView matchSelect(long num, HttpSession session) throws Exception {
@@ -68,7 +73,7 @@ public class MatchController {
 
 		MatchVO matchVO = matchService.matchSelect(num);
 		String fullTime = matchService.matchSelect(num).getFullTime();
-		long manager_num = matchVO.getManagerNum();
+		long manager_num = matchVO.getManagerNum();  
 		String stadiumName = matchVO.getStadiumName();
 		StadiumVO stadiumVO = stadiumService.stadiumSelect(stadiumName);
 		ManagerVO managerVO = managerService.managerSelect(manager_num);
