@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: SIST
 Build-Jdk: 1.8.0_241
+=======
+Built-By: msi
+Build-Jdk: 1.8.0_251
+>>>>>>> parent of d179c79... add home
 Created-By: Maven Integration for Eclipse
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="java.util.Date"%>
@@ -211,6 +212,39 @@
 							<li><input type="checkbox" id="ml9" class="filterCheck"
 								value="9"> <label id="mlL9" for="ml9" class="checkLabel">충북</label></li>
 						</ul>
+=======
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+	<title>Home</title>
+	<c:import url="./template/boot.jsp"> </c:import>
+</head>
+<body>
+	<div>
+		<div class="container">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="la.jpg" alt="Los Angeles" style="width: 100%;"height="50px">
+					</div>
+
+					<div class="item">
+						<img src="chicago.jpg" alt="Chicago" style="width: 100%;" height="50px">
+					</div>
+
+					<div class="item">
+						<img src="ny.jpg" alt="New york" style="width: 100%;"height="50px">
+>>>>>>> parent of d179c79... add home
 					</div>
 				</div>
 				<!-- Footer -->
