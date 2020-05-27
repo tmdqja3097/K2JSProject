@@ -103,7 +103,7 @@ body {
 					<input type="checkbox" name="chbox" checked="checked" class="chbox">
 					<br>
 				</c:if>
-				<input type="submit" value="일반 로그인"
+				<input type="submit" value="일반 로그인" id="loginbtn"
 					class="btn btn-primary input_box">
 			</form>
 

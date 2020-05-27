@@ -100,7 +100,7 @@ public class ChargeService {
 			if (kakaoPayApprovalVO.getApproved_at() != null) {
 				Date date = new Date();
 				kakaoPayApprovalVO.setApproved_at(date);
-				int cash = memberVO.getCash();
+				long cash = memberVO.getCash();
 				memberVO.setCash(cash + money);
 				if (memberVO.getLoginmt() == 1) {
 					chargeDAO.chargeSuccess(memberVO);

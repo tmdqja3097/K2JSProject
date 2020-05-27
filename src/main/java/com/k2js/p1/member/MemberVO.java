@@ -15,7 +15,7 @@ public class MemberVO {
 	private int gender;
 	private String phone;
 	private Date birth;
-	private int cash;
+	private long cash;
 	private int age;
 	private int loginmt;
 	private long capaListNum;
@@ -80,10 +80,10 @@ public class MemberVO {
 	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
-	public int getCash() {
+	public long getCash() {
 		return cash;
 	}
-	public void setCash(int cash) {
+	public void setCash(long cash) {
 		this.cash = cash;
 	}
 	

@@ -154,7 +154,7 @@ public class MatchService {
 
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = { Exception.class })
 	public int matchCancel(MatchForCapaVO mfcVO, MemberVO memberVO) throws Exception {
-		int count = 0;
+		long count = 0;
 		int daycount = 0;
 		// 매치신청 결제정보 호출
 		mfcVO = matchDAO.matchSearch(mfcVO);

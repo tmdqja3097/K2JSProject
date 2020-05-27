@@ -89,7 +89,7 @@ public class MemberController {
 
 	@PostMapping("MemberLogin")
 	public String memberLogin(MemberVO memberVO, HttpSession session, String chbox, HttpServletResponse response,
-			String Referer) throws Exception {
+			String Referer, Model model) throws Exception {
 		Cookie cookie = new Cookie("cId", "");
 		if (chbox != null) {
 			cookie.setValue(memberVO.getId());
