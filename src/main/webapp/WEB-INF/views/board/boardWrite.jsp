@@ -112,8 +112,10 @@ h3{
 <c:import url="../template/boot.jsp"></c:import>
 <c:import url="../template/summer.jsp"></c:import>
 </head>
-<body style="padding: 0;">
+<body style="padding: 0%">
+	<div style="padding: 0 5%">
 	<c:import url="../template/header.jsp"></c:import>
+</div>
 	<div class="container">
 		<h3>${fn:toUpperCase(board)} WRITE</h3>
 

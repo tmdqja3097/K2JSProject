@@ -35,7 +35,7 @@ body {
 	background-color: white;
 	border: none;
 	height: 80px;
-	width: 100%;
+	
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {

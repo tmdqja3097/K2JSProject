@@ -128,6 +128,8 @@
 			<li><a href="./${board}Select?num=${vo.num}"><p id="date">${vo.regDate}</p>${vo.title}</a></li>
 		</c:forEach>
 	</ul>
+	
+	
 	<c:if test="${member.id eq 'admin'}"> 
 	<a href="./${board}Write" class="btn btn-default" style="float: right;">글쓰기</a>
 	</c:if>
@@ -144,6 +146,7 @@
 		</c:if>
 		</ul>
 	</div> 
+	
 		
 </c:if>
 
