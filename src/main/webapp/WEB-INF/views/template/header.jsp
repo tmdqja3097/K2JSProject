@@ -90,9 +90,9 @@ footer {
 	height: 300px;
 }
 
-""
+
 /* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
+
 	.sidenav {
 		height: auto;
 		/* padding: 15px;  */
@@ -101,21 +101,16 @@ footer {
 	.row.content {
 		height: auto;
 	}
-}
-}
+
+
 </style>
 
 
 <nav class="navbar navbar-inverse">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
-			id="logo" alt="logo"
-			src="${pageContext.request.contextPath}/resources/images/k2.jpg"></a>
-		<!-- <button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar"> -->
-		<!-- <a class="navbar-brand" href="#"></a><span class="icon-bar"></span>
-				<span class="icon-bar"></span> <span class="icon-bar"></span></a>
-			</button> -->
+		<a class="navbar-brand" style="padding: 5px 5px;" href="${pageContext.request.contextPath}"><img
+			id="logo" alt="logo" style="width: 60px; height: auto;" 
+			src="${pageContext.request.contextPath}/resources/images/k2js_logo2.png"></a>
 	</div>
 
 	<div>

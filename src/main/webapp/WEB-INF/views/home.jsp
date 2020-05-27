@@ -18,6 +18,7 @@
 	border-radius: 50px;
 }
 
+
 #myCarousel>a {
 	border-radius: 50px;
 	z-index: 0;
@@ -95,58 +96,10 @@
 	color: white;
 }
 </style>
-<body style="padding: 0 0;">
-
-<!-- <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-    
-    
-    
-    
-    </div>
-    <div class="col-sm-2 sidenav">
-      <div class="well">
-        <p>ADS</p>
-      </div>
-      <div class="well">
-        <p>ADS</p>
-      </div>
-    </div>
-  </div>
-
- -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="body_container" style="padding: 0 20%;"> 
-
+<body>
 	<c:import url="./template/header.jsp"></c:import>
-	
 	<a href = "./league/leagueView">리그</a>
-	<div>
+	<div class="dd" style="padding-right: -20%;">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
@@ -423,8 +376,7 @@
 			}
 		});
 	</script>
-	
-	</div>
+
 	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>
