@@ -201,6 +201,7 @@
 	<c:import url="../template/header.jsp"></c:import>
 <!-- 	c:import - 불러오기 -->	
 	
+	<!-- 헤더 밑에 매치랑 리그 -->
 	<div class="header_wrapper">
 				<div class="match_box"> 
 					<ul style="list-style:none;">
