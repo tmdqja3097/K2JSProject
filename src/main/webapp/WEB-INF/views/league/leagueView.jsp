@@ -210,7 +210,7 @@
 							</a>  
 						</li>
 						<li style="display: inline-block;">  
-							<a> 
+							<a href="leagueView"> 
 								<h3 style="color: black; margin-bottom: 2px solid yellow;"> 리그 </h3> 
 							</a>
 						</li>
