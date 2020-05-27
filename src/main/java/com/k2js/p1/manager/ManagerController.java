@@ -22,6 +22,7 @@ public class ManagerController {
 	@GetMapping("managerOffer")
 	public void managerOffer() throws Exception {
 		System.out.println("11");
+		System.out.println("test");
 	}
 
 	@GetMapping("addManager")
