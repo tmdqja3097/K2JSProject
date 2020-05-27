@@ -204,14 +204,14 @@
 	<div class="header_wrapper">
 				<div class="match_box"> 
 					<ul style="list-style:none;">
-						<li>         
-							<a href="../">
-								<h3 style="color: black; margin-bottom: 2px solid yellow; float: left; margin-right: 35px;"> 매치 </h3>
+						<li>              
+							<a href="../" style="margin-bottom: 2px solid red;">
+								<h3 style="color: black; float: left; margin-right: 35px;"> 매치 </h3>
 							</a>  
 						</li>
 						<li style="display: inline-block;">  
 							<a href="leagueView">    
-								<h3 style="color: black; margin-bottom: 2px solid yellow; float: left;"> 리그 </h3> 
+								<h3 style="color: black; margin-bottom: 2px solid yellow; float: left; margin-bottom: 2px solid gray;"> 리그 </h3> 
 							</a>
 						</li>
 					</ul>
