@@ -81,7 +81,9 @@ public class MemberController {
 			HttpSession session, HttpServletRequest request) throws Exception {
 		model.addAttribute("cId", cId);
 		String Referer = request.getHeader("Referer");
+		if(!Referer.equals("http://localhost:8080/p1/member/MemberLogin")) {
 		session.setAttribute("Referer", Referer);
+		}
 		return "member/MemberLogin";
 	}
 
@@ -138,6 +140,7 @@ public class MemberController {
 		memberVO.setId(((MemberVO) session.getAttribute("member")).getId());
 		int result = memberService.memberUpdate(memberVO);
 		if (result > 0) {
+			memberVO = memberService.memberSearch(memberVO);
 			session.setAttribute("member", memberVO);
 			return "member/MemberPage";
 		}
@@ -169,7 +172,7 @@ public class MemberController {
 	}
 
 	@GetMapping("MemberFindId")
-	public void MemberFindId(Model model) throws Exception {
+	public void MemberFindId() throws Exception {
 	}
 
 	@PostMapping("MemberFindId")
@@ -185,7 +188,7 @@ public class MemberController {
 	}
 
 	@GetMapping("MemberFindPw")
-	public void MemberFindPw(Model model) throws Exception {
+	public void MemberFindPw() throws Exception {
 	}
 
 	@PostMapping("MemberFindPw")

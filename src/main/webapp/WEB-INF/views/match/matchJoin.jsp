@@ -191,13 +191,12 @@ form.orderForm fieldset h3 {
 	<c:import url="../template/header.jsp"></c:import>
 	<div>
 		<form action="./matchJoin" id="form" class="orderForm" method="post">
-		
-		<input type="text" name="count" hidden="hidden" value="${matchVO.count}">
 
-
-			<input type="hidden" class="form-control" id="num" name="num"
-				value="${matchVO.num}"> <input type="hidden"
-				class="form-control" id="id" name="id" value="${member.id}">
+			<input type="text" name="count" hidden="hidden"
+				value="${matchVO.count}"> <input type="hidden"
+				class="form-control" id="num" name="num" value="${matchVO.num}">
+			<input type="hidden" class="form-control" id="id" name="id"
+				value="${member.id}">
 
 
 			<div class="orderTitle">
@@ -212,7 +211,7 @@ form.orderForm fieldset h3 {
 						<div class="inputWrapper">
 							<select name="counted" id="count" class="inputFull">
 								<c:forEach end="${16-matchVO.count}" var="i" begin="1">
-									<option value="${i}">${i}명</option>
+									<option value="${i}">${i}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -264,25 +263,25 @@ form.orderForm fieldset h3 {
 					<div class="termBox box2">
 						<p>
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">코로나
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">코로나
 								예방을 위하여 최근&nbsp;</span><strong
-								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">4/24
+								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">4/24
 								~ 5/6 기간 동안 이태원 인근에 방문 이력이 있으신 분은 참가를 제한</strong><span
-								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">하고
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">하고
 								있습니다. 또한 경기 중&nbsp;</span><strong
-								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">팀
+								style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">팀
 								밸런스 조정을 위한 조끼 교환을 진행하지 않습니다.</strong><br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">방문
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">방문
 								사실을 거짓으로 진술하거나 고의로 사실을 누락·은폐하여 매치를 참여하지 않도록 협조 바랍니다.</span><br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<br
-								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
+								style="outline: none; color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">
 							<span
-								style="color: rgb(102, 102, 102); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">원활한
+								style="color: rgb(102, 102, 102); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: 12px;">원활한
 								진행을 위하여 매니저 안내에 많은 협조 부탁드립니다.</span><br>
 						</p>
 					</div>
@@ -330,7 +329,9 @@ form.orderForm fieldset h3 {
 			var ch1 = $("#confirmCorona").prop("checked")
 			var ch2 = $("#confirmTP").prop("checked")
 			var ch3 = true;
-		
+			var count = $("#count").val();
+			count = (count*10000);
+			$("#dicountMoney").val(count);
 			if(ch1&&ch2){
 				if($("#remain_cash").text()=="잔액 부족"){
 					var check = confirm("잔액이 부족합니다. 캐시를 충전하시겠습니까?");
@@ -343,8 +344,6 @@ form.orderForm fieldset h3 {
 			}else{
 				alert("환불  규정 및 코로나 관련 주의 사항에 동의해주세요"); 
 			}
-			
-			
 		});
 	</script>
 </body>

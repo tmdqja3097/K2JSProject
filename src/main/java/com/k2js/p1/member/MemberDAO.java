@@ -53,5 +53,8 @@ public class MemberDAO {
 	public MatchVO memberLastCapa(MatchForCapaVO mfcVO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "memberLastCapa", mfcVO);
 	}
+	public MemberVO memberSearch(MemberVO memberVO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberSearch", memberVO);
+	}
 }
  

@@ -60,11 +60,11 @@
 	UPDATE MEMBER SET CASH=#{cash} WHERE ID = #{id}
 </update>
 
-<select id="matchCancel" parameterType="matchForCapaVO" resultType="matchForCapaVO">
+<select id="matchSearch" parameterType="matchForCapaVO" resultType="matchForCapaVO">
 	SELECT * FROM MATCHFORCAPA WHERE NUM = #{num} AND CAPALISTNUM = #{capaListNum}
 </select>
 
-<delete id="matchCancel2" parameterType="matchForCapaVO">
+<delete id="matchCancel" parameterType="matchForCapaVO">
 	DELETE MATCHFORCAPA WHERE REQNUM = #{reqNum}
 </delete>
 

@@ -88,6 +88,10 @@ public class MatchService {
 		return result;
 
 	}
+	public MatchForCapaVO matchIfJoin(MatchForCapaVO mfcVO) throws Exception {
+		mfcVO = matchDAO.matchSearch(mfcVO);
+		return mfcVO;
+	}
 
 	public MatchVO matchSelect(long num) throws Exception {
 		MatchVO matchVO = matchDAO.matchSelect(num);
@@ -153,9 +157,9 @@ public class MatchService {
 		int count = 0;
 		int daycount = 0;
 		// 매치신청 결제정보 호출
-		mfcVO = matchDAO.matchCancel(mfcVO);
+		mfcVO = matchDAO.matchSearch(mfcVO);
 		// 결제정보에서 삭제
-		matchDAO.matchCancel2(mfcVO);
+		matchDAO.matchCancel(mfcVO);
 		MatchVO matchVO = matchDAO.matchSelect(mfcVO.getNum());
 		matchVO.setNum(mfcVO.getNum());
 		matchVO.setCount(matchVO.getCount() - mfcVO.getCount());

@@ -88,71 +88,75 @@ img {
 	line-height: 60px;
 	background-color: #3540A5;
 }
+#start_check_disable {
+	width: 100%;
+	text-align: center;
+	line-height: 60px;
+	background-color: #3540A5;
+}
 
 .stadSec {
-    padding: 50px 0;
+	padding: 50px 0;
 }
+
 .stadSec {
-    padding: 30px 0;
-    margin: 0 20px;
- 
+	padding: 30px 0;
+	margin: 0 20px;
 }
 
 .stadSec .mngProf {
-    display: table;
-    margin-bottom: 20px;
+	display: table;
+	margin-bottom: 20px;
 }
 
 .stadSec .profPhoto, .stadSec .profID {
-    display: table-cell;
-    vertical-align: middle;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .stadSec .profPhoto img {
-    width: 64px;
-    height: 64px;
-    border-radius: 100px;
-    object-fit: cover;
+	width: 64px;
+	height: 64px;
+	border-radius: 100px;
+	object-fit: cover;
 }
+
 img {
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .stadSec .profID span {
-    color: #999;
+	color: #999;
 }
 
 .txt2 {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .txt5 {
-    font-size: 20px;
+	font-size: 20px;
 }
 
-
 .stadSec .mngDesc p {
-    background-color: #eee;
-    border-radius: 0 20px 20px 20px;
-    padding: 20px;
-    word-break: keep-all;
+	background-color: #eee;
+	border-radius: 0 20px 20px 20px;
+	padding: 20px;
+	word-break: keep-all;
 }
 
 .txt2 {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 .stadSec .mngDesc .applyMng a {
-    color: #3534A5;
+	color: #3534A5;
 }
-
 
 .stadSec .mngDesc .applyMng {
-    margin-top: 20px;
-    padding-left: 20px;
-    font-size: 14px;
+	margin-top: 20px;
+	padding-left: 20px;
+	font-size: 14px;
 }
-
 </style>
 
 </head>
@@ -161,12 +165,11 @@ img {
 	<c:import url="../template/matchCarousel.jsp"></c:import>
 
 	<div id="map" style="width: 100%; height: 500px; z-index: 0"></div>
-	
+
 	<input type="hidden" id="gender" value="${member.gender}">
 
 	<div style="margin: auto; width: 1000px">
-		<br>
-		<br>
+		<br> <br>
 		<div class="c1"">
 			<p style="font-size: 23px; font-weight: normal; margin-bottom: 1px;">${fullTime}</p>
 			<p
@@ -182,8 +185,7 @@ img {
 
 			<c:if test="${matchVO.contents ne null}">
 				<div id="contents">
-					<p style="font-weight: bold;">알립니다</p>
-					${matchVO.contents}
+					<p style="font-weight: bold;">${matchVO.contents}</p>
 				</div>
 			</c:if>
 		</div>
@@ -221,8 +223,7 @@ img {
 					src="../../${pageContext.request.contextPath}/resources/images/minmax.svg">
 					<p>10~16명</p></li>
 			</ul>
-			<br>
-			<br>
+			<br> <br>
 			<p style="font-size: 14px; font-weight: bolder; margin-bottom: 2px;">특이사항</p>
 			<p style="font-size: 14px;">·일반 매치는 실력에 상관없이 누구나 참여하실 수 있습니다.</p>
 		</div>
@@ -276,8 +277,7 @@ img {
 						<p>운동복 대여</p></li>
 				</c:if>
 			</ul>
-			<br>
-			<br> ${stadiumVO.info}
+			<br> <br> ${stadiumVO.info}
 		</div>
 
 		<div class="c1">
@@ -295,10 +295,10 @@ img {
 					</div>
 				</div>
 				<div class="mngDesc">
-					<p class="txt2">안녕하세요. K2JS ${managerVO.name} 매니저입니다. 재미있게 운동하고 만족하며 돌아가실 수
-						있도록 최선을 다하겠습니다. 저와 함께 풋살하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
+					<p class="txt2">안녕하세요. K2JS ${managerVO.name} 매니저입니다. 재미있게 운동하고
+						만족하며 돌아가실 수 있도록 최선을 다하겠습니다. 저와 함께 풋살하면서 지친 일상에 활력이 되셨으면 좋겠습니다^^</p>
 					<div class="applyMng">
-						<a href="../manager/managerOffer">플랩풋볼 매니저에 대해 알아보기</a>
+						<a href="../manager/managerOffer">K2JS 매니저에 대해 알아보기</a>
 					</div>
 				</div>
 			</div>
@@ -307,7 +307,7 @@ img {
 
 		<div class="c1">
 			<div class="stadSec" id="mnCaution"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -318,11 +318,11 @@ img {
 					<ul class="matchRule"
 						style="outline: none; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding: 0px; border: 0px; vertical-align: baseline; list-style: none;">
 						<span
-							style="outline: none; margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; line-height: 24px; display: block;">플랩풋볼
+							style="outline: none; margin: 0px 0px 20px; padding: 0px; border: 0px; vertical-align: baseline; line-height: 24px; display: block;">K2JS
 							매치는 참가자 간의 신뢰를 바탕으로 진행됩니다.</span>
 						<h4
 							style="outline: none; margin: 0px; padding: 0px; border: 0px; vertical-align: baseline; font-size: 14px;">클린
-							플랩풋볼</h4>
+							K2JS</h4>
 						<li
 							style="outline: none; margin: 0px 0px 0px 20px; padding: 3px 0px; border: 0px; vertical-align: baseline; list-style: none; position: relative; line-height: 21px; font-size: 15px;">다른
 							참가자들을 위해 시간을 준수해 주세요.</li>
@@ -405,7 +405,7 @@ img {
 				</div>
 			</div>
 			<div class="stadSec" id="mnTerm"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; quot; Apple SD Gothic Neo&amp;quot; , &amp; quot; Noto Sans CJK KR&amp;quot; , &amp; quot; Malgun Gothic&amp;quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -493,18 +493,23 @@ img {
 
 	<div id="navbar_bottom" class="sticky"
 		style="z-index: 3; height: 80px; box-sizing: border-box;">
-		<c:if test="${matchVO.count lt 16}">
-			<c:if test="${not empty member.id}">
-				<button id="start_check" class="btn start">신청하기</button>
+		<c:if test="${empty matchIfJoin}">
+			<c:if test="${matchVO.count lt 16}">
+				<c:if test="${not empty member.id}">
+					<button id="start_check" class="btn start">신청하기</button>
+				</c:if>
+				<c:if test="${empty member.id}">
+					<a href="../member/MemberLogin" class="btn start"
+						style="width: 100%; text-align: center; line-height: 60px; background-color: #3540A5;">신청하기</a>
+				</c:if>
 			</c:if>
-			<c:if test="${empty member.id}">
-				<a href="../member/MemberLogin" class="btn start"
-					style="width: 100%; text-align: center; line-height: 60px; background-color: #3540A5;">신청하기</a>
+			<c:if test="${matchVO.count ge 16}">
+				<a href="../" class="btn disable"
+					style="width: 100%; text-align: center; line-height: 60px; background-color: #999999;">마감되었습니다</a>
 			</c:if>
 		</c:if>
-		<c:if test="${matchVO.count ge 16}">
-			<a href="../" class="btn disable"
-				style="width: 100%; text-align: center; line-height: 60px; background-color: #999999;">마감되었습니다</a>
+		<c:if test="${not empty matchIfJoin}">
+			<button id="start_check_disable" disabled="disabled">이미 참여신청된 매치입니다.</button>
 		</c:if>
 
 	</div>
@@ -566,12 +571,7 @@ img {
 			});
 
 		});
-		
-		
-		
-		
-		
-		
+
 		var gender = $("#gender").val();
 		
 

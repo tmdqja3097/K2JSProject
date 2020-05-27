@@ -33,5 +33,13 @@ public class HomeController {
 	public String popUp() throws Exception {
 		return "popUp";
 	}
+	@RequestMapping("term")
+	public String term() throws Exception{
+		return "term";
+	}
+	@RequestMapping("privacy")
+	public String privacy() throws Exception {
+		return "privacy";
+	}
 	
 }

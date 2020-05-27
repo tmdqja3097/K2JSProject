@@ -150,7 +150,7 @@
 			<button id="next" class="preNext">→</button>
 		</div>
 	</div> -->
- 
+
 
 	<div id="match-box" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">
@@ -164,7 +164,7 @@
 		<div style="width: 5%; height: 100px; float: left;">
 			<button id="next" class="preNext" disabled="">→</button>
 		</div>
-	</div> 
+	</div>
 
 
 	<div>
@@ -172,9 +172,9 @@
 		</ul>
 
 		<a href="./match/matchWrite" class="btn btn-default"
-			style="float: right;">매치 추가하기</a>
-		<a href="./stadium/addStadium" class="btn btn-default"
-			style="float: right; margin-right: 10px;">구장 추가하기</a>
+			style="float: right;">매치 추가하기</a> <a href="./stadium/addStadium"
+			class="btn btn-default" style="float: right; margin-right: 10px;">구장
+			추가하기</a>
 	</div>
 
 	<div class="modal fade" id="layerpop">
@@ -335,7 +335,7 @@
 				$(this).css("background-color", "#3534A5");
 			});
 		}
-		
+
 		function getFixDay(selectDay) {
 
 		}

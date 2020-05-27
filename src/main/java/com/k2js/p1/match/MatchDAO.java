@@ -51,10 +51,10 @@ public class MatchDAO {
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return session.update(NAMESPACE + "matchUpdate", matchVO);
 	}
-	public MatchForCapaVO matchCancel(MatchForCapaVO mfcVO) throws Exception {
-		return session.selectOne(NAMESPACE + "matchCancel", mfcVO);
+	public MatchForCapaVO matchSearch(MatchForCapaVO mfcVO) throws Exception {
+		return session.selectOne(NAMESPACE + "matchSearch", mfcVO);
 	}
-	public int matchCancel2(MatchForCapaVO mfcVO) throws Exception {
-		return session.delete(NAMESPACE + "matchCancel2", mfcVO);
+	public int matchCancel(MatchForCapaVO mfcVO) throws Exception {
+		return session.delete(NAMESPACE + "matchCancel", mfcVO);
 	}
 }

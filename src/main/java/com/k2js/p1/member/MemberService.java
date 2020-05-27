@@ -69,5 +69,7 @@ public class MemberService {
 		}
 		return lastList;
 	}
-
+	public MemberVO memberSearch(MemberVO memberVO) throws Exception {
+		return memberDAO.memberSearch(memberVO);
+	}
 }
