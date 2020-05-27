@@ -9,7 +9,6 @@
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <c:import url="../template/boot.jsp" />
-
 <style type="text/css">
 
 	body {
@@ -22,23 +21,24 @@
 	.header_wrapper {
 		width: 100%;
 		height: 72px;
+		margin-bottom: 20px;
 		
-		
+	}
+	    
+	.header_wrapper2 {
+		width: 50%;    
+		height: 72px;
+		margin-bottom: 20px;
+		border: 1px solid red;     
 		
 	}
 	
-	.hearder_wrapper2 {
-		width: 80%;
-		height: 72px;
-		border: 1px solid red;
-		margin-bottom: 30px;
-		
-	}
+	
 	
 	.match_box {
-		width: 25%;
-		height: 45px;
-		border-bottom: 2px solid #FFC645;       
+		width: 100%;
+		height: 60px;
+		/* border-bottom: 2px solid #FFC645;  */      
 	}
 
 	
@@ -202,13 +202,20 @@
 <!-- 	c:import - 불러오기 -->	
 	
 	<div class="header_wrapper">
-		<div class="header_wrapper2">
-			<div class="match_box"> 
-				<ul>
-					<h1 class="match"> 매치 </h1>
-				</ul>
-			</div>   
-		</div>
+				<div class="match_box"> 
+					<ul style="list-style:none;">
+						<li>         
+							<a href="../">
+								<h3 style="color: black; margin-bottom: 2px solid yellow;"> 매치 </h3>
+							</a>  
+						</li>
+						<li style="display: inline-block;">  
+							<a> 
+								<h3 style="color: black; margin-bottom: 2px solid yellow;"> 리그 </h3> 
+							</a>
+						</li>
+					</ul>
+				</div>  
 	</div>
 	
 	
