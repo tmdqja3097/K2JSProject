@@ -96,7 +96,10 @@
 }
 </style>
 <body>
+
 	<c:import url="./template/header.jsp"></c:import>
+	
+	<a href = "./league/leagueView">리그</a>
 	<div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
@@ -128,28 +131,17 @@
 
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" data-slide="prev">
-				<span class="glyphicon glyphicon-chevron-left"></span> <span
-				class="sr-only">Previous</span>
+				<span class="glyphicon glyphicon-chevron-left"></span>
+				<span class="sr-only">Previous</span>
 			</a> <a class="right carousel-control" href="#myCarousel"
-				data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right"></span> <span
-				class="sr-only">Next</span>
+				data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+				<span class="sr-only">Next</span>
 			</a>
 		</div>
 	</div>
-	<!-- <div id="match-box" class="btn" style="width: 100%; height: 100px;">
-		<div style="width: 5%; height: 100px; float: left;">
-			<button id="next" class="btn daybutton">→</button>
-		</div>
-			<div id="list"
-				style="width: 90%; height: 100px; float: left; overflow: hidden;">
-				<ul class="nav nav-tabs" id="day-list">
-				</ul>
-			</div>
-			<div>
-			<button id="next" class="preNext">→</button>
-		</div>
-	</div> -->
+	
+	
 
 
 	<div id="match-box" style="width: 100%; height: 100px;">
@@ -165,16 +157,15 @@
 			<button id="next" class="preNext" disabled="">→</button>
 		</div>
 	</div>
-
-
 	<div>
 		<ul id="dDayMatch" class="myUL">
 		</ul>
-
-		<a href="./match/matchWrite" class="btn btn-default"
-			style="float: right;">매치 추가하기</a> <a href="./stadium/addStadium"
-			class="btn btn-default" style="float: right; margin-right: 10px;">구장
-			추가하기</a>
+		<c:if test="${not empty member and member.id eq 'admin'}">
+			<a href="./match/matchWrite" class="btn btn-default"
+				style="float: right;">매치 추가하기</a>
+			<a href="./stadium/addStadium" class="btn btn-default"
+				style="float: right; margin-right: 10px;">구장 추가하기</a>
+		</c:if>
 	</div>
 
 	<div class="modal fade" id="layerpop">
@@ -252,6 +243,7 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 		$("#modalbtn").on("click", function() {
 			closeModal();
 		})
@@ -383,5 +375,6 @@
 			}
 		});
 	</script>
+	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>

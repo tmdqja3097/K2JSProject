@@ -12,7 +12,21 @@
 	<beans:bean
 		class="com.k2js.p1.interceptor.MemberInterceptor"
 		id="memberInterceptor"></beans:bean>
+	<beans:bean
+		class="com.k2js.p1.interceptor.AdminInterceptor"
+		id="adminInterceptor"></beans:bean>
+
 	<interceptors>
+		<interceptor>
+			<mapping path="/match/matchWrite"/>
+			<mapping path="/stadium/addStadium"/>
+			<mapping path="/notice/noticeWrite"/>
+			<mapping path="/qna/qnaWrite"/>
+			<mapping path="/manager/managerList"/>
+			<mapping path="/manager/addManager"/>
+			<mapping path="/manager/managerDelete"/>
+			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
 		<interceptor>
 			<mapping path="/member/*" />
 			<exclude-mapping path="/member/MemberLogin" />
