@@ -515,8 +515,7 @@ img {
 	</div>
 
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
 		/* var location_w = "<c:out value='${stadiumVO.address}'/>";
 		var address = "<c:out value='${stadiumVO.address}'/>"; */
@@ -529,7 +528,6 @@ img {
 		};
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
 		// 마커가 표시될 위치입니다 
 		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k});
 
