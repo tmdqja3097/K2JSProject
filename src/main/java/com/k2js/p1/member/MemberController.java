@@ -81,8 +81,8 @@ public class MemberController {
 			HttpSession session, HttpServletRequest request) throws Exception {
 		model.addAttribute("cId", cId);
 		String Referer = request.getHeader("Referer");
-		if(!Referer.equals("http://localhost:8080/p1/member/MemberLogin")) {
-		session.setAttribute("Referer", Referer);
+		if (!Referer.equals("http://localhost:8080/p1/member/MemberLogin")) {
+			session.setAttribute("Referer", Referer);
 		}
 		return "member/MemberLogin";
 	}
@@ -103,7 +103,13 @@ public class MemberController {
 		} else {
 			return "redirect:./MemberLogin";
 		}
-		return "redirect:" + Referer;
+		if (Referer.equals("http://localhost:8080/p1/member/MemberNew")
+				|| Referer.equals("http://localhost:8080/p1/member/forget/MemberFindId")
+					|| Referer.equals("http://localhost:8080/p1/member/forget/MemberFindPw") || 
+						Referer.equals("http://localhost:8080/p1/member/forget/MemberFindId")) {
+			return "/";
+		}
+			return "redirect:" + Referer;
 	}
 
 	@GetMapping("MemberNew")
@@ -206,18 +212,18 @@ public class MemberController {
 	@GetMapping("getCapaList")
 	public void getCapaList(Model model, HttpSession session) throws Exception {
 		int size = 0;
-		MemberVO memberVO = (MemberVO)session.getAttribute("member");
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		List<MatchVO> ar = memberService.memberCapaList(memberVO);
 		String time[] = new String[ar.size()];
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd/hh/mm/a");
-		if(ar.size() != 0 ) {
+		if (ar.size() != 0) {
 			size = ar.size();
-			for(int i = 0 ; i < ar.size(); i++) {
+			for (int i = 0; i < ar.size(); i++) {
 				time[i] = sdf.format(ar.get(i).getMatchTime());
 				ar.get(i).setRealTime(time[i]);
 			}
 		}
 		model.addAttribute("i", size);
-		model.addAttribute("list",ar);
+		model.addAttribute("list", ar);
 	}
 }
