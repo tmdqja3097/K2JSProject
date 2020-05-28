@@ -6,7 +6,7 @@
 margin-top : 50px;
 	height: 250px;
 	color: white;
-	background-color: black;
+	background-color: #2a2a2a;
 }
 
 .footerWrap {
@@ -77,7 +77,7 @@ margin-top : 50px;
 <div class="footer">
 	<ul class="fo1 fo" style="list-style: none;">
 		<h3 style="font-size: 15px;">매치</h3>
-		<li><a href=""> 전체 매치 </a></li>
+		<li><a href="${pageContext.request.contextPath}"> 전체 매치 </a></li>
 		<li><a href=""> 탐색 </a></li>
 	</ul>
 	<ul class="fo2 fo" style="list-style: none;">
@@ -96,10 +96,10 @@ margin-top : 50px;
 
 	<ul class="fo3 fo" style="list-style: none;">
 		<h3 style="font-size: 15px">플랩풋볼</h3>
-		<li><a href=""> 플랩풋볼 소개 </a></li>
-		<li><a href=""> 매니저 지원 </a></li>
-		<li><a href=""> 공지사항 </a></li>
-		<li><a href=""> 자주 묻는 질문 </a></li>
+		<li><a href="${pageContext.request.contextPath}/about"> 플랩풋볼 소개 </a></li>
+		<li><a href="${pageContext.request.contextPath}/manager/managerOffer"> 매니저 지원 </a></li> 
+		<li><a href="${pageContext.request.contextPath}/notice/noticeList"> 공지사항 </a></li>
+		<li><a href="${pageContext.request.contextPath}/qna/qnaList"> 자주 묻는 질문 </a></li>
 	</ul>
 
 
@@ -113,7 +113,7 @@ margin-top : 50px;
 
 	<div class="footerWrap" style="list-style: none;">
 		<h2 class="company fo">
-			<a href="" style="color: white;"> www.plabfootball.com </a>
+			<a href="${pageContext.request.contextPath}" style="color: white;"> www.plabfootball.com </a>
 		</h2>
 
 		<p>풋볼하고 싶을 땐, 플랩풋볼</p>

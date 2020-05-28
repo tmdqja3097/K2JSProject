@@ -17,11 +17,6 @@ public class LeagueController {
 	@Autowired
 	private LeagueService leagueService;
 
-	@GetMapping("leagueA")
-	public String leagueA() throws Exception{
-		return "league/leagueA";
-	}
-
 	@GetMapping("manCar")
 	public String manCar() throws Exception {
 		return "league/manCar";
@@ -42,17 +37,24 @@ public class LeagueController {
 		return "league/womanRanks";
 	}
 
-	@GetMapping("onedayMan")
-	public String onedayMan() throws Exception {
-		return "league/onedayMan";
+	@PostMapping("leagueTeamCheck")
+	public ModelAndView leagueTeamCheck(LeagueVO leagueVO) throws Exception{
+		ModelAndView mav = new ModelAndView();
+		
+		leagueVO = leagueService.leagueTeamCheck(leagueVO);
+		
+		String result = "중복된 팀 명 입니다. 다른 팀명을 입력해주세요.";
+		if(leagueVO==null) {
+			result = "멋진 팀명입니다!";
+		}
+		
+		mav.addObject("result", result);
+		mav.setViewName("common/ajaxResult");
+		
+		return mav;
 	}
-
-	@GetMapping("onedayWoman")
-	public String onedayWoman() throws Exception {
-		return "league/onedayWoman";
-	}
-
-
+	
+	
 	@GetMapping("leagueGender")
 	public ModelAndView leagueGender(int gender)throws Exception{
 		ModelAndView mav = new ModelAndView();
@@ -90,6 +92,27 @@ public class LeagueController {
 		}
 		model.addAttribute("leagues", leagues);
 	}
+	
+	@GetMapping("leagueTotal")
+	public void leagueTotalList(LeagueVO leagueVO, Model model) throws Exception{
+		List<LeagueVO> leagueTotal = leagueService.leagueTotalList();
+		
+		long point = 0;
+		
+		for(int i=0; i<leagueTotal.size(); i++) {
+			leagueTotal.get(i).setPoint(point);
+			
+			leagueTotal.get(i).getPoint();
+		 	
+		 	double win = (double)leagueTotal.get(i).getWin();
+		 	double lose = (double)leagueTotal.get(i).getLose();
+		 	
+		 	double rate = win/(win+lose)*100;
+		 	leagueTotal.get(i).setWinRate(Math.round(rate));
+		}
+		model.addAttribute("leagueTotal", leagueTotal);
+	}
+	
 
 	@GetMapping("leagueWrite")
 	public void leagueWrite() throws Exception{
@@ -114,15 +137,10 @@ public class LeagueController {
 	public ModelAndView leagueSelect(String teamName) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		
-		/* List<LeagueVO> leagues = leagueService.leagueTeamList(); */
 		List<LeagueVO> leagues = leagueService.leagueTeamList();
 		
 		LeagueVO leagueVO = leagueService.leagueSelect(teamName);
 		long rank=0;
-		/*
-		 * for(int i=0; i<leagues.size(); i++) { rank=+1; System.out.println(rank);
-		 * leagueVO.setRank(rank); }
-		 */
 		mav.addObject("leagueVO", leagueVO);
 		mav.addObject("leagues", leagues);
 		mav.setViewName("league/leagueSelect");
@@ -158,9 +176,15 @@ public class LeagueController {
 		ModelAndView mav = new ModelAndView();
 		int result = leagueService.leagueDelete(teamName);
 		
+		
 		if(result>0) {
-			mav.setViewName("redirect:../league/leagueView");
+			mav.addObject("result", "성공적으로 삭제되었습니다");
+		}else {
+			mav.addObject("result", "삭제가 실패하였습니다");
 		}
+		mav.addObject("path", "../league/leagueView");
+		mav.setViewName("common/result");
+		
 		return mav;
 	}
 

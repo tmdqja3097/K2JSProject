@@ -10,7 +10,9 @@
 </head>
 <body>
 
-	<h1>leagueUpdate page</h1>
+	<c:import url="../template/header.jsp"></c:import>
+
+	<h1>수정 하실 데이터를 입력해주세요</h1>
 	
 	<form action="./leagueUpdate" id="frm" method="post">
 		<input type="hidden" name="teamName" value="${leaVO.teamName}">
@@ -28,7 +30,8 @@
 		</div>   
 		<input type="hidden" name="point" value="${leaVO.point}">
 		
-		<input type="submit" id="btn" class="btn btn-default" value="Update">
+		<input type="submit" id="btn" class="btn btn-default" value="수정하기">
+		<a href="./leagueSelect?teamName=${leaVO.teamName}" class="btn btn-default">뒤로가기</a>
 	</form>
 
 </body>

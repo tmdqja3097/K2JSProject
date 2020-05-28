@@ -63,7 +63,6 @@ public class MatchController {
 			model.addAttribute("matchs", matchs);
 		} else if(addressList!=null && genderList==null) {
 			List<MatchVO> ar = new ArrayList<MatchVO>();
-			System.out.println("address:"+addressList.length);
 			for (String addr : addressList) {
 				
 				// addr : 지역 이름
@@ -78,7 +77,6 @@ public class MatchController {
 			model.addAttribute("matchs", ar);
 		} else if(addressList==null && genderList!=null) {
 			List<MatchVO> mat = new ArrayList<MatchVO>();
-			System.out.println("gender:"+genderList.length);
 			for(int gen : genderList) {
 				List<MatchVO> mat1 = matchService.matchGenderList(gen, day);
 				for(int i=0; i<mat1.size(); i++) {
