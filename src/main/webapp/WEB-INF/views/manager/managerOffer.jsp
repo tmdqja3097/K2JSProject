@@ -300,6 +300,6 @@ element.style {
 		</div>
 		</c:if>
 	</div>
-
+<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

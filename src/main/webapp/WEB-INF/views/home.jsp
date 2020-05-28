@@ -98,8 +98,14 @@
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
+	<div id="box_mat" style="width: 100%;">
+		<a id="match_btn" class="match selected"
+			href="${pageContext.request.contextPath}">매치</a> <a id="league_btn"
+			class="match"
+			href="${pageContext.request.contextPath}/league/leagueView">리그</a>
+	</div>
+	<br>
 
-	<a href="./league/leagueView">리그</a>
 	<div>
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->

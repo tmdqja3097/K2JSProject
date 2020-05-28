@@ -9,19 +9,21 @@
 <c:import url="./template/boot.jsp" />
 <style type="text/css">
 p {
-color : silver;
+	color: silver;
 }
+
 .title {
-color : red;
-font-size : 15px;
-font-weight : bold;	
+	color: red;
+	font-size: 15px;
+	font-weight: bold;
 }
 </style>
 </head>
 <body>
 	<c:import url="./template/header.jsp" />
 	<div>
-		<p class="title" style="font-size : 30px; color : black;">서비스 이용 약관 (Terms of Use)
+		<p class="title" style="font-size: 30px; color: black;">서비스 이용 약관
+			(Terms of Use)
 		<p class="title">제 1조 목적
 		<p>
 			이 약관은 마이플레이컴퍼니 (이하 “회사”)에서 제공하는 회사 및 회사에서 제공하는 제반 서비스(이하 "서비스")에 접속과
@@ -168,6 +170,7 @@ font-weight : bold;
 
 
 
+
 			
 			<p>7. 회사가 제공하는 유료서비스는 대한민국에서만 이용 가능합니다.
 			<p>
@@ -189,6 +192,7 @@ font-weight : bold;
 
 
 
+
 			
 			<p>3. 회사는 다음 각호에 해당하는 경우 회원의 동의여부와 상관없이 전자우편으로 발송할 수 있습니다.
 			<p>- 이용 신청에서 입력한 전자우편 주소의 소유를 확인하기 위해서 인증메일을 발송하는 경우
@@ -199,6 +203,7 @@ font-weight : bold;
 			<p>1. 회사는 천재지변이나 국가비상사태, 해결이 곤란한 기술적 결함 또는 서비스 운영의 심각한 변화 등
 				불가항력적인 경우가 발생 또는 발생이 예상될 때는 서비스의 전부 또는 일부를 예고 없이 제한하거나 중지할 수 있습니다.
 			<p>2. 서비스를 이용하게 됨으로써 서비스 영역에서 발생하는 회원 사이의 문제에 대해 회사는 책임을 지지 않습니다.
+
 
 
 
@@ -336,5 +341,6 @@ font-weight : bold;
 			<p class="title">부칙
 			<p>1. 본 약관은 2019년 9월 6일부터 적용됩니다.
 	</div>
+	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>

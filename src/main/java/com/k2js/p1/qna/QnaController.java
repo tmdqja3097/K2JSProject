@@ -32,11 +32,6 @@ public class QnaController {
 		 List<BoardVO> ar = qnaService.boardList(pager);
 		 mv.addObject("list", ar);
 		 mv.addObject("pager", pager);
-		 System.out.println(pager.getStartNum());
-		 System.out.println(pager.getLastNum());
-		 System.out.println(pager.getTotalPage());
-		 System.out.println(pager.getCurBlock());
-		 System.out.println(pager.getTotalBlock());
 		 mv.setViewName("board/boardList");
 		 
 		 return mv;

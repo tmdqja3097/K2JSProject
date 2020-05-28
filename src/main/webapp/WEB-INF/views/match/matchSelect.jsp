@@ -597,6 +597,7 @@ img {
 		});
 		
 	</script>
+	<c:import url="../template/footer.jsp"></c:import>
 
 </body>
 </html>

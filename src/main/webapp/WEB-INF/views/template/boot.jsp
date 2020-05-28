@@ -11,6 +11,7 @@
 /* 전체  바디 */
 body {
 	padding: 0 20%;
+	min-height : 950px;
 	box-sizing: border-box;
 }
 /* 헤더 */
@@ -69,17 +70,18 @@ body {
 }
 
 .daybutton {
- 	border-radius : 10px;
-	background-color : white;
+	border-radius: 10px;
+	background-color: white;
 }
+
 #pre {
 	width: 100%;
 	height: 100px;
 	z-index: 999;
 }
+
 #next {
-background
-	width: 100%;
+	background width: 100%;
 	height: 100px;
 	z-index: 999;
 }
@@ -104,7 +106,7 @@ background
 }
 
 .day-list {
-	border-radius : 10px;
+	border-radius: 10px;
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
@@ -138,25 +140,25 @@ background
 }
 
 .mofo {
-	height:50px; 
-	background-color: #ffc645; 
-	border-bottom-left-radius: 30px; 
-	border-bottom-right-radius: 30px; 
-	text-align:center; 
-	padding-top:7px; 
+	height: 50px;
+	background-color: #ffc645;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	text-align: center;
+	padding-top: 7px;
 	cursor: pointer;
 }
 /* match-filter */
 
 /* modal */
-.modal-list1{
-	height: 100px;   
+.modal-list1 {
+	height: 100px;
 }
 
-.modal-list1 > li{
+.modal-list1>li {
 	display: inline-block;
 	margin-right: 5px;
-	margin-top: 5px; 
+	margin-top: 5px;
 	padding-top: 5px;
 	padding-right: 5px;
 }
@@ -191,12 +193,29 @@ background
 
 .uncheck {
 	background-color: #EEEEEE;
-	color: #999999; 
+	color: #999999;
 }
 
 .check {
 	background-color: #FFC645;
 	color: #2A2A2A;
+}
+#match_btn{
+margin-right : 20px;
+}
+.selected {
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Malgun Gothic',
+		'dotum', 'gulim', sans-serif;
+	border-bottom: 3px solid #FFC645;
+	font-weight: 700;
+}
+.match {
+	font-size: 30px;
+	color : black;
+}
+a:hover {
+	text-decoration: none;
+	color : silver;
 }
 /* modal */
 </style>

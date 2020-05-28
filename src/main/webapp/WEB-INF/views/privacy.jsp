@@ -207,5 +207,6 @@ p {
 		<p>
 			<br> <br> - 시행일자 : 2020년 5월 29일
 	</div>
+	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>

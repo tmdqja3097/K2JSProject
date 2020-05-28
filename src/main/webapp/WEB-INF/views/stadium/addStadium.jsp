@@ -588,5 +588,6 @@ form {
 	<script type="text/javascript" src="../resources/js/stadiumForm.js">
 		
 	</script>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

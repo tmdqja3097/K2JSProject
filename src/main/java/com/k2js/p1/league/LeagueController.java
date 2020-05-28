@@ -34,7 +34,7 @@ public class LeagueController {
 
 	@GetMapping("manRanks")
 	public String manRanks() throws Exception {
-		return "league/lmanRanks";
+		return "league/manRanks";
 	}
 
 	@GetMapping("womanRanks")

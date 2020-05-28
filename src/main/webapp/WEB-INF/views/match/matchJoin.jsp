@@ -346,5 +346,6 @@ form.orderForm fieldset h3 {
 			}
 		});
 	</script>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
