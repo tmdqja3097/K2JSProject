@@ -20,6 +20,10 @@
 		<interceptor>
 			<mapping path="/match/matchWrite"/>
 			<mapping path="/stadium/addStadium"/>
+			<mapping path="/notice/noticeUpdate"/>
+			<mapping path="/notice/noticeDelete"/>
+			<mapping path="/qna/qnaUpdate"/>
+			<mapping path="/qna/qnaDelete"/>
 			<mapping path="/notice/noticeWrite"/>
 			<mapping path="/qna/qnaWrite"/>
 			<mapping path="/manager/managerList"/>
