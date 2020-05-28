@@ -18,6 +18,7 @@
 	border-radius: 50px;
 }
 
+
 #myCarousel>a {
 	border-radius: 50px;
 	z-index: 0;
@@ -97,9 +98,8 @@
 </style>
 <body>
 	<c:import url="./template/header.jsp"></c:import>
-	
 	<a href = "./league/leagueView">리그</a>
-	<div>
+	<div class="dd" style="padding-right: -20%;">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">

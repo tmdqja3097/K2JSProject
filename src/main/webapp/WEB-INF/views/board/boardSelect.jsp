@@ -52,9 +52,10 @@
 }
 </style>
 </head>
-<body style="padding: 0;">
+<body style="padding: 0%">
+<div style="padding: 0 10%">
 	<c:import url="../template/header.jsp"></c:import>
-
+</div>
 	<div class="container">
 		<ul id="myUL">
 			<li><a href="./${board}List" style="text-decoration: none;"><h3>공지사항</h3></a></li>
@@ -69,11 +70,21 @@
 					</div>
 				</c:forEach>
 			</div>
+			 <div style="width:650px; text-align: center;">
+        <br>
+        <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
+        <br>
+        <button type="button" id="btnReply">댓글 작성</button>
+    </div>
+    <!-- **댓글 목록 출력할 위치 -->
+    <div id="listReply"></div> 
+			
+			<c:if test="${member.id eq 'admin'}">
 			<div>
 				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default" style="float: right;">Delete</a>
 				<a href="./${board}Update?num=${vo.num}" class="btn btn-default" style="float: right;">Update</a>
 			</div>
-
+			</c:if>
 			<h4>다른 키워드로 찾아보세요</h4>
 			<form action="./${board}List">
 				<input type="text" id="myInput"

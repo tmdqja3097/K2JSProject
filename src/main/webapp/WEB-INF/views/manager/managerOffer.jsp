@@ -206,6 +206,8 @@ element.style {
     font-size: 20px;
     background-color: #3540A5;
     color: white;
+    }
+ 
     
 </style>
 </head>

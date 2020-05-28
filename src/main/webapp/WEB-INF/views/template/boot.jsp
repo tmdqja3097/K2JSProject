@@ -15,8 +15,11 @@ body {
 }
 /* 헤더 */
 #logo {
-	width: 100%;
-	height: 100%;
+	width: 50px;
+	height: auto;
+}
+.nav > li{
+	margin-top: 12px;
 }
 
 .navbar-header>a {
@@ -31,6 +34,8 @@ body {
 .navbar-inverse {
 	background-color: white;
 	border: none;
+	height: 80px;
+	
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
@@ -48,7 +53,11 @@ body {
 #match-box-sub {
 	width: 100%;
 	height: 100px;
-	position: absolute;
+	position: absolute; 
+}
+
+.navbar {
+	margin-bottom: 0px;
 }
 
 #list {
