@@ -346,7 +346,6 @@
 
 		getList(startDay);
 		getMatch(selectDay);
-		getSelectDay(selectDay);
 
 		// 화살표 누르면 시작 날짜 변환
 		$("#next").click(function() {
@@ -392,17 +391,6 @@
 			selectDay = parseInt(days[0]);
 			getMatch(selectDay);
 		});
-
-		function getSelectDay(selectDay) {
-			$("#day-list").on("click", ".day-list", function() {
-				$(".day-list").css("background-color", "white");
-				$(this).css("background-color", "#3534A5");
-			});
-		}
-
-		function getFixDay(selectDay) {
-
-		}
 
 		$(function() {
 			$("#all-area").click(function() {
@@ -490,7 +478,7 @@
 			});
 		});
 		$("#btn_mphp").click(function() {
-			mph();
+			location.href="https://www.instagram.com/p/B8LUdo7Fzbe/";
 		})
 
 		$("#btn_mph").click(function() {
@@ -500,7 +488,7 @@
 		})
 
 		$("#btn_sistp").click(function() {
-			sist();
+			open("https://www.sist.co.kr/index.do");
 		})
 
 		$("#btn_sist").click(function() {
