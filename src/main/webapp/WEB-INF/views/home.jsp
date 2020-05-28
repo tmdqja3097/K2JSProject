@@ -162,7 +162,7 @@
 									name="filterAddr" value="서울"> <label id="mlL1"
 									for="ml1" class="checkLabel">서울</label></li>
 								<li><input type="checkbox" id="ml2" class="filterCheck"
-									name="filterAddr" value="대구"> <label id="mlL2"
+									name="filterAddr" value="대구 "> <label id="mlL2"
 									for="ml2" class="checkLabel">대구</label></li>
 								<li><input type="checkbox" id="ml3" class="filterCheck"
 									name="filterAddr" value="경기"> <label id="mlL3"
@@ -313,19 +313,6 @@
 				$("#mlL" + i).click(function() {
 					var text1 = $(".btn-all-area").text();
 					$(this).toggleClass("checked");
-
-					if (!$("#ml" + i).checked) {
-
-						if (text1 == "모든 지역") {
-							$(".btn-all-area").text("선택 지역");
-						} else {
-							$(".btn-all-area").text("모든 지역");
-						}
-
-					} else {
-						$(".btn-all-area").text("모든 지역");
-					}
-
 				});
 
 				$("#mlL-" + i).toggleClass("uncheck");
