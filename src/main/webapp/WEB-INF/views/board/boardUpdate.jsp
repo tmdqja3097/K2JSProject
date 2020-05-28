@@ -16,7 +16,9 @@
 </style>
 </head>
 <body style="padding: 0;">
+	<div style="padding: 0 20%;">
 	<c:import url="../template/header.jsp"></c:import>
+	</div>
 	<div class="container">
 		<h3>${fn:toUpperCase(board)} Update</h3>
 

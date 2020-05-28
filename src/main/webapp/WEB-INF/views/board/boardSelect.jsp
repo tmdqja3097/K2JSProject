@@ -53,7 +53,7 @@
 </style>
 </head>
 <body style="padding: 0%">
-<div style="padding: 0 10%">
+<div style="padding: 0 20%">
 	<c:import url="../template/header.jsp"></c:import>
 </div>
 	<div class="container">
@@ -70,14 +70,9 @@
 					</div>
 				</c:forEach>
 			</div>
-			 <div style="width:650px; text-align: center;">
-        <br>
-        <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 작성해주세요"></textarea>
-        <br>
-        <button type="button" id="btnReply">댓글 작성</button>
-    </div>
-    <!-- **댓글 목록 출력할 위치 -->
-    <div id="listReply"></div> 
+			
+			
+			
 			
 			<c:if test="${member.id eq 'admin'}">
 			<div>
