@@ -1,12 +1,17 @@
 package com.k2js.p1.match;
 
+import java.math.MathContext;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,14 +46,51 @@ public class MatchController {
 
 	@GetMapping("getMatch")
 	public void matchList(int matchTime, Model model) throws Exception {
-
 		List<MatchVO> matchVOs = matchService.matchList(matchTime);
-
 		int i = matchVOs.size();
-
 		model.addAttribute("matchs", matchVOs);
 		model.addAttribute("i", i);
-
+	}
+	
+	@PostMapping("getMatch")
+	public void matchList(String[] addressList, int[] genderList, int day, Model model) throws Exception {
+		
+		
+		if(addressList==null && genderList==null) {
+			List<MatchVO> matchs = matchService.matchList(day);
+			int i = matchs.size();
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", matchs);
+		} else if(addressList!=null && genderList==null) {
+			List<MatchVO> ar = new ArrayList<MatchVO>();
+			System.out.println("address:"+addressList.length);
+			for (String addr : addressList) {
+				
+				// addr : 지역 이름
+				List<MatchVO> ar1 = matchService.matchAddressList(addr, day);
+				for(int i = 0; i < ar1.size(); i++) {
+					ar.add(ar1.get(i));
+				}
+			}
+			int i = ar.size();
+			
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", ar);
+		} else if(addressList==null && genderList!=null) {
+			List<MatchVO> mat = new ArrayList<MatchVO>();
+			System.out.println("gender:"+genderList.length);
+			for(int gen : genderList) {
+				List<MatchVO> mat1 = matchService.matchGenderList(gen, day);
+				for(int i=0; i<mat1.size(); i++) {
+					mat.add(mat1.get(i));
+				}
+			}
+			int i = mat.size();
+			
+			model.addAttribute("i", i);
+			model.addAttribute("matchs", mat);
+		}
+		
 	}
 	
 	@GetMapping("about")

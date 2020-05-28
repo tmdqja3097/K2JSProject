@@ -20,6 +20,9 @@ import com.k2js.p1.stadium.file.StadiumFileDAO;
 import com.k2js.p1.stadium.file.StadiumFileVO;
 import com.k2js.p1.util.FileSaver;
 
+import com.k2js.p1.stadium.StadiumDAO;
+import com.k2js.p1.stadium.StadiumVO;
+
 @Service
 public class MatchService {
 
@@ -33,12 +36,27 @@ public class MatchService {
 	private StadiumFileDAO stadiumFileDAO;
 	@Autowired
 	private ChargeDAO chargeDAO;
+	private StadiumDAO stadiumDAO;
 
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return matchDAO.matchUpdate(matchVO);
 	}
 
-	public int matchDelete(long num) throws Exception {
+	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
+		MatchVO matchVO = new MatchVO();
+		matchVO.setGender(gender);
+		matchVO.setDay(day);
+		return matchDAO.matchGenderList(matchVO);
+	}
+	 
+	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
+		StadiumVO stadiumVO = new StadiumVO();
+		stadiumVO.setAddress(address);
+		stadiumVO.setDay(day);
+		return matchDAO.matchAddressList(stadiumVO);
+	}
+	
+	public int matchDelete(long num)throws Exception{
 		return matchDAO.matchDelete(num);
 	}
 

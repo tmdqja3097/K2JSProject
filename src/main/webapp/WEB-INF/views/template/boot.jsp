@@ -132,13 +132,35 @@ background
 
 .match-wrapper {
 	width: 20%;
-	height: 30px;
+	height: 50px;
 	margin-left: 80%;
 	text-align: center;
+}
+
+.mofo {
+	height:50px; 
+	background-color: #ffc645; 
+	border-bottom-left-radius: 30px; 
+	border-bottom-right-radius: 30px; 
+	text-align:center; 
+	padding-top:7px; 
+	cursor: pointer;
 }
 /* match-filter */
 
 /* modal */
+.modal-list1{
+	height: 100px;   
+}
+
+.modal-list1 > li{
+	display: inline-block;
+	margin-right: 5px;
+	margin-top: 5px; 
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
 .filterCheck {
 	float: left;
 	opacity: 0;
@@ -156,15 +178,26 @@ background
 	float: left;
 	cursor: pointer;
 }
-/* modal */
+
 .unchecked {
+	background-color: #EEEEEE;
+	color: #999999;
+}
+
+.checked {
 	background-color: #FFC645;
 	color: #2A2A2A;
 }
 
-.checked {
+.uncheck {
 	background-color: #EEEEEE;
-	color: #999999;
+	color: #999999; 
 }
+
+.check {
+	background-color: #FFC645;
+	color: #2A2A2A;
+}
+/* modal */
 </style>
 
