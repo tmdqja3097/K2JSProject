@@ -1,17 +1,12 @@
 package com.k2js.p1.match;
 
-import java.math.MathContext;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,16 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.k2js.p1.manager.ManagerService;
 import com.k2js.p1.manager.ManagerVO;
 import com.k2js.p1.matchforcapa.MatchForCapaVO;
-import com.k2js.p1.member.MemberService;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
@@ -139,7 +130,7 @@ public class MatchController {
 	}
 
 	@PostMapping("/match/matchWrite")
-	public ModelAndView matchWrite(MatchVO matchVO, String day, String time, MultipartFile[] files) throws Exception {
+	public ModelAndView matchWrite(MatchVO matchVO,String day,String time, MultipartFile[] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddHH:mm");

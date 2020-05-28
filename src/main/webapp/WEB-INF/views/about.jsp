@@ -13,7 +13,7 @@ body {
 }
 
 .header {
-	padding: 0 20%;
+height : 80px;
 }
 
 .heroNew {

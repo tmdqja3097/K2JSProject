@@ -314,7 +314,7 @@ img {
 
 		<div class="c1">
 			<div class="stadSec" id="mnCaution"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -412,7 +412,7 @@ img {
 				</div>
 			</div>
 			<div class="stadSec" id="mnTerm"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; quot; , &amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -488,12 +488,13 @@ img {
 				</div>
 			</div>
 		</div>
-
-		<div class="btn" style="float: right;">
-			<a href="./matchDelete?num=${matchVO.num}" class="btn btn-default">글
-				지우기</a> <a href="./matchUpdate?num=${matchVO.num}"
-				class="btn btn-default">글 수정</a>
-		</div>
+		<c:if test="${member.id eq 'admin'}">
+			<div class="btn" style="float: right;">
+				<a href="./matchDelete?num=${matchVO.num}" class="btn btn-default">글
+					지우기</a> <a href="./matchUpdate?num=${matchVO.num}"
+					class="btn btn-default">글 수정</a>
+			</div>
+		</c:if>
 	</div>
 
 	<div style="height: 180px"></div>
@@ -523,7 +524,8 @@ img {
 	</div>
 
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c5126e0fcae8eba0e1ed7a9c58dc7812"></script>
 	<script>
 		/* var location_w = "<c:out value='${stadiumVO.address}'/>";
 		var address = "<c:out value='${stadiumVO.address}'/>"; */

@@ -45,7 +45,7 @@ public class MatchService {
 	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
 		MatchVO matchVO = new MatchVO();
 		matchVO.setGender(gender);
-		matchVO.setDay(day);
+		matchVO.setDaily(day);
 		return matchDAO.matchGenderList(matchVO);
 	}
 	 

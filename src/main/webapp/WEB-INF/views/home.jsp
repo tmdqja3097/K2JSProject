@@ -98,16 +98,32 @@
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
-	<div id="box_mat" style="width: 100%;">
+	<div id="box_mat"
+		style="width: 100%; display: inline-block; margin-bottom: 10px;">
 		<a id="match_btn" class="match selected"
 			href="${pageContext.request.contextPath}">매치</a> <a id="league_btn"
 			class="match"
 			href="${pageContext.request.contextPath}/league/leagueView">리그</a>
 	</div>
+	<div
+		style="display: inline-block; margin-right: -25%; margin-top: 60px; width: 200px; height: 395px; float: right; background-image: url(./resources/images/mph_banner3.jpg);"
+		id="btn_mphp">
+		<button id="btn_mph" style="float: right;">X</button>
+	</div>
+
+
+
+	<div
+		style="display: inline-block; margin-right: -25%; width: 200px; height: 395px; float: right; margin-top: 550px; background-image: url(./resources/images/sist.png);"
+		id="btn_sistp">
+		<button id="btn_sist" style="float: right;">X</button>
+	</div>
+
 	<br>
 
 	<div>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"
+			style="position: relative;">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -146,9 +162,6 @@
 			</a>
 		</div>
 	</div>
-
-
-
 
 	<div id="match-box" style="width: 100%; height: 100px;">
 		<div style="width: 5%; height: 100px; float: left;">
@@ -476,6 +489,25 @@
 				}
 			});
 		});
+		$("#btn_mphp").click(function() {
+			mph();
+		})
+
+		$("#btn_mph").click(function() {
+			event.stopImmediatePropagation();
+			$("#btn_mphp").remove();
+
+		})
+
+		$("#btn_sistp").click(function() {
+			sist();
+		})
+
+		$("#btn_sist").click(function() {
+			event.stopImmediatePropagation();
+			$("#btn_sistp").remove();
+
+		})
 	</script>
 	<c:import url="./template/footer.jsp"></c:import>
 </body>

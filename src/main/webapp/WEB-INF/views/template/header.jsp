@@ -10,12 +10,9 @@
 	function closeNav() {
 		document.getElementById("mySidenav").style.width = "0";
 	}
-	
 </script>
 
 <style>
-#mg {
-margin-bottom: 0;}
 .navbar {
 	margin-bottom: 0;
 	border-radius: 0;
@@ -54,7 +51,7 @@ margin-bottom: 0;}
 }
 
 .right_sidenav a {
-	padding: 8px 8px 8px 32px; 
+	padding: 8px 8px 8px 32px;
 	text-decoration: none;
 	font-size: 25px;
 	color: gray;
@@ -98,62 +95,63 @@ footer {
 	.sidenav {
 		height: auto;
 		/* padding: 15px;  */
-		
 	}
 	.row.content {
 		height: auto;
 	}
 }
-
 }
 </style>
+<header>
+	<nav class="navbar navbar-inverse" idg" style="padding: 5px 5px;">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
+				id="logo" alt="logo" width="70px" height="70px"
+				src="${pageContext.request.contextPath}/resources/images/k2js_logo2.png"></a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav navbar-right collapse navbar-collapse"
+				style="margin-right: 0px;">
+				<li><a href="#"> <span
+						style="font-size: 30px; color: gray; margin-top: 0px; float: float; cursor: pointer;"
+						onclick="openNav()">&#9776; </span>
+				</a></li>
+			</ul>
+		</div>
 
-
-<nav class="navbar navbar-inverse" id="mg">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="${pageContext.request.contextPath}"><img
-			id="logo" alt="logo"
-			src="${pageContext.request.contextPath}/resources/images/k2.jpg"></a>
-
-	</div>
-
-	<div>
-		<ul class="nav navbar-nav navbar-right collapse navbar-collapse" style="margin-right: 0px;">
-			<li><a href="#"> <span
-					style="font-size: 30px; color: gray; margin-top: 0px; float: float; cursor: pointer;"
-					onclick="openNav()">&#9776; </span>
-			</a></li>
-		</ul>
-	</div>
-
-	<c:if test="${ empty member.email}">
-		<ul class="nav navbar-nav navbar-right ">
-			<li><a
-				href="${pageContext.request.contextPath}/member/MemberNew"><span
-					class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/member/MemberLogin"><span
-					class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-		</ul>
-	</c:if>
-	<c:if test="${ not empty member.email}">
-		<ul class="nav navbar-nav navbar-right ">
-			<li><a
-				href="${pageContext.request.contextPath}/member/MemberPage"><span
-					class="glyphicon glyphicon-user"></span> 회원정보</a></li>
-			<li><a
-				href="${pageContext.request.contextPath}/member/MemberLogout"><span
-					class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
-		</ul>
-	</c:if>
-	<div id="mySidenav" class="right_sidenav" style="z-index: 3;">
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-		<a href="${pageContext.request.contextPath}/about" style="text-decoration: none;">K2JS 소개</a> 
-		<a href="${pageContext.request.contextPath}/manager/managerOffer" style="text-decoration: none;">매니저 지원</a>
-		<a	href="${pageContext.request.contextPath}/notice/noticeList" style="text-decoration: none;">공지사항</a>
-		<a href="${pageContext.request.contextPath}/qna/qnaList" style="text-decoration: none;">자주 묻는 질문</a>
-	</div>
-</nav>
+		<c:if test="${ empty member.email}">
+			<ul class="nav navbar-nav navbar-right ">
+				<li><a
+					href="${pageContext.request.contextPath}/member/MemberNew"><span
+						class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/member/MemberLogin"><span
+						class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
+			</ul>
+		</c:if>
+		<c:if test="${ not empty member.email}">
+			<ul class="nav navbar-nav navbar-right ">
+				<li><a
+					href="${pageContext.request.contextPath}/member/MemberPage"><span
+						class="glyphicon glyphicon-user"></span> 회원정보</a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/member/MemberLogout"><span
+						class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+			</ul>
+		</c:if>
+		<div id="mySidenav" class="right_sidenav" style="z-index: 3;">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="${pageContext.request.contextPath}/about"
+				style="text-decoration: none;">K2JS 소개</a> <a
+				href="${pageContext.request.contextPath}/manager/managerOffer"
+				style="text-decoration: none;">매니저 지원</a> <a
+				href="${pageContext.request.contextPath}/notice/noticeList"
+				style="text-decoration: none;">공지사항</a> <a
+				href="${pageContext.request.contextPath}/qna/qnaList"
+				style="text-decoration: none;">자주 묻는 질문</a>
+		</div>
+	</nav>
+</header>
 
 
 

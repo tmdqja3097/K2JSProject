@@ -14,12 +14,17 @@ body {
 	min-height : 950px;
 	box-sizing: border-box;
 }
+header {
+	height : 80px;
+	margin-bottom : 10px;
+}
 /* 헤더 */
 #logo {
-	width: 100%;
-	height: 100%;
+width : 70px;
+height : 70px;
 }
-
+.navbar-brand{
+padding : 0;}
 .navbar-header>a {
 	width: 100px;
 }

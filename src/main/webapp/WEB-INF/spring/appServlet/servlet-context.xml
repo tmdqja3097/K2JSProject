@@ -18,9 +18,16 @@
 
 	<interceptors>
 		<interceptor>
+			
+			<mapping path="/match/matchDelete"/>
+			<mapping path="/match/matchUpdate"/>
 			<mapping path="/match/matchWrite"/>
 			<mapping path="/stadium/addStadium"/>
+			<mapping path="/notice/noticeDelete"/>
+			<mapping path="/notice/noticeUpdate"/>
 			<mapping path="/notice/noticeWrite"/>
+			<mapping path="/qna/qnaDelete"/>
+			<mapping path="/qna/qnaUpdate"/>
 			<mapping path="/qna/qnaWrite"/>
 			<mapping path="/manager/managerList"/>
 			<mapping path="/manager/addManager"/>

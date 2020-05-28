@@ -234,8 +234,6 @@ form {
 	<p>
 		<em>정확한 주소를 원한다면 해당 위치를 지도에 클릭해주세요!</em>
 	</p>
-	<div id="clickLatlng"></div>
-
 
 	<form action="./addStadium" id="frm" method="post">
 
@@ -361,9 +359,6 @@ form {
 
 			// 마커 위치를 클릭한 위치로 옮깁니다
 			marker.setPosition(latlng);
-
-			var resultDiv = document.getElementById('clickLatlng');
-			resultDiv.innerHTML = message;
 
 			var wido = latlng.getLat();
 			var kyungdo = latlng.getLng();

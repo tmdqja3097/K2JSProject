@@ -19,7 +19,7 @@ public class MatchVO {
 	private long count;
 	private int gender;
 	private long managerNum;
-	private int day;
+	private int daily;
 	
 	public long getManagerNum() {
 		return managerNum;
@@ -43,11 +43,11 @@ public class MatchVO {
 		this.realTime = realTime;
 	}
 	
-	public int getDay() {
-		return day;
+	public int getDaily() {
+		return daily;
 	}
-	public void setDay(int day) {
-		this.day = day;
+	public void setDaily(int daily) {
+		this.daily = daily;
 	}
 	public void setTime(String time) {
 		this.time = time;
