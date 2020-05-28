@@ -36,9 +36,25 @@ public class MatchService {
 	private StadiumFileDAO stadiumFileDAO;
 	@Autowired
 	private ChargeDAO chargeDAO;
+	@Autowired
 	private StadiumDAO stadiumDAO;
 
-	public int matchUpdate(MatchVO matchVO) throws Exception {
+	public int matchUpdate(MatchVO matchVO, MultipartFile[] files) throws Exception {
+		String path = servletContext.getRealPath("/resources/uploadstadium");
+		
+		for (MultipartFile file : files) {
+			if (file.getSize() > 0) {
+				StadiumFileVO stadiumFileVO = new StadiumFileVO();
+				String fileName = fileSaver.saveByTransfer(file, path);
+				stadiumFileVO.setNum(matchVO.getNum());
+				stadiumFileVO.setFileName(fileName);
+				stadiumFileVO.setOriName(file.getOriginalFilename());
+				System.out.println(stadiumFileVO.getNum());
+				System.out.println(stadiumFileVO.getFileName());
+				System.out.println(stadiumFileVO.getOriName());
+				stadiumFileDAO.fileInsert(stadiumFileVO);
+			}
+		}
 		return matchDAO.matchUpdate(matchVO);
 	}
 

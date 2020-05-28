@@ -70,7 +70,7 @@
 		
 		$(".fileDelete").click(function() {
 			
-			var check = confirm("정말 지울 거냐??");
+			var check = confirm("정말 지우시겠습니까?");
 			
 			if(check){
 				var s = $(this);
@@ -82,6 +82,8 @@
 						alert("File Delete Fail");
 					}
 				} );
+			} else {
+				event.stopImmediatePropagation();
 			}
 		});
 		

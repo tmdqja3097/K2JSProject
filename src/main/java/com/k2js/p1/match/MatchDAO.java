@@ -52,6 +52,7 @@ public class MatchDAO {
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return session.update(NAMESPACE + "matchUpdate", matchVO);
 	}
+	
 	public MatchForCapaVO matchSearch(MatchForCapaVO mfcVO) throws Exception {
 		return session.selectOne(NAMESPACE + "matchSearch", mfcVO);
 	}
