@@ -1,10 +1,5 @@
 package com.k2js.p1.league;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,57 +10,48 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.k2js.p1.match.MatchService;
-import com.k2js.p1.match.MatchVO;
-import com.k2js.p1.stadium.StadiumService;
-import com.k2js.p1.stadium.StadiumVO;
-
 @Controller
 @RequestMapping("/league/**")
 public class LeagueController {
 
-	@GetMapping("leagueView")
-	public void leagueView() {
-
-	}
+	@Autowired
+	private LeagueService leagueService;
 
 	@GetMapping("leagueA")
-	public void leagueA() {
-
+	public String leagueA() throws Exception{
+		return "league/leagueA";
 	}
 
 	@GetMapping("manCar")
-	public void manCar() {
-
+	public String manCar() throws Exception {
+		return "league/manCar";
 	}
 
 	@GetMapping("womanCar")
-	public void womanCar() {
-
+	public String womanCar() throws Exception {
+		return "league/womanCar";
 	}
 
 	@GetMapping("manRanks")
-	public void manRanks() {
-
+	public String manRanks() throws Exception {
+		return "league/lmanRanks";
 	}
 
 	@GetMapping("womanRanks")
-	public void womanRanks() {
-
+	public String womanRanks() throws Exception {
+		return "league/womanRanks";
 	}
 
 	@GetMapping("onedayMan")
-	public void onedayMan() {
-
+	public String onedayMan() throws Exception {
+		return "league/onedayMan";
 	}
 
 	@GetMapping("onedayWoman")
-	public void onedayWoman() {
-
+	public String onedayWoman() throws Exception {
+		return "league/onedayWoman";
 	}
 
-	@Autowired
-	private LeagueService leagueService;
 
 	@GetMapping("leagueGender")
 	public ModelAndView leagueGender(int gender)throws Exception{

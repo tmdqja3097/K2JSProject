@@ -19,7 +19,7 @@
 		select * from stadium
 	</select>
 
-	<select id="stadiumList" parameterType="String"
+	<select id="stadiumSelectList" parameterType="String"
 		resultType="StadiumVO">
 		select * from stadium where name=#{stadiumName}
 	</select>

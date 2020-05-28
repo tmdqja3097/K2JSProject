@@ -26,6 +26,6 @@ public class StadiumDAO {
 		return session.selectList(NAMESPACE+"stadiumList");
 	}
 	public List<StadiumVO> stadiumList(String stadiumName) throws Exception{
-		return session.selectList(NAMESPACE+"stadiumList", stadiumName);
+		return session.selectList(NAMESPACE+"stadiumSelectList", stadiumName);
 	}
 }

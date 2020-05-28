@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.k2js.p1.league.LeagueDAO">
 
-<select id="leagueTeamList" resultType="LeagueVO">
-	select team.* ,rank() over(order by point desc)as rank from team
-</select>
+	<select id="leagueTeamList" resultType="LeagueVO">
+		select team.* ,rank() over(order by point desc)as rank from team
+	</select>
 
-<select id="leagueTeamGenderList" parameterType="Integer" resultType="LeagueVO">
-	select team.* ,rank() over(order by point desc)as rank from team where gender=#{gender}
-</select>
+	<select id="leagueTeamGenderList" parameterType="Integer"
+		resultType="LeagueVO">
+		select team.* ,rank() over(order by point desc)as rank from team where
+		gender=#{gender}
+	</select>
 
-<select id="leagueSelect" parameterType="String" resultType="LeagueVO">
-	select * from team where teamName = #{teamName}
-</select>
+	<select id="leagueSelect" parameterType="String"
+		resultType="LeagueVO">
+		select * from team where teamName = #{teamName}
+	</select>
 
-<insert id="leagueWrite" parameterType="LeagueVO">
-	insert into team values(#{teamName}, #{win}, #{draw}, #{lose}, #{gender}, #{point})
-</insert>
+	<insert id="leagueWrite" parameterType="LeagueVO">
+		insert into team values(#{teamName}, #{win}, #{draw}, #{lose}, #{gender},
+		#{point})
+	</insert>
 
-<update id="leagueUpdate" parameterType="LeagueVO">
-	update team set win=#{win}, draw=#{draw}, lose=#{lose}, point=#{point} where teamName=#{teamName}
-</update>
+	<update id="leagueUpdate" parameterType="LeagueVO">
+		update team set win=#{win}, draw=#{draw}, lose=#{lose}, point=#{point} where
+		teamName=#{teamName}
+	</update>
 
-<delete id="leagueDelete" parameterType="String">
-	delete team where teamName = #{teamName}
-</delete>
+	<delete id="leagueDelete" parameterType="String">
+		delete team where teamName = #{teamName}
+	</delete>
 
 
 </mapper>
