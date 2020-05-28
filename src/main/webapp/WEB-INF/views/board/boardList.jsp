@@ -182,6 +182,9 @@
 		</ul>
 	</div> 
 	
+	<c:if test="${member.id eq 'admin'}"> 
+	<a href="./${board}Write" class="btn btn-default" style="float: right;">글쓰기</a>
+	</c:if>
 <h4 class="h4">질문 카테고리<br><br></h4>
 	<form>
 	<ul style="text-align: center">	
@@ -194,9 +197,6 @@
 	</ul>
 	</form>
 
-	<c:if test="${member.id eq 'admin'}"> 
-	<a href="./${board}Write" class="btn btn-default" style="float: right;">글쓰기</a>
-	</c:if>
 	 
 	
 </c:if>

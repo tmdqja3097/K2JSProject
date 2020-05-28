@@ -29,6 +29,8 @@
 			<mapping path="/manager/managerList"/>
 			<mapping path="/manager/addManager"/>
 			<mapping path="/manager/managerDelete"/>
+			<mapping path="/match/matchUpdate"/>
+			<mapping path="/match/matchDelete"/>
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 		<interceptor>

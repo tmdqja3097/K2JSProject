@@ -113,7 +113,7 @@ h3{
 <c:import url="../template/summer.jsp"></c:import>
 </head>
 <body style="padding: 0%">
-	<div style="padding: 0 5%">
+	<div style="padding: 0 20%">
 	<c:import url="../template/header.jsp"></c:import>
 </div>
 	<div class="container">
@@ -152,6 +152,5 @@ h3{
 		
 	</script>
 	
-	<footer></footer>
 </body>
 </html>

@@ -109,7 +109,7 @@ footer {
 <nav class="navbar navbar-inverse">
 	<div class="navbar-header">
 		<a class="navbar-brand" style="padding: 5px 5px;" href="${pageContext.request.contextPath}"><img
-			id="logo" alt="logo" style="width: 60px; height: auto;" 
+			id="logo" alt="logo" style="width: 70px; height: auto;" 
 			src="${pageContext.request.contextPath}/resources/images/k2js_logo2.png"></a>
 	</div>
 

@@ -481,12 +481,14 @@ img {
 				</div>
 			</div>
 		</div>
-
+		
+		<c:if test="${member.id eq 'admin'}">
 		<div class="btn" style="float: right;">
 			<a href="./matchDelete?num=${matchVO.num}" class="btn btn-default">글
 				지우기</a> <a href="./matchUpdate?num=${matchVO.num}"
 				class="btn btn-default">글 수정</a>
 		</div>
+		</c:if>
 	</div>
 
 	<div style="height: 180px"></div>

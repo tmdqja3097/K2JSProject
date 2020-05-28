@@ -89,7 +89,7 @@
 		</ul>
 	</div>
 	<div style="height: 130px"></div>
-	<footer></footer>
+
 
 	<script>
 		function press(f) {

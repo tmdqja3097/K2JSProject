@@ -319,7 +319,8 @@ h2 {
 						</li>
 					</ul>
 				</div>
-
+	
+	
 	<script>
 		var myIndex = 0;
 		carousel();
@@ -417,5 +418,6 @@ h2 {
 					alert("주소가 클립보드에 복사되었습니다");
 				});
 	</script>
+	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>
