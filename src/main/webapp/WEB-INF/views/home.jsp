@@ -429,7 +429,7 @@
 			});
 			$.ajax({
 				url : "getMatch",
-				type : "post",
+				type : "POST",
 				data : {
 					addressList : addressArray,
 					day : selectDay
