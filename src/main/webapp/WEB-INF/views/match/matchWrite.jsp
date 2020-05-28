@@ -39,8 +39,16 @@
 				</select>
 		</div>
 		<div class="form-group">
-			<label for="manager">담당 매니저:</label> <input type="text"
-				class="form-control" id="managerNum" name="managerNum">
+			<label for="manager">담당 매니저:</label>
+			<select name="managerNum" id="managerNum">
+				<option value="none">선택</option>
+				<c:forEach items="${arr_manager}" var="vos">
+				<option value="${vos.num}">${vos.num}</option>
+				</c:forEach>
+				</select>
+	
+			 <!-- <input type="text"
+				class="form-control" id="managerNum" name="managerNum"> -->
 		</div>
 		<div class="form-group">
 			<label for="writer">성별:</label> 

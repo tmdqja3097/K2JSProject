@@ -23,6 +23,7 @@ import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
+import com.k2js.p1.util.Pager;
 
 @Controller
 @RequestMapping("/")
@@ -121,9 +122,11 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchWrite")
-	public ModelAndView matchWrite() throws Exception {
+	public ModelAndView matchWrite(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<ManagerVO> ar = managerService.managerList(pager);
 		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		mv.addObject("arr_manager", ar);
 		mv.addObject("stadiumVOs", stadiumVOs);
 		mv.setViewName("match/matchWrite");
 		return mv;
