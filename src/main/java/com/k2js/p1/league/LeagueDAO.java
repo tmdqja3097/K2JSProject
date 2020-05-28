@@ -38,4 +38,12 @@ public class LeagueDAO {
 		return session.update(NAMESPACE+"leagueUpdate", leagueVO);
 	}
 	
+	public LeagueVO leagueTeamCheck(LeagueVO leagueVO) throws Exception{
+		return session.selectOne(NAMESPACE+"leagueTeamCheck", leagueVO);
+	}
+	
+	public List<LeagueVO> leagueTotalList() throws Exception{
+		return session.selectList(NAMESPACE+"leagueTotalList");
+	}
+	
 }

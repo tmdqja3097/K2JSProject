@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<h1>leagueWrite page</h1>
+	<h1>리그팀을 작성해주세요</h1>
 	
 	<form action="./leagueWrite" id="frm" method="post">
 	
@@ -40,8 +40,31 @@
 					class="form-control" id="point" name="point" readonly="readonly" hidden="point" value="0">
 		</div> 
 		
-		<input type="submit" id="btn" class="btn btn-default" value="Write">
+		<input type="submit" id="btn" class="btn btn-default" value="작성">
+		<a href="./leagueView" class="btn btn-default">뒤로가기</a>
+		
 	</form>
+	
+	<script type="text/javascript">
+		$("#teamName").blur(function() {
+			var teamName = $("#teamName").val();
+			
+			$.ajax({
+				type:"POST",
+				url:"./leagueTeamCheck",
+				data:{
+					teamName : teamName
+				},
+				success : function(data) {
+				},
+				error : function() {
+					alert("error 발생");
+				}
+			});
+			
+		});
+		
+	</script>
 
 </body>
 </html>
