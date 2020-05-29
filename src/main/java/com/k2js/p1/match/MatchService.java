@@ -20,6 +20,9 @@ import com.k2js.p1.stadium.file.StadiumFileDAO;
 import com.k2js.p1.stadium.file.StadiumFileVO;
 import com.k2js.p1.util.FileSaver;
 
+import com.k2js.p1.stadium.StadiumDAO;
+import com.k2js.p1.stadium.StadiumVO;
+
 @Service
 public class MatchService {
 
@@ -33,18 +36,45 @@ public class MatchService {
 	private StadiumFileDAO stadiumFileDAO;
 	@Autowired
 	private ChargeDAO chargeDAO;
+	@Autowired
+	private StadiumDAO stadiumDAO;
 
-	public int matchUpdate(MatchVO matchVO) throws Exception {
+	public int matchUpdate(MatchVO matchVO, MultipartFile[] files) throws Exception {
+		String path = servletContext.getRealPath("/resources/uploadstadium");
+		
+		for (MultipartFile file : files) {
+			if (file.getSize() > 0) {
+				StadiumFileVO stadiumFileVO = new StadiumFileVO();
+				String fileName = fileSaver.saveByTransfer(file, path);
+				stadiumFileVO.setNum(matchVO.getNum());
+				stadiumFileVO.setFileName(fileName);
+				stadiumFileVO.setOriName(file.getOriginalFilename());
+				stadiumFileDAO.fileInsert(stadiumFileVO);
+			}
+		}
 		return matchDAO.matchUpdate(matchVO);
 	}
 
-	public int matchDelete(long num) throws Exception {
+	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
+		MatchVO matchVO = new MatchVO();
+		matchVO.setGender(gender);
+		matchVO.setDaily(day);
+		return matchDAO.matchGenderList(matchVO);
+	}
+	 
+	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
+		StadiumVO stadiumVO = new StadiumVO();
+		stadiumVO.setAddress(address);
+		stadiumVO.setDay(day);
+		return matchDAO.matchAddressList(stadiumVO);
+	}
+	
+	public int matchDelete(long num)throws Exception{
 		return matchDAO.matchDelete(num);
 	}
 
 	public int matchWrite(MatchVO matchVO, MultipartFile[] files) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadstadium");
-		System.out.println(path);
 		matchVO.setNum(matchDAO.matchNum());
 
 		for (MultipartFile file : files) {
@@ -176,7 +206,7 @@ public class MatchService {
 		int year = Integer.parseInt(str[0]);
 		int month = Integer.parseInt(str[1]);
 		int maxday = cal.getActualMaximum(month-1);
-		int day = Integer.parseInt(str[2]) - 2;
+		int day = Integer.parseInt(str[2]);
 		//// 현재 날자
 		String str1[] = dat1.split("/");
 		int year1 = Integer.parseInt(str[0]);
@@ -189,17 +219,18 @@ public class MatchService {
 		} else if ( year != year1) {
 			daycount = (day+31)-day1;
 		}
-		if (daycount > 2) {
+		
+		
+		if (daycount >= 2) {
 			count = mfcVO.getCount() * 10000;
-		} else if (daycount < 2 && daycount > 1) {
+		} else if (daycount < 2 && daycount >= 1) {
 			count = mfcVO.getCount() * 8000;
 		} else if (daycount < 1) {
 			count = mfcVO.getCount() * 3000;
 		}
+		
+		
 		// 멤버에서 캐쉬를 카운트만큼 입금
-		memberVO.setCash(memberVO.getCash() + count);
-		//멤버에서 캐쉬를 카운트만큼 입금
-		count = mfcVO.getCount()*10000;
 		memberVO.setCash(memberVO.getCash()+(int)count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}

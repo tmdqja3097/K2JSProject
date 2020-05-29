@@ -5,67 +5,102 @@
 
 <mapper namespace="com.k2js.p1.match.MatchDAO">
 
-<resultMap type="MatchVO" id="selectResult">
-		<id column="num" property="num"/>
-		<result column="title" property="title"/>
-		<result column="contents" property="contents"/>
-		<result column="matchTime" property="matchTime"/>
-		<result column="stadiumName" property="stadiumName"/>
-		<result column="count" property="count"/>
-		<result column="gender" property="gender"/>
-		<result column="managerNum" property="managerNum"/>	
-		<collection property="stadiumFileVOs" javaType="List" ofType="StadiumFileVO">
-			<id column="fileNum" property="fileNum"/>
-			<result column="fileName" property="fileName"/>
-			<result column="oriName" property="oriName"/>	
+	<resultMap type="MatchVO" id="selectResult">
+		<id column="num" property="num" />
+		<result column="title" property="title" />
+		<result column="contents" property="contents" />
+		<result column="matchTime" property="matchTime" />
+		<result column="stadiumName" property="stadiumName" />
+		<result column="count" property="count" />
+		<result column="gender" property="gender" />
+		<result column="managerNum" property="managerNum" />
+		<collection property="stadiumFileVOs" javaType="List"
+			ofType="StadiumFileVO">
+			<id column="fileNum" property="fileNum" />
+			<result column="fileName" property="fileName" />
+			<result column="oriName" property="oriName" />
 		</collection>
-</resultMap>
+	</resultMap>
 
-<select id="matchList" parameterType="java.lang.Integer" resultType="MatchVO">
-	select * from match where to_char(matchTime,'dd') = #{day} and matchTime>sysdate order by matchTime asc
-</select>
+	<select id="matchList" parameterType="java.lang.Integer"
+		resultType="MatchVO">
+		select * from match where to_char(matchTime,'dd') = #{day}
+		and
+		matchTime>sysdate order by matchTime asc
+	</select>
 
+	<select id="matchSelect" parameterType="Long"
+		resultMap="selectResult">
+		select N.*, F.*
+		from match N left join stadiumFile F
+		on (N.num
+		= F.num)
+		where N.num=#{num}
+	</select>
 
-<select id="matchSelect" parameterType="Long" resultMap="selectResult">
-	select N.*, F.*
-	from match N left join stadiumFile F
-	on (N.num = F.num)
-	where N.num=#{num}
-</select>
+	<insert id="matchWrite" parameterType="MatchVO">
+		insert into match
+		values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},#{managerNum})
+	</insert>
 
-<insert id="matchWrite" parameterType="MatchVO">
-	insert into match values(#{num},#{title},#{contents},#{matchTime},#{stadiumName},#{count},#{gender},#{managerNum})
-</insert>
+	<update id="matchUpdate" parameterType="MatchVO">
+		update match set
+		title=#{title}, contents=#{contents}, matchTime=#{matchTime}, gender=#{gender}, managerNum=#{managerNum},
+		stadiumName=#{stadiumName} where num=#{num}
+	</update>
 
-<update id="matchUpdate" parameterType="MatchVO">
-		update match set title=#{title}, contents=#{contents}, matchTime=#{matchTime}, count=#{count} where num=#{num}
-</update>
+	<update id="matchCount" parameterType="MatchVO">
+		update match set
+		count=#{count} where num=#{num}
+	</update>
+	<insert id="matchForCapa" parameterType="matchForCapaVO">
+		INSERT INTO matchforcapa
+		VALUES (#{num}, #{capaListNum},#{count},
+		reqNum_seq.nextval)
+	</insert>
+	<update id="discountMemberCash" parameterType="memberVO">
+		UPDATE MEMBER SET
+		CASH=#{cash} WHERE ID = #{id}
+	</update>
 
+	<select id="matchSearch" parameterType="matchForCapaVO"
+		resultType="matchForCapaVO">
+		SELECT * FROM MATCHFORCAPA WHERE NUM = #{num} AND
+		CAPALISTNUM =
+		#{capaListNum}
+	</select>
 
-<select id="matchNum" resultType="Long">
-		select match_seq.nextval from dual
-</select>
+	<delete id="matchCancel" parameterType="matchForCapaVO">
+		DELETE MATCHFORCAPA WHERE
+		REQNUM = #{reqNum}
+	</delete>
 
-<delete id="matchDelete" parameterType="Long">
-	delete match where num=#{num}
-</delete>
+	<select id="matchNum" resultType="Long">
+		select match_seq.nextval from
+		dual
+	</select>
 
-<update id="matchCount" parameterType="MatchVO">
-	update match set count=#{count} where num=#{num}
-</update>
-<insert id="matchForCapa" parameterType="matchForCapaVO">
-	INSERT INTO matchforcapa VALUES (#{num}, #{capaListNum},#{count}, reqNum_seq.nextval)
-</insert>
-<update id="discountMemberCash" parameterType="memberVO">
-	UPDATE MEMBER SET CASH=#{cash} WHERE ID = #{id}
-</update>
+	<delete id="matchDelete" parameterType="Long">
+		delete match where
+		num=#{num}
+	</delete>
 
-<select id="matchSearch" parameterType="matchForCapaVO" resultType="matchForCapaVO">
-	SELECT * FROM MATCHFORCAPA WHERE NUM = #{num} AND CAPALISTNUM = #{capaListNum}
-</select>
+	<select id="matchAddressList" resultType="MatchVO"
+		parameterType="StadiumVO">
+		select m.* from match m full join stadium s
+		on(m.stadiumname = s.name) where s.address like '%'||#{address}||'%'
+		and to_char(matchTime,'dd') = #{day} and
+		matchTime>sysdate
+		order by
+		matchTime asc
+	</select>
 
-<delete id="matchCancel" parameterType="matchForCapaVO">
-	DELETE MATCHFORCAPA WHERE REQNUM = #{reqNum}
-</delete>
+	<select id="matchGenderList" resultType="MatchVO"
+		parameterType="MatchVO">
+		select * from match where gender=#{gender} and
+		to_char(matchTime, 'dd') =
+		#{daily} and matchTime>sysdate order by
+		matchTime asc
+	</select>
 
 </mapper>

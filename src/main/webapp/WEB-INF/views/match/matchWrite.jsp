@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>새 매치 등록 페이지</title>
 <c:import url="../template/boot.jsp"></c:import>
 <c:import url="../template/summer.jsp"></c:import>
 <style type="text/css">
@@ -17,8 +17,6 @@
 <body> 
 <c:import url="../template/header.jsp"></c:import>
 	<form action="./matchWrite" id="frm" method="post" enctype="multipart/form-data">
-	
-		
 		<div class="form-group">
 			<label for="title">제목:</label> <input type="text"
 				class="form-control" id="title" name="title">
@@ -41,8 +39,13 @@
 				</select>
 		</div>
 		<div class="form-group">
-			<label for="manager">담당 매니저:</label> <input type="text"
-				class="form-control" id="managerNum" name="managerNum">
+			<label for="manager">담당 매니저:</label>
+			<select name="managerNum" id="managerNum">
+				<option value="none">선택</option>
+				<c:forEach items="${arr_manager}" var="vos">
+				<option value="${vos.num}">${vos.num}-${vos.name}</option>
+				</c:forEach>
+				</select>
 		</div>
 		<div class="form-group">
 			<label for="writer">성별:</label> 

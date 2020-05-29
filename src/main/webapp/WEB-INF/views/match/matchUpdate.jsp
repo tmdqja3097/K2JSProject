@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${stadiumVO.name} 매치 정보 수정</title>
 <c:import url="../template/boot.jsp"></c:import>
 <c:import url="../template/summer.jsp"></c:import>
 <style type="text/css">
@@ -18,13 +18,9 @@
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 
-	<form action="./matchUpdate" id="frm" method="post">
-		
-		
-		<input type="text" id="title" name="num" hidden="hidden"
-				value="${matchVO.num}" >
-		
-		
+	<form action="./matchUpdate" id="frm" method="post"
+		enctype="multipart/form-data">
+		<input type="hidden" name="num" value="${matchVO.num}">
 		<div class="form-group">
 			<label for="title">제목:</label> <input type="text"
 				class="form-control" id="title" name="title"
@@ -35,21 +31,33 @@
 				class="form-control" id="date" name="day">
 		</div>
 		<div class="form-group">
-
 			<label for="writer">경기 시간:</label> <input type="time"
 				class="form-control" id="time" name="time">
 		</div>
 		<div class="form-group">
-			<label for="writer">구장:</label> <input type="text"
-				class="form-control" id="writer" name="stadiumName"
-				value="${matchVO.stadiumName}">
+			<label for="writer">구장</label> <select name="stadiumName"
+				id="stadiumName">
+				<option value="none">선택</option>
+				<c:forEach items="${stadiumVOs}" var="vos">
+					<option value="${vos.name}">${vos.name}</option>
+				</c:forEach>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="manager">담당 매니저:</label> <select name="managerNum"
+				id="managerNum">
+				<option value="none">선택</option>
+				<c:forEach items="${arr_manager}" var="vos">
+					<option value="${vos.num}">${vos.num}-${vos.name}</option>
+				</c:forEach>
+			</select>
 		</div>
 		<div class="form-group">
 			<label for="writer">성별:</label> <select name="gender" id="gender">
-				<option class="option" value="none">선택</option>
-				<option class="option" value="1">남성</option>
-				<option class="option" value="2">여성</option>
-				<option class="option" value="3">혼성</option>
+				<option value="none">선택</option>
+				<option value="1">남성</option>
+				<option value="2">여성</option>
+				<option value="3">혼성</option>
 			</select>
 		</div>
 		<div class="form-group">
@@ -57,54 +65,50 @@
 			<textarea rows="20" cols="" class="form-control" id="contents"
 				name="contents"></textarea>
 		</div>
-		
-		<input type="button" id="btn" class="btn btn-default" value="Write" style="float: right;">
-		<input type="button" id="add" class="btn btn-default" value="AddFile" style="float: right;">
-			<div id="file">
-			<div class="form-group">
-				<label for="files">Files:</label>
-				<c:forEach items="${matchVO.stadiumFileVOs}" var="fileVO">
-					<p>${fileVO.oriName}<i id="${fileVO.fileNum}"
-							class="glyphicon glyphicon-remove remove fileDelete"></i>
-					</p>
-				</c:forEach>
-			</div>
-			</div>
 
+		<div>
+			<label for="files">Files:</label>
+			<c:forEach items="${matchVO.stadiumFileVOs}" var="fileVO">
+				<p>${fileVO.oriName}<i id="${fileVO.fileNum}"
+						class="glyphicon glyphicon-remove remove fileDelete"></i>
+				</p>
+			</c:forEach>
+		</div>
+
+		<input type="button" id="btn" class="btn btn-default" value="Write"
+			style="float: right; margin-right: 20px;">
+		<c:catch>
+			<input type="button" id="add" class="btn btn-default" value="AddFile"
+				style="float: right;">
+			<div id="file"></div>
+		</c:catch>
 	</form>
 
 	<script type="text/javascript" src="../resources/js/matchForm.js">
+		
 	</script>
 	<script type="text/javascript">
-	
-	var size = 0;
-	size = ${fn:length(matchVO.stadiumFileVOs)};
-	count = count + size;
-	
-	$(".option").each(function() {
-		if($(this).val() == ${matchVO.gender}){ 
-			$(this).prop("selected", "selected"); 
-		}
-	})
-	
-	$(".fileDelete").click(function() {
-			
-			var check = confirm("정말 지울 거냐??");
-			
-			if(check){
+		$(".fileDelete").click(function() {
+
+			var check = confirm("정말 지우시겠습니까?");
+
+			if (check) {
 				var s = $(this);
-				
-				$.post("../boardFile/fileDelete", {fileNum:$(this).attr("id")}, function(data) {
-					if(data.trim()>0){
+
+				$.post("../stadiumFile/fileDelete", {
+					fileNum : $(this).attr("id")
+				}, function(data) {
+					if (data.trim() > 0) {
 						s.parent().remove();
-					}else {
+					} else {
 						alert("File Delete Fail");
 					}
-				} );
+				});
+			} else {
+				event.stopImmediatePropagation();
 			}
 		});
 	</script>
-
 
 </body>
 </html>

@@ -201,7 +201,7 @@ form.orderForm fieldset h3 {
 
 			<div class="orderTitle">
 				<h2>${matchVO.fullTime}</h2>
-				<h2>${matchVO.stadiumName}풋살구장</h2>
+				<h2>${matchVO.stadiumName}</h2>
 			</div>
 			<div class="orderInfo">
 				<fieldset>
@@ -346,5 +346,6 @@ form.orderForm fieldset h3 {
 			}
 		});
 	</script>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

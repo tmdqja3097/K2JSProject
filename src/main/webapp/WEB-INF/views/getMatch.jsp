@@ -98,16 +98,22 @@
 	font-size: small;
 	color: white;
 }
+
+.toAll {
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Malgun Gothic',
+		'dotum', 'gulim', sans-serif;
+	font-weight: 700;
+	background-color: none;
+	border: none;
+}
 </style>
 </head>
 
-<div class="match-wrapper">
-	<button class="btn-all-area" data-target="#layerpop"
-		data-toggle="modal"
-		style="border: hidden; background-color: white; padding-top: 3px;">모든지역</button>
-
-	<!-- <span id="all-area" data-target="#layerpop" data-toggle="modal" style="cursor: pointer; padding-right: 5px;">모든 지역</span> -->
-	<span id="all-match" style="cursor: pointer; padding-left: 5px;">모든매치</span>
+<div class="match-wrapper" style="display: inline;">
+	<button class="btn-all-area toAll" data-target="#layerpop1"
+		data-toggle="modal">모든지역</button>
+	<button class="btn-all-match toAll" data-target="#layerpop2"
+		data-toggle="modal">모든 매치</button>
 </div>
 <p>${i}개의매치</p>
 

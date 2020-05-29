@@ -150,6 +150,6 @@ h3{
 		
 	</script>
 	
-	<footer></footer>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

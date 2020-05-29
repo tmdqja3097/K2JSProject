@@ -54,7 +54,7 @@
 		</form>
 
 	</div>
-	<footer></footer>
+	<c:import url="../template/footer.jsp"></c:import>
 
 	<script type="text/javascript" src="../resources/js/boardForm.js"></script>
 	<script type="text/javascript">
@@ -70,7 +70,7 @@
 		
 		$(".fileDelete").click(function() {
 			
-			var check = confirm("정말 지울 거냐??");
+			var check = confirm("정말 지우시겠습니까?");
 			
 			if(check){
 				var s = $(this);
@@ -82,6 +82,8 @@
 						alert("File Delete Fail");
 					}
 				} );
+			} else {
+				event.stopImmediatePropagation();
 			}
 		});
 		

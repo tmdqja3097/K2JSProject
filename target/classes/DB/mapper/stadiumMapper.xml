@@ -5,19 +5,23 @@
 
 <mapper namespace="com.k2js.p1.stadium.StadiumDAO">
 
+	<select id="stadiumSelect" parameterType="String"
+		resultType="StadiumVO">
+		select * from stadium where name=#{stadiumName}
+	</select>
 
-<select id="stadiumSelect" parameterType="String" resultType="StadiumVO">
-	select * from stadium where name=#{stadiumName}
-</select>
+	<insert id="addStadium" parameterType="StadiumVO">
+		insert into stadium
+		values(#{name},#{address},#{location_w},#{location_k},#{stadiumSize},#{shower},#{parking},#{shoes},#{cloth},#{info})
+	</insert>
 
-<insert id="addStadium" parameterType="StadiumVO">
-	insert into stadium values(#{name},#{address},#{location_w},#{location_k},#{stadiumSize},#{shower},#{parking},#{shoes},#{cloth},#{info})
-</insert>
+	<select id="stadiumList" resultType="StadiumVO">
+		select * from stadium
+	</select>
 
-<select id="stadiumList" resultType="StadiumVO">
-	select * from stadium
-</select>
-
-
+	<select id="stadiumSelectList" parameterType="String"
+		resultType="StadiumVO">
+		select * from stadium where name=#{stadiumName}
+	</select>
 
 </mapper>

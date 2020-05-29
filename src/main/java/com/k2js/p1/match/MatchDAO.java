@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
+import com.k2js.p1.stadium.StadiumVO;
 
 @Repository
 public class MatchDAO {
@@ -51,10 +52,19 @@ public class MatchDAO {
 	public int matchUpdate(MatchVO matchVO) throws Exception {
 		return session.update(NAMESPACE + "matchUpdate", matchVO);
 	}
+	
 	public MatchForCapaVO matchSearch(MatchForCapaVO mfcVO) throws Exception {
 		return session.selectOne(NAMESPACE + "matchSearch", mfcVO);
 	}
 	public int matchCancel(MatchForCapaVO mfcVO) throws Exception {
 		return session.delete(NAMESPACE + "matchCancel", mfcVO);
+	}
+	
+	public List<MatchVO> matchAddressList(StadiumVO stadiumVO) throws Exception{
+		return session.selectList(NAMESPACE+"matchAddressList", stadiumVO);
+	}
+	
+	public List<MatchVO> matchGenderList(MatchVO matchVO) throws Exception{
+		return session.selectList(NAMESPACE+"matchGenderList", matchVO);
 	}
 }

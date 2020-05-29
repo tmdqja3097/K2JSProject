@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${stadiumVO.name} 매치</title>
 <c:import url="../template/boot.jsp"></c:import>
 <meta charset="utf-8">
 <style>
@@ -88,6 +88,7 @@ img {
 	line-height: 60px;
 	background-color: #3540A5;
 }
+
 #start_check_disable {
 	width: 100%;
 	text-align: center;
@@ -307,7 +308,7 @@ img {
 
 		<div class="c1">
 			<div class="stadSec" id="mnCaution"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -405,7 +406,7 @@ img {
 				</div>
 			</div>
 			<div class="stadSec" id="mnTerm"
-				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; quot; Apple SD Gothic Neo&amp;amp; quot; , &amp; amp; quot; Noto Sans CJK KR&amp;amp; quot; , &amp; amp; quot; Malgun Gothic&amp;amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
+				style="outline: none; margin: 0px 20px; padding: 50px 0px; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: rgb(221, 221, 221); border-left-color: initial; border-image: initial; vertical-align: baseline; color: rgb(51, 51, 51); font-family: &amp; amp; amp; amp; amp; amp; quot; Apple SD Gothic Neo&amp;amp; amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; amp; quot; Noto Sans CJK KR&amp;amp; amp; amp; amp; amp; quot; , &amp; amp; amp; amp; amp; amp; quot; Malgun Gothic&amp;amp; amp; amp; amp; amp; quot; , dotum , gulim, sans-serif; font-size: medium;">
 				<div class="titleWrap"
 					style="outline: none; margin: 0px 0px 10px; padding: 0px; border: 0px; vertical-align: baseline;">
 					<h3
@@ -482,11 +483,16 @@ img {
 			</div>
 		</div>
 
-		<div class="btn" style="float: right;">
-			<a href="./matchDelete?num=${matchVO.num}" class="btn btn-default">글
-				지우기</a> <a href="./matchUpdate?num=${matchVO.num}"
-				class="btn btn-default">글 수정</a>
-		</div>
+
+
+
+		<c:if test="${member.id eq 'admin'}">
+			<div class="btn" style="float: right;">
+				<a href="./matchDelete?num=${matchVO.num}" class="btn btn-default">글
+					지우기</a> <a href="./matchUpdate?num=${matchVO.num}"
+					class="btn btn-default">글 수정</a>
+			</div>
+		</c:if>
 	</div>
 
 	<div style="height: 180px"></div>
@@ -509,7 +515,8 @@ img {
 			</c:if>
 		</c:if>
 		<c:if test="${not empty matchIfJoin}">
-			<button id="start_check_disable" disabled="disabled">이미 참여신청된 매치입니다.</button>
+			<button id="start_check_disable" disabled="disabled">이미
+				참여신청된 매치입니다.</button>
 		</c:if>
 
 	</div>
@@ -529,7 +536,6 @@ img {
 		};
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
 		// 마커가 표시될 위치입니다 
 		var markerPosition = new kakao.maps.LatLng(${stadiumVO.location_w},${stadiumVO.location_k});
 
@@ -591,6 +597,7 @@ img {
 		});
 		
 	</script>
+	<c:import url="../template/footer.jsp"></c:import>
 
 </body>
 </html>

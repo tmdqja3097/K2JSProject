@@ -56,5 +56,8 @@ public class MemberDAO {
 	public MemberVO memberSearch(MemberVO memberVO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE+"memberSearch", memberVO);
 	}
+	public MemberVO memberEmailCheck(String emailCk) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"memberEmailCheck", emailCk);
+	}
 }
  

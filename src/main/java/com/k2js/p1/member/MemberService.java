@@ -15,6 +15,10 @@ public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	
+	public MemberVO memberEmailCheck(String emailCk) throws Exception {
+		return memberDAO.memberEmailCheck(emailCk);
+	}
 
 	public MemberVO memberLogin(MemberVO memberVO) throws Exception {
 		return memberDAO.memberLogin(memberVO);

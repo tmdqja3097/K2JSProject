@@ -18,9 +18,18 @@
 
 	<interceptors>
 		<interceptor>
+			<mapping path="/league/leagueUpdate"/>
+			<mapping path="/league/leagueDelete"/>
+			<mapping path="/league/leagueWrite"/>
+			<mapping path="/match/matchDelete"/>
+			<mapping path="/match/matchUpdate"/>
 			<mapping path="/match/matchWrite"/>
 			<mapping path="/stadium/addStadium"/>
+			<mapping path="/notice/noticeDelete"/>
+			<mapping path="/notice/noticeUpdate"/>
 			<mapping path="/notice/noticeWrite"/>
+			<mapping path="/qna/qnaDelete"/>
+			<mapping path="/qna/qnaUpdate"/>
 			<mapping path="/qna/qnaWrite"/>
 			<mapping path="/manager/managerList"/>
 			<mapping path="/manager/addManager"/>
@@ -29,6 +38,7 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/member/*" />
+			<exclude-mapping path="/member/emailCheck"/>
 			<exclude-mapping path="/member/MemberLogin" />
 			<exclude-mapping path="/member/MemberLogout" />
 			<exclude-mapping path="/member/MemberNew" />

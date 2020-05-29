@@ -11,14 +11,20 @@
 /* 전체  바디 */
 body {
 	padding: 0 20%;
+	min-height : 950px;
 	box-sizing: border-box;
+}
+header {
+	height : 80px;
+	margin-bottom : 10px;
 }
 /* 헤더 */
 #logo {
-	width: 100%;
-	height: 100%;
+width : 70px;
+height : 70px;
 }
-
+.navbar-brand{
+padding : 0;}
 .navbar-header>a {
 	width: 100px;
 }
@@ -69,17 +75,18 @@ body {
 }
 
 .daybutton {
- 	border-radius : 10px;
-	background-color : white;
+	border-radius: 10px;
+	background-color: white;
 }
+
 #pre {
 	width: 100%;
 	height: 100px;
 	z-index: 999;
 }
+
 #next {
-background
-	width: 100%;
+	background width: 100%;
 	height: 100px;
 	z-index: 999;
 }
@@ -104,7 +111,7 @@ background
 }
 
 .day-list {
-	border-radius : 10px;
+	border-radius: 10px;
 	display: inline-block;
 	height: 100px;
 	margin: 0 0.4%;
@@ -132,13 +139,35 @@ background
 
 .match-wrapper {
 	width: 20%;
-	height: 30px;
+	height: 50px;
 	margin-left: 80%;
 	text-align: center;
+}
+
+.mofo {
+	height: 50px;
+	background-color: #ffc645;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	text-align: center;
+	padding-top: 7px;
+	cursor: pointer;
 }
 /* match-filter */
 
 /* modal */
+.modal-list1 {
+	height: 100px;
+}
+
+.modal-list1>li {
+	display: inline-block;
+	margin-right: 5px;
+	margin-top: 5px;
+	padding-top: 5px;
+	padding-right: 5px;
+}
+
 .filterCheck {
 	float: left;
 	opacity: 0;
@@ -156,15 +185,43 @@ background
 	float: left;
 	cursor: pointer;
 }
-/* modal */
+
 .unchecked {
+	background-color: #EEEEEE;
+	color: #999999;
+}
+
+.checked {
 	background-color: #FFC645;
 	color: #2A2A2A;
 }
 
-.checked {
+.uncheck {
 	background-color: #EEEEEE;
 	color: #999999;
 }
+
+.check {
+	background-color: #FFC645;
+	color: #2A2A2A;
+}
+#match_btn{
+margin-right : 20px;
+}
+.selected {
+	font-family: 'Apple SD Gothic Neo', 'Noto Sans CJK KR', 'Malgun Gothic',
+		'dotum', 'gulim', sans-serif;
+	border-bottom: 3px solid #FFC645;
+	font-weight: 700;
+}
+.match {
+	font-size: 30px;
+	color : black;
+}
+a:hover {
+	text-decoration: none;
+	color : silver;
+}
+/* modal */
 </style>
 

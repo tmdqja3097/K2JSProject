@@ -62,8 +62,10 @@ body {
 <body>
 	<div id="logo">
 		<a href="${pageContext.request.contextPath}"><img
-			src="../resources/images/k2.jpg"></a>
+			src="../resources/images/k2js_logo2.png"
+			style="width: 200px; height: 200px;"></a>
 	</div>
+	<div style="height: 200px;"></div>
 	<div class="container">
 		<form action="./MemberNew" method="post">
 			<div class="row">
@@ -87,9 +89,9 @@ body {
 			<div class="alert alert-danger row input_box" id="fail_length">비밀번호는
 				최소 6 ~ 최대 16 글자로 입력해주세요.</div>
 			<div class="row">
-				<label>이메일</label><br> <input class="input_box" type="email"
-					name="email" maxlength="150" autofocus required id="eamil"
-					autofocus>
+				<label>이메일</label><br> <input class="input_box"
+					type="email" name="email" maxlength="150" autofocus required
+					id="eamil" autofocus>
 			</div>
 			<div class="row">
 				<label>이름</label><br> <input class="input_box" type="text"
@@ -106,7 +108,8 @@ body {
 			</div>
 			<div class="row">
 				<label>휴대폰 번호</label> <br> <input class="input_box" type="text"
-					name="phone" required id="phone" placeholder=" 000-0000-0000 양식에 맞춰서 입력">
+					name="phone" required id="phone"
+					placeholder=" 000-0000-0000 양식에 맞춰서 입력">
 			</div>
 
 			<br>
@@ -259,32 +262,26 @@ body {
 			<div class="row">
 				<span title="agree">K2JS <a href="../term" target="_blank">서비스
 						이용 약관</a> 및 <a href="
-							../privacy" target="_blank">개인 정보 수집 및 이용</a>에
-					동의합니다.
+							../privacy" target="_blank">개인 정보 수집
+						및 이용</a>에 동의합니다.
 				</span> <input type="checkbox" id="agree" required>
 			</div>
 			<br>
 			<div class="row">
-				<input type="submit" class="btn btn-primary submit input_box" value="회원가입" id="submit">
+				<input type="submit" class="btn btn-primary submit input_box"
+					value="회원가입" id="submit">
 			</div>
 		</form>
 
 		<br>
-		<div class="row" style="text-align : center;">
-			<span><a href="./MemberLogin">이미 아이디가 있다면 여기에서 로그인하세요</a></span>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+		<div class="row" style="text-align: center;">
+			<span><a href="./MemberLogin">이미 아이디가 있다면 여기에서 로그인하세요</a></span> <br>
+			<br> <br> <br> <br>
 		</div>
 	</div>
-	<div id="searchId"></div>
-	<div id="searchPassword"></div>
-
 	<script type="text/javascript">
-		$("#searchId").hide();
-		$("#searchPassword").hide();
+		var check = false;
+
 		$(function() {
 			$("#success").hide();
 			$("#fail").hide();
@@ -311,7 +308,7 @@ body {
 				}
 			});
 
-		$("#pw").change(function() {
+			$("#pw").change(function() {
 				var pw = $("#pw").val();
 				var pw1 = $("#pw1").val();
 				if (pw.length > 5) {
@@ -331,6 +328,13 @@ body {
 					$("#fail_length").show();
 				}
 			});
+
+			if (check) {
+				$("#submit").removeAttr("disabled")
+			} else {
+				$("#submit").prop("disabled", "disabled");
+			}
+
 		});
 	</script>
 </body>

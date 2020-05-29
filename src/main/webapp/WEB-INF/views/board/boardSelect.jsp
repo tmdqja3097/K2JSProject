@@ -69,10 +69,12 @@
 					</div>
 				</c:forEach>
 			</div>
+			<c:if test="${member.id  eq 'admin'}">
 			<div>
 				<a href="./${board}Delete?num=${vo.num}" class="btn btn-default" style="float: right;">Delete</a>
 				<a href="./${board}Update?num=${vo.num}" class="btn btn-default" style="float: right;">Update</a>
 			</div>
+			</c:if>
 
 			<h4>다른 키워드로 찾아보세요</h4>
 			<form action="./${board}List">
@@ -83,7 +85,7 @@
 		</ul>
 	</div>
 	<div style="height: 130px"></div>
-	<footer></footer>
+	<c:import url="../template/footer.jsp"></c:import>
 
 	<script>
 		function press(f) {

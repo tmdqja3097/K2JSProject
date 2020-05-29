@@ -14,7 +14,6 @@ public class StadiumDAO {
 	private final String NAMESPACE = "com.k2js.p1.stadium.StadiumDAO.";
 	
 	public StadiumVO stadiumSelect(String stadiumName) throws Exception{
-		System.out.println(11);
 		return session.selectOne(NAMESPACE+"stadiumSelect", stadiumName);
 	}
 	
@@ -24,5 +23,8 @@ public class StadiumDAO {
 	
 	public List<StadiumVO> stadiumList()throws Exception{
 		return session.selectList(NAMESPACE+"stadiumList");
+	}
+	public List<StadiumVO> stadiumList(String stadiumName) throws Exception{
+		return session.selectList(NAMESPACE+"stadiumSelectList", stadiumName);
 	}
 }
