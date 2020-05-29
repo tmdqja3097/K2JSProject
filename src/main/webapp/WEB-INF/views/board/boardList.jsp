@@ -198,6 +198,8 @@
 	
 </c:if>
 
+<c:import url="../template/footer.jsp"></c:import>
+
 <script type="text/javascript">
 	function press(f){
 		if(f.keyCode == 13){ 
