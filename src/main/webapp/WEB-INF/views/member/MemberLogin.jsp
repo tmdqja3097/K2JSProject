@@ -77,8 +77,9 @@ body {
 <body>
 	<div id="logo">
 		<a href="${pageContext.request.contextPath}"><img
-			src="../resources/images/k2.jpg"></a>
+			src="../resources/images/k2js_logo2.png" style="width:200px; height: 200px;"></a>
 	</div>
+	<div style="height: 200px;"></div>
 	<div class="container">
 		<div class="row">
 			<form method="post" action="./MemberLogin">

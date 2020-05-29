@@ -219,6 +219,7 @@ public class MatchService {
 		} else if ( year != year1) {
 			daycount = (day+31)-day1;
 		}
+		System.out.println(daycount);
 		if (daycount > 2) {
 			count = mfcVO.getCount() * 10000;
 		} else if (daycount < 2 && daycount > 1) {

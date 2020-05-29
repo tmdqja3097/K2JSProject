@@ -67,7 +67,7 @@ public class LeagueController {
 		 	double rate = win/(win+lose)*100;
 		 	leaguesG.get(i).setWinRate(Math.round(rate));
 		}
-		
+		/* mav.addObject("gender",gender); */
 		mav.addObject("leagues", leaguesG);
 		mav.setViewName("league/leagueView");
 		return mav;

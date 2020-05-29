@@ -187,7 +187,7 @@ body {
 <body>
 	<c:import url="../template/header.jsp"></c:import>
 	<!-- 	c:import - 불러오기 -->
-
+	<%-- <input type="hidden" value="${gender}" id="selectGender"> --%>
 	<div id="box_mat"
 		style="width: 100%; display: inline-block; margin-bottom: 10px;">
 		<a id="match_btn" class="match"
@@ -205,18 +205,18 @@ body {
 		</ol>
 
 		<!-- Wrapper for slides -->
-		<div class="carousel-inner slide_edge">
-			<div class="item active">
-				<img
-					src="${pageContext.request.contextPath}/resources/images/woman.PNG"
-					alt="Los Angeles" style="width: 100%;" height="50px" id="womanImg">
-				<div class="carousel-caption"></div>
-			</div>
 
-			<div class="item">
+		<div class="carousel-inner slide_edge">
+			<div class="item active" id="manItem">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/man.PNG"
 					alt="Chicago" style="width: 100%;" height="50px" id="manImg">
+				<div class="carousel-caption"></div>
+			</div>
+			<div class="item" id="womanItem">
+				<img
+					src="${pageContext.request.contextPath}/resources/images/woman.PNG"
+					alt="Los Angeles" style="width: 100%;" height="50px" id="womanImg">
 				<div class="carousel-caption"></div>
 			</div>
 		</div>
@@ -347,6 +347,27 @@ body {
 			$("#mb2").css("border-bottom", "2px solid #FFC645");
 			$("#mb2").css("color", "#FFC645")
 		});
+
+		$("#womanImg")
+				.click(
+						function() {
+							location.href = "${pageContext.request.contextPath}/league/leagueGender?gender=2";
+							/* selectGender(); */
+						});
+
+		$("#manImg")
+				.click(
+						function() {
+							location.href = "${pageContext.request.contextPath}/league/leagueGender?gender=1";
+							/* selectGender(); */
+						});
+/* 		function selectGender() {
+			var selectGender = $("#selectGender").val();
+			if(selectGender== 2){
+				$("#womanItem").addClass("active");
+				$("#manItem").removeClass("active")
+			}
+		} */
 	</script>
 
 </body>
