@@ -30,7 +30,7 @@
 	box-sizing: border-box;
 }
 .nav>li>a{
-padding : 0 24px;
+padding : 0 20px;
 }
 
 .chargeMethod {

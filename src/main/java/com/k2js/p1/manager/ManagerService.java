@@ -30,7 +30,6 @@ public class ManagerService{
 	
 	public int addManager(ManagerVO managerVO, MultipartFile file) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadmanager");
-		System.out.println(path);
 		
 		//sequence 번호 받기
 		managerVO.setNum(managerDAO.managerNum());

@@ -35,7 +35,6 @@ public class ChargeService {
 	public String kakaoPayReady(HttpSession session, int money) {
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		RestTemplate restTemplate = new RestTemplate();
-		System.out.println("connect");
 
 		// 서버로 요청할 Header
 		HttpHeaders headers = new HttpHeaders();

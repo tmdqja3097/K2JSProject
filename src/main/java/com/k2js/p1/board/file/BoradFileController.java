@@ -31,7 +31,6 @@ public class BoradFileController {
 		boardFileVO = boardFileService.fileSelect(boardFileVO);
 		mv.addObject("file", boardFileVO);
 		mv.setViewName("fileDown");
-		System.out.println("test");
 		return mv;
 	}
 

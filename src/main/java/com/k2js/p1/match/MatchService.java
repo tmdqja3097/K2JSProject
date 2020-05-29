@@ -49,9 +49,6 @@ public class MatchService {
 				stadiumFileVO.setNum(matchVO.getNum());
 				stadiumFileVO.setFileName(fileName);
 				stadiumFileVO.setOriName(file.getOriginalFilename());
-				System.out.println(stadiumFileVO.getNum());
-				System.out.println(stadiumFileVO.getFileName());
-				System.out.println(stadiumFileVO.getOriName());
 				stadiumFileDAO.fileInsert(stadiumFileVO);
 			}
 		}
@@ -78,7 +75,6 @@ public class MatchService {
 
 	public int matchWrite(MatchVO matchVO, MultipartFile[] files) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadstadium");
-		System.out.println(path);
 		matchVO.setNum(matchDAO.matchNum());
 
 		for (MultipartFile file : files) {
@@ -231,8 +227,6 @@ public class MatchService {
 			count = mfcVO.getCount() * 3000;
 		}
 		// 멤버에서 캐쉬를 카운트만큼 입금
-		memberVO.setCash(memberVO.getCash() + count);
-		//멤버에서 캐쉬를 카운트만큼 입금
 		count = mfcVO.getCount()*10000;
 		memberVO.setCash(memberVO.getCash()+(int)count);
 		return chargeDAO.cancelMoneyCharge(memberVO);

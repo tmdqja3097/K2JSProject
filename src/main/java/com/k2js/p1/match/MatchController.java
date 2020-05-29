@@ -173,10 +173,6 @@ public class MatchController {
 	@PostMapping("/match/matchUpdate")
 	public ModelAndView matchUpdate(MatchVO matchVO, String day, String time, MultipartFile[] files) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		System.out.println(matchVO.getNum());
-		for(MultipartFile file : files) {
-			System.out.println(file.getOriginalFilename());
-		}
 		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
 		Date dDate = (Date) dfm.parse(date);
@@ -222,12 +218,15 @@ public class MatchController {
 	}
 
 	@PostMapping("/match/matchCancel")
-	public void matchCancel(long num, HttpSession session) throws Exception {
+	public ModelAndView matchCancel(long num, HttpSession session,ModelAndView mav) throws Exception {
 		MatchForCapaVO mfcVO = new MatchForCapaVO();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		mfcVO.setNum(num);
 		mfcVO.setCapaListNum(memberVO.getCapaListNum());
-		matchService.matchCancel(mfcVO, memberVO);
+		int result = matchService.matchCancel(mfcVO, memberVO);
+		mav.addObject("result",result);
+		mav.setViewName("common/ajaxResult");
+		return mav;
 	}
 
 }// end class
