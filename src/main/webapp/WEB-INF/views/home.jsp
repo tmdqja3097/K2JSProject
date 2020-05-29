@@ -478,7 +478,7 @@
 			});
 		});
 		$("#btn_mphp").click(function() {
-			location.href="https://www.instagram.com/p/B8LUdo7Fzbe/";
+			open("https://www.instagram.com/p/B8LUdo7Fzbe/");
 		})
 
 		$("#btn_mph").click(function() {
