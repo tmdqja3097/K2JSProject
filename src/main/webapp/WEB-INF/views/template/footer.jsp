@@ -80,20 +80,14 @@ footer {
 <footer>
 	<ul class="fo1 fo" style="list-style: none;">
 		<h3 style="font-size: 15px;">매치</h3>
-		<li><a href=""> 전체 매치 </a></li>
-		<li><a href=""> 탐색 </a></li>
+		<li><a href="${pageContext.request.contextPath}"> 매치 </a></li>
+		<li><a href="${pageContext.request.contextPath}/league/leagueView"> 리그 </a></li>
 	</ul>
 	<ul class="fo2 fo" style="list-style: none;">
 		<h3 style="font-size: 15px">서비스 지역</h3>
-		<li><a href=""> 서울 </a></li>
-		<li><a href=""> 인천 </a></li>
-		<li><a href=""> 경기 </a></li>
-		<li><a href=""> 대전 </a></li>
-		<li><a href=""> 충북 </a></li>
-		<li><a href=""> 광주 </a></li>
-		<li><a href=""> 대구 </a></li>
-		<li><a href=""> 울산 </a></li>
-		<li><a href=""> 부산 </a></li>
+		<li style="color : #999">서울 인천 부산</li>
+		<li style="color : #999">경기 대전 대구</li>
+		<li style="color : #999">충북 광주 울산</li>
 	</ul>
 
 
