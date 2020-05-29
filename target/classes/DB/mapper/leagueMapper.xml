@@ -33,5 +33,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete team where teamName = #{teamName}
 	</delete>
 
+	<select id="leagueTeamCheck" parameterType="LeagueVO" resultType="LeagueVO">
+		select teamName from team where teamName=#{teamName}
+	</select>
+	
+	<select id="leagueTotalList" resultType="LeagueVO">
+		select team.* ,rank() over(order by point desc)as rank from team
+	</select> 
 
 </mapper>

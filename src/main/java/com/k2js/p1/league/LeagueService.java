@@ -40,4 +40,12 @@ public class LeagueService {
 		leagueVO.setPoint((leagueVO.getWin()*3+leagueVO.getDraw()));
 		return leagueDAO.leagueUpdate(leagueVO);
 	}
+	
+	public LeagueVO leagueTeamCheck(LeagueVO leagueVO) throws Exception{
+		return leagueDAO.leagueTeamCheck(leagueVO);
+	}
+	
+	public List<LeagueVO> leagueTotalList() throws Exception{
+		return leagueDAO.leagueTotalList();
+	}
 }
