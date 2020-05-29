@@ -159,10 +159,12 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchUpdate")
-	public ModelAndView boardUpdate(long num) throws Exception {
+	public ModelAndView boardUpdate(long num, Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		MatchVO matchVO = matchService.matchSelect(num);
 		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		List<ManagerVO> ar = managerService.managerList(pager);
+		mv.addObject("arr_manager", ar);
 		mv.addObject("stadiumVOs", stadiumVOs);
 		mv.addObject("matchVO", matchVO);
 		return mv;

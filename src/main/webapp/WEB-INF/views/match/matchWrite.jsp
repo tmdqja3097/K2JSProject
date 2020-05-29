@@ -43,12 +43,9 @@
 			<select name="managerNum" id="managerNum">
 				<option value="none">선택</option>
 				<c:forEach items="${arr_manager}" var="vos">
-				<option value="${vos.num}">${vos.num}</option>
+				<option value="${vos.num}">${vos.num}-${vos.name}</option>
 				</c:forEach>
 				</select>
-	
-			 <!-- <input type="text"
-				class="form-control" id="managerNum" name="managerNum"> -->
 		</div>
 		<div class="form-group">
 			<label for="writer">성별:</label> 
