@@ -99,7 +99,7 @@
 		parameterType="MatchVO">
 		select * from match where gender=#{gender} and
 		to_char(matchTime, 'dd') =
-		#{day} and matchTime>sysdate order by
+		#{daily} and matchTime>sysdate order by
 		matchTime asc
 	</select>
 
