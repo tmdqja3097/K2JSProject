@@ -23,6 +23,7 @@ import com.k2js.p1.matchforcapa.MatchForCapaVO;
 import com.k2js.p1.member.MemberVO;
 import com.k2js.p1.stadium.StadiumService;
 import com.k2js.p1.stadium.StadiumVO;
+import com.k2js.p1.util.Pager;
 
 @Controller
 @RequestMapping("/")
@@ -121,9 +122,11 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchWrite")
-	public ModelAndView matchWrite() throws Exception {
+	public ModelAndView matchWrite(Pager pager) throws Exception {
 		ModelAndView mv = new ModelAndView();
+		List<ManagerVO> ar = managerService.managerList(pager);
 		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		mv.addObject("arr_manager", ar);
 		mv.addObject("stadiumVOs", stadiumVOs);
 		mv.setViewName("match/matchWrite");
 		return mv;
@@ -156,29 +159,33 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchUpdate")
-	public String boardUpdate(long num, Model model) throws Exception {
+	public ModelAndView boardUpdate(long num) throws Exception {
+		ModelAndView mv = new ModelAndView();
 		MatchVO matchVO = matchService.matchSelect(num);
-		model.addAttribute("matchVO", matchVO);
-		return "match/matchUpdate";
+		List<StadiumVO> stadiumVOs = stadiumService.stadiumList();
+		mv.addObject("stadiumVOs", stadiumVOs);
+		mv.addObject("matchVO", matchVO);
+		return mv;
 	}
 
 	@PostMapping("/match/matchUpdate")
-	public String matchUpdate(MatchVO matchVO, String day, String time) throws Exception {
-
+	public ModelAndView matchUpdate(MatchVO matchVO, String day, String time, MultipartFile[] files) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(matchVO.getNum());
+		for(MultipartFile file : files) {
+			System.out.println(file.getOriginalFilename());
+		}
 		String date = day + time;
 		DateFormat dfm = new SimpleDateFormat("yyyy-MM-ddhh:mm");
 		Date dDate = (Date) dfm.parse(date);
 		matchVO.setMatchTime(dDate);
-
-		int result = matchService.matchUpdate(matchVO);
-		String path = "";
-		result = 0;
+		
+		int result = matchService.matchUpdate(matchVO, files);
 		if (result > 0) {
-			path = "redirect:../";
-		} else {
-			path = "redirect:./matchSelect?num=" + matchVO.getNum();
+			mv.setViewName("redirect:../");
 		}
-		return path;
+		
+		return mv;
 	}
 
 	@GetMapping("/match/matchJoin")

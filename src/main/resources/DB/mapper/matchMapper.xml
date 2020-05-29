@@ -45,8 +45,8 @@
 
 	<update id="matchUpdate" parameterType="MatchVO">
 		update match set
-		title=#{title}, contents=#{contents}, matchTime=#{matchTime},
-		count=#{count} where num=#{num}
+		title=#{title}, contents=#{contents}, matchTime=#{matchTime}, gender=#{gender}, managerNum=#{managerNum},
+		stadiumName=#{stadiumName} where num=#{num}
 	</update>
 
 	<update id="matchCount" parameterType="MatchVO">
