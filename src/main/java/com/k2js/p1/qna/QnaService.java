@@ -82,7 +82,6 @@ public class QnaService implements BoardService{
 				boardFileVO.setOriName(file.getOriginalFilename());
 				boardFileVO.setBoard(1);
 				int result = boardFileDAO.fileInsert(boardFileVO);
-				System.out.println(result);
 			}
 		}
 	

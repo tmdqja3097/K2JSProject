@@ -50,7 +50,6 @@ public class NoticeService implements BoardService{
 	public int boardWrite(BoardVO boardVO, MultipartFile [] files) throws Exception {
 		// TODO Auto-generated method stub
 		String path = servletContext.getRealPath("/resources/uploadnotice");
-		System.out.println(path);
 		
 		//sequence 번호 받기
 		boardVO.setNum(noticeDAO.boardNum());
@@ -84,7 +83,6 @@ public class NoticeService implements BoardService{
 				boardFileVO.setOriName(file.getOriginalFilename());
 				boardFileVO.setBoard(1);
 				int result = boardFileDAO.fileInsert(boardFileVO);
-				System.out.println(result);
 			}
 		}
 		 return noticeDAO.boardUpdate(boardVO); 

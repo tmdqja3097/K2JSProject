@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>${stadiumVO.name} 매치</title>
 <c:import url="../template/boot.jsp"></c:import>
 <meta charset="utf-8">
 <style>

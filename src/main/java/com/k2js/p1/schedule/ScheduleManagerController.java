@@ -20,11 +20,6 @@ public class ScheduleManagerController {
 	@GetMapping(value = "getList")
 	public void mathchInfoDay(long startDay,Model model) throws Exception{
 		List<String> ar = sms.receiveDay(startDay);
-		/*
-		 * List<String[]> ars = null;
-		 * 
-		 * for(int i=0;i<ar.size();i++) { ars.set(i, ar.get(i).split("/")); }
-		 */
 		model.addAttribute("day",ar);
 	}
 	

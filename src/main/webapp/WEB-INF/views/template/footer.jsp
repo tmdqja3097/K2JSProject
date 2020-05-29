@@ -3,11 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style type="text/css">
 footer {
+	clear : both;
 	bottom: 0px; 
 	height: 250px;
 	color: white;
 	background-color: black;
-	margin-top: 50px;
+	margin-top: 200px;
 }
 
 .footerWrap {

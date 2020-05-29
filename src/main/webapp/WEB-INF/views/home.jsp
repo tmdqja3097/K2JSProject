@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 <html>
 <head>
-<title>Home</title>
+<title>K2JS 소셜 축구, 풋살 매칭, 리그 및 용병</title>
 <c:import url="./template/boot.jsp">
 </c:import>
 

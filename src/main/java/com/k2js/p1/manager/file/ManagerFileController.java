@@ -30,7 +30,6 @@ public class ManagerFileController {
 		managerFileVO = managerFileService.fileSelect(managerFileVO);
 		mv.addObject("file", managerFileVO);
 		mv.setViewName("fileDown");
-		System.out.println("test");
 		return mv;
 	}
 }

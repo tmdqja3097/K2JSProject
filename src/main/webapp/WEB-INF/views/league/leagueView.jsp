@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bootstrap Example</title>
+<title>K2JS 리그 정보현황</title>
 <c:import url="../template/boot.jsp" />
 <style type="text/css">
 body {
@@ -209,14 +209,14 @@ body {
 			<div class="item active">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/woman.PNG"
-					alt="Los Angeles" style="width: 100%;" height="50px">
+					alt="Los Angeles" style="width: 100%;" height="50px" id="womanImg">
 				<div class="carousel-caption"></div>
 			</div>
 
 			<div class="item">
 				<img
 					src="${pageContext.request.contextPath}/resources/images/man.PNG"
-					alt="Chicago" style="width: 100%;" height="50px">
+					alt="Chicago" style="width: 100%;" height="50px" id="manImg">
 				<div class="carousel-caption"></div>
 			</div>
 		</div>
