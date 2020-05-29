@@ -41,7 +41,7 @@ public class MatchService {
 
 	public int matchUpdate(MatchVO matchVO, MultipartFile[] files) throws Exception {
 		String path = servletContext.getRealPath("/resources/uploadstadium");
-		
+
 		for (MultipartFile file : files) {
 			if (file.getSize() > 0) {
 				StadiumFileVO stadiumFileVO = new StadiumFileVO();
@@ -55,21 +55,21 @@ public class MatchService {
 		return matchDAO.matchUpdate(matchVO);
 	}
 
-	public List<MatchVO> matchGenderList(int gender, int day) throws Exception{
+	public List<MatchVO> matchGenderList(int gender, int day) throws Exception {
 		MatchVO matchVO = new MatchVO();
 		matchVO.setGender(gender);
 		matchVO.setDaily(day);
 		return matchDAO.matchGenderList(matchVO);
 	}
-	 
-	public List<MatchVO> matchAddressList(String address, int day) throws Exception{
+
+	public List<MatchVO> matchAddressList(String address, int day) throws Exception {
 		StadiumVO stadiumVO = new StadiumVO();
 		stadiumVO.setAddress(address);
 		stadiumVO.setDay(day);
 		return matchDAO.matchAddressList(stadiumVO);
 	}
-	
-	public int matchDelete(long num)throws Exception{
+
+	public int matchDelete(long num) throws Exception {
 		return matchDAO.matchDelete(num);
 	}
 
@@ -118,6 +118,7 @@ public class MatchService {
 		return result;
 
 	}
+
 	public MatchForCapaVO matchIfJoin(MatchForCapaVO mfcVO) throws Exception {
 		mfcVO = matchDAO.matchSearch(mfcVO);
 		return mfcVO;
@@ -186,71 +187,58 @@ public class MatchService {
 	public int matchCancel(MatchForCapaVO mfcVO, MemberVO memberVO) throws Exception {
 		long count = 0;
 		int daycount = 0;
-		
-		
+
 		// 매치신청 결제정보 호출
 		mfcVO = matchDAO.matchSearch(mfcVO);
-		
-		
+
 		// 결제정보에서 삭제
 		matchDAO.matchCancel(mfcVO);
 		MatchVO matchVO = matchDAO.matchSelect(mfcVO.getNum());
 		matchVO.setNum(mfcVO.getNum());
 		matchVO.setCount(matchVO.getCount() - mfcVO.getCount());
-		
-		
+
 		// 해당 매치 정보에서 카운트 차감
 		matchDAO.matchJoin(matchVO);
-		
-		
+
 		// 날자 비교 및 환불금액 변동사항
 		Date date = new Date();
 		Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		String dat = sdf.format(matchVO.getMatchTime());
 		String dat1 = sdf.format(date);
-		
-		
+
 		//// 현재 날자
 		String str[] = dat.split("/");
 		int year = Integer.parseInt(str[0]);
 		int month = Integer.parseInt(str[1]);
 		int maxday = cal.getActualMaximum(month);
 		int day = Integer.parseInt(str[2]);
-		
+
 		//// 경기 날자
 		String str1[] = dat1.split("/");
 		int year1 = Integer.parseInt(str[0]);
 		int month1 = Integer.parseInt(str1[1]);
 		int day1 = Integer.parseInt(str[2]);
-		
-		System.out.println("현재 날자 :" + day1);
-		System.out.println("경기 날자 :" + day);
-		System.out.println("인원수 : "+mfcVO.getCount());
+
 		if (year == year1 && month == month1) {
-			System.out.println("해당 년과 월이 같음");
 			daycount = day1 - day;
 		} else if (year == year1 && month > month1) {
-			System.out.println("해당 년만 같고 월이 다름");
-			daycount = (day1+maxday)-day;
-		} else if ( year != year1) {
-				System.out.println("해당 년이 다름");
-			daycount = (day1+31)-day;
+			daycount = (day1 + maxday) - day;
+		} else if (year != year1) {
+			daycount = (day1 + 31) - day;
 		}
 		if (daycount >= 2) {
-			count = mfcVO.getCount() * 10000;
-		} else if (daycount < 2 && daycount >= 1) {
-			count = mfcVO.getCount() * 8000;
-		} else if (daycount < 1) {
-			count = mfcVO.getCount() * 3000;
+			if (daycount > 2) {
+				count = mfcVO.getCount() * 10000;
+			} else if (daycount < 2 && daycount >= 1) {
+				count = mfcVO.getCount() * 8000;
+			} else if (daycount < 1) {
+				count = mfcVO.getCount() * 3000;
+			}
+
 		}
-		
-		System.out.println("daycount: "+daycount);
-		System.out.println("count: "+count);
-		System.out.println("회원 캐쉬잔액: "+memberVO.getCash());
 		// 멤버에서 캐쉬를 카운트만큼 입금
-		memberVO.setCash(memberVO.getCash()+count);
-		System.out.println("회원 잔액 + 환불금액 : "+memberVO.getCash());
+		memberVO.setCash(memberVO.getCash() + count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}
 }

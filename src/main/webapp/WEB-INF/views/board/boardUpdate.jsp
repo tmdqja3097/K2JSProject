@@ -54,7 +54,7 @@
 		</form>
 
 	</div>
-	<footer></footer>
+	<c:import url="../template/footer.jsp"></c:import>
 
 	<script type="text/javascript" src="../resources/js/boardForm.js"></script>
 	<script type="text/javascript">
