@@ -212,13 +212,13 @@ public class MatchController {
 	}
 
 	@GetMapping("/match/matchCancel")
-	public String matchCancel(long num, Model model) throws Exception {
+	public String matchCancel(int num, Model model) throws Exception {
 		model.addAttribute("num", num);
 		return "match/matchCancel";
 	}
 
 	@PostMapping("/match/matchCancel")
-	public ModelAndView matchCancel(long num, HttpSession session,ModelAndView mav) throws Exception {
+	public ModelAndView matchCancel(int num, HttpSession session,ModelAndView mav) throws Exception {
 		MatchForCapaVO mfcVO = new MatchForCapaVO();
 		MemberVO memberVO = (MemberVO) session.getAttribute("member");
 		mfcVO.setNum(num);

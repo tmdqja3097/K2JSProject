@@ -15,8 +15,10 @@ body {
 	font-family: "나눔바른고딕", nanumbarungothic, se_NanumBarunGothic,
 		AppleSDGothicNeo, sans-serif, simhei;
 }
+
 section {
-min-height:  700px;}
+	min-height: 700px;
+}
 
 .bodyCon {
 	border-top: 0.3px solid gray;
@@ -128,8 +130,8 @@ min-height:  700px;}
 						}
 					})
 
-					location.href = "./MemberDelete";
 				}
+				location.href = "./MemberDelete";
 			})
 		</script>
 	</section>

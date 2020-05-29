@@ -16,11 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 import com.k2js.p1.match.MatchVO;
 
 @Controller
@@ -81,7 +83,7 @@ public class MemberController {
 			HttpSession session, HttpServletRequest request) throws Exception {
 		model.addAttribute("cId", cId);
 		String Referer = request.getHeader("Referer");
-		if (!Referer.equals("http://localhost:8080/p1/member/MemberLogin")) {
+		if (!Referer.equals("http://211.238.142.67:8080/p1/member/MemberLogin")) {
 			session.setAttribute("Referer", Referer);
 		}
 		return "member/MemberLogin";
@@ -103,13 +105,13 @@ public class MemberController {
 		} else {
 			return "redirect:./MemberLogin";
 		}
-		if (Referer.equals("http://localhost:8080/p1/member/MemberNew")
-				|| Referer.equals("http://localhost:8080/p1/member/forget/MemberFindId")
-					|| Referer.equals("http://localhost:8080/p1/member/forget/MemberFindPw") || 
-						Referer.equals("http://localhost:8080/p1/member/forget/MemberFindId")) {
+		if (Referer.equals("http://211.238.142.67:8080/p1/member/MemberNew")
+				|| Referer.equals("http://211.238.142.67:8080/p1/member/forget/MemberFindId")
+				|| Referer.equals("http://211.238.142.67:8080/p1/member/forget/MemberFindPw")
+				|| Referer.equals("http://211.238.142.67:8080/p1/member/forget/MemberFindId")) {
 			return "/";
 		}
-			return "redirect:" + Referer;
+		return "redirect:" + Referer;
 	}
 
 	@GetMapping("MemberNew")
@@ -126,7 +128,7 @@ public class MemberController {
 		memberVO.setBirth(birth);
 		int result = memberService.memberNew(memberVO);
 		if (result > 0) {
-			return "member/MemberLogin";
+			return "redirect:../";
 		}
 		return "redirect:./";
 	}
@@ -226,4 +228,17 @@ public class MemberController {
 		model.addAttribute("i", size);
 		model.addAttribute("list", ar);
 	}
+
+	/*
+	 * // 회원 이메일 확인
+	 * 
+	 * @PostMapping("emailCheck") public void emailCheck(String emailCk, Model
+	 * model) throws Exception { System.out.println("check"); MemberVO memberVO =
+	 * memberService.memberEmailCheck(emailCk); if (memberVO == null) { MemberVO
+	 * memberVO2 = new MemberVO(); memberVO2.setEmail("사용가능");
+	 * model.addAttribute("email_ck", memberVO2.getEmail()); } else {
+	 * model.addAttribute("email_ck", memberVO.getEmail()); }
+	 * 
+	 * }
+	 */
 }

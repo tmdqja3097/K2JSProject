@@ -51,9 +51,9 @@ public class ChargeService {
 		params.add("quantity", "1");
 		params.add("total_amount", "" + money);
 		params.add("tax_free_amount", "100");
-		params.add("approval_url", "http://localhost:8080/p1/member/charge/Success?money=" + money);
-		params.add("cancel_url", "http://localhost:8080/p1/member/charge/Cancel");
-		params.add("fail_url", "http://localhost:8080/p1/member/charge/Fail");
+		params.add("approval_url", "http://211.238.142.67:8080/p1/member/charge/Success?money=" + money);
+		params.add("cancel_url", "http://211.238.142.67:8080/p1/member/charge/Cancel");
+		params.add("fail_url", "http://211.238.142.67:8080/p1/member/charge/Fail");
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 		try {
 			String rTl = restTemplate.postForObject(HOST + "/v1/payment/ready", body, String.class);

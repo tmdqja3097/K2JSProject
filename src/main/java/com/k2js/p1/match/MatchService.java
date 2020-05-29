@@ -206,7 +206,7 @@ public class MatchService {
 		int year = Integer.parseInt(str[0]);
 		int month = Integer.parseInt(str[1]);
 		int maxday = cal.getActualMaximum(month-1);
-		int day = Integer.parseInt(str[2]) - 2;
+		int day = Integer.parseInt(str[2]);
 		//// 현재 날자
 		String str1[] = dat1.split("/");
 		int year1 = Integer.parseInt(str[0]);
@@ -219,16 +219,18 @@ public class MatchService {
 		} else if ( year != year1) {
 			daycount = (day+31)-day1;
 		}
-		System.out.println(daycount);
-		if (daycount > 2) {
+		
+		
+		if (daycount >= 2) {
 			count = mfcVO.getCount() * 10000;
-		} else if (daycount < 2 && daycount > 1) {
+		} else if (daycount < 2 && daycount >= 1) {
 			count = mfcVO.getCount() * 8000;
 		} else if (daycount < 1) {
 			count = mfcVO.getCount() * 3000;
 		}
+		
+		
 		// 멤버에서 캐쉬를 카운트만큼 입금
-		count = mfcVO.getCount()*10000;
 		memberVO.setCash(memberVO.getCash()+(int)count);
 		return chargeDAO.cancelMoneyCharge(memberVO);
 	}

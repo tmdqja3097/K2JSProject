@@ -14,6 +14,10 @@
 </c:import>
 
 <style type="text/css">
+.banner {
+border : 2px solid black;
+text-shadow: black;
+}
 .slide_edge {
 	border-radius: 50px;
 }
@@ -98,6 +102,7 @@
 <body>
 
 	<c:import url="./template/header.jsp"></c:import>
+	<section>
 	<div id="box_mat"
 		style="width: 100%; display: inline-block; margin-bottom: 10px;">
 		<a id="match_btn" class="match selected"
@@ -105,7 +110,8 @@
 			class="match"
 			href="${pageContext.request.contextPath}/league/leagueView">리그</a>
 	</div>
-	<div
+	
+	<div class="banner"
 		style="display: inline-block; margin-right: -25%; margin-top: 60px; width: 200px; height: 395px; float: right; background-image: url(./resources/images/mph_banner3.jpg);"
 		id="btn_mphp">
 		<button id="btn_mph" style="float: right;">X</button>
@@ -113,7 +119,7 @@
 
 
 
-	<div
+	<div class="banner"
 		style="display: inline-block; margin-right: -25%; width: 200px; height: 395px; float: right; margin-top: 550px; background-image: url(./resources/images/sist.png);"
 		id="btn_sistp">
 		<button id="btn_sist" style="float: right;">X</button>
@@ -497,6 +503,7 @@
 
 		})
 	</script>
+	</section>
 	<c:import url="./template/footer.jsp"></c:import>
 </body>
 </html>
