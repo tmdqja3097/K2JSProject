@@ -214,12 +214,6 @@ img {
 						src="../../${pageContext.request.contextPath}/resources/images/mix.svg">
 						<p>혼성 매치</p></li>
 				</c:if>
-				<c:if test="${matchVO.gender eq 3}">
-					<li><img alt=""
-						src="../../${pageContext.request.contextPath}/resources/images/mix.svg"
-						style="width: 90px; height: 67px;">
-						<p>남녀 모두 매치</p></li>
-				</c:if>
 				<li><img alt=""
 					src="../../${pageContext.request.contextPath}/resources/images/every.svg">
 					<p>일반 매치</p></li>
