@@ -8,7 +8,12 @@
 <title>K2JS 소개</title>
 <c:import url="./template/boot.jsp"></c:import>
 <style type="text/css">
+html {
+height : 100%;
+position : relative;
+}
 body {
+position : absolute;
 	padding: 0 0;
 	height: 100%;
 }
